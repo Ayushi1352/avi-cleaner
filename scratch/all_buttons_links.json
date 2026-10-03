@@ -1,0 +1,502 @@
+[
+  {
+    "file": "src\\app\\not-found.tsx",
+    "line": 111,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\app\\not-found.tsx",
+    "line": 112,
+    "text": "href=\"/\""
+  },
+  {
+    "file": "src\\app\\not-found.tsx",
+    "line": 145,
+    "text": "<Link href={href} className=\"flex items-center gap-3 sm:justify-center sm:px-2 lg:gap-3 xl:gap-4 2xl:gap-6 3xl:gap-[30px]\">"
+  },
+  {
+    "file": "src\\components\\AboutSection.tsx",
+    "line": 222,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\AboutSection.tsx",
+    "line": 223,
+    "text": "href=\"/#services\""
+  },
+  {
+    "file": "src\\components\\blog\\BlogDetailSection.tsx",
+    "line": 19,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\blog\\BlogDetailSection.tsx",
+    "line": 20,
+    "text": "href=\"/blog\""
+  },
+  {
+    "file": "src\\components\\blog\\BlogDetailSection.tsx",
+    "line": 38,
+    "text": "href=\"#\""
+  },
+  {
+    "file": "src\\components\\blog\\BlogDetailSection.tsx",
+    "line": 149,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\blog\\BlogDetailSection.tsx",
+    "line": 150,
+    "text": "href=\"/blog\""
+  },
+  {
+    "file": "src\\components\\blog\\BlogDetailSection.tsx",
+    "line": 165,
+    "text": "<Link href={`/blog/${p.slug}`} className=\"group flex items-center gap-3.5 2xl:gap-5 3xl:gap-[32px]\">"
+  },
+  {
+    "file": "src\\components\\blog\\BlogListSection.tsx",
+    "line": 14,
+    "text": "<Link href={href} aria-label={post.title} className=\"group relative block aspect-[563/204] w-full overflow-hidden\">"
+  },
+  {
+    "file": "src\\components\\blog\\BlogListSection.tsx",
+    "line": 41,
+    "text": "<Link href={href} className=\"transition-colors hover:text-green\">"
+  },
+  {
+    "file": "src\\components\\blog\\BlogListSection.tsx",
+    "line": 50,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\blog\\BlogListSection.tsx",
+    "line": 51,
+    "text": "href={href}"
+  },
+  {
+    "file": "src\\components\\blog\\BlogListSection.tsx",
+    "line": 96,
+    "text": "<button type=\"button\" onClick={() => goTo(page - 1)} disabled={page === 1} aria-label=\"Previous page\" className={`${btn} ${idle}`}>"
+  },
+  {
+    "file": "src\\components\\blog\\BlogListSection.tsx",
+    "line": 102,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\blog\\BlogListSection.tsx",
+    "line": 114,
+    "text": "<button type=\"button\" onClick={() => goTo(page + 1)} disabled={page === totalPages} aria-label=\"Next page\" className={`${btn} ${idle}`}>"
+  },
+  {
+    "file": "src\\components\\BlogSection.tsx",
+    "line": 69,
+    "text": "<Link href={href} aria-label={post.title} className=\"group/img block overflow-hidden\">"
+  },
+  {
+    "file": "src\\components\\BlogSection.tsx",
+    "line": 91,
+    "text": "<Link href={href} className=\"transition hover:text-green\">"
+  },
+  {
+    "file": "src\\components\\BlogSection.tsx",
+    "line": 112,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\BlogSection.tsx",
+    "line": 113,
+    "text": "href={href}"
+  },
+  {
+    "file": "src\\components\\book\\BookNowSection.tsx",
+    "line": 140,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\CarouselDots.tsx",
+    "line": 6,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\contact\\ContactFormSection.tsx",
+    "line": 114,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\contact\\ContactInfoSection.tsx",
+    "line": 57,
+    "text": "href={card.href}"
+  },
+  {
+    "file": "src\\components\\CtaBannerSection.tsx",
+    "line": 103,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\CtaBannerSection.tsx",
+    "line": 104,
+    "text": "href=\"/#quote\""
+  },
+  {
+    "file": "src\\components\\faq\\FaqSection.tsx",
+    "line": 101,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\faq\\FaqSection.tsx",
+    "line": 207,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\faq\\FaqSection.tsx",
+    "line": 208,
+    "text": "href=\"/contact\""
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 102,
+    "text": "href={PAGE_LINKS[item] ?? \"#\"}"
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 159,
+    "text": "<a href=\"tel:+568925896325\" className=\"transition-colors hover:text-[#fadb64]\">+5689 2589 6325</a>"
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 165,
+    "text": "<a href=\"mailto:info@avicleaner.com\" className=\"break-all transition-colors hover:text-[#fadb64]\">info@avicleaner.com</a>"
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 178,
+    "text": "href=\"#\""
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 191,
+    "text": "<LinkList items={usefulLinks} />"
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 197,
+    "text": "<LinkList items={serviceLinks} />"
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 221,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 262,
+    "text": "<Link href=\"/privacy-policy\" className=\"hover:text-[#fadb64]\">Privacy Policy</Link>"
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 264,
+    "text": "<a href=\"#\" className=\"hover:text-[#fadb64]\">Terms &amp; Conditions</a>"
+  },
+  {
+    "file": "src\\components\\Footer.tsx",
+    "line": 266,
+    "text": "<a href=\"#\" className=\"hover:text-[#fadb64]\">Sitemap</a>"
+  },
+  {
+    "file": "src\\components\\gallery\\GallerySection.tsx",
+    "line": 105,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\gallery\\GallerySection.tsx",
+    "line": 106,
+    "text": "href=\"/gallery\""
+  },
+  {
+    "file": "src\\components\\HeroSection.tsx",
+    "line": 91,
+    "text": "href=\"/book-now\""
+  },
+  {
+    "file": "src\\components\\HeroSection.tsx",
+    "line": 98,
+    "text": "href=\"/contact\""
+  },
+  {
+    "file": "src\\components\\mission\\MissionSection.tsx",
+    "line": 53,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\mission\\MissionSection.tsx",
+    "line": 54,
+    "text": "href=\"/#services\""
+  },
+  {
+    "file": "src\\components\\mission\\PartnerCtaSection.tsx",
+    "line": 63,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\mission\\PartnerCtaSection.tsx",
+    "line": 64,
+    "text": "href={buttonHref}"
+  },
+  {
+    "file": "src\\components\\mission\\VisionSection.tsx",
+    "line": 94,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\mission\\VisionSection.tsx",
+    "line": 95,
+    "text": "href=\"/about\""
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 33,
+    "text": "<Link href=\"/\" aria-label=\"Avicleaner home\" className=\"shrink-0\">"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 40,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 42,
+    "text": "href={link.href}"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 56,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 57,
+    "text": "href=\"/book-now\""
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 66,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 67,
+    "text": "href=\"/book-now\""
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 72,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 90,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 92,
+    "text": "href={link.href}"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 101,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\Navbar.tsx",
+    "line": 102,
+    "text": "href=\"/book-now\""
+  },
+  {
+    "file": "src\\components\\PageHero.tsx",
+    "line": 37,
+    "text": "<Link href=\"/\" className=\"text-white/90 transition-colors hover:text-white\">"
+  },
+  {
+    "file": "src\\components\\pricing\\PricingSection.tsx",
+    "line": 135,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\pricing\\PricingSection.tsx",
+    "line": 136,
+    "text": "href=\"/book-now\""
+  },
+  {
+    "file": "src\\components\\privacy\\PrivacySection.tsx",
+    "line": 84,
+    "text": "<a href=\"mailto:info@avicleaner.com\" className=\"break-all hover:text-green\">"
+  },
+  {
+    "file": "src\\components\\privacy\\PrivacySection.tsx",
+    "line": 88,
+    "text": "<a href=\"tel:+568925896325\" className=\"hover:text-green\">"
+  },
+  {
+    "file": "src\\components\\RecentProjectsSection.tsx",
+    "line": 77,
+    "text": "href=\"#projects\""
+  },
+  {
+    "file": "src\\components\\services\\CallUsSection.tsx",
+    "line": 78,
+    "text": "<a href={`tel:${PHONE.replace(/\\s/g, \"\")}`} className=\"group flex items-center gap-4 2xl:gap-6\">"
+  },
+  {
+    "file": "src\\components\\services\\CallUsSection.tsx",
+    "line": 89,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\services\\CallUsSection.tsx",
+    "line": 90,
+    "text": "href=\"/book-now\""
+  },
+  {
+    "file": "src\\components\\services\\detail\\ServiceIntroSection.tsx",
+    "line": 65,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\services\\detail\\ServiceIntroSection.tsx",
+    "line": 66,
+    "text": "href=\"/book-now\""
+  },
+  {
+    "file": "src\\components\\services\\ProcessSection.tsx",
+    "line": 113,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\services\\ProcessSection.tsx",
+    "line": 114,
+    "text": "href=\"/book-now\""
+  },
+  {
+    "file": "src\\components\\services\\ServicesGridSection.tsx",
+    "line": 15,
+    "text": "<Link href={href} aria-label={service.title} className=\"block h-full\">"
+  },
+  {
+    "file": "src\\components\\services\\ServicesGridSection.tsx",
+    "line": 31,
+    "text": "<Link href={href} className=\"transition-colors hover:text-green\">"
+  },
+  {
+    "file": "src\\components\\services\\ServicesGridSection.tsx",
+    "line": 39,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\services\\ServicesGridSection.tsx",
+    "line": 40,
+    "text": "href={href}"
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 85,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 86,
+    "text": "href={service.href}"
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 111,
+    "text": "href=\"#quote\""
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 139,
+    "text": "<Link"
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 140,
+    "text": "href=\"/services\""
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 192,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 203,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 246,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\ServicesSection.tsx",
+    "line": 257,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\team\\detail\\ProfileSection.tsx",
+    "line": 70,
+    "text": "<a href={href} className=\"min-w-0 break-all text-[15px] font-medium text-[#1d2433] hover:text-green xl:text-[16px] 2xl:text-[20px] 3xl:text-[24px]\">"
+  },
+  {
+    "file": "src\\components\\team\\detail\\ProfileSection.tsx",
+    "line": 86,
+    "text": "href=\"#\""
+  },
+  {
+    "file": "src\\components\\team\\detail\\ProfileTabs.tsx",
+    "line": 31,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\team\\TeamSection.tsx",
+    "line": 38,
+    "text": "<Link href={`/team/${member.slug}`} aria-label={`View ${member.name}`} className=\"group block overflow-hidden\">"
+  },
+  {
+    "file": "src\\components\\team\\TeamSection.tsx",
+    "line": 48,
+    "text": "<Link href={`/team/${member.slug}`} className=\"group/name block\">"
+  },
+  {
+    "file": "src\\components\\team\\TeamSection.tsx",
+    "line": 60,
+    "text": "href=\"#\""
+  },
+  {
+    "file": "src\\components\\team\\TeamSection.tsx",
+    "line": 151,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\team\\TeamSection.tsx",
+    "line": 168,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\team\\TeamSection.tsx",
+    "line": 185,
+    "text": "<button"
+  },
+  {
+    "file": "src\\components\\WhyChooseUsSection.tsx",
+    "line": 80,
+    "text": "href=\"#quote\""
+  },
+  {
+    "file": "src\\components\\WhyChooseUsSection.tsx",
+    "line": 112,
+    "text": "<button"
+  }
+]

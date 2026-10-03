@@ -1,26 +1,410 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ---------- Design tokens (sampled from the home page design) ---------- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--nf-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-poppins: var(--nf-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--nf-caveat), cursive;
+
+  --color-navy: #0b1b45;
+  --color-green: #2a7c35;
+  --color-green-light: #5c9836;
+  --color-green-dark: #1f5a41;
+  --color-forest: #0a4030;
+  --color-forest-deep: #073b2e;
+  --color-yellow: #fcd964;
+  --color-yellow-dark: #f6c945;
+  --color-mint: #e6f2e8;
+  --color-mint-soft: #f3f8f4;
+  --color-body: #4b5565;
+  --color-muted: #6b7384;
+
+  --breakpoint-3xl: 112.5rem; /* 1800px */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Shared page container: 60px side gutters at 1920px, 16px on phones */
+.container-x {
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+@media (min-width: 640px) {
+  .container-x { padding-inline: 24px; }
+}
+@media (min-width: 1024px) {
+  .container-x { padding-inline: 40px; }
+}
+@media (min-width: 1536px) {
+  .container-x { padding-inline: 56px; }
+}
+
+/* Hide scrollbar for horizontal sliders */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f3;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a7c35;
+  border-radius: 4px;
+}
+
+
+/* Home hero: fades the photo into the page tint on the left (frame, sofa and
+   cleaner stay fully visible), with a soft patch behind the feature badges. */
+.hero-fade {
+  background-image: radial-gradient(ellipse 20% 14% at 40% 87%, rgb(246 250 253 / 0.92) 60%, rgb(246 250 253 / 0) 100%),
+    linear-gradient(
+    90deg,
+    #f6fafd 0%,
+    rgb(246 250 253 / 0.97) 30%,
+    rgb(246 250 253 / 0.8) 39%,
+    rgb(246 250 253 / 0.35) 46%,
+    rgb(246 250 253 / 0) 51.5%
+  );
+}
+/* Bottom-left corner of the same photo (blurred plant), independent of where
+   the main photo sits. */
+.hero-plant {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 7.5%;
+  height: 22%;
+  background: url("/images/hero-banner-arc.webp") left bottom / auto 454.5% no-repeat;
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 0% 100%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 100% 100% at 0% 100%, #000 35%, transparent 100%);
+}
+/* Wider than the 1920px content container: keep the fade tied to the text column. */
+@media (min-width: 1920px) {
+  .hero-fade {
+    background-image: radial-gradient(ellipse 20% 14% at 40% 87%, rgb(246 250 253 / 0.92) 60%, rgb(246 250 253 / 0) 100%),
+    linear-gradient(
+      90deg,
+      #f6fafd 0%,
+      rgb(246 250 253 / 0.97) calc(50% - 384px),
+      rgb(246 250 253 / 0.8) calc(50% - 211px),
+      rgb(246 250 253 / 0.35) calc(50% - 77px),
+      rgb(246 250 253 / 0) calc(50% + 29px)
+    );
+  }
+}
+
+.why-choose-section .why-choose-grid {
+  align-items: center;
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .why-choose-section .why-choose-grid {
+    gap: 1.25rem;
+  }
+
+  .why-choose-section .why-choose-visual {
+    max-width: 560px;
+    padding-top: 2.5rem;
+  }
+
+  .why-choose-section .why-choose-note {
+    right: -0.5rem;
+    top: 0.25rem;
+    font-size: 2.1rem;
+  }
+
+  .why-choose-section .why-choose-image-wrap {
+    margin-top: 1.5rem;
+    margin-right: 0;
+  }
+
+  .why-choose-section .why-choose-badge {
+    left: -0.5rem;
+    top: 12%;
+  }
+
+  .why-choose-section .why-choose-cta {
+    right: 0.5rem;
+    bottom: 0.75rem;
+  }
+}
+
+/* Short vertical divider between the hero feature badges (single-row layout). */
+@media (min-width: 1280px) {
+  .hero-divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: #d3dae2;
+  }
+}
+
+/* Hero photo: full hero height, pushed off the right edge by 6.4% of the hero
+   width (the design value). On taller heroes the photo grows, so it is pushed
+   further right to keep the cleaner clear of the text column. */
+.hero-photo-wrap {
+  container-type: size;
+}
+.hero-photo {
+  position: absolute;
+  top: 0;
+  right: min(-6.4cqw, calc(43.5cqw - 109.2cqh));
+  height: 100%;
+  width: auto;
+  max-width: none;
+}
+
+/* ---------- Buttons ----------
+   Solid buttons turn white on hover and take their own colour as text and
+   outline. Outline buttons do the opposite. Colour comes from --btn. */
+.btn-solid {
+  background-color: var(--btn, #2a7a38);
+  color: var(--btn-fg, #fff);
+  box-shadow: inset 0 0 0 1.5px var(--btn, #2a7a38);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-solid:hover,
+.btn-solid:focus-visible {
+  background-color: #fff;
+  background-image: none;
+  color: var(--btn-ink, var(--btn, #2a7a38));
+}
+.btn-forest {
+  --btn: #1f5a41;
+}
+.btn-yellow {
+  --btn: #fcd964;
+  --btn-fg: #0b1b45;
+  --btn-ink: #0b1b45;
+}
+.btn-outline {
+  background-color: var(--btn-bg, #fff);
+  color: var(--btn-ink, var(--btn, #0b1b45));
+  box-shadow: inset 0 0 0 1.5px var(--btn-ring, var(--btn, #0b1b45));
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background-color: var(--btn, #0b1b45);
+  color: #fff;
+  box-shadow: inset 0 0 0 1.5px var(--btn, #0b1b45);
+}
+
+/* Short vertical divider between the Core Values columns (desktop only). */
+@media (min-width: 1024px) {
+  .core-divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12%;
+    bottom: 4%;
+    width: 1px;
+    background: #d3ebdf;
+  }
+}
+
+/* ---------- Icon Keyframe Animations & Micro-Interactions ---------- */
+@keyframes icon-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes icon-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-6deg);
+  }
+  75% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes icon-twinkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 2px rgba(252, 217, 100, 0.4));
+  }
+  50% {
+    transform: scale(1.22) rotate(10deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 7px rgba(252, 217, 100, 0.95));
+  }
+}
+
+@keyframes icon-heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.12);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.08);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes icon-pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes icon-radar-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@keyframes icon-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-12deg);
+  }
+  30% {
+    transform: rotate(12deg);
+  }
+  45% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
+
+@keyframes icon-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes icon-shimmer {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 5px rgba(252, 217, 100, 0.8));
+  }
+}
+
+/* Utility animation classes */
+.animate-icon-float {
+  animation: icon-float 3s ease-in-out infinite;
+}
+
+.animate-icon-sway {
+  animation: icon-sway 3.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-icon-twinkle {
+  animation: icon-twinkle 2.2s ease-in-out infinite;
+}
+
+.animate-icon-heartbeat {
+  animation: icon-heartbeat 2.6s ease-in-out infinite;
+}
+
+.animate-icon-pulse-subtle {
+  animation: icon-pulse-subtle 2.5s ease-in-out infinite;
+}
+
+.animate-icon-radar {
+  animation: icon-radar-ring 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+
+.animate-icon-wiggle {
+  animation: icon-wiggle 1s ease-in-out;
+}
+
+.animate-icon-spin-slow {
+  animation: icon-spin-slow 18s linear infinite;
+}
+
+.animate-icon-shimmer {
+  animation: icon-shimmer 2.2s ease-in-out infinite;
+}
+
+/* Smooth transitions for all SVG icons across the app */
+svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-icon-float,
+  .animate-icon-sway,
+  .animate-icon-twinkle,
+  .animate-icon-heartbeat,
+  .animate-icon-pulse-subtle,
+  .animate-icon-radar,
+  .animate-icon-wiggle,
+  .animate-icon-spin-slow,
+  .animate-icon-shimmer {
+    animation: none !important;
+  }
 }
