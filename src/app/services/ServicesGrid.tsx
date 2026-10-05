@@ -8,6 +8,10 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import ServiceIcon from "./serviceIcons";
 import services from "./servicesData";
+import servicesJson from "@/data/services.json";
+
+// Text lives in src/data/services.json under text.ServicesGrid.
+const copy = servicesJson.text.ServicesGrid;
 
 const PER_PAGE = 6;
 
@@ -45,7 +49,7 @@ function ServiceCard({ service }: { service: any }) {
             href={href}
             className="btn-solid btn-yellow group inline-flex items-center gap-2.5 whitespace-nowrap rounded-full px-6 py-2.5 text-[14px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:px-6 2xl:py-3 2xl:text-[15px] 3xl:px-[34px] 3xl:py-[14px] 3xl:text-[17px]"
           >
-            Read More
+            {copy.readMore}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
           </Link>
         </div>
@@ -86,15 +90,14 @@ export default function ServicesGrid() {
 
         <div className="container-x relative">
           <div className="mx-auto max-w-[1000px] text-center">
-            <SectionEyebrow center compact className="3xl:[&>span:first-child]:w-[72px] 3xl:[&>span:last-child]:w-[72px]">What We Provide</SectionEyebrow>
+            <SectionEyebrow center compact className="3xl:[&>span:first-child]:w-[72px] 3xl:[&>span:last-child]:w-[72px]">{copy.whatWeProvide}</SectionEyebrow>
             <h2 className="mt-3 text-[clamp(28px,3.15vw,60px)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#0b1a12] 2xl:mt-5">
-              Comprehensive Cleaning
-              <br className="hidden sm:block" /> Services You Can Trust
+              {copy.comprehensiveCleaning}
+              <br className="hidden sm:block" />{" " + copy.servicesYouCanTrust}
             </h2>
             <p className="mx-auto mt-4 text-[15px] leading-[1.4] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:text-[20px] 3xl:mt-[22px] 3xl:text-[22px]">
-              From homes to offices, we deliver professional cleaning solutions
-              tailored to your needs. <br className="hidden xl:block" />
-              A cleaner, healthier and happier environment is just a call away.
+              {copy.fromHomesToOfficesWe + " "}<br className="hidden xl:block" />
+              {copy.aCleanerHealthierAndHappier}
             </p>
           </div>
 
@@ -107,14 +110,14 @@ export default function ServicesGrid() {
           </ul>
 
           {totalPages > 1 && (
-            <nav aria-label="Services pages" className="mt-10 flex justify-center 2xl:mt-[38px]">
+            <nav aria-label={copy.servicesPages} className="mt-10 flex justify-center 2xl:mt-[38px]">
               <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
                 <li>
                   <button
                     type="button"
                     onClick={() => goTo(page - 1)}
                     disabled={page === 1}
-                    aria-label="Previous page"
+                    aria-label={copy.previousPage}
                     className={`${btn} ${idle}`}
                   >
                     <ChevronLeft className="h-4 w-4" strokeWidth={3} />
@@ -138,7 +141,7 @@ export default function ServicesGrid() {
                     type="button"
                     onClick={() => goTo(page + 1)}
                     disabled={page === totalPages}
-                    aria-label="Next page"
+                    aria-label={copy.nextPage}
                     className={`${btn} ${idle}`}
                   >
                     <ChevronRight className="h-4 w-4" strokeWidth={3} />

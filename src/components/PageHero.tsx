@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import siteData from "@/data/site.json";
+
+// Text lives in src/data/site.json under text.PageHero.
+const copy = siteData.text.PageHero;
 
 const BANNER_BG =
   "/images/page-banner-cleaner.webp";
@@ -44,7 +48,7 @@ export default function PageHero({ title, crumb, breadcrumbs }: PageHeroProps) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={BANNER_BG}
-        alt="Avicleaner page banner"
+        alt={copy.avicleanerPageBanner}
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[68%_20%] sm:object-[72%_20%] lg:object-[78%_22%]"
       />
 
@@ -59,11 +63,11 @@ export default function PageHero({ title, crumb, breadcrumbs }: PageHeroProps) {
             </h1>
 
             <nav
-              aria-label="Breadcrumb"
+              aria-label={copy.breadcrumb}
               className="mt-4 inline-flex w-fit max-w-full flex-nowrap items-center gap-x-1.5 gap-y-1 whitespace-nowrap rounded-full border border-white/25 bg-black/35 px-3.5 py-2 text-[clamp(10px,3.2vw,13px)] font-medium sm:flex-wrap sm:whitespace-normal text-white backdrop-blur-md sm:mt-5 sm:gap-x-3 sm:px-6 sm:py-2.5 sm:text-[15px] xl:mt-6 xl:px-7 xl:py-3 xl:text-[16px]"
             >
             <Link href="/" className="shrink-0 text-white/90 transition-colors hover:text-white hover:underline">
-              Home
+              {copy.home}
             </Link>
             {items.map((item, index) => {
               const isLast = index === items.length - 1;

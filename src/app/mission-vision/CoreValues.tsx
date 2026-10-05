@@ -1,12 +1,20 @@
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { LeafIcon, ShieldCheckIcon, StarIcon, UsersIcon } from "@/components/icons";
+import missionVisionData from "@/data/mission-vision.json";
 
-const values = [
-  { icon: UsersIcon, title: "Customer First", text: ["Your satisfaction is", "our priority."] },
-  { icon: LeafIcon, title: "Sustainability", text: ["We care for your space", "and our planet."] },
-  { icon: ShieldCheckIcon, title: "Integrity", text: ["We do what’s right,", "always."] },
-  { icon: StarIcon, title: "Excellence", text: ["We strive for the", "highest standards."] },
-];
+// Text lives in src/data/mission-vision.json under text.CoreValues.
+const copy = missionVisionData.text.CoreValues;
+
+// Icons by the name used in src/data/mission-vision.json.
+const valuesIcons = {
+  users: UsersIcon,
+  leaf: LeafIcon,
+  "shield-check": ShieldCheckIcon,
+  star: StarIcon,
+};
+
+// Content lives in src/data/mission-vision.json.
+const values = missionVisionData.values.map((item) => ({ ...item, icon: valuesIcons[item.icon] }));
 
 /** "Our Core Values — What Drives Us". */
 export default function CoreValues() {
@@ -15,12 +23,12 @@ export default function CoreValues() {
       <div className="container-x">
         <div className="rounded-[20px] bg-[#ecf9f2] px-5 pb-10 pt-10 sm:px-8 lg:px-10 2xl:mx-[20px] 2xl:rounded-[26px] 2xl:pb-[52px] 2xl:pt-[32px] 3xl:ml-[32px] 3xl:mr-[80px]">
           <div className="mx-auto max-w-[900px] text-center">
-            <SectionEyebrow center>Our Core Values</SectionEyebrow>
+            <SectionEyebrow center>{copy.ourCoreValues}</SectionEyebrow>
             <h2 className="mt-3 text-[clamp(28px,3.1vw,60px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-[#08140f] 2xl:mt-3">
-              What Drives Us
+              {copy.whatDrivesUs}
             </h2>
             <p className="mt-3 text-[15px] leading-[1.55] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:mt-2 2xl:text-[21px] 3xl:text-[24px]">
-              These values shape our work, our team, and our commitment to you.
+              {copy.theseValuesShapeOurWork}
             </p>
           </div>
 

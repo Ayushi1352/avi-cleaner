@@ -1,0 +1,66 @@
+{
+  "faqs": [
+    {
+      "icon": "broom",
+      "q": "What cleaning services do you offer?",
+      "a": "We offer a wide range of cleaning services including home cleaning, office cleaning, kitchen cleaning, bathroom cleaning, window cleaning, deep cleaning, and move in/out cleaning. Our services are customizable to meet your specific needs."
+    },
+    {
+      "icon": "calendar",
+      "q": "How do I book a cleaning service?",
+      "a": "Booking is quick and easy. Fill in the form on our Book Now page or call us, choose the service, date and time that suit you, and our team will confirm your booking within minutes."
+    },
+    {
+      "icon": "shield-check",
+      "q": "Are your cleaning products safe?",
+      "a": "Yes. We use eco-friendly, non-toxic cleaning products that are safe for your family, pets and the environment, while still being tough on dirt and germs."
+    },
+    {
+      "icon": "coins",
+      "q": "How much do your services cost?",
+      "a": "Our pricing depends on the type of service and the size of your space. Plans start from $49.99 per month with no hidden charges. Visit our Pricing page to compare plans or contact us for a custom quote."
+    },
+    {
+      "icon": "gear",
+      "q": "Do I need to provide cleaning supplies?",
+      "a": "No. Our team arrives fully equipped with professional cleaning supplies and equipment. If you would like us to use specific products, just let us know when booking."
+    },
+    {
+      "icon": "clock",
+      "q": "How long does a cleaning session take?",
+      "a": "A standard cleaning session usually takes 2 to 4 hours, depending on the size and condition of your space. Deep cleaning and move in/out cleaning may take longer."
+    },
+    {
+      "icon": "users",
+      "q": "Do you offer same-day cleaning?",
+      "a": "Yes, same-day cleaning is available subject to team availability. Call us as early as possible and we will do our best to schedule your cleaning the same day."
+    },
+    {
+      "icon": "thumb-up",
+      "q": "What if I’m not satisfied with the cleaning?",
+      "a": "Your satisfaction is our priority. If you are not happy with any part of the service, let us know within 24 hours and we will come back and re-clean the area at no extra cost."
+    }
+  ],
+  "text": {
+    "FaqAccordion": {
+      "avicleanerCleaningSuppliesReadyFor": "Avicleaner cleaning supplies ready for use",
+      "faqs": "FAQ’s",
+      "frequently": "Frequently",
+      "askedQuestions": "Asked Questions",
+      "findQuickAnswersToCommon": "Find quick answers to common questions about our cleaning services, booking process, pricing, and more. If you need further assistance, feel free to contact our team.",
+      "stillHaveQuestions": "Still have questions?",
+      "wereHereToHelp": "We’re Here to Help!",
+      "cantFindTheAnswerYoure": "Can’t find the answer you’re looking for? Our friendly team is always ready to assist you.",
+      "contactUs": "Contact Us"
+    },
+    "Page": {
+      "faq": "FAQ"
+    }
+  },
+  "meta": {
+    "Page": {
+      "title": "FAQ | Avicleaner",
+      "description": "Quick answers to common questions about Avicleaner's cleaning services, booking process, pricing, products and satisfaction guarantee."
+    }
+  }
+}

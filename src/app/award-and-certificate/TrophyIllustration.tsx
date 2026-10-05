@@ -1,3 +1,8 @@
+import awardsData from "@/data/awards.json";
+
+// Text lives in src/data/awards.json under text.TrophyIllustration.
+const copy = awardsData.text.TrophyIllustration;
+
 // Simple gold trophy illustrations for the Awards page.
 // Swap these for real trophy photos when you have them.
 
@@ -34,7 +39,7 @@ function Wreath({ cx = 100, cy = 92, r = 62 }) {
 
 export default function Trophy({ variant = "star-wreath", className = "" }) {
   return (
-    <svg viewBox="0 0 200 240" className={className} role="img" aria-label="Trophy">
+    <svg viewBox="0 0 200 240" className={className} role="img" aria-label={copy.trophy}>
       <defs>
         <linearGradient id="trophy-gold" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#fbe38a" />
@@ -86,10 +91,10 @@ export default function Trophy({ variant = "star-wreath", className = "" }) {
           <circle cx="100" cy="78" r="46" fill="url(#trophy-gold)" />
           <circle cx="100" cy="78" r="38" fill="none" stroke="#fff3c4" strokeWidth="1.5" opacity=".8" />
           <text x="100" y="74" textAnchor="middle" fontSize="15" fontWeight="700" fill="#5a3d06">
-            Service
+            {copy.service}
           </text>
           <text x="100" y="92" textAnchor="middle" fontSize="15" fontWeight="700" fill="#5a3d06">
-            Excellence
+            {copy.excellence}
           </text>
           <path d="M90 124h20l4 30H86l4-30Z" fill="url(#trophy-gold)" />
           <rect x="62" y="156" width="76" height="68" rx="4" fill="url(#trophy-base)" />

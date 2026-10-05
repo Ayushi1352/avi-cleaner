@@ -3,6 +3,7 @@ import PhotoSlot from "@/components/PhotoSlot";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon } from "@/components/socialIcons";
 import { LeafIcon, StarIcon, UsersIcon } from "@/components/icons";
 import { MailSolidIcon, PinSolidIcon, RoundQuoteIcon, ShieldSolidIcon } from "@/components/solidIcons";
+import teamData from "@/data/team.json";
 
 function PhoneSolidIcon({ className = "" }: { className?: string }) {
   return <Phone className={className} fill="currentColor" strokeWidth={0} />;
@@ -10,12 +11,16 @@ function PhoneSolidIcon({ className = "" }: { className?: string }) {
 
 const strengthIcons = [ShieldSolidIcon, UsersIcon, StarIcon, LeafIcon];
 
-const socials = [
-  { name: "Facebook", icon: FacebookIcon },
-  { name: "X", icon: XIcon },
-  { name: "LinkedIn", icon: LinkedinIcon },
-  { name: "Instagram", icon: InstagramIcon },
-];
+// Icons by the name used in src/data/team.json.
+const socialsIcons = {
+  facebook: FacebookIcon,
+  x: XIcon,
+  linkedin: LinkedinIcon,
+  instagram: InstagramIcon,
+};
+
+// Content lives in src/data/team.json.
+const socials = teamData.profileSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
 
 /** Top of the Team Detail page: photo, name, contact info and strengths. */
 export default function MemberProfile({ member }: { member: any }) {

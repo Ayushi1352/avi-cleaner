@@ -3,13 +3,21 @@ import { ArrowRight } from "lucide-react";
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { HomeIcon, LeafIcon, ShieldCheckIcon, SparklesIcon, UsersIcon } from "@/components/icons";
+import servicesData from "@/data/services.json";
 
-const features = [
-  { icon: LeafIcon, lines: ["Safe &", "Eco-Friendly"] },
-  { icon: ShieldCheckIcon, lines: ["Trained &", "Verified Staff"] },
-  { icon: SparklesIcon, lines: ["Deep &", "Detailed Cleaning"] },
-  { icon: HomeIcon, lines: ["Customized", "Solutions"] },
-];
+// Text lives in src/data/services.json under text.ServiceOverview.
+const copy = servicesData.text.ServiceOverview;
+
+// Icons by the name used in src/data/services.json.
+const featuresIcons = {
+  leaf: LeafIcon,
+  "shield-check": ShieldCheckIcon,
+  sparkles: SparklesIcon,
+  home: HomeIcon,
+};
+
+// Content lives in src/data/services.json.
+const features = servicesData.overviewFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
 
 /** Service Detail top: photo with trust badge, title, intro, features and CTA. */
 export default function ServiceOverview({ service }: { service: any }) {
@@ -31,16 +39,16 @@ export default function ServiceOverview({ service }: { service: any }) {
                 <UsersIcon className="h-1/2 w-1/2" />
               </span>
               <span className="min-w-0 text-[13px] font-medium leading-[1.35] sm:text-[15px] 2xl:text-[20px] 3xl:text-[24px]">
-                Trusted by
+                {copy.trustedBy}
                 <br />
-                1000+ Happy Families
+                {copy.text1000HappyFamilies}
               </span>
             </div>
           </div>
 
           {/* Text */}
           <div className="min-w-0">
-            <SectionEyebrow compact className="3xl:[&>span:first-child]:w-[46px] 3xl:[&>span:last-child]:w-[46px] 3xl:[&>span:nth-child(2)]:text-[23px]">Our Service</SectionEyebrow>
+            <SectionEyebrow compact className="3xl:[&>span:first-child]:w-[46px] 3xl:[&>span:last-child]:w-[46px] 3xl:[&>span:nth-child(2)]:text-[23px]">{copy.ourService}</SectionEyebrow>
             <h1 className="mt-3 break-words text-[clamp(30px,3.45vw,66px)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#0b1a12] 2xl:mt-5">
               {service.title}
             </h1>
@@ -67,7 +75,7 @@ export default function ServiceOverview({ service }: { service: any }) {
               href="/book-now"
               className="btn-solid btn-yellow group mt-8 inline-flex items-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:mt-10 2xl:px-11 2xl:py-5 2xl:text-[20px] 3xl:mt-[52px] 3xl:min-w-[354px] 3xl:justify-center 3xl:gap-5 3xl:py-[27px] 3xl:text-[25px]"
             >
-              Get a Free Quote
+              {copy.getAFreeQuote}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
             </Link>
           </div>

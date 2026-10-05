@@ -1,0 +1,81 @@
+{
+  "steps": [
+    {
+      "no": "01",
+      "title": "Book a Service",
+      "text": "Choose your service, select a convenient date and time, and book online or via phone in just a few clicks.",
+      "image": "/images/services/step-book.webp"
+    },
+    {
+      "no": "02",
+      "title": "Team Arrives",
+      "text": "Our trained and verified cleaning team arrives at your location on time with all necessary equipment.",
+      "image": "/images/services/step-team.webp"
+    },
+    {
+      "no": "03",
+      "title": "Cleaning Process",
+      "text": "Our team follows a detailed checklist to deep clean every corner, ensuring a safe, fresh and healthy environment.",
+      "image": "/images/services/step-cleaning.webp"
+    },
+    {
+      "no": "04",
+      "title": "Final Result",
+      "text": "Enjoy a spotless, refreshed space. We ensure your complete satisfaction before we leave.",
+      "image": "/images/services/step-result.webp"
+    }
+  ],
+  "benefits": [
+    {
+      "icon": "clock",
+      "title": "Quick & Easy Booking",
+      "sub": "Schedule in minutes"
+    },
+    {
+      "icon": "gear",
+      "title": "Customized Cleaning",
+      "sub": "Tailored to your needs"
+    },
+    {
+      "icon": "users",
+      "title": "Verified Professionals",
+      "sub": "Trained and background-checked"
+    },
+    {
+      "icon": "thumb-up",
+      "title": "Satisfaction Guaranteed",
+      "sub": "We get it right, every time"
+    },
+    {
+      "icon": "shield-check",
+      "title": "Safe & Eco-Friendly",
+      "sub": "Family and pet-friendly products"
+    },
+    {
+      "icon": "leaf",
+      "title": "A Healthier Environment",
+      "sub": "Cleaner spaces for a brighter tomorrow"
+    }
+  ],
+  "text": {
+    "ProcessSteps": {
+      "simpleSteps": "Simple Steps",
+      "howOurCleaningProcessWorks": "How Our Cleaning Process Works",
+      "weMakeItEasyFor": "We make it easy for you. Just follow these simple steps and enjoy a cleaner,",
+      "fresherAndHealthierSpace": "fresher and healthier space.",
+      "avicleanerCleanerWipingAKitchen": "Avicleaner cleaner wiping a kitchen counter",
+      "whyItWorks": "Why It Works",
+      "aBetterCleaningExperience": "A Better Cleaning Experience",
+      "ourWellStructuredProcessEnsures": "Our well-structured process ensures high-quality results with complete transparency and customer satisfaction."
+    },
+    "Page": {
+      "howItWorks": "How It Works"
+    }
+  },
+  "meta": {
+    "Page": {
+      "title": "How it Work | Avicleaner",
+      "description": "See how Avicleaner's cleaning process works: book a service, our team arrives, we clean every corner, and you enjoy a spotless space."
+    }
+  }
+}

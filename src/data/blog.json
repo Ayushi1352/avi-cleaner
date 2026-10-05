@@ -1,0 +1,239 @@
+{
+  "posts": [
+    {
+      "title": "Top 5 Tips for a Spotless Home",
+      "slug": "top-5-tips-for-a-spotless-home",
+      "category": "Home Cleaning",
+      "date": "Mar 18, 2024",
+      "image": "/images/home/blog-spotless-home.webp",
+      "image2": "/images/service-kitchen.webp",
+      "author": "Priya Sharma",
+      "recent": true,
+      "excerpt": "Keep your home fresh and organized with these simple yet effective cleaning tips from our experts.",
+      "intro": "Keeping your living spaces pristine doesn't have to be an overwhelming weekend chore. By breaking down household maintenance into smart, actionable routines, you can enjoy a fresh, clean environment every single day.",
+      "subheading": "Smart Cleaning Strategies",
+      "subtext": "Focus on high-touch zones, establish a 15-minute daily reset, and use quality microfibre cloths with the proper eco-friendly cleaning agents."
+    },
+    {
+      "title": "Why Professional Cleaning Saves You Time",
+      "slug": "why-professional-cleaning-saves-you-time",
+      "category": "Cleaning Tips",
+      "date": "Apr 26, 2024",
+      "image": "/images/home/blog-professional-cleaning.webp",
+      "image2": "/images/about-sofa-vacuum.webp",
+      "author": "Rahul Mehta",
+      "recent": true,
+      "excerpt": "Discover how professional cleaning services can help you save time, reduce stress, and enjoy a healthier space.",
+      "intro": "In today's fast-paced world, hours spent scrubbing tiles and vacuuming carpets can easily consume your valuable leisure and family time. Professional cleaning gives you back precious weekend hours while delivering deeper sanitation.",
+      "subheading": "Efficiency Meets Deep Hygiene",
+      "subtext": "Trained professionals use industrial-grade equipment, specialized sanitization methods, and systematic checklists to cover areas that are often overlooked."
+    },
+    {
+      "title": "Eco-Friendly Cleaning Effective Solutions",
+      "slug": "eco-friendly-cleaning-effective-solutions",
+      "category": "Eco Friendly",
+      "date": "Jun 07, 2024",
+      "image": "/images/home/blog-eco-friendly.webp",
+      "image2": "/images/mission/mission-cleaning.webp",
+      "author": "Sneha Kapoor",
+      "recent": true,
+      "excerpt": "Learn simple and sustainable cleaning solutions that are safe for your family and the environment.",
+      "intro": "Switching to green cleaning products protects indoor air quality, protects waterways, and keeps pets and children safe from harmful residues.",
+      "subheading": "Non-Toxic & Highly Effective",
+      "subtext": "Natural citrus solvents, baking soda, and plant-derived surfactants cut through grease and grime just as powerfully as traditional chemical cleaners."
+    },
+    {
+      "title": "How a Clean Office Boosts Productivity",
+      "slug": "how-a-clean-office-boosts-productivity",
+      "category": "Office Cleaning",
+      "date": "Jul 15, 2024",
+      "image": "/images/blog-4.webp",
+      "image2": "/images/service-office.webp",
+      "author": "Rahul Mehta",
+      "recent": true,
+      "excerpt": "See how a tidy, sanitized workspace helps teams stay focused, healthy and motivated every day.",
+      "intro": "The physical condition of an office speaks volumes about its culture and directly influences employee focus and morale. A tidy, well-sanitized desk and clutter-free common area set the tone for peak cognitive performance.",
+      "subheading": "Workplace Wellness",
+      "subtext": "Sanitized desks, fresh air circulation, and sparkling communal areas instill pride in the workplace and foster better collaborative focus."
+    },
+    {
+      "title": "10 Simple Cleaning Tips for a Healthier Home",
+      "category": "Cleaning Tips",
+      "date": "Dec 20, 2022",
+      "image": "/images/service-kitchen.webp"
+    },
+    {
+      "title": "Must-Have Cleaning Supplies for Every Home",
+      "category": "Home Cleaning",
+      "date": "Dec 20, 2022",
+      "image": "/images/about-supplies.webp"
+    },
+    {
+      "title": "How a Clean Workspace Boosts Productivity",
+      "category": "Office Cleaning",
+      "date": "Dec 20, 2022",
+      "image": "/images/service-office.webp"
+    },
+    {
+      "title": "Eco-Friendly Cleaning: A Better Tomorrow",
+      "category": "Eco Friendly",
+      "date": "Dec 20, 2022",
+      "image": "/images/mission/mission-cleaning.webp"
+    },
+    {
+      "title": "How Often Should You Clean Different Areas of Your Home?",
+      "category": "Cleaning Tips",
+      "date": "Dec 20, 2022",
+      "image": "/images/about-sofa-vacuum.webp"
+    },
+    {
+      "title": "Our Commitment to Cleaner, Healthier Communities",
+      "category": "Company News",
+      "date": "Dec 20, 2022",
+      "image": "/images/mission/partner-cta.webp"
+    },
+    {
+      "title": "Why Your Business Needs Professional Cleaning Services",
+      "slug": "why-your-business-needs-professional-cleaning-services",
+      "category": "Office Cleaning",
+      "date": "Dec 20, 2022",
+      "image": "/images/service-team.webp",
+      "image2": "/images/cta-cleaner.webp",
+      "recent": true,
+      "excerpt": "Discover how professional commercial cleaning elevates workplace health, impresses visiting clients, and boosts team productivity.",
+      "intro": "A clean, well-maintained workplace speaks volumes about your company's professionalism. Professional cleaning services protect employee health, reduce sick days, and ensure that your commercial premises always make a sterling first impression on visiting clients and partners.",
+      "subheading": "Key Benefits of Professional Commercial Cleaning",
+      "subtext": "From medical-grade sanitization of communal areas to regular floor and window maintenance, professional cleaners use industry-grade equipment and eco-friendly products that keep your workplace spotless, safe, and productive."
+    },
+    {
+      "title": "How to Keep Your Home Clean and Healthy",
+      "category": "Home Cleaning",
+      "date": "Dec 18, 2022",
+      "image": "/images/project-living.webp",
+      "recent": true
+    },
+    {
+      "title": "Best Office Cleaning Tips for Productivity",
+      "category": "Office Cleaning",
+      "date": "Dec 15, 2022",
+      "image": "/images/project-office.webp",
+      "recent": true
+    },
+    {
+      "title": "Eco-Friendly Cleaning for a Better Tomorrow",
+      "category": "Eco Friendly",
+      "date": "Dec 12, 2022",
+      "image": "/images/why-choose-us.webp",
+      "recent": true
+    },
+    {
+      "title": "Window Cleaning Made Simple",
+      "category": "Cleaning Tips",
+      "date": "Dec 10, 2022",
+      "image": "/images/mission/vision-window.webp"
+    },
+    {
+      "title": "A Spotless Kitchen in Five Easy Steps",
+      "category": "Deep Cleaning",
+      "date": "Dec 08, 2022",
+      "image": "/images/project-kitchen.webp"
+    }
+  ],
+  "popularCategories": [
+    {
+      "name": "Home Cleaning",
+      "count": "12"
+    },
+    {
+      "name": "Office Cleaning",
+      "count": "08"
+    },
+    {
+      "name": "Deep Cleaning",
+      "count": "15"
+    },
+    {
+      "name": "Eco Friendly",
+      "count": "10"
+    },
+    {
+      "name": "Cleaning Tips",
+      "count": "18"
+    },
+    {
+      "name": "Company News",
+      "count": "06"
+    }
+  ],
+  "sidebarTags": [
+    "Home Cleaning",
+    "Office Care",
+    "Deep Clean",
+    "Sanitization",
+    "Eco-Friendly",
+    "Disinfection",
+    "Carpet Care",
+    "Hygiene Tips"
+  ],
+  "relatedTags": [
+    "Cleaning Tips",
+    "Sanitization",
+    "Eco-Friendly",
+    "Healthy Living",
+    "Disinfection"
+  ],
+  "articleSocials": [
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin"
+    },
+    {
+      "name": "Instagram",
+      "icon": "instagram"
+    },
+    {
+      "name": "Facebook",
+      "icon": "facebook"
+    },
+    {
+      "name": "X",
+      "icon": "x"
+    }
+  ],
+  "text": {
+    "BlogGrid": {
+      "by": "By :",
+      "readMore": "Read More",
+      "blogPages": "Blog pages",
+      "previousPage": "Previous page",
+      "nextPage": "Next page"
+    },
+    "BlogArticle": {
+      "by": "By :",
+      "relatedTags": "Related Tags",
+      "socialShare": "Social Share",
+      "popularCategory": "Popular Category",
+      "recentPosts": "Recent Posts",
+      "tags": "Tags",
+      "followUs": "Follow Us"
+    },
+    "Page": {
+      "blog": "Blog"
+    }
+  },
+  "meta": {
+    "Page": {
+      "title": "Blog | Avicleaner",
+      "description": "Cleaning tips, expert advice and the latest news from Avicleaner."
+    }
+  },
+  "postDefaults": {
+    "body": "Maintaining a clean and hygienic space has a direct impact on your well-being, comfort, and peace of mind. Regular deep cleaning eliminates microscopic allergens, prevents mold buildup, and creates an environment where everyone can breathe easily and thrive. Our professional team recommends adopting systematic daily habits combined with periodic seasonal deep cleans to keep your property looking and feeling its very best.",
+    "excerpt": "Discover essential cleaning advice and expert strategies to maintain spotless, healthy living and working spaces effortlessly.",
+    "image2": "/images/cta-cleaner.webp",
+    "subheading": "Why It Matters",
+    "subtext": "Regular, well-planned cleaning removes dust, germs and allergens before they build up. This results in a fresher space, better health and more time for the things you enjoy.",
+    "quote": "A clean space is not just about appearances—it is the foundation of good health, productivity, and peace of mind.",
+    "closing": "Investing time and attention into regular, eco-friendly cleaning protects your family, delights your guests, and prolongs the lifespan of your furnishings. At Avicleaner, our mission is to make sparkling, sanitary spaces accessible and hassle-free for every home and business."
+  }
+}

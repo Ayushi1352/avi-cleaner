@@ -2,6 +2,10 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { LeafIcon, ShieldCheckIcon, SparklesIcon } from "./icons";
+import homeData from "@/data/home.json";
+
+// Text lives in src/data/home.json under text.HomeHeroSection.
+const copy = homeData.text.HomeHeroSection;
 
 // Clean photo with the wall frame and the green swoosh baked in behind the cleaner.
 const HERO_IMAGE = "/images/hero-banner-arc.webp";
@@ -27,19 +31,23 @@ function HeroHomeIcon({ className }) {
   );
 }
 
-const features = [
-  { icon: LeafIcon, line1: "Eco-Friendly", line2: "Products" },
-  { icon: ShieldCheckIcon, line1: "Trained &", line2: "Trusted Team" },
-  { icon: SparklesIcon, line1: "100%", line2: "Satisfaction" },
-  { icon: HeroHomeIcon, line1: "Homes & Offices", line2: "Both Covered" },
-];
+// Icons by the name used in src/data/home.json.
+const featuresIcons = {
+  leaf: LeafIcon,
+  "shield-check": ShieldCheckIcon,
+  sparkles: SparklesIcon,
+  "hero-home": HeroHomeIcon,
+};
+
+// Content lives in src/data/home.json.
+const features = homeData.heroFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
 
 function HeroImage({ className }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={HERO_IMAGE}
-      alt="Avicleaner professional cleaner wiping a kitchen counter"
+      alt={copy.avicleanerProfessionalCleanerWipingA}
       className={className}
     />
   );
@@ -63,28 +71,28 @@ export default function HeroSection() {
             <div className="flex items-center gap-3 sm:gap-4 3xl:gap-[18px]">
                 <span className="h-[3px] w-10 shrink-0 rounded-full bg-green 2xl:w-[56px]" />
                 <span className="text-[11px] font-medium uppercase tracking-[0.26em] text-[#2b4f73] sm:text-[13px] 2xl:text-[15px] 3xl:text-[17px] 3xl:tracking-[0.32em]">
-                  Cleaner Spaces Happier Lives
+                  {copy.cleanerSpacesHappierLives}
                 </span>
               </div>
 
             {/* Heading: first two lines large, third line a step smaller */}
             <h1 className="mt-5 text-[clamp(34px,4.52vw,86px)] font-extrabold tracking-[-0.005em] text-[#06264b] 2xl:mt-6 3xl:mt-[30px]">
-              <span className="block leading-[1.07]">Professional</span>
+              <span className="block leading-[1.07]">{copy.professional}</span>
               <span className="block leading-[1.07] tracking-[0.015em] text-green">
-                Cleaning Services
+                {copy.cleaningServices}
               </span>
               <span className="block text-[0.875em] leading-[1.08]">
-                for a Healthier Tomorrow
+                {copy.forAHealthierTomorrow}
               </span>
             </h1>
 
             {/* Paragraph */}
             <p className="mt-4 max-w-[720px] text-[15px] leading-[1.5] text-[#34465a] sm:text-base lg:max-w-none xl:text-[18px] 2xl:mt-5 2xl:text-[21px] 3xl:mt-[22px] 3xl:text-[25px] 3xl:leading-[35px]">
-              We provide reliable and high-quality cleaning services{" "}
+              {copy.weProvideReliableAndHigh}{" "}
               <br className="hidden lg:block" />
-              for homes, offices, and commercial spaces. Enjoy a cleaner,{" "}
+              {copy.forHomesOfficesAndCommercial}{" "}
               <br className="hidden lg:block" />
-              fresher and healthier environment with Avicleaner.
+              {copy.fresherAndHealthierEnvironmentWith}
             </p>
 
             {/* Buttons */}
@@ -93,14 +101,14 @@ export default function HeroSection() {
                 href="/book-now"
                 className="btn-solid group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[16px] font-bold [--btn:#327b37] xl:px-9 xl:py-4 xl:text-[18px] 2xl:text-[20px] 3xl:h-[72px] 3xl:w-[272px] 3xl:gap-5 3xl:text-[24px]"
               >
-                Book Now
+                {copy.bookNow}
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
               </Link>
               <Link
                 href="/contact-us"
                 className="btn-outline group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[15px] font-bold [--btn-bg:rgb(255_255_255/0.5)] [--btn:#06264b] xl:px-9 xl:py-4 xl:text-[17px] 2xl:text-[19px] 3xl:h-[72px] 3xl:w-[255px] 3xl:gap-4 3xl:text-[22px]"
               >
-                Contact Us
+                {copy.contactUs}
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
               </Link>
             </div>

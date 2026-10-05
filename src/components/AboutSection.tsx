@@ -9,6 +9,10 @@ import {
   ThumbUpIcon,
   UsersIcon,
 } from "./icons";
+import homeData from "@/data/home.json";
+
+// Text lives in src/data/home.json under text.AboutSection.
+const copy = homeData.text.AboutSection;
 
 const ABOUT_IMG_1 =
   "/images/home/about-1.webp";
@@ -17,12 +21,16 @@ const ABOUT_IMG_2 =
 const ABOUT_IMG_3 =
   "/images/home/about-3.webp";
 
-const features = [
-  { icon: DiamondIcon, title: "Reliable Service", subtitle: "On-Time & Consistent" },
-  { icon: UsersIcon, title: "Expert Cleaners", subtitle: "Trained & Verified Staff" },
-  { icon: LeafIcon, title: "Eco-Friendly", subtitle: "Safe for You & the Planet" },
-  { icon: ThumbUpIcon, title: "Customer Satisfaction", subtitle: "Our Top Priority" },
-];
+// Icons by the name used in src/data/home.json.
+const featuresIcons = {
+  diamond: DiamondIcon,
+  users: UsersIcon,
+  leaf: LeafIcon,
+  "thumb-up": ThumbUpIcon,
+};
+
+// Content lives in src/data/home.json.
+const features = homeData.aboutFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
 
 function CleanBadge({ className = "" }) {
   return (
@@ -31,11 +39,11 @@ function CleanBadge({ className = "" }) {
     >
       <SproutIcon className="mb-[5%] h-[22%] w-[22%]" />
       <span className="font-poppins text-[clamp(11px,1.95cqw,19px)] font-medium leading-[1.15]">
-        Clean
+        {copy.clean}
         <br />
-        Greener
+        {copy.greener}
         <br />
-        Healthier
+        {copy.healthier}
       </span>
     </div>
   );
@@ -51,7 +59,7 @@ function StatCard({ className = "" }) {
         30+
       </span>
       <span className="mt-[clamp(6px,1.5cqw,14px)] font-poppins text-[clamp(12px,2.1cqw,20px)] text-[#48536f]">
-        Years of Experience
+        {copy.yearsOfExperience}
       </span>
     </div>
   );
@@ -67,9 +75,9 @@ function TrustedBadge({ className = "" }) {
         <ShieldCheck className="h-[56%] w-[56%] animate-icon-heartbeat" strokeWidth={2} />
       </span>
       <span className="whitespace-nowrap font-poppins text-[clamp(11px,1.95cqw,19px)] font-medium leading-[1.25] text-navy">
-        Trusted by
+        {copy.trustedBy}
         <br />
-        Happy Clients
+        {copy.happyClients}
       </span>
     </div>
   );
@@ -122,7 +130,7 @@ export default function AboutSection({ showButton = true }) {
               <div className="relative col-span-2">
                 <ImagePlaceholder
                   src={ABOUT_IMG_1}
-                  alt="Avicleaner cleaner smiling and ready to clean"
+                  alt={copy.avicleanerCleanerSmilingAndReady}
                   placeholderLabel="about-cleaner-woman.jpg"
                   className="aspect-[4/3] w-full rounded-[22px]"
                 />
@@ -130,14 +138,14 @@ export default function AboutSection({ showButton = true }) {
               </div>
               <ImagePlaceholder
                 src={ABOUT_IMG_2}
-                alt="Sofa being vacuumed"
+                alt={copy.sofaBeingVacuumed}
                 placeholderLabel="about-sofa-vacuum.jpg"
                 className="aspect-square w-full rounded-[20px]"
               />
               <div className="relative">
                 <ImagePlaceholder
                   src={ABOUT_IMG_3}
-                  alt="Cleaning supplies bucket with bottles and cloth"
+                  alt={copy.cleaningSuppliesBucketWithBottles}
                   placeholderLabel="about-supplies.jpg"
                   className="aspect-square w-full rounded-[20px]"
                 />
@@ -151,13 +159,13 @@ export default function AboutSection({ showButton = true }) {
             <div className="relative hidden aspect-[955/747] w-full sm:block">
               <ImagePlaceholder
                 src={ABOUT_IMG_1}
-                alt="Avicleaner cleaner smiling and ready to clean"
+                alt={copy.avicleanerCleanerSmilingAndReady}
                 placeholderLabel="about-cleaner-woman.jpg"
                 className="absolute left-0 top-0 h-[67.5%] w-[64.2%] rounded-[clamp(18px,3.4cqw,32px)]"
               />
               <ImagePlaceholder
                 src={ABOUT_IMG_2}
-                alt="Sofa being vacuumed"
+                alt={copy.sofaBeingVacuumed}
                 placeholderLabel="about-sofa-vacuum.jpg"
                 className="absolute right-0 top-0 h-[52.2%] w-[33.5%] rounded-[clamp(18px,3.4cqw,32px)]"
               />
@@ -165,7 +173,7 @@ export default function AboutSection({ showButton = true }) {
               <div className="absolute bottom-[-1.9%] right-[-1.5%] h-[49%] w-[52.2%] rounded-[clamp(22px,4.4cqw,42px)] bg-white p-[1.5cqw]">
                 <ImagePlaceholder
                   src={ABOUT_IMG_3}
-                  alt="Cleaning supplies bucket with bottles and cloth"
+                  alt={copy.cleaningSuppliesBucketWithBottles}
                   placeholderLabel="about-supplies.jpg"
                   className="h-full w-full rounded-[clamp(18px,3.4cqw,32px)]"
                 />
@@ -181,24 +189,24 @@ export default function AboutSection({ showButton = true }) {
             <div className="flex items-center gap-4">
               <span className="h-[2.5px] w-[clamp(40px,2.6vw,49px)] shrink-0 rounded-full bg-green" />
               <span className="text-[clamp(16px,1.42vw,27px)] font-medium leading-[1.3] text-green">
-                About Us
+                {copy.aboutUs}
               </span>
             </div>
 
             <h2 className="mt-[clamp(14px,1.55vw,30px)] text-[clamp(30px,3.63vw,69px)] font-bold leading-[1.115] tracking-[-0.01em] text-navy">
-              Delivering Quality
+              {copy.deliveringQuality}
               <br />
-              <span className="text-green">Cleaning Services</span>
+              <span className="text-green">{copy.cleaningServices}</span>
             </h2>
 
             <p className="mt-[clamp(16px,1.45vw,28px)] text-[clamp(15px,1.135vw,21.6px)] leading-[1.455] text-[#474f63]">
-              At Avicleaner, we believe a clean space leads to a healthier,{" "}
+              {copy.atAvicleanerWeBelieveA}{" "}
               <br className="hidden xl:block" />
-              happier and more productive life. Our professional team{" "}
+              {copy.happierAndMoreProductiveLife}{" "}
               <br className="hidden xl:block" />
-              is committed to providing high-quality cleaning services{" "}
+              {copy.isCommittedToProvidingHigh}{" "}
               <br className="hidden xl:block" />
-              for homes, offices, and commercial spaces with care and precision.
+              {copy.forHomesOfficesAndCommercial}
             </p>
 
             <ul className="mt-[clamp(26px,1.8vw,34px)] grid grid-cols-1 gap-x-6 gap-y-[clamp(16px,1.05vw,20px)] min-[420px]:grid-cols-2 2xl:max-w-[clamp(0px,36.8vw,700px)]">
@@ -227,7 +235,7 @@ export default function AboutSection({ showButton = true }) {
                 href="/about-us"
                 className="btn-solid group mt-[clamp(30px,2.1vw,40px)] inline-flex h-[clamp(50px,3.9vw,74px)] items-center gap-[clamp(10px,0.75vw,14px)] rounded-full px-[clamp(28px,2.5vw,48px)] text-[clamp(15px,1.1vw,21px)] font-medium"
               >
-                Read More
+                {copy.readMore}
                 <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
               </Link>
             )}

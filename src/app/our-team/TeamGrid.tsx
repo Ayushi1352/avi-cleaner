@@ -7,15 +7,23 @@ import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import members from "./teamMembersData";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon } from "@/components/socialIcons";
+import teamData from "@/data/team.json";
+
+// Text lives in src/data/team.json under text.TeamGrid.
+const copy = teamData.text.TeamGrid;
 
 const PER_PAGE = 8;
 
-const socials = [
-  { name: "Facebook", icon: FacebookIcon },
-  { name: "X", icon: XIcon },
-  { name: "LinkedIn", icon: LinkedinIcon },
-  { name: "Instagram", icon: InstagramIcon },
-];
+// Icons by the name used in src/data/team.json.
+const socialsIcons = {
+  facebook: FacebookIcon,
+  x: XIcon,
+  linkedin: LinkedinIcon,
+  instagram: InstagramIcon,
+};
+
+// Content lives in src/data/team.json.
+const socials = teamData.gridSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
 
 /** Page numbers with ellipsis, e.g. 1 2 3 … 5 */
 function pageItems(total: number, current: number) {
@@ -106,13 +114,13 @@ export default function TeamGrid() {
 
         {/* Handwritten note, top right */}
         <p className="pointer-events-none absolute right-[4%] top-12 hidden -rotate-[16deg] font-script text-[34px] font-medium leading-[0.95] text-[#2f6d4a] xl:block 2xl:right-[4%] 2xl:top-[70px] 2xl:text-[46px] 3xl:text-[54px]">
-          Cleaner
+          {copy.cleaner}
           <br />
-          <span className="pl-[0.4em]">Spaces</span>
+          <span className="pl-[0.4em]">{copy.spaces}</span>
           <br />
-          Happier
+          {copy.happier}
           <br />
-          <span className="pl-[0.9em]">Lives</span>
+          <span className="pl-[0.9em]">{copy.lives}</span>
           <svg viewBox="0 0 160 30" className="-ml-[0.4em] mt-1 block w-[3.6em]" aria-hidden="true">
             <path d="M4 26C60 12 110 5 156 2" fill="none" stroke="#fdd75a" strokeWidth="4" strokeLinecap="round" />
           </svg>
@@ -121,16 +129,16 @@ export default function TeamGrid() {
         <div className="container-x relative">
           {/* Header */}
           <div className="mx-auto max-w-[940px] text-center">
-            <SectionEyebrow center>Our Team</SectionEyebrow>
+            <SectionEyebrow center>{copy.ourTeam}</SectionEyebrow>
             <h2 className="mt-4 text-[clamp(28px,3.36vw,64px)] font-extrabold leading-[1.1] tracking-[-0.025em] text-[#06291c] 2xl:mt-5">
-              Meet the Experts Behind
-              <br className="hidden sm:block" /> Our Sparkling Clean!
+              {copy.meetTheExpertsBehind}
+              <br className="hidden sm:block" />{" " + copy.ourSparklingClean}
             </h2>
             <p className="mx-auto mt-4 max-w-[940px] text-[15px] leading-[1.56] text-[#4b5068] sm:text-base xl:text-[18px] 2xl:mt-5 2xl:text-[21px] 3xl:text-[25px]">
-              Our dedicated and experienced team works together to deliver{" "}
-              <span className="whitespace-nowrap">high-quality</span>{" "}
+              {copy.ourDedicatedAndExperiencedTeam}{" "}
+              <span className="whitespace-nowrap">{copy.highQuality}</span>{" "}
               <br className="hidden xl:block" />
-              cleaning services and ensure your satisfaction every time.
+              {copy.cleaningServicesAndEnsureYour}
             </p>
           </div>
 
@@ -147,14 +155,14 @@ export default function TeamGrid() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <nav aria-label="Team pages" className="flex justify-center py-8 2xl:py-[36px]">
+        <nav aria-label={copy.teamPages} className="flex justify-center py-8 2xl:py-[36px]">
           <ul className="flex flex-wrap items-center justify-center gap-1.5 2xl:gap-1">
             <li>
               <button
                 type="button"
                 onClick={() => goTo(page - 1)}
                 disabled={page === 1}
-                aria-label="Previous page"
+                aria-label={copy.previousPage}
                 className={`${btn} bg-[#e3f5eb] text-[#0b2a1c] hover:bg-[#0f5a36] hover:text-white disabled:pointer-events-none`}
               >
                 <ChevronLeft className="h-4 w-4" strokeWidth={2.6} />
@@ -187,7 +195,7 @@ export default function TeamGrid() {
                 type="button"
                 onClick={() => goTo(page + 1)}
                 disabled={page === totalPages}
-                aria-label="Next page"
+                aria-label={copy.nextPage}
                 className={`${btn} bg-[#e3f5eb] text-[#0b2a1c] hover:bg-[#0f5a36] hover:text-white disabled:pointer-events-none`}
               >
                 <ChevronRight className="h-4 w-4" strokeWidth={2.6} />

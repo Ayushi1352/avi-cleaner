@@ -2,27 +2,27 @@ import { Gem, Leaf, ShieldCheck, Users } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { LeafIcon } from "@/components/icons";
 import TrophyIllustration from "./TrophyIllustration";
+import awardsData from "@/data/awards.json";
 
-const achievements = [
-  { icon: Gem, title: "Quality Service", text: ["Recognized for", "outstanding service delivery."] },
-  { icon: Leaf, title: "Eco-Friendly Practices", text: ["Awarded for sustainable", "and green cleaning solutions."] },
-  { icon: Users, title: "Customer Satisfaction", text: ["Trusted and appreciated", "by our clients."] },
-  { icon: ShieldCheck, title: "Safety & Compliance", text: ["Certified for maintaining", "highest safety standards."] },
-];
+// Text lives in src/data/awards.json under text.AwardsGrid.
+const copy = awardsData.text.AwardsGrid;
 
-const awards = [
-  { variant: "star-wreath", title: "Best Cleaning Service", org: "National Business Awards", year: "2023" },
-  { variant: "globe", title: "Excellence in Customer Service", org: "Service Industry Awards", year: "2022" },
-  { variant: "star", title: "Green Business Award", org: "Sustainability Awards", year: "2022" },
-  { variant: "medal", title: "Trusted Service Provider", org: "Local Business Awards", year: "2021" },
-];
+// Icons by the name used in src/data/awards.json.
+const achievementsIcons = {
+  gem: Gem,
+  leaf: Leaf,
+  users: Users,
+  "shield-check": ShieldCheck,
+};
 
-const certificates = [
-  { mark: "ISO", color: "#1f4f9c", title: "ISO 9001:2015", text: "Quality Management System" },
-  { mark: "ISO", color: "#1c7a45", title: "ISO 14001:2015", text: "Environmental Management" },
-  { mark: "OSHA", color: "#8f979c", title: "OSHA", text: "Occupational Safety and Health Administration" },
-  { mark: "leaf", color: "#8f979c", title: "Green Cleaning Certified", text: "Eco-Friendly Cleaning Practices" },
-];
+// Content lives in src/data/awards.json.
+const achievements = awardsData.achievements.map((item) => ({ ...item, icon: achievementsIcons[item.icon] }));
+
+// Content lives in src/data/awards.json.
+const awards = awardsData.awards;
+
+// Content lives in src/data/awards.json.
+const certificates = awardsData.certificates;
 
 const EYEBROW =
   "[&>span:nth-child(2)]:font-semibold 3xl:[&>span:first-child]:w-[52px] 3xl:[&>span:last-child]:w-[52px] 3xl:[&>span:nth-child(2)]:text-[24px]";
@@ -67,13 +67,10 @@ export default function AwardsGrid() {
       {/* ---------- Achievements ---------- */}
       <section className="w-full bg-[#fbfdfc] py-10 sm:py-12 xl:py-13 2xl:py-[46px]">
         <div className="container-x text-center">
-          <SectionEyebrow center compact className={EYEBROW}>Our Achievements</SectionEyebrow>
-          <h2 className={H2}>Recognition That Inspires Us</h2>
+          <SectionEyebrow center compact className={EYEBROW}>{copy.ourAchievements}</SectionEyebrow>
+          <h2 className={H2}>{copy.recognitionThatInspiresUs}</h2>
           <p className={LEAD}>
-            Our awards and certifications reflect our dedication to delivering
-            high-quality, reliable and eco-friendly cleaning services. We are
-            proud to be recognized by leading organizations for our hard work
-            and customer commitment.
+            {copy.ourAwardsAndCertificationsReflect}
           </p>
 
           <ul className={`mt-9 2xl:mt-[42px] 3xl:px-[60px] ${GRID}`}>
@@ -98,11 +95,10 @@ export default function AwardsGrid() {
       {/* ---------- Awards ---------- */}
       <section className="w-full bg-[#edf8f4] py-10 sm:py-12 xl:py-13 2xl:py-[46px]">
         <div className="container-x text-center">
-          <SectionEyebrow center compact className={EYEBROW}>Our Awards</SectionEyebrow>
-          <h2 className={H2}>Awards We Are Proud Of</h2>
+          <SectionEyebrow center compact className={EYEBROW}>{copy.ourAwards}</SectionEyebrow>
+          <h2 className={H2}>{copy.awardsWeAreProudOf}</h2>
           <p className={`${LEAD} max-w-[820px]`}>
-            These awards motivate us to continue delivering cleaner, healthier
-            and happier spaces for our valued clients.
+            {copy.theseAwardsMotivateUsTo}
           </p>
 
           <ul className={`mt-8 2xl:mt-[34px] ${GRID}`}>
@@ -128,12 +124,10 @@ export default function AwardsGrid() {
       {/* ---------- Certifications ---------- */}
       <section className="w-full bg-[#fbfdfc] py-10 sm:py-12 xl:py-13 2xl:py-[46px]">
         <div className="container-x text-center">
-          <SectionEyebrow center compact className={EYEBROW}>Our Certifications</SectionEyebrow>
-          <h2 className={H2}>Our Professional Certifications</h2>
+          <SectionEyebrow center compact className={EYEBROW}>{copy.ourCertifications}</SectionEyebrow>
+          <h2 className={H2}>{copy.ourProfessionalCertifications}</h2>
           <p className={`${LEAD} max-w-[900px]`}>
-            We follow industry standards and are certified by trusted
-            organizations to ensure safe, effective and eco-friendly cleaning
-            services.
+            {copy.weFollowIndustryStandardsAnd}
           </p>
 
           <ul className={`mt-8 2xl:mt-[30px] 3xl:px-[24px] ${GRID}`}>

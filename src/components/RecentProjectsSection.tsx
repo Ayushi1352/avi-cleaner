@@ -8,47 +8,20 @@ import CarouselDots from "./CarouselDots";
 import ScrollReveal from "./ScrollReveal";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
 import { BuildingIcon, HomeIcon, SofaIcon } from "./icons";
+import homeData from "@/data/home.json";
 
-const projects = [
-  {
-    tag: "Home Cleaning",
-    icon: HomeIcon,
-    title: "Kitchen Deep Clean",
-    text: "A fresh, spotless kitchen for a healthier home.",
-    image:
-      "/images/home/project-kitchen-deep-clean.webp",
-  },
-  {
-    tag: "Office Cleaning",
-    icon: BuildingIcon,
-    title: "Commercial Office Clean",
-    text: "A cleaner workspace for a more productive team.",
-    image:
-      "/images/home/project-commercial-office.webp",
-  },
-  {
-    tag: "Home Cleaning",
-    icon: SofaIcon,
-    title: "Living Room Refresh",
-    text: "A cleaner, brighter space to relax and live better.",
-    image:
-      "/images/home/project-living-room.webp",
-  },
-  {
-    tag: "Home Cleaning",
-    icon: HomeIcon,
-    title: "Bathroom Sparkle Clean",
-    text: "A sanitized, shining bathroom that feels brand new.",
-    image: "/images/project-bathroom.jpg",
-  },
-  {
-    tag: "Office Cleaning",
-    icon: BuildingIcon,
-    title: "Reception Area Makeover",
-    text: "A welcoming, spotless first impression for visitors.",
-    image: "/images/project-reception.jpg",
-  },
-];
+// Text lives in src/data/home.json under text.RecentProjectsSection.
+const copy = homeData.text.RecentProjectsSection;
+
+// Icons by the name used in src/data/home.json.
+const projectsIcons = {
+  home: HomeIcon,
+  building: BuildingIcon,
+  sofa: SofaIcon,
+};
+
+// Content lives in src/data/home.json.
+const projects = homeData.projects.map((item) => ({ ...item, icon: projectsIcons[item.icon] }));
 
 function ProjectCard({ project }) {
   const Icon = project.icon;
@@ -95,15 +68,13 @@ export default function RecentProjectsSection() {
       <div className="container-x">
         <ScrollReveal variant="fade-up" duration={700}>
           <div className="mx-auto max-w-[900px] text-center">
-            <SectionTag center>Our Recent Work</SectionTag>
+            <SectionTag center>{copy.ourRecentWork}</SectionTag>
             <h2 className="mt-4 text-[clamp(30px,3.2vw,62px)] font-bold leading-[1.15] tracking-[-0.015em] text-navy 2xl:mt-6">
-              Explore the Recent <span className="text-green">Projects</span>
-              <br className="hidden sm:block" /> We Have Done!
+              {copy.exploreTheRecent + " "}<span className="text-green">{copy.projects}</span>
+              <br className="hidden sm:block" />{" " + copy.weHaveDone}
             </h2>
             <p className="mx-auto mt-4 max-w-[720px] text-balance text-[15px] leading-[1.6] text-body sm:text-base xl:text-[18px] 2xl:mt-6 2xl:text-[21px]">
-              Take a look at some of our latest cleaning projects. From homes to
-              offices, we deliver exceptional results with care and attention to
-              detail.
+              {copy.takeALookAtSome}
             </p>
           </div>
         </ScrollReveal>
@@ -140,7 +111,7 @@ export default function RecentProjectsSection() {
               href="/gallery"
               className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#26683f] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
             >
-              View All Projects
+              {copy.viewAllProjects}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

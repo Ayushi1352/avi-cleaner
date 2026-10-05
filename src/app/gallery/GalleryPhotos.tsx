@@ -4,24 +4,16 @@ import { useState, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PhotoLightbox from "./PhotoLightbox";
 import ScrollReveal from "@/components/ScrollReveal";
+import galleryData from "@/data/gallery.json";
+
+// Text lives in src/data/gallery.json under text.GalleryPhotos.
+const copy = galleryData.text.GalleryPhotos;
 
 const PER_PAGE = 6;
 
 // Gallery photos (stand-ins from the rest of the site; swap in your own).
-const photos = [
-  { src: "/images/service-kitchen.webp", alt: "Cleaner wiping a kitchen counter" },
-  { src: "/images/about-sofa-vacuum.webp", alt: "Sofa being vacuumed" },
-  { src: "/images/why-choose-us.webp", alt: "Cleaner mopping a living room floor", pos: "object-top" },
-  { src: "/images/project-living.webp", alt: "Clean, bright living room" },
-  { src: "/images/mission/vision-window.webp", alt: "Window being cleaned with a squeegee" },
-  { src: "/images/project-office.webp", alt: "Clean office space" },
-  { src: "/images/mission/mission-cleaning.webp", alt: "Gloved hand wiping a counter" },
-  { src: "/images/about-supplies.webp", alt: "Cleaning supplies", pos: "object-[center_top]" },
-  { src: "/images/service-office.webp", alt: "Office being cleaned" },
-  { src: "/images/about-cleaner-woman.webp", alt: "Smiling cleaner ready to clean", pos: "object-[center_top]" },
-  { src: "/images/mission/partner-cta.webp", alt: "Avicleaner cleaning team", pos: "object-[center_top]" },
-  { src: "/images/service-team.webp", alt: "Avicleaner team members", pos: "object-[center_top]" },
-];
+// Content lives in src/data/gallery.json.
+const photos = galleryData.photos;
 
 /** Gallery page photos grid and lightbox with pagination. */
 export default function GalleryPhotos() {
@@ -98,14 +90,14 @@ export default function GalleryPhotos() {
           </ul>
 
           {totalPages > 1 && (
-            <nav aria-label="Photo gallery pages" className="mt-9 flex justify-center 2xl:mt-[36px]">
+            <nav aria-label={copy.photoGalleryPages} className="mt-9 flex justify-center 2xl:mt-[36px]">
               <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
                 <li>
                   <button
                     type="button"
                     onClick={() => goTo(page - 1)}
                     disabled={page === 1}
-                    aria-label="Previous page"
+                    aria-label={copy.previousPage}
                     className={`${btn} ${idle}`}
                   >
                     <ChevronLeft className="h-4 w-4" strokeWidth={3} />
@@ -129,7 +121,7 @@ export default function GalleryPhotos() {
                     type="button"
                     onClick={() => goTo(page + 1)}
                     disabled={page === totalPages}
-                    aria-label="Next page"
+                    aria-label={copy.nextPage}
                     className={`${btn} ${idle}`}
                   >
                     <ChevronRight className="h-4 w-4" strokeWidth={3} />

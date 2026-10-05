@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, Headphones } from "lucide-react";
 import { HomeIcon } from "@/components/icons";
+import notFoundData from "@/data/not-found.json";
 
-export const metadata = {
-  title: "Page Not Found | Avicleaner",
-  description: "The page you're looking for doesn't exist or may have been moved.",
-};
+// Text lives in src/data/not-found.json under text.NotFound.
+const copy = notFoundData.text.NotFound;
+
+export const metadata = notFoundData.meta.NotFound;
 
 // Photo on the right side of the page (stand-in: swap for your own).
 const PHOTO = "/images/about-supplies.webp";
@@ -48,11 +49,15 @@ function ZeroMark({ className = "" }) {
   );
 }
 
-const quickLinks = [
-  { href: "/", title: "Go to Home", text: "Back to our homepage", icon: (c) => <HomeIcon className={c} /> },
-  { href: "/services", title: "Explore Services", text: "Discover our cleaning services", icon: (c) => <Spark className={c} /> },
-  { href: "/contact-us", title: "Contact Support", text: "We’re here to help", icon: (c) => <Headphones className={c} strokeWidth={2.4} /> },
-];
+// Icons by the name used in src/data/not-found.json.
+const quickLinksIcons = {
+  home: (c) => <HomeIcon className={c} />,
+  spark: (c) => <Spark className={c} />,
+  headphones: (c) => <Headphones className={c} strokeWidth={2.4} />,
+};
+
+// Content lives in src/data/not-found.json.
+const quickLinks = notFoundData.quickLinks.map((item) => ({ ...item, icon: quickLinksIcons[item.icon] }));
 
 export default function NotFound() {
   return (
@@ -79,13 +84,13 @@ export default function NotFound() {
           aria-hidden="true"
           className="absolute right-[1.5%] top-[4%] hidden rotate-[6deg] bg-[#e9dfa4] px-5 py-6 text-center font-script text-[26px] font-medium leading-[1.05] text-[#1f5a41] shadow-[0_10px_24px_-12px_rgba(0,0,0,0.4)] xl:block 2xl:px-7 2xl:py-8 2xl:text-[36px]"
         >
-          Cleaner
+          {copy.cleaner}
           <br />
-          Spaces
+          {copy.spaces}
           <br />
-          Happier
+          {copy.happier}
           <br />
-          Lives :)
+          {copy.lives}
         </p>
 
         <div className="container-x">
@@ -93,22 +98,20 @@ export default function NotFound() {
             {/* ---------- Text ---------- */}
             <div className="min-w-0 text-center lg:text-left">
               <p className="text-[13px] font-bold uppercase tracking-[0.3em] text-[#0b1a12] 2xl:text-[15px]">
-                Oops!
+                {copy.oops}
                 <span className="mx-auto mt-3 block h-[3px] w-12 rounded-full bg-[#fdd659] lg:mx-0 2xl:w-[64px]" />
               </p>
               <h1 className="mt-6 text-[clamp(32px,3.3vw,63px)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#0b1a12] 2xl:mt-9">
-                Page Not Found
+                {copy.pageNotFound}
               </h1>
               <p className="mx-auto mt-4 max-w-[520px] text-[15px] leading-[1.6] text-[#5a6172] sm:text-base lg:mx-0 xl:text-[18px] 2xl:mt-6 2xl:text-[21px] 3xl:text-[23px]">
-                The page you&rsquo;re looking for doesn&rsquo;t seem to exist
-                or may have been moved. Let&rsquo;s get you back on track to
-                a cleaner, brighter space!
+                {copy.thePageYoureLookingFor}
               </p>
               <Link
                 href="/"
                 className="btn-solid btn-yellow group mt-7 inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] 2xl:mt-9 2xl:px-10 2xl:py-[18px] 2xl:text-[21px] 3xl:h-[72px] 3xl:w-[288px] 3xl:px-0 3xl:py-0 3xl:text-[25px]"
               >
-                Back to Home
+                {copy.backToHome}
                 <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
             </div>
@@ -124,9 +127,9 @@ export default function NotFound() {
                 <span aria-hidden="true">4</span>
               </p>
               <p className="mt-4 -rotate-[5deg] font-script text-[clamp(26px,3.3vw,62px)] font-medium leading-[1.05] text-[#1f5a41] 2xl:mt-8" aria-hidden="true">
-                Clean Paths Always
+                {copy.cleanPathsAlways}
                 <br />
-                Lead Home
+                {copy.leadHome}
                 <svg viewBox="0 0 220 24" className="mx-auto mt-1 block w-[4.4em]" aria-hidden="true">
                   <path d="M4 20C70 10 150 5 216 3" fill="none" stroke="#fdd659" strokeWidth="4" strokeLinecap="round" />
                 </svg>

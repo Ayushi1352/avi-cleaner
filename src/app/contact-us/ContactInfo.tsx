@@ -1,33 +1,27 @@
 import { ArrowRight, Mail, Map, MapPin, Phone, PhoneCall } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
+import contactData from "@/data/contact.json";
 
-const cards = [
-  {
-    icon: MapPin,
-    title: "Our Location",
-    lines: ["123 Main Street, Seattle,", "WA 98101, USA"],
-    action: "View on Map",
-    href: "#map",
-    actionIcon: (c: string) => <Map className={c} fill="currentColor" stroke="#e3f6ec" strokeWidth={1.6} />,
-  },
-  {
-    icon: PhoneCall,
-    title: "Phone Number",
-    lines: ["+1 (202) 555-0147"],
-    action: "Call Us Now",
-    href: "tel:+12025550147",
-    actionIcon: (c: string) => <Phone className={c} fill="currentColor" strokeWidth={0} />,
-  },
-  {
-    icon: Mail,
-    title: "Email us at",
-    lines: ["xyz@avicleaner.com"],
-    action: "Send an Email",
-    href: "mailto:xyz@avicleaner.com",
-    actionIcon: (c: string) => <Mail className={c} strokeWidth={2.2} />,
-  },
-];
+// Text lives in src/data/contact.json under text.ContactInfo.
+const copy = contactData.text.ContactInfo;
+
+// Icons by the name used in src/data/contact.json.
+const cardsIcons = {
+  "map-pin": MapPin,
+  "phone-call": PhoneCall,
+  mail: Mail,
+};
+
+// Icons by the name used in src/data/contact.json.
+const cardsActionIcons = {
+  map: (c: string) => <Map className={c} fill="currentColor" stroke="#e3f6ec" strokeWidth={1.6} />,
+  phone: (c: string) => <Phone className={c} fill="currentColor" strokeWidth={0} />,
+  mail: (c: string) => <Mail className={c} strokeWidth={2.2} />,
+};
+
+// Content lives in src/data/contact.json.
+const cards = contactData.cards.map((item) => ({ ...item, icon: cardsIcons[item.icon], actionIcon: cardsActionIcons[item.actionIcon] }));
 
 function ContactCard({ card }: { card: any }) {
   const Icon = card.icon;
@@ -111,16 +105,14 @@ export default function ContactInfo() {
               compact
               className="[&>span:nth-child(2)]:font-medium 3xl:[&>span:first-child]:w-[58px] 3xl:[&>span:last-child]:w-[58px] 3xl:[&>span:nth-child(2)]:text-[28px]"
             >
-              Contact Info
+              {copy.contactInfo}
             </SectionEyebrow>
             <h2 className="mt-2 text-[clamp(28px,3.95vw,76px)] font-extrabold leading-[1.14] tracking-[-0.015em] text-[#0b1a12] 2xl:mt-3">
-              Our Contact Information
+              {copy.ourContactInformation}
             </h2>
             <p className="mx-auto mt-3 max-w-[820px] text-[15px] leading-[1.5] text-[#5f6c69] sm:text-base xl:text-[18px] 2xl:mt-4 2xl:text-[20px] 3xl:text-[23px]">
-              We&rsquo;re here to help! Get in touch with us for any questions,
-              bookings or <br className="hidden md:block" />
-              custom cleaning solutions. Our friendly team is always ready to
-              assist you.
+              {copy.wereHereToHelpGet + " "}<br className="hidden md:block" />
+              {copy.customCleaningSolutionsOurFriendly}
             </p>
           </div>
 

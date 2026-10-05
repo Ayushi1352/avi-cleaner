@@ -4,6 +4,10 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, ChevronLeft, ChevronRight, User } from "lucide-react";
 import posts from "./blogPostsData";
+import blogData from "@/data/blog.json";
+
+// Text lives in src/data/blog.json under text.BlogGrid.
+const copy = blogData.text.BlogGrid;
 
 const PER_PAGE = 6;
 
@@ -33,7 +37,7 @@ function BlogCard({ post }: { post: any }) {
           <span aria-hidden="true" className="text-[#c6ccd3]">|</span>
           <span className="inline-flex items-center gap-1.5 2xl:gap-2">
             <User className="h-[1.1em] w-[1.1em] text-[#f0a52b]" fill="currentColor" strokeWidth={0} />
-            By : {typeof post.author === "object" ? post.author.name : (post.author || "Admin")}
+            {copy.by + " "}{typeof post.author === "object" ? post.author.name : (post.author || "Admin")}
           </span>
         </p>
 
@@ -51,7 +55,7 @@ function BlogCard({ post }: { post: any }) {
             href={href}
             className="btn-solid btn-yellow group inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full px-5 py-2.5 text-[13.5px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] xl:text-[14px] 2xl:px-6 2xl:py-3 2xl:text-[15px] 3xl:px-[28px] 3xl:py-[15px] 3xl:text-[16.5px]"
           >
-            Read More
+            {copy.readMore}
             <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
           </Link>
         </div>
@@ -90,10 +94,10 @@ export default function BlogGrid() {
         </ul>
 
         {totalPages > 1 && (
-          <nav aria-label="Blog pages" className="mt-9 flex justify-center 2xl:mt-[28px]">
+          <nav aria-label={copy.blogPages} className="mt-9 flex justify-center 2xl:mt-[28px]">
             <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
               <li>
-                <button type="button" onClick={() => goTo(page - 1)} disabled={page === 1} aria-label="Previous page" className={`${btn} ${idle}`}>
+                <button type="button" onClick={() => goTo(page - 1)} disabled={page === 1} aria-label={copy.previousPage} className={`${btn} ${idle}`}>
                   <ChevronLeft className="h-4 w-4" strokeWidth={3} />
                 </button>
               </li>
@@ -111,7 +115,7 @@ export default function BlogGrid() {
                 </li>
               ))}
               <li>
-                <button type="button" onClick={() => goTo(page + 1)} disabled={page === totalPages} aria-label="Next page" className={`${btn} ${idle}`}>
+                <button type="button" onClick={() => goTo(page + 1)} disabled={page === totalPages} aria-label={copy.nextPage} className={`${btn} ${idle}`}>
                   <ChevronRight className="h-4 w-4" strokeWidth={3} />
                 </button>
               </li>

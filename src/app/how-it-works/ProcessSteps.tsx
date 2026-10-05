@@ -2,42 +2,26 @@ import { Clock, ShieldCheck } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { LeafIcon, ThumbUpIcon, UsersIcon } from "@/components/icons";
 import { GearSolidIcon } from "@/components/solidIcons";
+import howItWorksData from "@/data/how-it-works.json";
 
-const steps = [
-  {
-    no: "01",
-    title: "Book a Service",
-    text: "Choose your service, select a convenient date and time, and book online or via phone in just a few clicks.",
-    image: "/images/services/step-book.webp",
-  },
-  {
-    no: "02",
-    title: "Team Arrives",
-    text: "Our trained and verified cleaning team arrives at your location on time with all necessary equipment.",
-    image: "/images/services/step-team.webp",
-  },
-  {
-    no: "03",
-    title: "Cleaning Process",
-    text: "Our team follows a detailed checklist to deep clean every corner, ensuring a safe, fresh and healthy environment.",
-    image: "/images/services/step-cleaning.webp",
-  },
-  {
-    no: "04",
-    title: "Final Result",
-    text: "Enjoy a spotless, refreshed space. We ensure your complete satisfaction before we leave.",
-    image: "/images/services/step-result.webp",
-  },
-];
+// Text lives in src/data/how-it-works.json under text.ProcessSteps.
+const copy = howItWorksData.text.ProcessSteps;
 
-const benefits = [
-  { icon: (c: string) => <Clock className={c} strokeWidth={2.2} />, title: "Quick & Easy Booking", sub: "Schedule in minutes" },
-  { icon: (c: string) => <GearSolidIcon className={c} />, title: "Customized Cleaning", sub: "Tailored to your needs" },
-  { icon: (c: string) => <UsersIcon className={c} />, title: "Verified Professionals", sub: "Trained and background-checked" },
-  { icon: (c: string) => <ThumbUpIcon className={c} />, title: "Satisfaction Guaranteed", sub: "We get it right, every time" },
-  { icon: (c: string) => <ShieldCheck className={c} strokeWidth={2.2} />, title: "Safe & Eco-Friendly", sub: "Family and pet-friendly products" },
-  { icon: (c: string) => <LeafIcon className={c} />, title: "A Healthier Environment", sub: "Cleaner spaces for a brighter tomorrow" },
-];
+// Content lives in src/data/how-it-works.json.
+const steps = howItWorksData.steps;
+
+// Icons by the name used in src/data/how-it-works.json.
+const benefitsIcons = {
+  clock: (c: string) => <Clock className={c} strokeWidth={2.2} />,
+  gear: (c: string) => <GearSolidIcon className={c} />,
+  users: (c: string) => <UsersIcon className={c} />,
+  "thumb-up": (c: string) => <ThumbUpIcon className={c} />,
+  "shield-check": (c: string) => <ShieldCheck className={c} strokeWidth={2.2} />,
+  leaf: (c: string) => <LeafIcon className={c} />,
+};
+
+// Content lives in src/data/how-it-works.json.
+const benefits = howItWorksData.benefits.map((item) => ({ ...item, icon: benefitsIcons[item.icon] }));
 
 const WHY_PHOTO = "/images/how-it-works/why-it-works.webp";
 const EYEBROW =
@@ -61,14 +45,13 @@ export default function ProcessSteps() {
         <div className="bg-[#fafefc] pb-10 pt-12 sm:pt-14 2xl:pb-[58px] 2xl:pt-[52px]">
           <div className="container-x">
             <div className="mx-auto max-w-[1200px] text-center">
-              <SectionEyebrow center compact className={EYEBROW}>Simple Steps</SectionEyebrow>
+              <SectionEyebrow center compact className={EYEBROW}>{copy.simpleSteps}</SectionEyebrow>
               <h2 className="mt-3 text-[clamp(28px,3.35vw,64px)] font-extrabold leading-[1.15] tracking-[-0.015em] text-[#0b1a12] 2xl:mt-4">
-                How Our Cleaning Process Works
+                {copy.howOurCleaningProcessWorks}
               </h2>
               <p className="mx-auto mt-3 text-[15px] leading-[1.45] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:text-[21px] 3xl:text-[26px]">
-                We make it easy for you. Just follow these simple steps and
-                enjoy a cleaner, <br className="hidden xl:block" />
-                fresher and healthier space.
+                {copy.weMakeItEasyFor + " "}<br className="hidden xl:block" />
+                {copy.fresherAndHealthierSpace}
               </p>
             </div>
 
@@ -114,19 +97,18 @@ export default function ProcessSteps() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={WHY_PHOTO}
-              alt="Avicleaner cleaner wiping a kitchen counter"
+              alt={copy.avicleanerCleanerWipingAKitchen}
               loading="lazy"
               className="mx-auto aspect-[661/604] w-full max-w-[560px] rounded-[18px] object-cover object-[center_top] lg:max-w-none 2xl:rounded-[22px]"
             />
 
             <div className="min-w-0">
-              <SectionEyebrow compact className={EYEBROW}>Why It Works</SectionEyebrow>
+              <SectionEyebrow compact className={EYEBROW}>{copy.whyItWorks}</SectionEyebrow>
               <h2 className="mt-3 text-[clamp(26px,2.9vw,55px)] font-extrabold leading-[1.15] tracking-[-0.015em] text-[#0b1a12] 2xl:mt-4">
-                A Better Cleaning Experience
+                {copy.aBetterCleaningExperience}
               </h2>
               <p className="mt-3 text-[15px] leading-[1.45] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:text-[21px] 3xl:max-w-[900px] 3xl:text-[26px]">
-                Our well-structured process ensures high-quality results with
-                complete transparency and customer satisfaction.
+                {copy.ourWellStructuredProcessEnsures}
               </p>
 
               <ul className="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2 xl:gap-y-6 2xl:mt-8 2xl:gap-y-[30px] 3xl:grid-cols-[500px_minmax(0,1fr)] 3xl:gap-x-0">

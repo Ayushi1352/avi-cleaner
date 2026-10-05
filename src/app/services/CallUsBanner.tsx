@@ -2,12 +2,19 @@ import Link from "next/link";
 import { ArrowRight, Clock, Phone, ShieldCheck } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
+import servicesData from "@/data/services.json";
 
-const features = [
-  { icon: Clock, lines: ["Quick", "Response"] },
-  { icon: ShieldCheck, lines: ["Trusted", "Professionals"] },
-  { icon: ShieldCheck, lines: ["Safe &", "Eco-Friendly"] },
-];
+// Text lives in src/data/services.json under text.CallUsBanner.
+const copy = servicesData.text.CallUsBanner;
+
+// Icons by the name used in src/data/services.json.
+const featuresIcons = {
+  clock: Clock,
+  "shield-check": ShieldCheck,
+};
+
+// Content lives in src/data/services.json.
+const features = servicesData.callUsFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
 
 const PHONE = "+1 (202) 555-0147";
 const CALL_PHOTO = "/images/services/call-cleaner.webp";
@@ -27,7 +34,7 @@ export default function CallUsBanner() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={CALL_PHOTO}
-        alt="Smiling Avicleaner cleaner"
+        alt={copy.smilingAvicleanerCleaner}
         loading="lazy"
         className="pointer-events-none absolute bottom-0 right-[8%] top-0 -z-10 hidden h-full w-auto max-w-none! [mask-image:linear-gradient(90deg,transparent,#000_26%,#000_82%,transparent)] lg:block"
       />
@@ -42,15 +49,14 @@ export default function CallUsBanner() {
         <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-6 2xl:min-h-[730px]">
           {/* ---------- Text ---------- */}
           <div className="min-w-0 py-12 sm:py-16 lg:py-20 lg:pl-4 2xl:self-center 2xl:py-[90px] 3xl:pb-[110px] 3xl:pl-[85px]">
-            <SectionEyebrow light compact className="3xl:[&>span:first-child]:w-[52px] 3xl:[&>span:last-child]:w-[52px]">Need Help?</SectionEyebrow>
+            <SectionEyebrow light compact className="3xl:[&>span:first-child]:w-[52px] 3xl:[&>span:last-child]:w-[52px]">{copy.needHelp}</SectionEyebrow>
             <h2 className="mt-4 text-[clamp(30px,3.4vw,65px)] font-extrabold leading-[1.04] tracking-[-0.015em] 2xl:mt-6">
-              Need a Deep Clean?
+              {copy.needADeepClean}
               <br />
-              <span className="text-[#fdd86b]">Call Us</span> for Immediate Service!
+              <span className="text-[#fdd86b]">{copy.callUs}</span>{" " + copy.forImmediateService}
             </h2>
             <p className="mt-4 max-w-[730px] text-[15px] leading-[1.6] text-white/90 sm:text-base xl:text-[18px] 2xl:mt-6 2xl:text-[20px] 3xl:text-[22px] 3xl:leading-[1.55]">
-              Our professional cleaning team is ready to help you. Get a
-              cleaner, healthier and happier space today!
+              {copy.ourProfessionalCleaningTeamIs}
             </p>
 
             <ul className="mt-7 flex flex-col gap-4 min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:gap-0 2xl:mt-9">
@@ -79,7 +85,7 @@ export default function CallUsBanner() {
                   <Phone className="h-5 w-5 2xl:h-7 2xl:w-7 3xl:h-8 3xl:w-8" fill="currentColor" strokeWidth={0} />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-[13px] text-white/90 2xl:text-[17px] 3xl:text-[20px]">Call Us Now</span>
+                  <span className="block text-[13px] text-white/90 2xl:text-[17px] 3xl:text-[20px]">{copy.callUsNow}</span>
                   <span className="block whitespace-nowrap text-[20px] font-bold leading-tight group-hover:text-[#fdd86b] 2xl:text-[28px] 3xl:text-[34px]">
                     {PHONE}
                   </span>
@@ -89,7 +95,7 @@ export default function CallUsBanner() {
                 href="/book-now"
                 className="btn-solid btn-yellow group inline-flex items-center gap-3 whitespace-nowrap rounded-full px-7 py-3.5 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:px-10 2xl:py-[18px] 2xl:text-[18px] 3xl:min-w-[290px] 3xl:justify-center 3xl:py-[21px] 3xl:text-[21px]"
               >
-                Book a Service
+                {copy.bookAService}
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
             </div>
@@ -101,7 +107,7 @@ export default function CallUsBanner() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={CALL_PHOTO}
-              alt="Smiling Avicleaner cleaner"
+              alt={copy.smilingAvicleanerCleaner}
               loading="lazy"
               className="block aspect-[4/3] w-full rounded-t-[20px] object-cover object-top lg:hidden"
             />

@@ -2,46 +2,23 @@ import Link from "next/link";
 import { ArrowRight, Building2, Crown, House } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { HomeIcon, LeafIcon, ShieldCheckIcon, UsersIcon } from "@/components/icons";
+import pricingData from "@/data/pricing.json";
+
+// Text lives in src/data/pricing.json under text.PricingPlans.
+const copy = pricingData.text.PricingPlans;
 
 // Photo beside the Compare Plans table.
 const COMPARE_PHOTO = "/images/pricing/compare-cleaner.webp";
 
-const plans = [
-  {
-    name: "Basic",
-    icon: House,
-    price: "49.99",
-    text: ["Perfect for small spaces and", "regular maintenance."],
-    features: ["Dusting & wipe-down", "Vacuuming & mopping", "Basic bathroom cleaning", "Every trash removal"],
-  },
-  {
-    name: "Standard",
-    icon: Building2,
-    price: "79.99",
-    text: ["Ideal for familles who want", "a deeper, more thorough clean."],
-    popular: true,
-    features: [
-      "Full sanitization",
-      "Scrubbing of sinks",
-      "Exterior surface cleaning",
-      "Window polishing",
-      "All Basic features included",
-    ],
-  },
-  {
-    name: "Premium",
-    icon: Crown,
-    price: "99.99",
-    text: ["Complete cleaning for a spotless", "and healthy environment."],
-    features: [
-      "Exterior full cleaning",
-      "Fridge & oven cleaning",
-      "Carpet deep cleaning",
-      "Extra focus on high-touch areas",
-      "All Standard features included",
-    ],
-  },
-];
+// Icons by the name used in src/data/pricing.json.
+const plansIcons = {
+  house: House,
+  building2: Building2,
+  crown: Crown,
+};
+
+// Content lives in src/data/pricing.json.
+const plans = pricingData.plans.map((item) => ({ ...item, icon: plansIcons[item.icon] }));
 
 function WalletIcon({ className = "" }: { className?: string }) {
   return (
@@ -56,23 +33,20 @@ function WalletIcon({ className = "" }: { className?: string }) {
   );
 }
 
-const perks = [
-  { icon: WalletIcon, title: "No Hidden Charges", sub: "Transparent Pricing" },
-  { icon: UsersIcon, title: "Trained Professionals", sub: "Verified & Experienced" },
-  { icon: LeafIcon, title: "Eco-Friendly Products", sub: "Safe for Your Family" },
-  { icon: ShieldCheckIcon, title: "100% Satisfaction", sub: "Our Priority" },
-];
+// Icons by the name used in src/data/pricing.json.
+const perksIcons = {
+  wallet: WalletIcon,
+  users: UsersIcon,
+  leaf: LeafIcon,
+  "shield-check": ShieldCheckIcon,
+};
+
+// Content lives in src/data/pricing.json.
+const perks = pricingData.perks.map((item) => ({ ...item, icon: perksIcons[item.icon] }));
 
 // [feature, basic, standard, premium]
-const compareRows = [
-  ["Dusting & wipe-down", true, true, true],
-  ["Vacuuming & mopping", true, true, true],
-  ["Bathroom cleaning", true, true, true],
-  ["Kitchen cleaning", false, true, true],
-  ["Window cleaning", false, true, true],
-  ["Carpet deep cleaning", false, false, true],
-  ["Fridge & oven cleaning", false, false, true],
-];
+// Content lives in src/data/pricing.json.
+const compareRows = pricingData.compareRows;
 
 function CheckIcon({ className = "" }: { className?: string }) {
   return (
@@ -92,7 +66,7 @@ function PlanCard({ plan }: { plan: any }) {
     >
       {plan.popular && (
         <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-[10px] bg-[#174a38] px-5 py-1.5 text-[13px] font-semibold text-white 2xl:px-7 2xl:py-2 2xl:text-[17px] 3xl:rounded-[12px] 3xl:px-[38px] 3xl:py-[9px] 3xl:text-[23px]">
-          Most Popular
+          {copy.mostPopular}
         </span>
       )}
 
@@ -110,7 +84,7 @@ function PlanCard({ plan }: { plan: any }) {
           {plan.price}
         </span>
         <span className="ml-1.5 self-end pb-[0.55em] text-[14px] font-normal text-[#5f6c69] xl:text-[15px] 2xl:text-[18px] 3xl:ml-2.5 3xl:text-[22px]">
-          /month
+          {copy.month}
         </span>
       </p>
 
@@ -135,7 +109,7 @@ function PlanCard({ plan }: { plan: any }) {
           href="/book-now"
           className="btn-solid btn-yellow group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-9 py-3 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] xl:px-11 xl:text-[16px] 2xl:px-14 2xl:py-4 2xl:text-[20px] 3xl:h-[77px] 3xl:w-[331px] 3xl:gap-5 3xl:px-0 3xl:py-0 3xl:text-[25px]"
         >
-          Get Started
+          {copy.getStarted}
           <ArrowRight className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
         </Link>
       </div>
@@ -170,16 +144,15 @@ export default function PricingPlans() {
               compact
               className="[&>span:nth-child(2)]:font-medium 3xl:[&>span:first-child]:w-[52px] 3xl:[&>span:last-child]:w-[52px] 3xl:[&>span:nth-child(2)]:text-[24px]"
             >
-              Plans and Pricing
+              {copy.plansAndPricing}
             </SectionEyebrow>
             <h2 className="mt-3 text-[clamp(28px,3.35vw,64px)] font-extrabold leading-[1.14] tracking-[-0.015em] text-[#0b1a12] 2xl:mt-5">
-              Affordable Cleaning Plans
-              <br className="hidden sm:block" /> for Every Need
+              {copy.affordableCleaningPlans}
+              <br className="hidden sm:block" />{" " + copy.forEveryNeed}
             </h2>
             <p className="mx-auto mt-3 text-[15px] leading-[1.5] text-[#5f6c69] sm:text-base xl:text-[18px] 2xl:mt-4 2xl:text-[21px] 3xl:text-[25.5px]">
-              Choose the perfect plan for your home or office. Our flexible and
-              transparent pricing <br className="hidden xl:block" />
-              helps you get professional cleaning services at the best value.
+              {copy.chooseThePerfectPlanFor + " "}<br className="hidden xl:block" />
+              {copy.helpsYouGetProfessionalCleaning}
             </p>
           </div>
 
@@ -219,10 +192,10 @@ export default function PricingPlans() {
           <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,31%)] lg:gap-6 xl:gap-8 2xl:mt-[48px] 3xl:grid-cols-[1137px_553px] 3xl:gap-[45px] 3xl:pl-[42px]">
             <div className="min-w-0">
               <h2 className="text-[clamp(28px,2.9vw,55px)] font-extrabold leading-[1.15] tracking-[-0.015em] text-[#0b1a12]">
-                Compare Plans
+                {copy.comparePlans}
               </h2>
               <p className="mt-1.5 text-[15px] leading-[1.5] text-[#5f6c69] sm:text-base xl:text-[18px] 2xl:text-[20px] 3xl:text-[24px]">
-                Find the right plan with the features that matter to you.
+                {copy.findTheRightPlanWith}
               </p>
 
               <div className="mt-4 overflow-hidden rounded-[14px] bg-white shadow-[0_10px_30px_-22px_rgba(11,42,28,0.35)] ring-1 ring-[#e3ece8] 2xl:mt-5 2xl:rounded-[18px]">
@@ -236,7 +209,7 @@ export default function PricingPlans() {
                   <thead>
                     <tr className="bg-[#1d493a] text-white">
                       <th scope="col" className="px-2.5 py-2.5 text-left font-semibold sm:px-5 2xl:py-3.5 3xl:h-[62px] 3xl:px-[34px] 3xl:py-0">
-                        Features
+                        {copy.features}
                       </th>
                       {["Basic", "Standard", "Premium"].map((h) => (
                         <th key={h} scope="col" className="border-l border-white/25 px-1 py-2.5 text-center font-semibold 2xl:py-3.5 3xl:py-0">
@@ -256,12 +229,12 @@ export default function PricingPlans() {
                             {on ? (
                               <>
                                 <CheckIcon className="mx-auto h-[1.1em] w-[1.1em]" />
-                                <span className="sr-only">Included</span>
+                                <span className="sr-only">{copy.included}</span>
                               </>
                             ) : (
                               <>
                                 <span aria-hidden="true" className="text-[#8b9794]">&mdash;</span>
-                                <span className="sr-only">Not included</span>
+                                <span className="sr-only">{copy.notIncluded}</span>
                               </>
                             )}
                           </td>
@@ -278,7 +251,7 @@ export default function PricingPlans() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={COMPARE_PHOTO}
-                alt="Smiling Avicleaner cleaner holding a spray bottle"
+                alt={copy.smilingAvicleanerCleanerHoldingA}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-top"
               />
@@ -287,8 +260,8 @@ export default function PricingPlans() {
                   <HomeIcon className="h-1/2 w-1/2" />
                 </span>
                 <span className="text-[14px] font-medium leading-[1.4] lg:text-[13px] xl:text-[16px] 2xl:text-[21px] 3xl:text-[26px]">
-                  A Cleaner Home
-                  <br />A Happier You
+                  {copy.aCleanerHome}
+                  <br />{copy.aHappierYou}
                 </span>
               </div>
             </div>

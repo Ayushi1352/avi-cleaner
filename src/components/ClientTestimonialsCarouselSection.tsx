@@ -8,52 +8,14 @@ import SectionTag from "./SectionTag";
 import CarouselDots from "./CarouselDots";
 import ScrollReveal from "./ScrollReveal";
 import { QuoteIcon, StarIcon } from "./icons";
+import homeData from "@/data/home.json";
+
+// Text lives in src/data/home.json under text.ClientTestimonialsCarouselSection.
+const copy = homeData.text.ClientTestimonialsCarouselSection;
 
 // Quotes are kept to a similar length so every card looks equally full.
-const testimonials = [
-  {
-    quote:
-      "Avicleaner did an amazing job at our home! The team was professional, on time, and paid great attention to detail. Our house has never looked this clean and fresh.",
-    name: "Priya Sharma",
-    role: "Happy Homeowner",
-    avatar: "/images/avatar-1.webp",
-  },
-  {
-    quote:
-      "Professional, reliable, and thorough! Avicleaner transformed our space completely. Great customer service and eco-friendly products that are safe for our family.",
-    name: "Sneha Kapoor",
-    role: "Regular Customer",
-    avatar: "/images/avatar-2.webp",
-  },
-  {
-    quote:
-      "Booking was simple and the cleaners arrived right on time. Every room was spotless when they finished the job. We now use Avicleaner every month without fail.",
-    name: "Amit Verma",
-    role: "Office Manager",
-    avatar: "/images/blog-author-1.webp",
-  },
-  {
-    quote:
-      "Excellent service! Our office looks so clean and organized now. The staff was friendly, efficient, and careful with our equipment. We will definitely book again!",
-    name: "Rahul Mehta",
-    role: "Business Owner",
-    avatar: "/images/avatar-3.webp",
-  },
-  {
-    quote:
-      "Courteous and efficient crew. They handled high-touch surfaces and deep stains with great attention to hygiene. Highly recommended for commercial cleaning!",
-    name: "Vikram Singh",
-    role: "Facility Manager",
-    avatar: "/images/team/team-5.webp",
-  },
-  {
-    quote:
-      "Our workspace has never been healthier or more inviting. Booking was effortless and the spotless results truly exceeded our team's expectations!",
-    name: "Neha Malhotra",
-    role: "HR Director",
-    avatar: "/images/team/team-3.webp",
-  },
-];
+// Content lives in src/data/home.json.
+const testimonials = homeData.testimonials;
 
 function Stars({ className = "" }) {
   return (
@@ -225,11 +187,11 @@ export default function TestimonialsSection() {
             <path fill="none" stroke="#fff" strokeWidth="10" strokeLinecap="round" d="M60 40c90 60 170 150 240 260" />
           </svg>
           <p className="pointer-events-none absolute left-8 top-10 hidden -rotate-[14deg] font-script text-[30px] font-medium leading-[0.95] text-[#1d4a3a] xl:block 2xl:left-[100px] 2xl:top-[62px] 2xl:text-[38px]">
-            Trusted
+            {copy.trusted}
             <br />
-            by Happy
+            {copy.byHappy}
             <br />
-            &nbsp;&nbsp;Clients
+            {"  " + copy.clients}
             <svg viewBox="0 0 100 14" className="mt-1 block h-3 w-full" aria-hidden="true">
               <path d="M2 12C35 4 65 2 98 3" fill="none" stroke="#2a7c35" strokeWidth="3" strokeLinecap="round" />
             </svg>
@@ -258,16 +220,16 @@ export default function TestimonialsSection() {
           {/* Header */}
           <ScrollReveal variant="fade-up" duration={700}>
             <div className="relative mx-auto max-w-[900px] text-center">
-              <SectionTag center>Testimonials</SectionTag>
+              <SectionTag center>{copy.testimonials}</SectionTag>
               <h2 className="mt-4 text-[clamp(30px,3.2vw,62px)] font-extrabold leading-[1.02] tracking-[-0.02em] text-navy">
-                What Our Clients are Saying
+                {copy.whatOurClientsAreSaying}
                 <br />
-                <span className="text-[#2a6a4a]">About Us</span>
+                <span className="text-[#2a6a4a]">{copy.aboutUs}</span>
               </h2>
               <p className="mx-auto mt-4 max-w-[760px] text-[15px] leading-[1.4] text-body sm:text-base xl:text-[18px] 2xl:text-[20.5px]">
-                Real feedback from real people. See why homeowners and businesses{" "}
+                {copy.realFeedbackFromRealPeople}{" "}
                 <br className="hidden md:block" />
-                trust Avicleaner for their cleaning needs.
+                {copy.trustAvicleanerForTheirCleaning}
               </p>
             </div>
           </ScrollReveal>
@@ -327,7 +289,7 @@ export default function TestimonialsSection() {
             <button
               type="button"
               onClick={() => setPos((p) => p - 1)}
-              aria-label="Previous testimonial"
+              aria-label={copy.previousTestimonial}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#124734] shadow-[0_2px_10px_-2px_rgba(11,42,28,0.25)] transition-all hover:bg-[#124734] hover:text-white"
             >
               <ChevronLeft className="h-4 w-4" strokeWidth={2.6} />
@@ -336,7 +298,7 @@ export default function TestimonialsSection() {
             <button
               type="button"
               onClick={() => setPos((p) => p + 1)}
-              aria-label="Next testimonial"
+              aria-label={copy.nextTestimonial}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#124734] shadow-[0_2px_10px_-2px_rgba(11,42,28,0.25)] transition-all hover:bg-[#124734] hover:text-white"
             >
               <ChevronRight className="h-4 w-4" strokeWidth={2.6} />
@@ -348,7 +310,7 @@ export default function TestimonialsSection() {
               href="/testimonials"
               className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a6a4a] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
             >
-              View All Testimonials
+              {copy.viewAllTestimonials}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

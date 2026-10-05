@@ -8,57 +8,20 @@ import CarouselDots from "./CarouselDots";
 import ScrollReveal from "./ScrollReveal";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
 import { BuildingIcon, HomeIcon, LeafIcon } from "./icons";
+import homeData from "@/data/home.json";
 
-const posts = [
-  {
-    slug: "top-5-tips-for-a-spotless-home",
-    day: "18",
-    month: "Mar 2024",
-    category: "Home Cleaning",
-    icon: HomeIcon,
-    title: "Top 5 Tips for a Spotless Home",
-    excerpt:
-      "Keep your home fresh and organized with these simple yet effective cleaning tips from our experts.",
-    image: "/images/home/blog-spotless-home.webp",
-    author: { name: "Priya Sharma", role: "Cleaning Expert", avatar: "/images/blog-author-3.webp" },
-  },
-  {
-    slug: "why-professional-cleaning-saves-you-time",
-    day: "26",
-    month: "Apr 2024",
-    category: "Cleaning Tips",
-    icon: BuildingIcon,
-    title: "Why Professional Cleaning Saves You Time",
-    excerpt:
-      "Discover how professional cleaning services can help you save time, reduce stress, and enjoy a healthier space.",
-    image: "/images/home/blog-professional-cleaning.webp",
-    author: { name: "Rahul Mehta", role: "Facility Manager", avatar: "/images/blog-author-1.webp" },
-  },
-  {
-    slug: "eco-friendly-cleaning-effective-solutions",
-    day: "07",
-    month: "Jun 2024",
-    category: "Eco-Friendly",
-    icon: LeafIcon,
-    title: "Eco-Friendly Cleaning Effective Solutions",
-    excerpt:
-      "Learn simple and sustainable cleaning solutions that are safe for your family and the environment.",
-    image: "/images/home/blog-eco-friendly.webp",
-    author: { name: "Sneha Kapoor", role: "Lifestyle Blogger", avatar: "/images/avatar-2.webp" },
-  },
-  {
-    slug: "how-a-clean-office-boosts-productivity",
-    day: "15",
-    month: "Jul 2024",
-    category: "Office Cleaning",
-    icon: BuildingIcon,
-    title: "How a Clean Office Boosts Productivity",
-    excerpt:
-      "See how a tidy, sanitized workspace helps teams stay focused, healthy and motivated every day.",
-    image: "/images/blog-4.webp",
-    author: { name: "Rahul Mehta", role: "Facility Manager", avatar: "/images/blog-author-1.webp" },
-  },
-];
+// Text lives in src/data/home.json under text.NewsAndArticlesSection.
+const copy = homeData.text.NewsAndArticlesSection;
+
+// Icons by the name used in src/data/home.json.
+const postsIcons = {
+  home: HomeIcon,
+  building: BuildingIcon,
+  leaf: LeafIcon,
+};
+
+// Content lives in src/data/home.json.
+const posts = homeData.news.map((item) => ({ ...item, icon: postsIcons[item.icon] }));
 
 function BlogCard({ post }) {
   const Icon = post.icon;
@@ -115,7 +78,7 @@ function BlogCard({ post }) {
             href={href}
             className="group inline-flex shrink-0 items-center gap-2 text-[14px] font-semibold text-navy transition hover:text-green 2xl:gap-3 2xl:text-[18px]"
           >
-            Read More
+            {copy.readMore}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 2xl:h-5 2xl:w-5" />
           </Link>
         </div>
@@ -142,14 +105,12 @@ export default function BlogSection() {
       <div className="container-x relative">
         <ScrollReveal variant="fade-up" duration={700}>
           <div className="mx-auto max-w-[1180px] text-center">
-            <SectionTag center>News &amp; Articles</SectionTag>
+            <SectionTag center>{copy.newsArticles}</SectionTag>
             <h2 className="mt-4 text-[clamp(30px,3.65vw,70px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-navy 2xl:mt-5">
-              Discover Our Latest <span className="text-green">Blog Updates</span>
+              {copy.discoverOurLatest + " "}<span className="text-green">{copy.blogUpdates}</span>
             </h2>
             <p className="mx-auto mt-4 max-w-[900px] text-balance text-[15px] leading-[1.6] text-body sm:text-base xl:text-[18px] 2xl:text-[21px]">
-              Stay informed with helpful cleaning tips, expert advice, and the
-              latest news from Avicleaner. Explore our articles to keep your
-              spaces cleaner, healthier and happier.
+              {copy.stayInformedWithHelpfulCleaning}
             </p>
           </div>
         </ScrollReveal>
@@ -186,7 +147,7 @@ export default function BlogSection() {
               href="/blog"
               className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
             >
-              View All Articles
+              {copy.viewAllArticles}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

@@ -3,6 +3,10 @@ import { ArrowRight } from "lucide-react";
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { EyeIcon } from "./missionVisionIcons";
+import missionVisionData from "@/data/mission-vision.json";
+
+// Text lives in src/data/mission-vision.json under text.OurVision.
+const copy = missionVisionData.text.OurVision;
 
 function FocusCard({ className = "" }: { className?: string }) {
   return (
@@ -13,12 +17,12 @@ function FocusCard({ className = "" }: { className?: string }) {
         <EyeIcon className="h-1/2 w-1/2" />
       </span>
       <h3 className="mt-4 text-[22px] font-bold leading-tight sm:mt-[clamp(10px,2.2cqw,18px)] sm:text-[clamp(20px,3.75cqw,30px)]">
-        Our Focus
+        {copy.ourFocus}
       </h3>
       <p className="mt-2 text-[15px] leading-[1.55] text-white/90 sm:mt-[clamp(8px,1.4cqw,12px)] sm:text-[clamp(14px,3cqw,24px)] sm:leading-[1.42]">
-        A cleaner, greener <br className="hidden sm:block" />
-        and brighter future <br className="hidden sm:block" />
-        for everyone.
+        {copy.aCleanerGreener + " "}<br className="hidden sm:block" />
+        {copy.andBrighterFuture + " "}<br className="hidden sm:block" />
+        {copy.forEveryone}
       </p>
     </div>
   );
@@ -49,8 +53,8 @@ export default function OurVision() {
               <div className="sm:hidden">
                 <PhotoSlot
                   src="/images/mission/vision-window.webp"
-                  alt="Yellow-gloved hand cleaning a window with a squeegee"
-                  label="mission/vision-window.jpg"
+                  alt={copy.yellowGlovedHandCleaningA}
+                  label={copy.missionVisionWindowJpg}
                   className="relative aspect-[4/3] w-full rounded-[20px]"
                 />
                 <FocusCard className="relative -mt-16 w-[88%]" />
@@ -60,8 +64,8 @@ export default function OurVision() {
               <div className="relative hidden aspect-[802/641] w-full sm:block">
                 <PhotoSlot
                   src="/images/mission/vision-window.webp"
-                  alt="Yellow-gloved hand cleaning a window with a squeegee"
-                  label="mission/vision-window.jpg"
+                  alt={copy.yellowGlovedHandCleaningA}
+                  label={copy.missionVisionWindowJpg}
                   className="absolute right-0 top-0 h-[91.2%] w-[92.9%] rounded-[clamp(16px,2.7cqw,22px)]"
                 />
                 <FocusCard className="absolute left-0 top-[43.4%] w-[50.1%]" />
@@ -70,32 +74,32 @@ export default function OurVision() {
 
             {/* ---------- Text ---------- */}
             <div className="order-1 min-w-0 max-w-[760px] lg:order-2">
-              <SectionEyebrow>Our Vision</SectionEyebrow>
+              <SectionEyebrow>{copy.ourVision}</SectionEyebrow>
               <h2 className="mt-4 text-[clamp(32px,3.95vw,76px)] font-bold leading-[1.08] tracking-[-0.02em] text-[#101418] 2xl:mt-4">
-                Cleaner Spaces
+                {copy.cleanerSpaces}
                 <br />
-                Happier Lives
+                {copy.happierLives}
               </h2>
               <p className="mt-5 text-[15px] leading-[1.7] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:mt-6 2xl:text-[20px] 3xl:text-[23.5px] 3xl:leading-[1.64]">
-                Our vision is to be a trusted and recognized leader in the{" "}
+                {copy.ourVisionIsToBe}{" "}
                 <br className="hidden 3xl:block" />
-                cleaning industry, known{" "}
-                <strong className="font-medium text-[#1d2433]">for innovation, sustainability,</strong>{" "}
+                {copy.cleaningIndustryKnown}{" "}
+                <strong className="font-medium text-[#1d2433]">{copy.forInnovationSustainability}</strong>{" "}
                 <br className="hidden 3xl:block" />
-                and exceptional service. We aim to build a cleaner and{" "}
+                {copy.andExceptionalServiceWeAim}{" "}
                 <br className="hidden 3xl:block" />
-                greener future by setting higher standards in cleanliness,{" "}
+                {copy.greenerFutureBySettingHigher}{" "}
                 <br className="hidden 3xl:block" />
-                customer{" "}
+                {copy.customer}{" "}
                 <strong className="font-medium text-[#1d2433]">
-                  satisfaction, and environmental responsibility.
+                  {copy.satisfactionAndEnvironmentalResponsibili}
                 </strong>
               </p>
               <Link
                 href="/about-us"
                 className="btn-solid btn-yellow group mt-8 inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] sm:text-base 2xl:mt-9 2xl:px-10 2xl:py-[18px] 2xl:text-[19px] 3xl:h-[82px] 3xl:w-[268px] 3xl:justify-center 3xl:text-[22px]"
               >
-                About Us
+                {copy.aboutUs}
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
             </div>

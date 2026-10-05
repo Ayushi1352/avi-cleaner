@@ -5,16 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, X } from "lucide-react";
 import Logo from "./Logo";
+import siteData from "@/data/site.json";
 
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/about-us" },
-  { name: "Services", href: "/services" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact Us", href: "/contact-us" },
-];
+// Text lives in src/data/site.json under text.Navbar.
+const copy = siteData.text.Navbar;
+
+// Content lives in src/data/site.json.
+const navLinks = siteData.navLinks;
 
 // A link is active on its own page and on its sub-pages (e.g. /blog/some-post).
 const isActive = (href, pathname) =>
@@ -53,7 +50,7 @@ export default function Navbar() {
       <div className="container-x">
         <div className="flex h-[72px] items-center justify-between gap-4 sm:h-[80px] lg:h-[84px] xl:h-[96px] 2xl:h-[112px] 3xl:h-[138px]">
           {/* Logo */}
-          <Link href="/" aria-label="Avicleaner home" className="shrink-0">
+          <Link href="/" aria-label={copy.avicleanerHome} className="shrink-0">
             <Logo className="h-[46px] w-[150px] sm:h-[54px] sm:w-[180px] lg:h-[52px] lg:w-[170px] xl:h-[64px] xl:w-[230px] 2xl:h-[80px] 2xl:w-[310px] 3xl:h-[100px] 3xl:w-[410px]" />
           </Link>
 
@@ -80,7 +77,7 @@ export default function Navbar() {
             href="/book-now"
             className="btn-solid group hidden shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-5 py-2.5 text-[15px] font-semibold [--btn:#3f7f2c] lg:inline-flex xl:px-7 xl:py-3 xl:text-[17px] 2xl:px-9 2xl:py-4 2xl:text-[19px] 3xl:px-10 3xl:py-[22px] 3xl:text-[21px]"
           >
-            Book Now
+            {copy.bookNow}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 2xl:h-5 2xl:w-5" strokeWidth={2.4} />
           </Link>
 
@@ -91,13 +88,13 @@ export default function Navbar() {
                 href="/book-now"
                 className="btn-solid hidden items-center gap-2 rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-5 py-2.5 text-sm font-semibold [--btn:#3f7f2c] sm:inline-flex"
               >
-                Book Now <ArrowRight className="h-4 w-4" />
+                {copy.bookNow + " "}<ArrowRight className="h-4 w-4" />
               </Link>
             )}
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              aria-label="Toggle menu"
+              aria-label={copy.toggleMenu}
               aria-expanded={open}
               className="rounded-xl p-2 text-navy transition hover:bg-mint"
             >
@@ -140,7 +137,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="btn-solid flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-6 py-3.5 text-base font-semibold text-white shadow-md shadow-green/20 [--btn:#3f7f2c]"
               >
-                Book Now <ArrowRight className="h-4 w-4" />
+                {copy.bookNow + " "}<ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>

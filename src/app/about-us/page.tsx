@@ -2,19 +2,19 @@ import AboutHero from "./AboutHero";
 import AboutSection from "@/components/AboutSection";
 import CtaBannerSection from "@/components/CtaBannerSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import aboutData from "@/data/about.json";
 
-export const metadata = {
-  title: "About Us | Avicleaner",
-  description:
-    "Learn about Avicleaner: professional, eco-friendly cleaning services for homes, offices and commercial spaces.",
-};
+// Text lives in src/data/about.json under text.Page.
+const copy = aboutData.text.Page;
+
+export const metadata = aboutData.meta.Page;
 
 export default function AboutUsPage() {
   return (
     <main className="grow">
       <AboutHero />
       <AboutSection showButton={false} />
-      <CtaBannerSection eyebrow="Let's Make It Cleaner" />
+      <CtaBannerSection eyebrow={copy.letsMakeItCleaner} />
       <WhyChooseUsSection />
     </main>
   );

@@ -2,6 +2,10 @@ import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { UsersIcon } from "@/components/icons";
 import { BriefcaseSolidIcon, CapSolidIcon, GearSolidIcon, RoundQuoteIcon } from "@/components/solidIcons";
+import teamData from "@/data/team.json";
+
+// Text lives in src/data/team.json under text.MemberJourney.
+const copy = teamData.text.MemberJourney;
 
 const timelineIcons: Record<string, any> = {
   briefcase: BriefcaseSolidIcon,
@@ -18,16 +22,14 @@ export default function MemberJourney({ member }: { member: any }) {
         {/* Header */}
         <div className="mx-auto max-w-[1080px] text-center">
           <SectionEyebrow center compact className="3xl:[&>span:nth-child(2)]:text-[25px] 3xl:[&>span:first-child]:w-[54px] 3xl:[&>span:last-child]:w-[54px]">
-            Work Experience
+            {copy.workExperience}
           </SectionEyebrow>
           <h2 className="mt-3 text-[clamp(28px,3.45vw,66px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-[#0b1a12] 2xl:mt-4">
-            My Professional Journey
+            {copy.myProfessionalJourney}
           </h2>
           <p className="mx-auto mt-3 text-[15px] leading-[1.5] text-[#6a6f7a] sm:text-base xl:text-[18px] 2xl:text-[21px] 3xl:text-[24px]">
-            Over the years, I have gained valuable experience in the cleaning
-            and facility management <br className="hidden xl:block" />
-            industry, working with diverse clients and delivering high-quality
-            results.
+            {copy.overTheYearsIHave + " "}<br className="hidden xl:block" />
+            {copy.industryWorkingWithDiverseClients}
           </p>
         </div>
 

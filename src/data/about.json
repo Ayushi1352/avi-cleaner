@@ -1,0 +1,16 @@
+{
+  "text": {
+    "AboutHero": {
+      "aboutUs": "About Us"
+    },
+    "Page": {
+      "letsMakeItCleaner": "Let's Make It Cleaner"
+    }
+  },
+  "meta": {
+    "Page": {
+      "title": "About Us | Avicleaner",
+      "description": "Learn about Avicleaner: professional, eco-friendly cleaning services for homes, offices and commercial spaces."
+    }
+  }
+}

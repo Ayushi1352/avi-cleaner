@@ -2,6 +2,7 @@ import { Plus_Jakarta_Sans, Poppins, Caveat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
+import siteData from "@/data/site.json";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -24,11 +25,7 @@ const caveat = Caveat({
   display: "swap",
 });
 
-export const metadata = {
-  title: "Avicleaner - Professional Cleaning Services for a Healthier Tomorrow",
-  description:
-    "We provide reliable and high-quality cleaning services for homes, offices, and commercial spaces. Enjoy a cleaner, fresher and healthier environment with Avicleaner.",
-};
+export const metadata = siteData.meta.Layout;
 
 export default function RootLayout({ children }) {
   return (

@@ -3,13 +3,21 @@ import { CalendarDays, Folder, User } from "lucide-react";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon } from "@/components/socialIcons";
 import { RoundQuoteIcon } from "@/components/solidIcons";
 import { popularCategories, recentPosts, relatedTags, sidebarTags } from "@/app/blog/blogPostsData";
+import blogData from "@/data/blog.json";
 
-const socials = [
-  { name: "LinkedIn", icon: LinkedinIcon },
-  { name: "Instagram", icon: InstagramIcon },
-  { name: "Facebook", icon: FacebookIcon },
-  { name: "X", icon: XIcon },
-];
+// Text lives in src/data/blog.json under text.BlogArticle.
+const copy = blogData.text.BlogArticle;
+
+// Icons by the name used in src/data/blog.json.
+const socialsIcons = {
+  linkedin: LinkedinIcon,
+  instagram: InstagramIcon,
+  facebook: FacebookIcon,
+  x: XIcon,
+};
+
+// Content lives in src/data/blog.json.
+const socials = blogData.articleSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
 
 const BODY = "text-[15px] leading-[1.6] text-[#5a6172] sm:text-base xl:text-[17px] 2xl:text-[20px] 3xl:text-[25.5px] 3xl:leading-[1.62]";
 const YELLOW = "btn-solid btn-yellow [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd96a]";
@@ -84,7 +92,7 @@ export default function BlogArticle({ post }: { post: any }) {
               </span>
               <span className="inline-flex items-center gap-2 2xl:gap-3 3xl:gap-[18px]">
                 <User className="h-[1.15em] w-[1.15em] text-[#f6c84a]" fill="currentColor" strokeWidth={0} />
-                By : {typeof post.author === "object" ? post.author.name : (post.author || "Admin")}
+                {copy.by + " "}{typeof post.author === "object" ? post.author.name : (post.author || "Admin")}
               </span>
               <span className="inline-flex items-center gap-2 2xl:gap-3 3xl:gap-[18px]">
                 <Folder className="h-[1.15em] w-[1.15em] text-[#f6c84a]" fill="currentColor" strokeWidth={0} />
@@ -124,7 +132,7 @@ export default function BlogArticle({ post }: { post: any }) {
 
             <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between 2xl:mt-9">
               <div className="min-w-0">
-                <h3 className="text-[17px] font-bold text-[#0b1a12] xl:text-[19px] 2xl:text-[23px] 3xl:text-[28px]">Related Tags</h3>
+                <h3 className="text-[17px] font-bold text-[#0b1a12] xl:text-[19px] 2xl:text-[23px] 3xl:text-[28px]">{copy.relatedTags}</h3>
                 <ul className="mt-3 flex flex-wrap gap-2.5 2xl:mt-4 2xl:gap-3.5 3xl:gap-[20px]">
                   {relatedTags.map((t) => (
                     <li key={t}>
@@ -134,7 +142,7 @@ export default function BlogArticle({ post }: { post: any }) {
                 </ul>
               </div>
               <div className="shrink-0 sm:text-right">
-                <h3 className="text-[17px] font-bold text-[#0b1a12] xl:text-[19px] 2xl:text-[23px] 3xl:pr-[20px] 3xl:text-[28px]">Social Share</h3>
+                <h3 className="text-[17px] font-bold text-[#0b1a12] xl:text-[19px] 2xl:text-[23px] 3xl:pr-[20px] 3xl:text-[28px]">{copy.socialShare}</h3>
                 <div className="mt-3 2xl:mt-4">
                   <SocialRow />
                 </div>
@@ -144,7 +152,7 @@ export default function BlogArticle({ post }: { post: any }) {
 
           {/* ---------- Sidebar ---------- */}
           <aside className="grid min-w-0 grid-cols-1 content-start gap-6 md:grid-cols-2 lg:grid-cols-1 2xl:gap-8 3xl:gap-[44px]">
-            <SideCard title="Popular Category">
+            <SideCard title={copy.popularCategory}>
               <ul>
                 {popularCategories.map((c) => (
                   <li key={c.name} className="border-b border-[#e6ebe9] last:border-b-0">
@@ -160,7 +168,7 @@ export default function BlogArticle({ post }: { post: any }) {
               </ul>
             </SideCard>
 
-            <SideCard title="Recent Posts">
+            <SideCard title={copy.recentPosts}>
               <ul>
                 {recentPosts.slice(0, 3).map((p) => (
                   <li key={p.slug} className="border-b border-[#e6ebe9] py-4 last:border-b-0 last:pb-0 2xl:py-5 3xl:py-[26px]">
@@ -187,7 +195,7 @@ export default function BlogArticle({ post }: { post: any }) {
               </ul>
             </SideCard>
 
-            <SideCard title="Tags">
+            <SideCard title={copy.tags}>
               <ul className="mt-5 flex flex-wrap gap-2.5 2xl:mt-7 2xl:gap-3.5 3xl:mt-[34px] 3xl:gap-x-[14px] 3xl:gap-y-[20px]">
                 {sidebarTags.map((t) => (
                   <li key={t}>
@@ -197,7 +205,7 @@ export default function BlogArticle({ post }: { post: any }) {
               </ul>
             </SideCard>
 
-            <SideCard title="Follow Us">
+            <SideCard title={copy.followUs}>
               <div className="mt-5 2xl:mt-7 3xl:mt-[36px] 3xl:pl-[34px]">
                 <SocialRow big />
               </div>

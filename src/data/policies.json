@@ -1,0 +1,193 @@
+{
+  "privacy": [
+    {
+      "title": "Information We Collect",
+      "text": "We may collect personal information such as your name, phone number, email address, service address, and any other details you provide when you contact us or book our services."
+    },
+    {
+      "title": "How We Use Your Information",
+      "text": "We use your information to provide and improve our services, respond to your inquiries, process bookings, send service updates, and communicate special offers or newsletters (if you have subscribed)."
+    },
+    {
+      "title": "Information Sharing",
+      "text": "We do not sell, rent, or trade your personal information. We may share your information only with trusted service providers who help us operate our website, conduct business, or provide services — and they are required to keep your information confidential."
+    },
+    {
+      "title": "Data Security",
+      "text": "We implement appropriate technical and organizational measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction."
+    },
+    {
+      "title": "Cookies",
+      "text": "Our website may use cookies to enhance your browsing experience. You can choose to disable cookies through your browser settings, but some features may not function properly."
+    },
+    {
+      "title": "Your Rights",
+      "text": "You have the right to access, update, or delete your personal information. If you have any questions or requests regarding your data, please contact us."
+    },
+    {
+      "title": "Changes to This Policy",
+      "text": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date."
+    },
+    {
+      "title": "Contact Us",
+      "text": "If you have any questions about this Privacy Policy, please contact us at:",
+      "contact": true
+    }
+  ],
+  "refund": [
+    {
+      "title": "Cancellation by You",
+      "text": "You may cancel a booking at any time by contacting us by phone or email. The notice you give determines whether a fee applies:",
+      "points": [
+        "More than 24 hours before the scheduled time: free cancellation.",
+        "Less than 24 hours before the scheduled time: a late cancellation fee of up to 50% of the service price may apply.",
+        "After our team has arrived, or if we cannot access the property: the full service price may be charged."
+      ]
+    },
+    {
+      "title": "Rescheduling",
+      "text": "You can reschedule your booking free of charge with at least 24 hours' notice, subject to availability. Rescheduling requests made with less than 24 hours' notice may be treated as a late cancellation."
+    },
+    {
+      "title": "Cancellation by Avicleaner",
+      "text": "On rare occasions we may need to cancel or reschedule a booking due to severe weather, staff illness, safety concerns, or other circumstances beyond our control. If this happens, we will notify you as early as possible and offer a new time or a full refund of any amount already paid."
+    },
+    {
+      "title": "Satisfaction Guarantee & Re-Clean",
+      "text": "If you are not happy with the quality of our service, please contact us within 24 hours of completion with details of the issue. We will return and re-clean the affected areas at no additional cost before any refund is considered."
+    },
+    {
+      "title": "Refund Eligibility",
+      "text": "A full or partial refund may be issued in the following situations:",
+      "points": [
+        "You cancelled a prepaid booking within the free cancellation period.",
+        "We cancelled the booking and could not offer a suitable alternative time.",
+        "The issue could not be resolved after a re-clean.",
+        "You were charged incorrectly or more than once."
+      ]
+    },
+    {
+      "title": "Non-Refundable Situations",
+      "text": "Refunds are generally not provided in the following situations:",
+      "points": [
+        "The complaint was reported more than 24 hours after the service was completed.",
+        "Our team was not given access to the property at the scheduled time.",
+        "The service was completed as described at the time of booking.",
+        "The issue was caused by pre-existing conditions that cleaning cannot fix."
+      ]
+    },
+    {
+      "title": "Refund Process & Timeline",
+      "text": "Approved refunds are issued to the original payment method. Please allow 5 to 7 business days for the amount to appear in your account, depending on your bank or card provider."
+    },
+    {
+      "title": "Changes to This Policy",
+      "text": "We may update this Refund & Cancellation Policy from time to time. Any changes will be posted on this page with an updated effective date."
+    },
+    {
+      "title": "Contact Us",
+      "text": "To cancel or reschedule a booking, or to request a refund, please contact us at:",
+      "contact": true
+    }
+  ],
+  "terms": [
+    {
+      "title": "Acceptance of Terms",
+      "text": "By accessing our website or booking a service with Avicleaner, you agree to be bound by these Terms & Conditions. If you do not agree with any part of them, please do not use our website or services."
+    },
+    {
+      "title": "Our Services",
+      "text": "We provide residential and commercial cleaning services as described on our website. The exact scope of each job is confirmed at the time of booking, and any work outside that scope may be quoted and charged separately."
+    },
+    {
+      "title": "Bookings & Scheduling",
+      "text": "Bookings are subject to availability and are confirmed only once you receive a confirmation from us. We aim to arrive within the agreed time window, but arrival times may vary slightly due to traffic, weather, or earlier appointments."
+    },
+    {
+      "title": "Pricing & Payment",
+      "text": "Prices are based on the details you provide when booking. If the property size or condition differs significantly from what was described, the final price may be adjusted with your approval before work begins.",
+      "points": [
+        "Payment is due on completion of the service unless agreed otherwise in writing.",
+        "Quoted prices include standard cleaning supplies and equipment.",
+        "Overdue payments may result in suspension of future bookings."
+      ]
+    },
+    {
+      "title": "Customer Responsibilities",
+      "text": "To help us deliver the best possible result, we ask that you:",
+      "points": [
+        "Provide safe access to the property, along with working water and electricity.",
+        "Secure or put away valuables, cash, and fragile or sentimental items.",
+        "Keep pets safely secured for the duration of the service.",
+        "Tell us in advance about any hazards, delicate surfaces, or special instructions."
+      ]
+    },
+    {
+      "title": "Cancellations & Rescheduling",
+      "text": "Cancellations, rescheduling, and refunds are handled according to our Refund & Cancellation Policy, which forms part of these Terms & Conditions."
+    },
+    {
+      "title": "Satisfaction Guarantee",
+      "text": "If you are not satisfied with any part of our service, please let us know within 24 hours of completion. We will return and re-clean the affected areas at no additional cost."
+    },
+    {
+      "title": "Damage & Liability",
+      "text": "Our team takes great care in every property. Any damage must be reported within 24 hours of the service so we can investigate. We are not liable for pre-existing damage, normal wear and tear, items that were not properly secured, or losses resulting from circumstances beyond our reasonable control."
+    },
+    {
+      "title": "Website Use & Intellectual Property",
+      "text": "All content on this website, including text, images, logos, and design, belongs to Avicleaner and may not be copied, reproduced, or used without our written permission. You agree not to misuse the website or attempt to disrupt its operation."
+    },
+    {
+      "title": "Changes to These Terms",
+      "text": "We may update these Terms & Conditions from time to time. Any changes will be posted on this page with an updated effective date, and continued use of our services means you accept the revised terms."
+    },
+    {
+      "title": "Contact Us",
+      "text": "If you have any questions about these Terms & Conditions, please contact us at:",
+      "contact": true
+    }
+  ],
+  "text": {
+    "PrivacyContent": {
+      "privacyPolicy": "Privacy Policy",
+      "weValue": "We Value",
+      "yourPrivacy": "Your Privacy",
+      "atAvicleanerWeRespectYour": "At Avicleaner, we respect your privacy and are committed to protecting your personal information.",
+      "thisPrivacyPolicyExplainsHow": "This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit",
+      "ourWebsiteOrUseOur": "our website or use our cleaning services.",
+      "xyzAvicleanerCom": "xyz@avicleaner.com",
+      "text123MainStreetSeattleWa": "123 Main Street, Seattle, WA 98101, USA"
+    },
+    "PrivacyPolicyPage": {
+      "privacyPolicy": "Privacy Policy"
+    },
+    "RefundCancellationPolicyPage": {
+      "refundCancellationPolicy": "Refund & Cancellation Policy",
+      "refundCancellation": "Refund & Cancellation",
+      "fairSimple": "Fair & Simple",
+      "refundPolicy": "Refund Policy",
+      "weUnderstandThatPlansCan": "We understand that plans can change. This Refund & Cancellation Policy explains how you can cancel or reschedule a booking, when fees may apply, and how refunds are handled for our cleaning services."
+    },
+    "TermsAndConditionsPage": {
+      "termsConditions": "Terms & Conditions",
+      "termsOf": "Terms of",
+      "ourService": "Our Service",
+      "pleaseReadTheseTermsConditions": "Please read these Terms & Conditions carefully before using our website or booking a cleaning service. They explain the rules that apply to our services, along with your rights and responsibilities as an Avicleaner customer."
+    }
+  },
+  "meta": {
+    "PrivacyPolicyPage": {
+      "title": "Privacy Policy | Avicleaner",
+      "description": "How Avicleaner collects, uses, shares and protects your personal information."
+    },
+    "RefundCancellationPolicyPage": {
+      "title": "Refund & Cancellation Policy | Avicleaner",
+      "description": "How cancellations, rescheduling and refunds work for Avicleaner cleaning services."
+    },
+    "TermsAndConditionsPage": {
+      "title": "Terms & Conditions | Avicleaner",
+      "description": "The terms that apply when you use the Avicleaner website or book our cleaning services."
+    }
+  }
+}

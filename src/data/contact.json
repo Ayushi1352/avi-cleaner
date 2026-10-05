@@ -1,0 +1,112 @@
+{
+  "details": [
+    {
+      "icon": "map-pin",
+      "title": "Our Location",
+      "lines": [
+        "123 Main Street, Seattle,",
+        "WA 98101, USA"
+      ]
+    },
+    {
+      "icon": "phone",
+      "title": "Call Us",
+      "lines": [
+        "+1 (202) 555-0147"
+      ]
+    },
+    {
+      "icon": "mail",
+      "title": "Email Us",
+      "lines": [
+        "xyz@avicleaner.com"
+      ]
+    }
+  ],
+  "promises": [
+    {
+      "icon": "shield-check",
+      "title": "Quick Response",
+      "text": "We reply within 24 hours"
+    },
+    {
+      "icon": "users",
+      "title": "Friendly Support",
+      "text": "Our team is always here"
+    },
+    {
+      "icon": "thumb-up",
+      "title": "Reliable Service",
+      "text": "Your satisfaction is our priority"
+    }
+  ],
+  "cards": [
+    {
+      "icon": "map-pin",
+      "title": "Our Location",
+      "lines": [
+        "123 Main Street, Seattle,",
+        "WA 98101, USA"
+      ],
+      "action": "View on Map",
+      "href": "#map",
+      "actionIcon": "map"
+    },
+    {
+      "icon": "phone-call",
+      "title": "Phone Number",
+      "lines": [
+        "+1 (202) 555-0147"
+      ],
+      "action": "Call Us Now",
+      "href": "tel:+12025550147",
+      "actionIcon": "phone"
+    },
+    {
+      "icon": "mail",
+      "title": "Email Address",
+      "lines": [
+        "xyz@avicleaner.com"
+      ],
+      "action": "Send an Email",
+      "href": "mailto:xyz@avicleaner.com",
+      "actionIcon": "mail"
+    }
+  ],
+  "text": {
+    "ContactForm": {
+      "getInTouch": "Get in Touch",
+      "sendUsAMessage": "Send us a Message",
+      "haveQuestionsOrNeedA": "Have questions or need a cleaning service? Fill out the form and our team will get back to you as soon as possible.",
+      "yourName": "Your Name",
+      "phoneNumber": "Phone Number",
+      "emailAddress": "Email Address",
+      "subject": "Subject",
+      "yourMessage": "Your Message",
+      "submitNow": "Submit Now",
+      "thankYouYourMessageHas": "Thank you! Your message has been sent. Our team will get back to you shortly.",
+      "wereHere": "We’re Here",
+      "toHelp": "to Help!",
+      "smilingAvicleanerCleanerInA": "Smiling Avicleaner cleaner in a green uniform"
+    },
+    "ContactInfo": {
+      "contactInfo": "Contact Info",
+      "ourContactInformation": "Our Contact Information",
+      "wereHereToHelpGet": "We’re here to help! Get in touch with us for any questions, bookings or",
+      "customCleaningSolutionsOurFriendly": "custom cleaning solutions. Our friendly team is always ready to assist you."
+    },
+    "ContactMap": {
+      "ourLocationOnTheMap": "Our location on the map",
+      "avicleanerLocationOnGoogleMaps": "Avicleaner location on Google Maps"
+    },
+    "Page": {
+      "contactUs": "Contact Us"
+    }
+  },
+  "meta": {
+    "Page": {
+      "title": "Contact Us | Avicleaner",
+      "description": "Get in touch with Avicleaner for questions, bookings or custom cleaning solutions. Call, email or send us a message and our team will reply soon."
+    }
+  }
+}

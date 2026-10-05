@@ -5,6 +5,10 @@ import CleaningChecklist from "./CleaningChecklist";
 import WhyChooseService from "./WhyChooseService";
 import PartnerCtaSection from "@/components/PartnerCtaSection";
 import services, { getServiceBySlug } from "@/app/services/servicesData";
+import servicesJson from "@/data/services.json";
+
+// Text lives in src/data/services.json under text.DetailPage.
+const copy = servicesJson.text.DetailPage;
 
 // Pre-build one detail page per service.
 export function generateStaticParams() {
@@ -50,7 +54,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         eyebrow={service.ctaEyebrow}
         title={`Book Your ${service.title} Today!`}
         text={service.ctaText}
-        buttonLabel="Get a Free Quote"
+        buttonLabel={copy.getAFreeQuote}
         buttonHref="/book-now"
         image="/images/services/detail-cta.webp"
         showLeaf={false}

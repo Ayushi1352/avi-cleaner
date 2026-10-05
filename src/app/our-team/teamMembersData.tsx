@@ -1,3 +1,5 @@
+import teamData from "@/data/team.json";
+
 // Team members for the Our Team page and the Team Detail page.
 // Add or remove people here; pagination (8 per page) and detail pages update automatically.
 // Photos go in /public/images/team/ with the file name used below.
@@ -29,87 +31,8 @@ export interface Member {
   };
 }
 
-const members: Member[] = [
-  {
-    name: "Priya Sharma",
-    role: "Operations Manager",
-    photo: "/images/team/team-1.webp",
-    detail: {
-      photo: "/images/team/detail/priya-sharma.webp",
-      journeyPhoto: "/images/team/detail/priya-sharma-2.webp",
-      intro:
-        "Priya ensures that every cleaning project is completed with perfection. With a focus on client satisfaction and team coordination, she keeps our operations running smoothly and delivers high-quality service every time.",
-      email: "priya@avicleaner.com",
-      phone: "+1 (202) 555-0147",
-      location: "123 Main Street, Seattle, WA 98101, USA",
-      photoQuote: "Clean spaces create happier lives.",
-      strengths: ["Reliable Leadership", "Team Management", "Excellent Communication", "Passionate About Clean Spaces"],
-      about: [
-        "Priya Sharma is an experienced Operations Manager with a strong background in facility management and customer service. She is passionate about creating clean, healthy, and comfortable environments for homes and businesses. Her attention to detail, leadership skills, and dedication to excellence make her a valuable part of the Avicleaner team.",
-        "Priya believes that a clean space can improve lives, and she works closely with our team to ensure that every client receives the highest standard of service.",
-      ],
-      quote: "Leadership is not about being in charge, it’s about taking care of your team and your clients.",
-      responsibilities: [
-        "Plan and manage daily cleaning operations across homes and offices.",
-        "Coordinate schedules, teams and resources for every project.",
-        "Run quality checks so every job meets Avicleaner standards.",
-        "Handle client communication, feedback and special requests.",
-        "Train new team members on safe, eco-friendly cleaning practices.",
-      ],
-      journeyQuote: "Every space I clean is a step towards a healthier and happier tomorrow.",
-      stats: [
-        { value: "5+", label: "Years of Experience" },
-        { value: "200+", label: "Happy Clients" },
-        { value: "100%", label: "Dedication" },
-      ],
-      experience: [
-        {
-          title: "Operations Manager",
-          company: "Avicleaner Services | New Delhi",
-          years: "2022 - Present",
-          text: "Currently managing daily operations, client coordination, and quality control to ensure the highest standards in cleaning services.",
-          icon: "briefcase",
-        },
-        {
-          title: "Senior Cleaning Specialist",
-          company: "CleanHome Solutions | Gurugram",
-          years: "2020 - 2022",
-          text: "Led a team of cleaning professionals, trained new staff, and handled residential and commercial cleaning projects.",
-          icon: "team",
-        },
-        {
-          title: "Facility Management Executive",
-          company: "GreenSpaces Pvt. Ltd. | Noida",
-          years: "2018 - 2020",
-          text: "Managed facility cleaning schedules, maintained client satisfaction, and ensured safe and eco-friendly cleaning practices.",
-          icon: "gear",
-        },
-        {
-          title: "Cleaning Assistant",
-          company: "Bright & Clean Services | Delhi",
-          years: "2017 - 2018",
-          text: "Started my career in the cleaning industry, gaining hands-on experience in residential and office cleaning services.",
-          icon: "cap",
-        },
-      ],
-    },
-  },
-  { name: "Rahul Verma", role: "Cleaning Specialist", photo: "/images/team/team-2.webp" },
-  { name: "Neha Singh", role: "Cleaning Specialist", photo: "/images/team/team-3.webp" },
-  { name: "Amit Kumar", role: "Customer Relations Manager", photo: "/images/team/team-4.webp" },
-  { name: "Vikram Patel", role: "Team Leader", photo: "/images/team/team-5.webp" },
-  { name: "Sneha Gupta", role: "Housekeeping Expert", photo: "/images/team/team-6.webp" },
-  { name: "Arjun Mehta", role: "Deep Cleaning Specialist", photo: "/images/team/team-7.webp" },
-  { name: "Kavya Joshi", role: "Quality Supervisor", photo: "/images/team/team-8.webp" },
-  { name: "Rohan Das", role: "Window Cleaning Expert", photo: "/images/team/team-9.webp" },
-  { name: "Ananya Rao", role: "Office Cleaning Specialist", photo: "/images/team/team-10.webp" },
-  { name: "Karan Malhotra", role: "Carpet Care Specialist", photo: "/images/team/team-11.webp" },
-  { name: "Pooja Nair", role: "Kitchen Hygiene Expert", photo: "/images/team/team-12.webp" },
-  { name: "Siddharth Jain", role: "Move In/Out Specialist", photo: "/images/team/team-13.webp" },
-  { name: "Meera Iyer", role: "Eco Cleaning Advisor", photo: "/images/team/team-14.webp" },
-  { name: "Aditya Kapoor", role: "Field Supervisor", photo: "/images/team/team-15.webp" },
-  { name: "Riya Chawla", role: "Bathroom Sanitization Expert", photo: "/images/team/team-16.webp" },
-];
+// Content lives in src/data/team.json.
+const members: Member[] = teamData.members.map((item) => ({ ...item }));
 
 export const slugify = (name: string) =>
   name
@@ -140,27 +63,23 @@ export function getMemberDetail(member) {
       d.intro ||
       `${first} makes sure every cleaning job is done with care and attention to detail. As our ${member.role}, ${first} helps us deliver fresh, healthy and spotless spaces for every client.`,
     email: d.email || `${first.toLowerCase()}@avicleaner.com`,
-    phone: d.phone || "+1 (202) 555-0147",
-    location: d.location || "123 Main Street, Seattle, WA 98101, USA",
-    photoQuote: d.photoQuote || "Clean spaces create happier lives.",
-    strengths: d.strengths || ["Reliable Service", "Great Teamwork", "Attention to Detail", "Passionate About Clean Spaces"],
+    phone: d.phone || teamData.memberDefaults.phone,
+    location: d.location || teamData.memberDefaults.location,
+    photoQuote: d.photoQuote || teamData.memberDefaults.photoQuote,
+    strengths: d.strengths || teamData.memberDefaults.strengths,
     about: d.about || [
       `${member.name} is a dedicated ${member.role} at Avicleaner. ${first} is passionate about creating clean, healthy and comfortable environments for homes and businesses.`,
       `${first} works closely with the team to make sure every client receives the highest standard of service.`,
     ],
-    quote: d.quote || "A clean space is the first step to a happy and healthy life.",
+    quote: d.quote || teamData.memberDefaults.quote,
     responsibilities: d.responsibilities || [
       `Deliver high-quality work as our ${member.role}.`,
       "Follow safe, eco-friendly cleaning practices on every job.",
       "Check every space against the Avicleaner quality checklist.",
       "Keep clients informed and happy from start to finish.",
     ],
-    journeyQuote: d.journeyQuote || "Every space I clean is a step towards a healthier and happier tomorrow.",
-    stats: d.stats || [
-      { value: "3+", label: "Years of Experience" },
-      { value: "100+", label: "Happy Clients" },
-      { value: "100%", label: "Dedication" },
-    ],
+    journeyQuote: d.journeyQuote || teamData.memberDefaults.journeyQuote,
+    stats: d.stats || teamData.memberDefaults.stats,
     experience: d.experience || [
       {
         title: member.role,

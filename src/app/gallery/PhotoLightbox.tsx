@@ -2,6 +2,10 @@
 
 import { useEffect, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import galleryData from "@/data/gallery.json";
+
+// Text lives in src/data/gallery.json under text.PhotoLightbox.
+const copy = galleryData.text.PhotoLightbox;
 
 interface Photo {
   src: string;
@@ -45,7 +49,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Image lightbox"
+      aria-label={copy.imageLightbox}
       className="fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-4 sm:p-6 backdrop-blur-md"
       onClick={onClose}
     >
@@ -80,7 +84,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       {/* Close button */}
       <button
         onClick={onClose}
-        aria-label="Close lightbox"
+        aria-label={copy.closeLightbox}
         className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:right-6 sm:top-6 sm:h-12 sm:w-12"
       >
         <X className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.2} />
@@ -89,7 +93,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       {/* Prev button */}
       <button
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        aria-label="Previous image"
+        aria-label={copy.previousImage}
         className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:left-6 sm:h-14 sm:w-14"
       >
         <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} />
@@ -98,7 +102,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       {/* Next button */}
       <button
         onClick={(e) => { e.stopPropagation(); onNext(); }}
-        aria-label="Next image"
+        aria-label={copy.nextImage}
         className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:right-6 sm:h-14 sm:w-14"
       >
         <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} />

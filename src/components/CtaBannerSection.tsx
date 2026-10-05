@@ -4,17 +4,25 @@ import Link from "next/link";
 import ImagePlaceholder from "./ImagePlaceholder";
 import ScrollReveal from "./ScrollReveal";
 import { LeafIcon, ShieldCheckIcon, UsersIcon } from "./icons";
+import homeData from "@/data/home.json";
+
+// Text lives in src/data/home.json under text.CtaBannerSection.
+const copy = homeData.text.CtaBannerSection;
 
 // Cleaner photo, widened to the right so it fills the banner behind the badge.
 const CTA_PHOTO = "/images/cta-cleaner-wide.webp";
 // Room photo that shows faintly through the green panel.
 const CTA_ROOM = "/images/project-living.webp";
 
-const badges = [
-  { icon: LeafIcon, line1: "Eco-Friendly", line2: "Products" },
-  { icon: ShieldCheckIcon, line1: "Trusted &", line2: "Verified Team" },
-  { icon: UsersIcon, line1: "100%", line2: "Customer Satisfaction" },
-];
+// Icons by the name used in src/data/home.json.
+const badgesIcons = {
+  leaf: LeafIcon,
+  "shield-check": ShieldCheckIcon,
+  users: UsersIcon,
+};
+
+// Content lives in src/data/home.json.
+const badges = homeData.ctaBadges.map((item) => ({ ...item, icon: badgesIcons[item.icon] }));
 
 function Spark({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
   return (
@@ -36,17 +44,17 @@ function BrighterBadge({ className = "" }) {
         <Spark className="absolute -left-[12%] -top-[8%] h-[18%] w-[18%] animate-icon-twinkle" style={{ animationDelay: "1.4s" }} />
       </span>
       <span className="mt-[5%] text-[10px] font-semibold leading-[1.2] sm:text-[11px] lg:text-[clamp(11px,0.84vw,16px)]">
-        A Cleaner
+        {copy.aCleaner}
         <br />
-        Brighter
+        {copy.brighter}
         <br />
-        Tomorrow
+        {copy.tomorrow}
       </span>
     </div>
   );
 }
 
-export default function CtaBannerSection({ eyebrow = "Let's Make It Cleaner" }) {
+export default function CtaBannerSection({ eyebrow = copy.defaultEyebrow }) {
   return (
     <section className="bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="container-x">
@@ -65,7 +73,7 @@ export default function CtaBannerSection({ eyebrow = "Let's Make It Cleaner" }) 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={CTA_PHOTO}
-              alt="Avicleaner cleaner wiping a counter"
+              alt={copy.avicleanerCleanerWipingACounter}
               loading="lazy"
               className="absolute bottom-0 right-0 h-[104%] w-auto max-w-none! translate-x-[14%] xl:translate-x-[8%] [mask-image:linear-gradient(to_right,transparent,#000_14%)]"
             />
@@ -94,20 +102,19 @@ export default function CtaBannerSection({ eyebrow = "Let's Make It Cleaner" }) 
                 </div>
               )}
               <h2 className="text-[clamp(30px,3.68vw,70px)] font-extrabold leading-[1.07] tracking-[-0.01em] text-white lg:whitespace-nowrap">
-                Experience the Best
+                {copy.experienceTheBest}
                 <br />
-                <span className="text-[#fcde76]">Cleaning Service</span> Today!
+                <span className="text-[#fcde76]">{copy.cleaningService}</span>{" " + copy.today}
               </h2>
               <p className="mt-4 text-[15px] leading-[1.5] text-white/95 lg:mt-[clamp(6px,0.5vw,10px)] lg:text-[clamp(15px,1.08vw,20.5px)]">
-                A cleaner space leads to a healthier, happier you. Book our
-                professional <br className="hidden xl:block" />
-                cleaning service now and enjoy a fresh, spotless environment.
+                {copy.aCleanerSpaceLeadsTo + " "}<br className="hidden xl:block" />
+                {copy.cleaningServiceNowAndEnjoy}
               </p>
               <Link
                 href="/book-now"
                 className="btn-solid btn-yellow group mt-7 inline-flex h-12 items-center gap-3 rounded-full px-7 text-[15px] font-bold [--btn:#fcde76] lg:mt-[clamp(16px,1.1vw,21px)] lg:h-[clamp(48px,3.31vw,63px)] lg:gap-[clamp(10px,0.8vw,15px)] lg:px-[clamp(24px,2.2vw,42px)] lg:text-[clamp(15px,1vw,19px)]"
               >
-                Request a Quote
+                {copy.requestAQuote}
                 <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
               </Link>
             </ScrollReveal>
@@ -144,7 +151,7 @@ export default function CtaBannerSection({ eyebrow = "Let's Make It Cleaner" }) 
           <div className="relative lg:hidden">
             <ImagePlaceholder
               src={CTA_PHOTO}
-              alt="Avicleaner cleaner wiping a counter"
+              alt={copy.avicleanerCleanerWipingACounter}
               placeholderLabel="cta-cleaner-wide.webp"
               className="aspect-[4/3] w-full sm:aspect-[16/9]"
               imgClassName="object-cover object-[48%_20%]"
@@ -154,13 +161,13 @@ export default function CtaBannerSection({ eyebrow = "Let's Make It Cleaner" }) 
 
           {/* ---------- Desktop floating decorations ---------- */}
           <p className="pointer-events-none absolute left-[53.1%] top-[9.5%] z-10 hidden -rotate-[12deg] text-center font-script text-[clamp(17px,1.58vw,30px)] font-medium leading-[0.98] text-white lg:block">
-            Cleaner
+            {copy.cleaner}
             <br />
-            Spaces
+            {copy.spaces}
             <br />
-            Happier
+            {copy.happier}
             <br />
-            Lives
+            {copy.lives}
             <svg viewBox="0 0 100 14" className="ml-[18%] mt-[0.35em] block h-[0.4em] w-[92%]" aria-hidden="true">
               <path d="M2 12C35 4 65 2 98 3" fill="none" stroke="#fcde76" strokeWidth="3" strokeLinecap="round" />
             </svg>

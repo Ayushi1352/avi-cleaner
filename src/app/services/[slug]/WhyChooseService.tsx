@@ -2,6 +2,10 @@ import { Heart } from "lucide-react";
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { LeafIcon, ShieldCheckIcon, UsersIcon } from "@/components/icons";
+import servicesData from "@/data/services.json";
+
+// Text lives in src/data/services.json under text.WhyChooseService.
+const copy = servicesData.text.WhyChooseService;
 
 /* Solid icons drawn to match the design. */
 function CoinsSolidIcon({ className = "" }: { className?: string }) {
@@ -35,14 +39,18 @@ function CalendarSolidIcon({ className = "" }: { className?: string }) {
   );
 }
 
-const items = [
-  { icon: (c: string) => <UsersIcon className={c} />, label: "Experienced & Skilled Team" },
-  { icon: (c: string) => <ShieldCheckIcon className={c} />, label: "Satisfaction Guaranteed" },
-  { icon: (c: string) => <LeafIcon className={c} />, label: "Eco-Friendly Products" },
-  { icon: (c: string) => <CoinsSolidIcon className={c} />, label: "Affordable Pricing" },
-  { icon: (c: string) => <CalendarSolidIcon className={c} />, label: "Flexible Scheduling" },
-  { icon: (c: string) => <Heart className={c} fill="currentColor" strokeWidth={0} />, label: "Healthy Living Environment" },
-];
+// Icons by the name used in src/data/services.json.
+const itemsIcons = {
+  users: (c: string) => <UsersIcon className={c} />,
+  "shield-check": (c: string) => <ShieldCheckIcon className={c} />,
+  leaf: (c: string) => <LeafIcon className={c} />,
+  coins: (c: string) => <CoinsSolidIcon className={c} />,
+  calendar: (c: string) => <CalendarSolidIcon className={c} />,
+  heart: (c: string) => <Heart className={c} fill="currentColor" strokeWidth={0} />,
+};
+
+// Content lives in src/data/services.json.
+const items = servicesData.whyChooseItems.map((item) => ({ ...item, icon: itemsIcons[item.icon] }));
 
 /** "Why Choose Us — Why Choose Our <Service>?" */
 export default function WhyChooseService({ service }: { service: any }) {
@@ -52,20 +60,19 @@ export default function WhyChooseService({ service }: { service: any }) {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,40%)_1fr] xl:gap-12 2xl:gap-[76px] 3xl:grid-cols-[573px_1fr] 3xl:pl-[12px]">
           <PhotoSlot
             src={service.whyImage || "/images/services/why-choose-service.webp"}
-            alt="Gloved hands wiping a marble counter"
+            alt={copy.glovedHandsWipingAMarble}
             label={(service.whyImage || "/images/services/why-choose-service.webp").replace("/images/", "")}
             className="relative mx-auto aspect-square w-full max-w-[573px] rounded-[18px] shadow-[0_18px_40px_-28px_rgba(11,42,28,0.45)] 2xl:rounded-[20px]"
           />
 
           <div className="min-w-0">
-            <SectionEyebrow compact className="3xl:-ml-[36px] 3xl:[&>span:first-child]:w-[46px] 3xl:[&>span:last-child]:w-[46px] 3xl:[&>span:nth-child(2)]:text-[23px]">Why Choose Us</SectionEyebrow>
+            <SectionEyebrow compact className="3xl:-ml-[36px] 3xl:[&>span:first-child]:w-[46px] 3xl:[&>span:last-child]:w-[46px] 3xl:[&>span:nth-child(2)]:text-[23px]">{copy.whyChooseUs}</SectionEyebrow>
             <h2 className="mt-3 text-[clamp(28px,2.9vw,55px)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#0b1a12] 2xl:mt-4">
-              Why Choose Our
-              <br className="hidden sm:block" /> {service.whyName || service.title} Service?
+              {copy.whyChooseOur}
+              <br className="hidden sm:block" /> {service.whyName || service.title}{" " + copy.service}
             </h2>
             <p className="mt-3 max-w-[760px] text-[15px] leading-[1.6] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:mt-4 2xl:text-[21px] 3xl:max-w-[720px] 3xl:text-[27.5px] 3xl:leading-[1.38]">
-              We are committed to delivering high-quality cleaning services with
-              reliability, safety and care.
+              {copy.weAreCommittedToDelivering}
             </p>
 
             <ul className="mt-7 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 2xl:mt-8 2xl:gap-y-[14px] 3xl:mt-[26px] 3xl:grid-cols-[622px_1fr] 3xl:gap-x-0">

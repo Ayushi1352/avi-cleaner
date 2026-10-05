@@ -6,6 +6,10 @@ import { ArrowRight, ChevronDown, Clock, MessageCircleMore } from "lucide-react"
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import { ShieldCheckIcon, ThumbUpIcon, UsersIcon } from "@/components/icons";
+import faqData from "@/data/faq.json";
+
+// Text lives in src/data/faq.json under text.FaqAccordion.
+const copy = faqData.text.FaqAccordion;
 
 // Put your own photo here to replace the stand-in.
 const PHOTO = "/images/about-supplies.webp";
@@ -49,48 +53,20 @@ function GearIcon({ className = "" }: { className?: string }) {
   );
 }
 
-const faqs = [
-  {
-    icon: BroomIcon,
-    q: "What cleaning services do you offer?",
-    a: "We offer a wide range of cleaning services including home cleaning, office cleaning, kitchen cleaning, bathroom cleaning, window cleaning, deep cleaning, and move in/out cleaning. Our services are customizable to meet your specific needs.",
-  },
-  {
-    icon: CalendarIcon,
-    q: "How do I book a cleaning service?",
-    a: "Booking is quick and easy. Fill in the form on our Book Now page or call us, choose the service, date and time that suit you, and our team will confirm your booking within minutes.",
-  },
-  {
-    icon: ShieldCheckIcon,
-    q: "Are your cleaning products safe?",
-    a: "Yes. We use eco-friendly, non-toxic cleaning products that are safe for your family, pets and the environment, while still being tough on dirt and germs.",
-  },
-  {
-    icon: CoinsIcon,
-    q: "How much do your services cost?",
-    a: "Our pricing depends on the type of service and the size of your space. Plans start from $49.99 per month with no hidden charges. Visit our Pricing page to compare plans or contact us for a custom quote.",
-  },
-  {
-    icon: GearIcon,
-    q: "Do I need to provide cleaning supplies?",
-    a: "No. Our team arrives fully equipped with professional cleaning supplies and equipment. If you would like us to use specific products, just let us know when booking.",
-  },
-  {
-    icon: (p: any) => <Clock {...p} strokeWidth={2.6} />,
-    q: "How long does a cleaning session take?",
-    a: "A standard cleaning session usually takes 2 to 4 hours, depending on the size and condition of your space. Deep cleaning and move in/out cleaning may take longer.",
-  },
-  {
-    icon: UsersIcon,
-    q: "Do you offer same-day cleaning?",
-    a: "Yes, same-day cleaning is available subject to team availability. Call us as early as possible and we will do our best to schedule your cleaning the same day.",
-  },
-  {
-    icon: ThumbUpIcon,
-    q: "What if I’m not satisfied with the cleaning?",
-    a: "Your satisfaction is our priority. If you are not happy with any part of the service, let us know within 24 hours and we will come back and re-clean the area at no extra cost.",
-  },
-];
+// Icons by the name used in src/data/faq.json.
+const faqsIcons = {
+  broom: BroomIcon,
+  calendar: CalendarIcon,
+  "shield-check": ShieldCheckIcon,
+  coins: CoinsIcon,
+  gear: GearIcon,
+  clock: (p: any) => <Clock {...p} strokeWidth={2.6} />,
+  users: UsersIcon,
+  "thumb-up": ThumbUpIcon,
+};
+
+// Content lives in src/data/faq.json.
+const faqs = faqData.faqs.map((item) => ({ ...item, icon: faqsIcons[item.icon] }));
 
 function FaqItem({ faq, index, open, onToggle }: {
   faq: any;
@@ -160,7 +136,7 @@ export default function FaqAccordion() {
             {/* ---------- Photo ---------- */}
             <div className="relative order-1 aspect-[16/10] w-full overflow-hidden sm:aspect-[16/8] lg:aspect-[563/698] lg:rounded-br-[16px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={PHOTO} alt="Avicleaner cleaning supplies ready for use" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[62%_70%] lg:object-[68%_bottom]" />
+              <img src={PHOTO} alt={copy.avicleanerCleaningSuppliesReadyFor} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[62%_70%] lg:object-[68%_bottom]" />
               <div className="absolute inset-0 bg-[linear-gradient(100deg,rgb(8_40_28/0.72)_0%,rgb(8_40_28/0.4)_32%,rgb(8_40_28/0)_62%)]" />
               <HandwrittenNote color="text-white" className="absolute left-[7%] top-[16%] text-[clamp(26px,5vw,44px)] lg:top-[28%] lg:text-[clamp(24px,2.4vw,46px)]" />
             </div>
@@ -169,15 +145,13 @@ export default function FaqAccordion() {
             <div className="order-2 min-w-0 px-4 pb-8 pt-9 sm:px-6 sm:pt-10 lg:row-span-2 lg:pb-12 lg:pl-0 lg:pr-6 xl:pr-8 2xl:pt-[44px] 3xl:pb-[75px] 3xl:pr-[44px]">
               <div className="text-center">
                 <SectionEyebrow center className="3xl:[&>span:first-child]:w-[50px] 3xl:[&>span:last-child]:w-[50px] 3xl:[&>span:nth-child(2)]:text-[17px]">
-                  FAQ&rsquo;s
+                  {copy.faqs}
                 </SectionEyebrow>
                 <h2 className="mt-3 text-[clamp(26px,3.25vw,62px)] font-extrabold leading-[1.14] tracking-[-0.015em] text-[#0b1a12] 2xl:mt-4">
-                  <span className="text-[#12583f]">Frequently</span> Asked Questions
+                  <span className="text-[#12583f]">{copy.frequently}</span>{" " + copy.askedQuestions}
                 </h2>
                 <p className="mx-auto mt-3 max-w-[940px] text-[15px] leading-[1.5] text-[#5f6c69] sm:text-base xl:text-[17px] 2xl:mt-4 2xl:text-[19px] 3xl:text-[22px]">
-                  Find quick answers to common questions about our cleaning
-                  services, booking process, pricing, and more. If you need
-                  further assistance, feel free to contact our team.
+                  {copy.findQuickAnswersToCommon}
                 </p>
               </div>
 
@@ -200,20 +174,19 @@ export default function FaqAccordion() {
                   <MessageCircleMore className="h-[52%] w-[52%]" strokeWidth={2} />
                 </span>
                 <p className="mt-5 text-[12px] font-bold uppercase tracking-[0.2em] 2xl:mt-6 2xl:text-[13px] 3xl:mt-[30px] 3xl:text-[15px]">
-                  Still have questions?
+                  {copy.stillHaveQuestions}
                 </p>
                 <h2 className="mt-2 text-[24px] font-bold leading-tight lg:text-[21px] xl:text-[25px] 2xl:mt-3 2xl:text-[28px] 3xl:text-[32px]">
-                  We&rsquo;re Here to Help!
+                  {copy.wereHereToHelp}
                 </h2>
                 <p className="mt-2.5 text-[15px] leading-[1.55] text-white/90 lg:text-[14px] xl:text-[15px] 2xl:mt-3 2xl:text-[17px] 3xl:text-[19px]">
-                  Can&rsquo;t find the answer you&rsquo;re looking for? Our friendly team is
-                  always ready to assist you.
+                  {copy.cantFindTheAnswerYoure}
                 </p>
                 <Link
                   href="/contact-us"
                   className="btn-solid btn-yellow group mt-5 inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-7 py-3 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] 2xl:mt-6 2xl:px-9 2xl:py-3.5 2xl:text-[18px] 3xl:mt-[26px] 3xl:h-[62px] 3xl:w-[225px] 3xl:px-0 3xl:py-0 3xl:text-[20px]"
                 >
-                  Contact Us
+                  {copy.contactUs}
                   <ArrowRight className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
                 </Link>
               </div>

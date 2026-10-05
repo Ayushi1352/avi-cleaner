@@ -7,24 +7,15 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import ScrollReveal from "@/components/ScrollReveal";
 import GalleryVideoCard from "./GalleryVideoCard";
+import galleryData from "@/data/gallery.json";
 
-const YT = "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm";
+// Text lives in src/data/gallery.json under text.GalleryVideo.
+const copy = galleryData.text.GalleryVideo;
+
 const PER_PAGE = 6;
 
-const videos = [
-  { title: "Home Cleaning Service", text: "See how we clean and refresh your home.", thumb: "/images/cta-cleaner.webp", src: YT },
-  { title: "Office Cleaning Process", text: "A cleaner workspace for a more productive day.", thumb: "/images/service-office.webp", src: YT },
-  { title: "Sofa Deep Cleaning", text: "Watch the deep cleaning process for a fresh look.", thumb: "/images/service-sofa.webp", src: YT },
-  { title: "Window Cleaning Tips", text: "Quick tips for sparkling clean windows.", thumb: "/images/mission/vision-window.webp", src: YT },
-  { title: "Bathroom Cleaning", text: "Hygienic cleaning for a healthier home.", thumb: "/images/mission/mission-cleaning.webp", src: YT },
-  { title: "Our Team at Work", text: "Meet our team and see us in action.", thumb: "/images/mission/partner-cta.webp", src: YT },
-  { title: "Carpet Deep Extraction", text: "Watch how stubborn dirt and stains are lifted with steam.", thumb: "/images/about-sofa-vacuum.webp", src: YT },
-  { title: "Kitchen Degreasing Tour", text: "Sparkling countertops, chimney filters and appliance care.", thumb: "/images/service-kitchen.webp", src: YT },
-  { title: "Living Room Detailing", text: "Step-by-step complete residential deep cleaning walkthrough.", thumb: "/images/project-living.webp", src: YT },
-  { title: "Commercial Floor Scrubbing", text: "High-grade industrial floor cleaning machines in motion.", thumb: "/images/project-office.webp", src: YT },
-  { title: "Eco-Friendly Cleaning Demo", text: "Non-toxic, safe, and plant-derived cleaning products in action.", thumb: "/images/why-choose-us.webp", src: YT },
-  { title: "Final Inspection & Handoff", text: "Our supervisor verifying pristine quality before handover.", thumb: "/images/about-cleaner-woman.webp", src: YT },
-];
+// Content lives in src/data/gallery.json.
+const videos = galleryData.videos;
 
 /** Gallery page video section: "See Our Cleaning in Action" with pagination. */
 export default function GalleryVideo() {
@@ -67,15 +58,14 @@ export default function GalleryVideo() {
             compact
             className="[&>span:first-child]:h-[2px] [&>span:last-child]:h-[2px] 2xl:gap-8 3xl:gap-[46px] 3xl:[&>span:first-child]:w-[104px] 3xl:[&>span:last-child]:w-[104px] 3xl:[&>span:nth-child(2)]:text-[24px]"
           >
-            Video Gallery
+            {copy.videoGallery}
           </SectionEyebrow>
           <h2 className="mt-2 text-[clamp(28px,3.45vw,66px)] font-bold leading-[1.15] tracking-[-0.02em] text-[#0b1a12] 2xl:mt-3">
-            See Our <span className="text-[#14573f]">Cleaning in</span> Action
+            {copy.seeOur + " "}<span className="text-[#14573f]">{copy.cleaningIn}</span>{" " + copy.action}
           </h2>
           <p className="mx-auto mt-2 text-[15px] leading-[1.45] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:mt-3 2xl:text-[21px] 3xl:text-[24.5px]">
-            Watch our videos to see how we create cleaner, healthier and
-            happier spaces <br className="hidden xl:block" />
-            for homes and businesses.
+            {copy.watchOurVideosToSee + " "}<br className="hidden xl:block" />
+            {copy.forHomesAndBusinesses}
           </p>
         </div>
 
@@ -90,14 +80,14 @@ export default function GalleryVideo() {
         </ul>
 
         {totalPages > 1 && (
-          <nav aria-label="Video gallery pages" className="mt-10 flex justify-center 2xl:mt-[38px]">
+          <nav aria-label={copy.videoGalleryPages} className="mt-10 flex justify-center 2xl:mt-[38px]">
             <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
               <li>
                 <button
                   type="button"
                   onClick={() => goTo(page - 1)}
                   disabled={page === 1}
-                  aria-label="Previous page"
+                  aria-label={copy.previousPage}
                   className={`${btn} ${idle}`}
                 >
                   <ChevronLeft className="h-4 w-4" strokeWidth={3} />
@@ -121,7 +111,7 @@ export default function GalleryVideo() {
                   type="button"
                   onClick={() => goTo(page + 1)}
                   disabled={page === totalPages}
-                  aria-label="Next page"
+                  aria-label={copy.nextPage}
                   className={`${btn} ${idle}`}
                 >
                   <ChevronRight className="h-4 w-4" strokeWidth={3} />
@@ -136,7 +126,7 @@ export default function GalleryVideo() {
             href="/book-now"
             className="btn-solid btn-yellow group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-9 py-3.5 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] xl:text-[17px] 2xl:px-14 2xl:py-5 2xl:text-[21px] 3xl:h-[82px] 3xl:w-[416px] 3xl:gap-5 3xl:px-0 3xl:py-0 3xl:text-[24px]"
           >
-            Book a Cleaning Service
+            {copy.bookACleaningService}
             <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
           </Link>
         </div>

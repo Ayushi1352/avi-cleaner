@@ -1,13 +1,10 @@
+import siteData from "@/data/site.json";
+
 // Brand icons for team member social links.
 
 // Where each social icon takes the visitor. Swap in the real profile URLs here.
-export const socialLinks: Record<string, string> = {
-  Facebook: "https://www.facebook.com/",
-  X: "https://x.com/",
-  Instagram: "https://www.instagram.com/",
-  LinkedIn: "https://www.linkedin.com/",
-  YouTube: "https://www.youtube.com/",
-};
+// Content lives in src/data/site.json.
+export const socialLinks: Record<string, string> = siteData.socialLinks;
 
 export function FacebookIcon(props) {
   return (

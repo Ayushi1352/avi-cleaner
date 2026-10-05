@@ -5,37 +5,21 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import ScrollReveal from "@/components/ScrollReveal";
 import { SparklesIcon } from "@/components/icons";
+import servicesData from "@/data/services.json";
 
-const steps = [
-  {
-    no: "01",
-    title: "Book a Service",
-    text: "Choose your service, select a convenient date and time, and book online or via phone in just a few clicks.",
-    icon: (c: string) => <CalendarDays className={c} strokeWidth={1.8} />,
-    image: "/images/services/step-book.webp",
-  },
-  {
-    no: "02",
-    title: "Team Arrives",
-    text: "Our trained and verified cleaning team arrives at your location on time with all necessary equipment.",
-    icon: (c: string) => <Users className={c} strokeWidth={1.8} />,
-    image: "/images/services/step-team.webp",
-  },
-  {
-    no: "03",
-    title: "Cleaning Process",
-    text: "Our team follows a detailed checklist to deep clean every corner, ensuring a safe, fresh and healthy environment.",
-    icon: (c: string) => <SparklesIcon className={c} />,
-    image: "/images/services/step-cleaning.webp",
-  },
-  {
-    no: "04",
-    title: "Final Result",
-    text: "Enjoy a spotless, refreshed space. We ensure your complete satisfaction before we leave.",
-    icon: (c: string) => <House className={c} strokeWidth={1.8} />,
-    image: "/images/services/step-result.webp",
-  },
-];
+// Text lives in src/data/services.json under text.CleaningProcess.
+const copy = servicesData.text.CleaningProcess;
+
+// Icons by the name used in src/data/services.json.
+const stepsIcons = {
+  "calendar-days": (c: string) => <CalendarDays className={c} strokeWidth={1.8} />,
+  users: (c: string) => <Users className={c} strokeWidth={1.8} />,
+  sparkles: (c: string) => <SparklesIcon className={c} />,
+  house: (c: string) => <House className={c} strokeWidth={1.8} />,
+};
+
+// Content lives in src/data/services.json.
+const steps = servicesData.processSteps.map((item) => ({ ...item, icon: stepsIcons[item.icon] }));
 
 /** "How It Works — How Our Cleaning Process Works For You". */
 export default function CleaningProcess() {
@@ -52,15 +36,14 @@ export default function CleaningProcess() {
         <div className="container-x relative">
           <ScrollReveal variant="fade-up" duration={700}>
             <div className="mx-auto max-w-[1060px] text-center">
-              <SectionEyebrow center compact className="3xl:[&>span:first-child]:w-[72px] 3xl:[&>span:last-child]:w-[72px]">How It Works</SectionEyebrow>
+              <SectionEyebrow center compact className="3xl:[&>span:first-child]:w-[72px] 3xl:[&>span:last-child]:w-[72px]">{copy.howItWorks}</SectionEyebrow>
               <h2 className="mt-3 text-[clamp(28px,3.25vw,62px)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#0b1a12] 2xl:mt-4">
-                How Our Cleaning Process
-                <br className="hidden sm:block" /> Works For You
+                {copy.howOurCleaningProcess}
+                <br className="hidden sm:block" />{" " + copy.worksForYou}
               </h2>
               <p className="mx-auto mt-4 text-[15px] leading-[1.45] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:text-[20px] 3xl:text-[22px]">
-                We make it simple and hassle-free to get a cleaner, healthier
-                space. Just follow these easy steps <br className="hidden xl:block" />
-                and let our professional team take care of the rest.
+                {copy.weMakeItSimpleAnd + " "}<br className="hidden xl:block" />
+                {copy.andLetOurProfessionalTeam}
               </p>
             </div>
           </ScrollReveal>
@@ -114,20 +97,20 @@ export default function CleaningProcess() {
                   <path d="M30 34C14 36 6 24 12 10" />
                   <path d="M6 14 12 8l5 6" />
                 </svg>
-                It&apos;s that easy!
+                {copy.itsThatEasy}
               </p>
               <Link
                 href="/book-now"
                 className="btn-solid btn-yellow group order-first inline-flex items-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] sm:order-2 2xl:px-11 2xl:py-[19px] 2xl:text-[19px] 3xl:px-[48px] 3xl:py-[19px] 3xl:text-[22px]"
               >
-                Book Your Cleaning Today
+                {copy.bookYourCleaningToday}
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
               <div className="hidden items-center gap-3 sm:order-3 sm:flex 2xl:pr-[20px]" aria-hidden="true">
                 <svg viewBox="0 0 40 30" className="h-7 w-9 text-[#1f5a41]" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round">
                   <path d="M4 22 12 26M12 8l6 12M26 4v12" />
                 </svg>
-                <HandwrittenNote lines={["Clean Spaces", "Brighten Lives"]} className="-rotate-[8deg] text-[20px] 2xl:text-[26px] 3xl:text-[30px]" />
+                <HandwrittenNote lines={copy.noteLines} className="-rotate-[8deg] text-[20px] 2xl:text-[26px] 3xl:text-[30px]" />
               </div>
             </div>
           </ScrollReveal>

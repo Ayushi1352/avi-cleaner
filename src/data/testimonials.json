@@ -1,0 +1,97 @@
+{
+  "reviews": [
+    {
+      "quote": "Excellent service! The team was professional, punctual and very thorough. Our office has never looked this clean. Highly recommended!",
+      "name": "Rahul Sharma",
+      "role": "Business Owner",
+      "avatar": "/images/team/team-2.webp"
+    },
+    {
+      "quote": "Very reliable and trustworthy team. They pay attention to every detail and deliver outstanding results every time.",
+      "name": "Priya Verma",
+      "role": "Homeowner",
+      "avatar": "/images/team/team-1.webp"
+    },
+    {
+      "quote": "We’ve been using their services for over a year now. Always on time, friendly staff and excellent quality cleaning.",
+      "name": "Amit Kapoor",
+      "role": "Office Manager",
+      "avatar": "/images/team/team-4.webp"
+    },
+    {
+      "quote": "Great experience! The team transformed our home and made it feel fresh and healthy. Will definitely book again.",
+      "name": "Sneha Gupta",
+      "role": "Homeowner",
+      "avatar": "/images/team/team-6.webp"
+    },
+    {
+      "quote": "Professional, courteous and efficient. They use quality products and really care about customer satisfaction.",
+      "name": "Vikram Singh",
+      "role": "Facility Manager",
+      "avatar": "/images/team/team-5.webp"
+    },
+    {
+      "quote": "Our workspace is now cleaner and more productive. Highly recommended for commercial cleaning services!",
+      "name": "Neha Malhotra",
+      "role": "HR Manager",
+      "avatar": "/images/team/team-3.webp"
+    },
+    {
+      "quote": "Amazing service! Friendly staff and excellent attention to detail. My house feels so fresh and clean.",
+      "name": "Karan Mehta",
+      "role": "Homeowner",
+      "avatar": "/images/team/team-11.webp"
+    },
+    {
+      "quote": "Reliable and professional cleaning service. They made our office look brand new. Great work!",
+      "name": "Anjali Rao",
+      "role": "Business Owner",
+      "avatar": "/images/team/team-10.webp"
+    },
+    {
+      "quote": "The team is fantastic! They are punctual, well-trained and very polite. I’m really happy with their service.",
+      "name": "Suresh Nair",
+      "role": "Apartment Resident",
+      "avatar": "/images/team/team-13.webp"
+    },
+    {
+      "quote": "Very impressed with the thoroughness and speed. The team sanitized all rooms and left everything smelling fresh and spotless.",
+      "name": "Deepak Joshi",
+      "role": "Property Manager",
+      "avatar": "/images/team/team-7.webp"
+    },
+    {
+      "quote": "Outstanding quality and customer care! Booking was effortless and their cleaners took special care with our upholstery.",
+      "name": "Kavita Singhania",
+      "role": "Homeowner",
+      "avatar": "/images/team/team-8.webp"
+    },
+    {
+      "quote": "Prompt, honest, and dedicated. They tackled tough grease and dust in our commercial kitchen flawlessly. Truly top-tier service.",
+      "name": "Rajesh Patel",
+      "role": "Restaurant Owner",
+      "avatar": "/images/team/team-9.webp"
+    }
+  ],
+  "text": {
+    "TestimonialsGrid": {
+      "text5OutOf5Stars": "5 out of 5 stars",
+      "testimonials": "Testimonials",
+      "whatOurClientsSay": "What Our Clients Say",
+      "realStoriesFromOurHappy": "Real stories from our happy clients who trust us for cleaner, healthier and",
+      "happierSpaces": "happier spaces.",
+      "testimonialsPages": "Testimonials pages",
+      "previousPage": "Previous page",
+      "nextPage": "Next page"
+    },
+    "Page": {
+      "testimonials": "Testimonials"
+    }
+  },
+  "meta": {
+    "Page": {
+      "title": "Testimonial | Avicleaner",
+      "description": "Real stories from happy Avicleaner clients who trust us for cleaner, healthier and happier spaces."
+    }
+  }
+}

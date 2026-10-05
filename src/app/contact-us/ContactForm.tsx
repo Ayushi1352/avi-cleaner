@@ -5,38 +5,38 @@ import { ArrowRight, FileText, Mail, MapPin, MessageCircleMore, Phone, ShieldChe
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import { ThumbUpIcon, UsersIcon } from "@/components/icons";
+import contactData from "@/data/contact.json";
+
+// Text lives in src/data/contact.json under text.ContactForm.
+const copy = contactData.text.ContactForm;
 
 // Put your own photo here to replace the stand-in.
 const PHOTO = "/images/services/call-cleaner.webp";
 
-const details = [
-  {
-    icon: (c: string) => <MapPin className={c} fill="currentColor" stroke="#1f634a" strokeWidth={1.8} />,
-    title: "Our Location",
-    lines: ["123 Main Street, Seattle,", "WA 98101, USA"],
-  },
-  {
-    icon: (c: string) => <Phone className={c} fill="currentColor" strokeWidth={0} />,
-    title: "Call Us",
-    lines: ["+1 (202) 555-0147"],
-  },
-  {
-    icon: (c: string) => (
-      <svg className={c} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3.2 5h17.6L12 11.9 3.2 5Z" />
-        <path d="M2 6.6V17a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6.6l-9.4 7.300a1 1 0 0 1-1.200 0L2 6.6Z" />
-      </svg>
-    ),
-    title: "Email Us",
-    lines: ["xyz@avicleaner.com"],
-  },
-];
+// Icons by the name used in src/data/contact.json.
+const detailsIcons = {
+  "map-pin": (c: string) => <MapPin className={c} fill="currentColor" stroke="#1f634a" strokeWidth={1.8} />,
+  phone: (c: string) => <Phone className={c} fill="currentColor" strokeWidth={0} />,
+  mail: (c: string) => (
+    <svg className={c} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3.2 5h17.6L12 11.9 3.2 5Z" />
+      <path d="M2 6.6V17a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6.6l-9.4 7.300a1 1 0 0 1-1.200 0L2 6.6Z" />
+    </svg>
+  ),
+};
 
-const promises = [
-  { icon: (c: string) => <ShieldCheck className={c} strokeWidth={2} />, title: "Quick Response", text: "We reply within 24 hours" },
-  { icon: (c: string) => <UsersIcon className={c} />, title: "Friendly Support", text: "Our team is always here" },
-  { icon: (c: string) => <ThumbUpIcon className={c} />, title: "Reliable Service", text: "Your satisfaction is our priority" },
-];
+// Content lives in src/data/contact.json.
+const details = contactData.details.map((item) => ({ ...item, icon: detailsIcons[item.icon] }));
+
+// Icons by the name used in src/data/contact.json.
+const promisesIcons = {
+  "shield-check": (c: string) => <ShieldCheck className={c} strokeWidth={2} />,
+  users: (c: string) => <UsersIcon className={c} />,
+  "thumb-up": (c: string) => <ThumbUpIcon className={c} />,
+};
+
+// Content lives in src/data/contact.json.
+const promises = contactData.promises.map((item) => ({ ...item, icon: promisesIcons[item.icon] }));
 
 const BOX =
   "w-full rounded-[10px] border border-[#e2ebe6] bg-white pl-12 pr-4 text-[15px] text-[#0b1a12] outline-none transition placeholder:text-[#7c8794] focus:border-[#1f7a4d] focus:ring-2 focus:ring-[#1f7a4d]/20 2xl:pl-[60px] 2xl:text-[16px] 3xl:rounded-[12px] 3xl:pl-[74px] 3xl:text-[17px]";
@@ -82,35 +82,34 @@ export default function ContactForm() {
           </svg>
 
           <SectionEyebrow compact className="[&>span:nth-child(2)]:font-medium [&>span:nth-child(2)]:text-[#0b1a12] 3xl:[&>span:first-child]:w-[50px] 3xl:[&>span:last-child]:w-[50px] 3xl:[&>span:nth-child(2)]:text-[22px]">
-            Get in Touch
+            {copy.getInTouch}
           </SectionEyebrow>
           <h2 className="mt-2 text-[clamp(30px,3.55vw,68px)] font-extrabold leading-[1.14] tracking-[-0.015em] text-[#0b1a12] 2xl:mt-3">
-            Send us a Message
+            {copy.sendUsAMessage}
           </h2>
           <p className="mt-3 max-w-[720px] text-[15px] leading-[1.55] text-[#5f6c69] xl:text-[16px] 2xl:text-[18px] 3xl:text-[20px]">
-            Have questions or need a cleaning service? Fill out the form and
-            our team will get back to you as soon as possible.
+            {copy.haveQuestionsOrNeedA}
           </p>
 
           <form onSubmit={onSubmit} className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:mt-7 2xl:gap-5 3xl:gap-x-[20px] 3xl:gap-y-[22px]">
-            <Field label="Your Name" icon={User}>
-              <input type="text" name="name" required autoComplete="name" placeholder="Your Name" className={`${BOX} ${HEIGHT}`} />
+            <Field label={copy.yourName} icon={User}>
+              <input type="text" name="name" required autoComplete="name" placeholder={copy.yourName} className={`${BOX} ${HEIGHT}`} />
             </Field>
-            <Field label="Phone Number" icon={Phone}>
-              <input type="tel" name="phone" required autoComplete="tel" placeholder="Phone Number" className={`${BOX} ${HEIGHT}`} />
+            <Field label={copy.phoneNumber} icon={Phone}>
+              <input type="tel" name="phone" required autoComplete="tel" placeholder={copy.phoneNumber} className={`${BOX} ${HEIGHT}`} />
             </Field>
-            <Field label="Email Address" icon={Mail}>
-              <input type="email" name="email" required autoComplete="email" placeholder="Email Address" className={`${BOX} ${HEIGHT}`} />
+            <Field label={copy.emailAddress} icon={Mail}>
+              <input type="email" name="email" required autoComplete="email" placeholder={copy.emailAddress} className={`${BOX} ${HEIGHT}`} />
             </Field>
-            <Field label="Subject" icon={FileText}>
-              <input type="text" name="subject" placeholder="Subject" className={`${BOX} ${HEIGHT}`} />
+            <Field label={copy.subject} icon={FileText}>
+              <input type="text" name="subject" placeholder={copy.subject} className={`${BOX} ${HEIGHT}`} />
             </Field>
-            <Field label="Your Message" icon={MessageCircleMore} className="sm:col-span-2">
+            <Field label={copy.yourMessage} icon={MessageCircleMore} className="sm:col-span-2">
               <textarea
                 name="message"
                 required
                 rows={4}
-                placeholder="Your Message"
+                placeholder={copy.yourMessage}
                 className={`${BOX} block min-h-[130px] resize-y py-[15px] 2xl:py-[19px] 3xl:min-h-[152px] 3xl:py-[23px]`}
               />
             </Field>
@@ -120,12 +119,12 @@ export default function ContactForm() {
                 type="submit"
                 className="btn-solid btn-yellow group inline-flex h-[54px] w-full items-center justify-center gap-3 rounded-full text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] 2xl:h-[60px] 2xl:text-[18px] 3xl:h-[66px] 3xl:gap-4 3xl:text-[19px]"
               >
-                Submit Now
+                {copy.submitNow}
                 <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
               </button>
               {sent && (
                 <p role="status" className="mt-3 text-[15px] font-semibold text-[#12583f] 2xl:text-[17px]">
-                  Thank you! Your message has been sent. Our team will get back to you shortly.
+                  {copy.thankYouYourMessageHas}
                 </p>
               )}
             </div>
@@ -139,9 +138,9 @@ export default function ContactForm() {
               <path fill="#f1faf5" d="m118 32 20-20-15 22-3 10v-12Z" />
             </svg>
             <p className="-rotate-[6deg] pb-2 font-script text-[22px] font-medium leading-[1] text-[#12583f] 2xl:text-[26px] 3xl:text-[30px]">
-              We&rsquo;re Here
+              {copy.wereHere}
               <br />
-              <span className="pl-[0.8em]">to Help!</span>
+              <span className="pl-[0.8em]">{copy.toHelp}</span>
             </p>
           </div>
         </div>
@@ -149,7 +148,7 @@ export default function ContactForm() {
         {/* ---------- Photo ---------- */}
         <div className="relative min-h-[380px] min-w-0 overflow-hidden sm:min-h-[460px] lg:min-h-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={PHOTO} alt="Smiling Avicleaner cleaner in a green uniform" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[40%_top]" />
+          <img src={PHOTO} alt={copy.smilingAvicleanerCleanerInA} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[40%_top]" />
           <div className="absolute inset-0 bg-[linear-gradient(115deg,rgb(255_255_255/0.82)_0%,rgb(255_255_255/0.55)_22%,rgb(255_255_255/0)_48%)]" />
           <HandwrittenNote color="text-[#12583f]" className="absolute left-[7%] top-[14%] text-[clamp(26px,2.3vw,44px)] md:text-[clamp(24px,3.4vw,34px)] lg:text-[clamp(18px,2.1vw,40px)]" />
         </div>

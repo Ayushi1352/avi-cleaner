@@ -1,6 +1,10 @@
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { HomeIcon } from "@/components/icons";
+import servicesData from "@/data/services.json";
+
+// Text lives in src/data/services.json under text.CleaningChecklist.
+const copy = servicesData.text.CleaningChecklist;
 
 function CheckIcon({ className = "" }: { className?: string }) {
   return (
@@ -23,9 +27,9 @@ export default function CleaningChecklist({ service }: { service: any }) {
         <div className="grid grid-cols-1 items-center gap-8 rounded-[22px] bg-[#ecfaf3] p-5 sm:p-8 lg:grid-cols-[1fr_minmax(0,44%)] xl:gap-10 xl:p-10 2xl:gap-[40px] 2xl:rounded-[26px] 2xl:py-[45px] 2xl:pl-[60px] 2xl:pr-[42px] 3xl:grid-cols-[1fr_670px] 3xl:gap-[28px] 3xl:pl-[64px]">
           {/* Text */}
           <div className="min-w-0">
-            <SectionEyebrow compact className="3xl:[&>span:first-child]:w-[46px] 3xl:[&>span:last-child]:w-[46px] 3xl:[&>span:nth-child(2)]:text-[23px]">What&apos;s Included</SectionEyebrow>
+            <SectionEyebrow compact className="3xl:[&>span:first-child]:w-[46px] 3xl:[&>span:last-child]:w-[46px] 3xl:[&>span:nth-child(2)]:text-[23px]">{copy.whatsIncluded}</SectionEyebrow>
             <h2 className="mt-3 text-[clamp(28px,3.3vw,63px)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[#0b1a12] 2xl:mt-4">
-              Our Cleaning Checklist
+              {copy.ourCleaningChecklist}
             </h2>
             <p className="mt-3 max-w-[760px] text-[15px] leading-[1.6] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:mt-4 2xl:text-[22px] 3xl:max-w-[750px] 3xl:text-[28.5px] 3xl:leading-[1.46]">
               {service.checklistIntro}
@@ -58,8 +62,8 @@ export default function CleaningChecklist({ service }: { service: any }) {
                 <HomeIcon className="h-1/2 w-1/2" />
               </span>
               <span className="text-[14px] font-medium leading-[1.45] sm:text-[15px] 2xl:text-[20px] 3xl:text-[26px]">
-                A Healthier Home
-                <br />A Happier You
+                {copy.aHealthierHome}
+                <br />{copy.aHappierYou}
               </span>
             </div>
           </div>

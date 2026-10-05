@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionEyebrow from "./SectionEyebrow";
 import ScrollReveal from "./ScrollReveal";
+import siteData from "@/data/site.json";
 
 /**
  * Dark green call-to-action banner.
@@ -9,10 +10,10 @@ import ScrollReveal from "./ScrollReveal";
  * other pages (e.g. Service Detail) pass their own text.
  */
 export default function PartnerCtaSection({
-  eyebrow = "Let's Create a Cleaner Tomorrow",
-  title = "Partner With Us for a Cleaner, Brighter Future",
-  text = "Together, we can make every space healthier, safer, and happier.",
-  buttonLabel = "Contact Us",
+  eyebrow = siteData.text.PartnerCtaSection.eyebrow,
+  title = siteData.text.PartnerCtaSection.title,
+  text = siteData.text.PartnerCtaSection.text,
+  buttonLabel = siteData.text.PartnerCtaSection.buttonLabel,
   buttonHref = "/contact-us",
   image = "/images/mission/partner-cta.webp",
   showLeaf = true,

@@ -6,45 +6,38 @@ import { ChevronRight, Mail, MapPin, Phone } from "lucide-react";
 import Logo from "./Logo";
 import { LeafIcon, SendIcon, ShieldCheckIcon, UsersIcon } from "./icons";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon, YoutubeIcon } from "./socialIcons";
+import siteData from "@/data/site.json";
 
-const usefulLinks1 = [
-  "Home",
-  "About Us",
-  "Why Choose Us",
-  "Mission & Vision",
-  "Our Team",
-  "How It Works",
-  "Testimonials",
-];
+// Text lives in src/data/site.json under text.Footer.
+const copy = siteData.text.Footer;
 
-const usefulLinks2 = [
-  "Award & Certificate",
-  "Services",
-  "Blog",
-  "Gallery",
-  "FAQ",
-  "Contact Us",
-];
-const serviceLinks = [
-  "Home Deep Cleaning",
-  "Office Professional Cleaning",
-  "Kitchen Hygiene Cleaning",
-  "Windows Deep Cleaning",
-  "Commercial Building Cleaning",
-  "Deep Carpet Cleaning",
-];
-const socials = [
-  { name: "Facebook", icon: FacebookIcon },
-  { name: "X", icon: XIcon },
-  { name: "Instagram", icon: InstagramIcon },
-  { name: "LinkedIn", icon: LinkedinIcon },
-  { name: "YouTube", icon: YoutubeIcon },
-];
-const badges = [
-  { icon: LeafIcon, label: ["Eco-Friendly", "Products"] },
-  { icon: ShieldCheckIcon, label: ["Trusted &", "Verified Team"] },
-  { icon: UsersIcon, label: ["100% Customer", "Satisfaction"] },
-];
+// Content lives in src/data/site.json.
+const usefulLinks1 = siteData.footerUsefulLinks1;
+
+// Content lives in src/data/site.json.
+const usefulLinks2 = siteData.footerUsefulLinks2;
+// Content lives in src/data/site.json.
+const serviceLinks = siteData.footerServiceLinks;
+// Icons by the name used in src/data/site.json.
+const socialsIcons = {
+  facebook: FacebookIcon,
+  x: XIcon,
+  instagram: InstagramIcon,
+  linkedin: LinkedinIcon,
+  youtube: YoutubeIcon,
+};
+
+// Content lives in src/data/site.json.
+const socials = siteData.footerSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
+// Icons by the name used in src/data/site.json.
+const badgesIcons = {
+  leaf: LeafIcon,
+  "shield-check": ShieldCheckIcon,
+  users: UsersIcon,
+};
+
+// Content lives in src/data/site.json.
+const badges = siteData.footerBadges.map((item) => ({ ...item, icon: badgesIcons[item.icon] }));
 
 function ColumnTitle({ children }) {
   return (
@@ -55,28 +48,8 @@ function ColumnTitle({ children }) {
   );
 }
 
-const PAGE_LINKS = {
-  Home: "/",
-  "About Us": "/about-us",
-  "Why Choose Us": "/why-choose-us",
-  "Mission & Vision": "/mission-vision",
-  "Our Team": "/our-team",
-  "How It Works": "/how-it-works",
-  Testimonials: "/testimonials",
-  "Award & Certificate": "/award-and-certificate",
-  "Awards & Certificates": "/award-and-certificate",
-  Gallery: "/gallery",
-  Blog: "/blog",
-  Services: "/services",
-  FAQ: "/faq",
-  "Contact Us": "/contact-us",
-  "Home Deep Cleaning": "/services/home-deep-cleaning",
-  "Office Professional Cleaning": "/services/office-professional-cleaning",
-  "Kitchen Hygiene Cleaning": "/services/kitchen-hygiene-cleaning",
-  "Windows Deep Cleaning": "/services/windows-deep-cleaning",
-  "Commercial Building Cleaning": "/services/commercial-building-cleaning",
-  "Deep Carpet Cleaning": "/services/deep-carpet-cleaning",
-};
+// Content lives in src/data/site.json.
+const PAGE_LINKS = siteData.footerPageLinks;
 
 function LinkList({ items }) {
   return (
@@ -130,11 +103,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 pb-10 pt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-[1.2fr_0.75fr_0.75fr_1.15fr_1.25fr] xl:gap-6 2xl:gap-8 2xl:pb-12 2xl:pt-12">
           {/* Brand + contact */}
           <div className="min-w-0">
-            <Logo isFooter className="h-[64px] w-[220px] 2xl:h-[76px] 2xl:w-[270px]" />
+            <Link
+              href="/"
+              aria-label={copy.avicleanerHome}
+              className="inline-flex items-center rounded-[12px] bg-white px-3 py-1.5 shadow-sm transition-transform duration-200 hover:scale-[1.02] sm:rounded-[14px] sm:px-3.5 sm:py-2 2xl:rounded-[16px] 2xl:px-4 2xl:py-2.5"
+            >
+              <Logo className="h-[46px] w-[150px] sm:h-[54px] sm:w-[180px] lg:h-[52px] lg:w-[170px] xl:h-[64px] xl:w-[230px] 2xl:h-[80px] 2xl:w-[310px] 3xl:h-[100px] 3xl:w-[410px]" />
+            </Link>
             <p className="mt-3 max-w-[340px] text-[13.5px] leading-[1.5] text-white/85 2xl:text-[14.5px]">
-              We provide professional cleaning services for homes and
-              businesses, ensuring a cleaner, healthier and more comfortable
-              environment for you.
+              {copy.weProvideProfessionalCleaningServices}
             </p>
             <ul className="mt-4 space-y-2.5 text-[13.5px] text-white/90 2xl:space-y-2 2xl:text-[14.5px]">
               <li className="flex items-center gap-3 2xl:gap-4">
@@ -147,13 +124,13 @@ export default function Footer() {
                 <span className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-9 2xl:w-9">
                   <Mail className="h-3.5 w-3.5 animate-icon-float" />
                 </span>
-                <a href="mailto:xyz@avicleaner.com" className="break-all transition-colors hover:text-[#fadb64]">xyz@avicleaner.com</a>
+                <a href="mailto:xyz@avicleaner.com" className="break-all transition-colors hover:text-[#fadb64]">{copy.xyzAvicleanerCom}</a>
               </li>
               <li className="flex items-center gap-3 2xl:gap-4">
                 <span className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-9 2xl:w-9">
                   <MapPin className="h-3.5 w-3.5 animate-icon-pulse-subtle" />
                 </span>
-                <span>123 Main Street, Seattle, WA 98101, USA</span>
+                <span>{copy.text123MainStreetSeattleWa}</span>
               </li>
             </ul>
             <div className="mt-4 flex flex-wrap gap-2.5 2xl:flex-nowrap">
@@ -174,28 +151,27 @@ export default function Footer() {
 
           {/* Useful links - Column 1 */}
           <div className="min-w-0 xl:pt-2">
-            <ColumnTitle>Useful Links</ColumnTitle>
+            <ColumnTitle>{copy.usefulLinks}</ColumnTitle>
             <LinkList items={usefulLinks1} />
           </div>
 
           {/* Useful links - Column 2 */}
           <div className="min-w-0 xl:pt-2">
-            <ColumnTitle>Useful Links</ColumnTitle>
+            <ColumnTitle>{copy.usefulLinks}</ColumnTitle>
             <LinkList items={usefulLinks2} />
           </div>
 
           {/* Services */}
           <div className="min-w-0 xl:pt-2">
-            <ColumnTitle>Our Services</ColumnTitle>
+            <ColumnTitle>{copy.ourServices}</ColumnTitle>
             <LinkList items={serviceLinks} />
           </div>
 
           {/* Newsletter */}
           <div className="min-w-0 sm:col-span-2 lg:col-span-2 xl:col-span-1 xl:pt-2">
-            <ColumnTitle>Our Newsletter</ColumnTitle>
+            <ColumnTitle>{copy.ourNewsletter}</ColumnTitle>
             <p className="mt-4 max-w-[340px] text-[13.5px] leading-[1.5] text-white/85 2xl:mt-5 2xl:text-[14.5px]">
-              Subscribe to our newsletter for the latest cleaning tips, special
-              offers and updates straight to your inbox.
+              {copy.subscribeToOurNewsletterFor}
             </p>
             <form
               onSubmit={onSubmit}
@@ -207,20 +183,20 @@ export default function Footer() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter Email Address"
-                aria-label="Email address"
+                placeholder={copy.enterEmailAddress}
+                aria-label={copy.emailAddress}
                 className="min-w-0 flex-1 bg-transparent text-[13.5px] text-navy outline-none placeholder:text-[#8a929e] 2xl:text-[14.5px]"
               />
               <button
                 type="submit"
-                aria-label="Subscribe"
+                aria-label={copy.subscribe}
                 className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#fadb64] text-green-dark transition hover:bg-green-dark hover:text-[#fadb64] 2xl:h-10 2xl:w-10"
               >
                 <SendIcon className="h-4 w-4" />
               </button>
             </form>
             {done && (
-              <p className="mt-2 text-sm text-[#fadb64]">Thanks for subscribing!</p>
+              <p className="mt-2 text-sm text-[#fadb64]">{copy.thanksForSubscribing}</p>
             )}
 
             <ul className="mt-5 grid max-w-[460px] grid-cols-3 2xl:mt-6">
@@ -250,15 +226,15 @@ export default function Footer() {
       <div className="relative border-t border-white/20">
         <div className="container-x">
           <div className="flex flex-col items-center gap-2.5 py-4 text-center text-[13px] text-white/90 md:flex-row md:justify-between md:text-left 2xl:py-5 2xl:text-[14px]">
-            <p>&copy; 2025 Avicleaner. All Rights Reserved.</p>
+            <p>{copy.text2025AvicleanerAllRightsReserved}</p>
             <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
-              <Link href="/privacy-policy" className="hover:text-[#fadb64]">Privacy Policy</Link>
+              <Link href="/privacy-policy" className="hover:text-[#fadb64]">{copy.privacyPolicy}</Link>
               <span className="text-white/40">|</span>
-              <Link href="/terms-and-conditions" className="hover:text-[#fadb64]">Terms &amp; Conditions</Link>
+              <Link href="/terms-and-conditions" className="hover:text-[#fadb64]">{copy.termsConditions}</Link>
               <span className="text-white/40">|</span>
-              <Link href="/refund-cancellation-policy" className="hover:text-[#fadb64]">Refund &amp; Cancellation Policy</Link>
+              <Link href="/refund-cancellation-policy" className="hover:text-[#fadb64]">{copy.refundCancellationPolicy}</Link>
               <span className="text-white/40">|</span>
-              <Link href="/services" className="hover:text-[#fadb64]">Sitemap</Link>
+              <Link href="/services" className="hover:text-[#fadb64]">{copy.sitemap}</Link>
             </nav>
           </div>
         </div>

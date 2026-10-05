@@ -6,84 +6,16 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import { StarIcon } from "@/components/icons";
 import { RoundQuoteIcon } from "@/components/solidIcons";
+import testimonialsData from "@/data/testimonials.json";
+
+// Text lives in src/data/testimonials.json under text.TestimonialsGrid.
+const copy = testimonialsData.text.TestimonialsGrid;
 
 const PER_PAGE = 6;
 
 // Client reviews. Replace the stand-in photos with real client headshots.
-const reviews = [
-  {
-    quote: "Excellent service! The team was professional, punctual and very thorough. Our office has never looked this clean. Highly recommended!",
-    name: "Rahul Sharma",
-    role: "Business Owner",
-    avatar: "/images/team/team-2.webp",
-  },
-  {
-    quote: "Very reliable and trustworthy team. They pay attention to every detail and deliver outstanding results every time.",
-    name: "Priya Verma",
-    role: "Homeowner",
-    avatar: "/images/team/team-1.webp",
-  },
-  {
-    quote: "We’ve been using their services for over a year now. Always on time, friendly staff and excellent quality cleaning.",
-    name: "Amit Kapoor",
-    role: "Office Manager",
-    avatar: "/images/team/team-4.webp",
-  },
-  {
-    quote: "Great experience! The team transformed our home and made it feel fresh and healthy. Will definitely book again.",
-    name: "Sneha Gupta",
-    role: "Homeowner",
-    avatar: "/images/team/team-6.webp",
-  },
-  {
-    quote: "Professional, courteous and efficient. They use quality products and really care about customer satisfaction.",
-    name: "Vikram Singh",
-    role: "Facility Manager",
-    avatar: "/images/team/team-5.webp",
-  },
-  {
-    quote: "Our workspace is now cleaner and more productive. Highly recommended for commercial cleaning services!",
-    name: "Neha Malhotra",
-    role: "HR Manager",
-    avatar: "/images/team/team-3.webp",
-  },
-  {
-    quote: "Amazing service! Friendly staff and excellent attention to detail. My house feels so fresh and clean.",
-    name: "Karan Mehta",
-    role: "Homeowner",
-    avatar: "/images/team/team-11.webp",
-  },
-  {
-    quote: "Reliable and professional cleaning service. They made our office look brand new. Great work!",
-    name: "Anjali Rao",
-    role: "Business Owner",
-    avatar: "/images/team/team-10.webp",
-  },
-  {
-    quote: "The team is fantastic! They are punctual, well-trained and very polite. I’m really happy with their service.",
-    name: "Suresh Nair",
-    role: "Apartment Resident",
-    avatar: "/images/team/team-13.webp",
-  },
-  {
-    quote: "Very impressed with the thoroughness and speed. The team sanitized all rooms and left everything smelling fresh and spotless.",
-    name: "Deepak Joshi",
-    role: "Property Manager",
-    avatar: "/images/team/team-7.webp",
-  },
-  {
-    quote: "Outstanding quality and customer care! Booking was effortless and their cleaners took special care with our upholstery.",
-    name: "Kavita Singhania",
-    role: "Homeowner",
-    avatar: "/images/team/team-8.webp",
-  },
-  {
-    quote: "Prompt, honest, and dedicated. They tackled tough grease and dust in our commercial kitchen flawlessly. Truly top-tier service.",
-    name: "Rajesh Patel",
-    role: "Restaurant Owner",
-    avatar: "/images/team/team-9.webp",
-  },
-];
+// Content lives in src/data/testimonials.json.
+const reviews = testimonialsData.reviews;
 
 function ReviewCard({ review }: { review: any }) {
   return (
@@ -93,7 +25,7 @@ function ReviewCard({ review }: { review: any }) {
         className="absolute right-4 top-4 h-9 w-9 rotate-180 text-[#dcf2e6] sm:h-10 sm:w-10 2xl:right-6 2xl:top-5 2xl:h-12 2xl:w-12 3xl:right-[30px] 3xl:top-[22px] 3xl:h-[58px] 3xl:w-[58px]"
       />
 
-      <div className="flex gap-1 text-[#f8a91c] 3xl:gap-[5px]" role="img" aria-label="5 out of 5 stars">
+      <div className="flex gap-1 text-[#f8a91c] 3xl:gap-[5px]" role="img" aria-label={copy.text5OutOf5Stars}>
         {Array.from({ length: 5 }).map((_, i) => (
           <StarIcon key={i} className="h-[18px] w-[18px] 2xl:h-[22px] 2xl:w-[22px] 3xl:h-[28px] 3xl:w-[28px]" />
         ))}
@@ -166,15 +98,14 @@ export default function TestimonialsGrid() {
               compact
               className="[&>span:nth-child(2)]:font-semibold 2xl:gap-8 3xl:gap-[44px] 3xl:[&>span:first-child]:w-[97px] 3xl:[&>span:last-child]:w-[97px] 3xl:[&>span:nth-child(2)]:text-[23px] [&>span:first-child]:h-[2px] [&>span:last-child]:h-[2px]"
             >
-              Testimonials
+              {copy.testimonials}
             </SectionEyebrow>
             <h2 className="mt-2 text-[clamp(30px,3.15vw,60px)] font-extrabold leading-[1.15] tracking-[-0.015em] text-[#0e2f25] 2xl:mt-3">
-              What Our Clients Say
+              {copy.whatOurClientsSay}
             </h2>
             <p className="mx-auto mt-2 text-[15px] leading-[1.6] text-[#5a6172] sm:text-base xl:text-[18px] 2xl:mt-3 2xl:text-[20px] 3xl:text-[23px] 3xl:leading-[38px]">
-              Real stories from our happy clients who trust us for cleaner,
-              healthier and <br className="hidden xl:block" />
-              happier spaces.
+              {copy.realStoriesFromOurHappy + " "}<br className="hidden xl:block" />
+              {copy.happierSpaces}
             </p>
           </div>
 
@@ -187,14 +118,14 @@ export default function TestimonialsGrid() {
           </ul>
 
           {totalPages > 1 && (
-            <nav aria-label="Testimonials pages" className="mt-10 flex justify-center 2xl:mt-[38px]">
+            <nav aria-label={copy.testimonialsPages} className="mt-10 flex justify-center 2xl:mt-[38px]">
               <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
                 <li>
                   <button
                     type="button"
                     onClick={() => goTo(page - 1)}
                     disabled={page === 1}
-                    aria-label="Previous page"
+                    aria-label={copy.previousPage}
                     className={`${btn} ${idle}`}
                   >
                     <ChevronLeft className="h-4 w-4" strokeWidth={3} />
@@ -218,7 +149,7 @@ export default function TestimonialsGrid() {
                     type="button"
                     onClick={() => goTo(page + 1)}
                     disabled={page === totalPages}
-                    aria-label="Next page"
+                    aria-label={copy.nextPage}
                     className={`${btn} ${idle}`}
                   >
                     <ChevronRight className="h-4 w-4" strokeWidth={3} />
