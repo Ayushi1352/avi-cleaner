@@ -24,6 +24,7 @@ export default function ServiceOverview({ service }: { service: any }) {
               alt={service.title}
               label={(service.detailImage || service.image).replace("/images/", "")}
               className="relative aspect-[878/722] w-full rounded-[18px] shadow-[0_18px_40px_-28px_rgba(11,42,28,0.45)] 2xl:rounded-[20px]"
+              imgClassName="object-cover object-[center_top]"
             />
             <div className="absolute bottom-3 left-3 flex max-w-[calc(100%-24px)] items-center gap-3 rounded-[14px] bg-[#14503a] px-3.5 py-3 text-white sm:bottom-5 sm:left-5 2xl:bottom-[12px] 2xl:left-[38px] 2xl:gap-4 2xl:rounded-[16px] 2xl:px-5 2xl:py-4 3xl:gap-6 3xl:pr-6">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#14503a] 2xl:h-[58px] 2xl:w-[58px] 3xl:h-[82px] 3xl:w-[82px]">

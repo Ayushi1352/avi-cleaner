@@ -27,8 +27,8 @@ export default function OurMission() {
   return (
     <section className="w-full bg-white py-10 sm:py-12 xl:py-13 2xl:py-[46px]">
       <div className="container-x">
-        <div className="lg:px-6 xl:px-10 2xl:pl-[90px] 2xl:pr-[70px] 3xl:pl-[122px] 3xl:pr-[116px]">
-          <div className="grid grid-cols-1 items-center gap-12 xl:grid-cols-[685fr_830fr] xl:gap-10 2xl:gap-[50px]">
+        <div className="lg:px-2 xl:px-10 2xl:pl-[90px] 2xl:pr-[70px] 3xl:pl-[122px] 3xl:pr-[116px]">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[685fr_830fr] lg:gap-8 xl:gap-10 2xl:gap-[50px]">
             {/* ---------- Text ---------- */}
             <div className="min-w-0 max-w-[760px]">
               <SectionEyebrow>Our Mission</SectionEyebrow>

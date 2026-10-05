@@ -64,7 +64,7 @@ export default function NotFound() {
           src={PHOTO}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden h-full w-[36%] object-cover object-center [mask-image:linear-gradient(90deg,transparent,#000_45%)] lg:block"
+          className="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden h-full w-[36%] object-cover object-[center_top] [mask-image:linear-gradient(90deg,transparent,#000_45%)] lg:block"
         />
         {/* Blurred plant, bottom left */}
         {/* eslint-disable-next-line @next/next/no-img-element */}

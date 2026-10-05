@@ -1,12 +1,13 @@
 import { ArrowRight, Mail, Map, MapPin, Phone, PhoneCall } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const cards = [
   {
     icon: MapPin,
     title: "Our Location",
-    lines: ["121 King Street, Melbourne,", "3000, Australia"],
+    lines: ["123 Main Street, Seattle,", "WA 98101, USA"],
     action: "View on Map",
     href: "#map",
     actionIcon: (c: string) => <Map className={c} fill="currentColor" stroke="#e3f6ec" strokeWidth={1.6} />,
@@ -14,17 +15,17 @@ const cards = [
   {
     icon: PhoneCall,
     title: "Phone Number",
-    lines: ["(+61 3 8376 6284)", "(+800 2345 6789)"],
+    lines: ["+1 (202) 555-0147"],
     action: "Call Us Now",
-    href: "tel:+61383766284",
+    href: "tel:+12025550147",
     actionIcon: (c: string) => <Phone className={c} fill="currentColor" strokeWidth={0} />,
   },
   {
     icon: Mail,
     title: "Email us at",
-    lines: ["info@cleanmax.com", "cleanmax@gmail.com"],
+    lines: ["xyz@avicleaner.com"],
     action: "Send an Email",
-    href: "mailto:info@cleanmax.com",
+    href: "mailto:xyz@avicleaner.com",
     actionIcon: (c: string) => <Mail className={c} strokeWidth={2.2} />,
   },
 ];
@@ -32,7 +33,7 @@ const cards = [
 function ContactCard({ card }: { card: any }) {
   const Icon = card.icon;
   return (
-    <article className="flex h-full min-w-0 flex-col items-center rounded-[16px] bg-[linear-gradient(180deg,#fff_62%,#f0faf4_100%)] px-4 pb-7 pt-7 text-center shadow-[0_16px_40px_-26px_rgba(11,42,28,0.4)] md:px-3 md:pb-[clamp(20px,2.35vw,45px)] md:pt-[clamp(20px,1.85vw,35px)] xl:px-5 2xl:rounded-[20px]">
+    <article className="card-border-animated flex h-full min-w-0 flex-col items-center rounded-[16px] bg-[linear-gradient(180deg,#fff_62%,#f0faf4_100%)] px-4 pb-7 pt-7 text-center shadow-[0_16px_40px_-26px_rgba(11,42,28,0.4)] md:px-3 md:pb-[clamp(20px,2.35vw,45px)] md:pt-[clamp(20px,1.85vw,35px)] xl:px-5 2xl:rounded-[20px]">
       {/* Icon with the pale blob peeking out behind it */}
       <span className="relative flex h-[76px] w-[76px] shrink-0 items-center justify-center md:h-[clamp(58px,5.75vw,110px)] md:w-[clamp(58px,5.75vw,110px)]">
         <span aria-hidden="true" className="absolute -left-[24%] top-[12%] h-[88%] w-[88%] rounded-full bg-[#e6f3d3]" />
@@ -46,8 +47,12 @@ function ContactCard({ card }: { card: any }) {
       </h3>
       <p className="mt-3 break-words text-[15px] leading-[1.5] text-[#5f6c69] md:mt-[clamp(8px,1.05vw,20px)] md:text-[clamp(13px,1.2vw,23px)]">
         {card.lines[0]}
-        <br />
-        {card.lines[1]}
+        {card.lines[1] && (
+          <>
+            <br />
+            {card.lines[1]}
+          </>
+        )}
       </p>
 
       <span className="mt-5 block h-px w-[72%] bg-[#dfe9e4] md:mt-[clamp(12px,1.15vw,22px)]" />
@@ -121,9 +126,11 @@ export default function ContactInfo() {
           </div>
 
           <ul className="mx-auto mt-8 grid max-w-[420px] grid-cols-1 gap-6 md:max-w-none md:grid-cols-3 md:gap-4 xl:gap-6 2xl:mt-[44px] 2xl:max-w-[77vw] 2xl:gap-[30px] 3xl:max-w-[1476px]">
-            {cards.map((card) => (
+            {cards.map((card, i) => (
               <li key={card.title} className="min-w-0">
-                <ContactCard card={card} />
+                <ScrollReveal variant="fade-up" delay={i * 150} duration={650}>
+                  <ContactCard card={card} />
+                </ScrollReveal>
               </li>
             ))}
           </ul>

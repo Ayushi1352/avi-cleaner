@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionEyebrow from "./SectionEyebrow";
+import ScrollReveal from "./ScrollReveal";
 
 /**
  * Dark green call-to-action banner.
@@ -48,25 +49,29 @@ export default function PartnerCtaSection({
               showLeaf ? "lg:pl-[120px] 2xl:pl-[212px]" : "lg:pl-12 2xl:pl-[98px]"
             }`}
           >
-            <div className="min-w-0">
-              <SectionEyebrow light lines={false} className={wide ? "[&>span]:font-medium [&>span]:text-white/85 3xl:[&>span]:text-[20px]" : ""}>
-                {eyebrow}
-              </SectionEyebrow>
-              <h2 className={`mt-3 leading-[1.2] tracking-[-0.01em] text-white 2xl:mt-3 ${wide ? "text-[clamp(26px,2.77vw,53px)] font-extrabold" : "text-[clamp(26px,2.45vw,47px)] font-bold"}`}>
-                {title}
-              </h2>
-              <p className="mt-3 text-[15px] leading-[1.55] text-white/90 sm:text-base xl:text-[18px] 2xl:text-[21px] 3xl:text-[24.5px]">
-                {text}
-              </p>
-            </div>
+            <ScrollReveal variant="fade-up" duration={700} className="min-w-0 flex-1">
+              <div>
+                <SectionEyebrow light lines={false} className={wide ? "[&>span]:font-medium [&>span]:text-white/85 3xl:[&>span]:text-[20px]" : ""}>
+                  {eyebrow}
+                </SectionEyebrow>
+                <h2 className={`mt-3 leading-[1.2] tracking-[-0.01em] text-white 2xl:mt-3 ${wide ? "text-[clamp(26px,2.77vw,53px)] font-extrabold" : "text-[clamp(26px,2.45vw,47px)] font-bold"}`}>
+                  {title}
+                </h2>
+                <p className="mt-3 text-[15px] leading-[1.55] text-white/90 sm:text-base xl:text-[18px] 2xl:text-[21px] 3xl:text-[24.5px]">
+                  {text}
+                </p>
+              </div>
+            </ScrollReveal>
 
-            <Link
-              href={buttonHref}
-              className={`btn-solid btn-yellow group inline-flex w-fit shrink-0 items-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:px-11 2xl:py-6 2xl:text-[21px] 3xl:h-[90px] 3xl:justify-center ${wide ? "3xl:min-w-[368px] 3xl:gap-5 3xl:text-[25px]" : "3xl:min-w-[305px] 3xl:text-[24px]"}`}
-            >
-              {buttonLabel}
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
-            </Link>
+            <ScrollReveal variant="fade-up" delay={150} duration={600} className="shrink-0">
+              <Link
+                href={buttonHref}
+                className={`btn-solid btn-yellow group inline-flex w-fit shrink-0 items-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:px-11 2xl:py-6 2xl:text-[21px] 3xl:h-[90px] 3xl:justify-center ${wide ? "3xl:min-w-[368px] 3xl:gap-5 3xl:text-[25px]" : "3xl:min-w-[305px] 3xl:text-[24px]"}`}
+              >
+                {buttonLabel}
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
+              </Link>
+            </ScrollReveal>
           </div>
         </div>
       </div>

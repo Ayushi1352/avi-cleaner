@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
+import ScrollReveal from "@/components/ScrollReveal";
 import members from "./teamMembersData";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon } from "@/components/socialIcons";
 
@@ -34,7 +35,7 @@ function pageItems(total: number, current: number) {
 
 function MemberCard({ member }: { member: any }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-[16px] bg-white shadow-[0_14px_36px_-24px_rgba(11,42,28,0.35)] 2xl:rounded-[18px]">
+    <article className="card-border-animated flex h-full flex-col overflow-hidden rounded-[16px] bg-white shadow-[0_14px_36px_-24px_rgba(11,42,28,0.35)] 2xl:rounded-[18px]">
       <Link href={`/team/${member.slug}`} aria-label={`View ${member.name}`} className="group block overflow-hidden">
         <PhotoSlot
           src={member.photo}
@@ -136,9 +137,11 @@ export default function TeamGrid() {
 
           {/* Grid */}
           <ul className="mx-auto mt-10 grid max-w-[1760px] grid-cols-1 gap-5 min-[480px]:grid-cols-2 lg:grid-cols-4 xl:gap-6 2xl:mt-[40px] 2xl:gap-[28px] 3xl:px-[10px]">
-            {visible.map((m) => (
+            {visible.map((m, i) => (
               <li key={m.name} className="min-w-0">
-                <MemberCard member={m} />
+                <ScrollReveal variant="fade-up" delay={i * 100} duration={580}>
+                  <MemberCard member={m} />
+                </ScrollReveal>
               </li>
             ))}
           </ul>

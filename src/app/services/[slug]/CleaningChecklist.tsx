@@ -13,8 +13,9 @@ function CheckIcon({ className = "" }: { className?: string }) {
 
 /** "What's Included — Our Cleaning Checklist" with photo. */
 export default function CleaningChecklist({ service }: { service: any }) {
-  const half = Math.ceil(service.checklist.length / 2);
-  const columns = [service.checklist.slice(0, half), service.checklist.slice(half)];
+  const list = service?.checklist || [];
+  const half = Math.ceil(list.length / 2);
+  const columns = [list.slice(0, half), list.slice(half)];
 
   return (
     <section className="w-full bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">

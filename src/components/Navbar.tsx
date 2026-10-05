@@ -31,6 +31,23 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#eef1f4] bg-[#fcfcfe]/95 backdrop-blur">
       <div className="container-x">
@@ -69,12 +86,14 @@ export default function Navbar() {
 
           {/* Mobile controls */}
           <div className="flex items-center gap-2 lg:hidden">
-            <Link
-              href="/book-now"
-              className="btn-solid hidden items-center gap-2 rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-5 py-2.5 text-sm font-semibold [--btn:#3f7f2c] sm:inline-flex"
-            >
-              Book Now <ArrowRight className="h-4 w-4" />
-            </Link>
+            {!open && (
+              <Link
+                href="/book-now"
+                className="btn-solid hidden items-center gap-2 rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-5 py-2.5 text-sm font-semibold [--btn:#3f7f2c] sm:inline-flex"
+              >
+                Book Now <ArrowRight className="h-4 w-4" />
+              </Link>
+            )}
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -88,30 +107,43 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile & Tablet Fullscreen Drawer */}
       {open && (
-        <div className="border-t border-[#eef1f4] bg-white shadow-xl lg:hidden">
-          <nav className="container-x flex flex-col py-4">
-            {navLinks.map((link) => (
+        <div className="fixed inset-x-0 top-[72px] bottom-0 z-50 flex h-[calc(100dvh-72px)] flex-col justify-between border-t border-[#eef1f4] bg-white sm:top-[80px] sm:h-[calc(100dvh-80px)] lg:hidden">
+          <div className="container-x flex h-full flex-col justify-between overflow-y-auto py-4 sm:py-6">
+            <nav className="flex flex-col gap-1 sm:gap-1.5">
+              {navLinks.map((link) => {
+                const active = isActive(link.href, pathname);
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-[15px] font-semibold transition-colors sm:py-3 sm:text-base ${
+                      active
+                        ? "bg-mint text-green"
+                        : "text-navy hover:bg-mint-soft"
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {active && (
+                      <span className="h-2 w-2 rounded-full bg-green" />
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div className="mt-4 border-t border-[#f0f3f6] pt-4 pb-2 sm:pb-4">
               <Link
-                key={link.name}
-                href={link.href}
+                href="/book-now"
                 onClick={() => setOpen(false)}
-                className={`rounded-lg px-3 py-3 text-base font-semibold ${
-                  isActive(link.href, pathname) ? "bg-mint text-green" : "text-navy hover:bg-mint-soft"
-                }`}
+                className="btn-solid flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-6 py-3.5 text-base font-semibold text-white shadow-md shadow-green/20 [--btn:#3f7f2c]"
               >
-                {link.name}
+                Book Now <ArrowRight className="h-4 w-4" />
               </Link>
-            ))}
-            <Link
-              href="/book-now"
-              onClick={() => setOpen(false)}
-              className="btn-solid mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-6 py-3.5 text-base font-semibold [--btn:#3f7f2c] sm:hidden"
-            >
-              Book Now <ArrowRight className="h-4 w-4" />
-            </Link>
-          </nav>
+            </div>
+          </div>
         </div>
       )}
     </header>

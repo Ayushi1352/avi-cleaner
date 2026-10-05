@@ -1,4 +1,4 @@
-const MAP_SRC = "https://www.google.com/maps?q=Connaught+Place,+New+Delhi,+Delhi+110001,+India&z=15&output=embed";
+const MAP_SRC = "https://www.google.com/maps?q=123+Main+Street,+Seattle,+WA+98101,+USA&z=15&output=embed";
 
 /** Contact page: full-width Google map ("View on Map" scrolls here). */
 export default function ContactMap() {

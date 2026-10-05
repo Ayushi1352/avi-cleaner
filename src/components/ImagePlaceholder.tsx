@@ -12,7 +12,7 @@ export default function ImagePlaceholder({
   src,
   alt = "",
   className = "",
-  imgClassName = "object-cover object-center",
+  imgClassName = "object-cover object-[center_top]",
   placeholderLabel = "Image",
   children = null,
 }: {

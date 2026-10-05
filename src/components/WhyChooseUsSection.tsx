@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck, Smile, Star, Users } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
+import ScrollReveal from "./ScrollReveal";
 import { LeafIcon, PlayIcon } from "./icons";
 
 type CSSVars = CSSProperties & Record<string, string | number>;
@@ -41,7 +42,7 @@ export default function WhyChooseUsSection() {
           />
 
           <div className="why-choose-grid relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.08fr_1fr] lg:gap-10 2xl:gap-[64px]">
-            {/* ---------- Content ---------- */}
+            {/* ---------- Content: Stationary (Text vahi hai) ---------- */}
             <div className="min-w-0">
               <SectionTag accentColor={SECTION_ACCENT_COLOR}>Why Choose Us</SectionTag>
               <h2 className="mt-4 text-[clamp(30px,3.2vw,62px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-navy 2xl:mt-5">
@@ -60,7 +61,7 @@ export default function WhyChooseUsSection() {
                 {stats.map(({ icon: Icon, value, label, sub, anim }) => (
                   <li
                     key={label}
-                    className="flex min-w-0 items-center gap-4 rounded-[16px] bg-[#eef5f0] px-4 py-5 lg:gap-3 lg:px-3.5 xl:gap-4 xl:px-5 2xl:gap-[26px] 2xl:px-[24px] 2xl:py-[26px]"
+                    className="card-border-animated flex min-w-0 items-center gap-4 rounded-[16px] bg-[#eef5f0] px-4 py-5 lg:gap-3 lg:px-3.5 xl:gap-4 xl:px-5 2xl:gap-[26px] 2xl:px-[24px] 2xl:py-[26px]"
                   >
                     <span className="relative flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#2f5d45] text-white shadow-sm transition-transform duration-300 hover:scale-115 hover:shadow-[0_8px_20px_-4px_rgba(47,93,69,0.5)] lg:h-12 lg:w-12 xl:h-16 xl:w-16 2xl:h-[80px] 2xl:w-[80px]">
                       <Icon className={`h-6 w-6 2xl:h-8 2xl:w-8 ${anim}`} strokeWidth={1.7} />
@@ -100,7 +101,7 @@ export default function WhyChooseUsSection() {
             </div>
 
             {/* ---------- Visual ---------- */}
-            <div className="why-choose-visual relative mx-auto w-full min-w-0 max-w-[760px] pt-6 sm:pt-12 lg:pt-16 2xl:pt-[84px]">
+            <ScrollReveal variant="fade-left" duration={800} className="why-choose-visual relative mx-auto w-full min-w-0 max-w-[760px] pt-6 sm:pt-12 lg:pt-16 2xl:pt-[84px]">
               {/* Handwritten note */}
               <p className="why-choose-note absolute right-2 top-0 -rotate-[10deg] text-right font-script text-[24px] font-semibold leading-[0.95] text-navy sm:right-0 sm:text-[30px] 2xl:text-[40px]">
                 Trusted
@@ -159,7 +160,7 @@ export default function WhyChooseUsSection() {
                   </span>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>

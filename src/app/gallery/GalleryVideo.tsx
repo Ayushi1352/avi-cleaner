@@ -1,10 +1,15 @@
+"use client";
+
+import { useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
+import ScrollReveal from "@/components/ScrollReveal";
 import GalleryVideoCard from "./GalleryVideoCard";
 
 const YT = "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm";
+const PER_PAGE = 6;
 
 const videos = [
   { title: "Home Cleaning Service", text: "See how we clean and refresh your home.", thumb: "/images/cta-cleaner.webp", src: YT },
@@ -13,12 +18,35 @@ const videos = [
   { title: "Window Cleaning Tips", text: "Quick tips for sparkling clean windows.", thumb: "/images/mission/vision-window.webp", src: YT },
   { title: "Bathroom Cleaning", text: "Hygienic cleaning for a healthier home.", thumb: "/images/mission/mission-cleaning.webp", src: YT },
   { title: "Our Team at Work", text: "Meet our team and see us in action.", thumb: "/images/mission/partner-cta.webp", src: YT },
+  { title: "Carpet Deep Extraction", text: "Watch how stubborn dirt and stains are lifted with steam.", thumb: "/images/about-sofa-vacuum.webp", src: YT },
+  { title: "Kitchen Degreasing Tour", text: "Sparkling countertops, chimney filters and appliance care.", thumb: "/images/service-kitchen.webp", src: YT },
+  { title: "Living Room Detailing", text: "Step-by-step complete residential deep cleaning walkthrough.", thumb: "/images/project-living.webp", src: YT },
+  { title: "Commercial Floor Scrubbing", text: "High-grade industrial floor cleaning machines in motion.", thumb: "/images/project-office.webp", src: YT },
+  { title: "Eco-Friendly Cleaning Demo", text: "Non-toxic, safe, and plant-derived cleaning products in action.", thumb: "/images/why-choose-us.webp", src: YT },
+  { title: "Final Inspection & Handoff", text: "Our supervisor verifying pristine quality before handover.", thumb: "/images/about-cleaner-woman.webp", src: YT },
 ];
 
-/** Gallery page video section: "See Our Cleaning in Action". */
+/** Gallery page video section: "See Our Cleaning in Action" with pagination. */
 export default function GalleryVideo() {
+  const [page, setPage] = useState(1);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const totalPages = Math.max(1, Math.ceil(videos.length / PER_PAGE));
+  const visible = videos.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  const goTo = (p: number) => {
+    const next = Math.min(Math.max(1, p), totalPages);
+    if (next === page) return;
+    setPage(next);
+    sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const btn =
+    "flex h-10 w-10 items-center justify-center rounded-full text-[14px] font-bold shadow-[0_4px_14px_-4px_rgba(11,42,28,0.3)] transition-colors 2xl:h-12 2xl:w-12 2xl:text-[16px] 3xl:h-[50px] 3xl:w-[50px]";
+  const idle =
+    "bg-white text-[#0b1a12] hover:bg-[#0c3f2e] hover:text-white disabled:pointer-events-none disabled:opacity-60";
+
   return (
-    <section className="relative w-full overflow-hidden bg-[#f3fbf7] py-10 sm:py-12 xl:py-13 2xl:py-[46px]">
+    <section ref={sectionRef} className="relative w-full scroll-mt-24 overflow-hidden bg-[#f3fbf7] py-10 sm:py-12 xl:py-13 2xl:py-[46px]">
       {/* Leaf sprig, left */}
       <svg aria-hidden="true" viewBox="0 0 260 420" className="pointer-events-none absolute left-0 top-8 hidden w-[140px] text-[#e1f3ea] md:block 2xl:w-[230px]">
         <path fill="currentColor" d="M200 20C120 30 70 80 62 150c-2 22 4 42 16 58 58-22 100-80 116-150 2-12 6-26 6-38Z" />
@@ -52,12 +80,56 @@ export default function GalleryVideo() {
         </div>
 
         <ul className="mt-9 grid grid-cols-1 gap-x-5 gap-y-7 min-[480px]:grid-cols-2 lg:grid-cols-3 2xl:mt-[44px] 2xl:gap-x-[36px] 2xl:gap-y-[32px] 3xl:px-[12px]">
-          {videos.map((v) => (
+          {visible.map((v, i) => (
             <li key={v.title} className="min-w-0">
-              <GalleryVideoCard video={v} />
+              <ScrollReveal variant="fade-up" delay={i * 120} duration={600}>
+                <GalleryVideoCard video={v} />
+              </ScrollReveal>
             </li>
           ))}
         </ul>
+
+        {totalPages > 1 && (
+          <nav aria-label="Video gallery pages" className="mt-10 flex justify-center 2xl:mt-[38px]">
+            <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => goTo(page - 1)}
+                  disabled={page === 1}
+                  aria-label="Previous page"
+                  className={`${btn} ${idle}`}
+                >
+                  <ChevronLeft className="h-4 w-4" strokeWidth={3} />
+                </button>
+              </li>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <li key={n}>
+                  <button
+                    type="button"
+                    onClick={() => goTo(n)}
+                    aria-label={`Page ${n}`}
+                    aria-current={n === page ? "page" : undefined}
+                    className={`${btn} ${n === page ? "bg-[#0c3f2e] text-white" : idle}`}
+                  >
+                    {n}
+                  </button>
+                </li>
+              ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => goTo(page + 1)}
+                  disabled={page === totalPages}
+                  aria-label="Next page"
+                  className={`${btn} ${idle}`}
+                >
+                  <ChevronRight className="h-4 w-4" strokeWidth={3} />
+                </button>
+              </li>
+            </ul>
+          </nav>
+        )}
 
         <div className="mt-10 text-center 2xl:mt-[52px]">
           <Link

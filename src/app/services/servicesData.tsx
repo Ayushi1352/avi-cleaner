@@ -149,6 +149,84 @@ const services = [
     ctaEyebrow: "Let's Make Your Carpets Fresh",
     ctaText: "Enjoy softer, cleaner and healthier carpets with our deep cleaning service.",
   },
+  {
+    slug: "sofa-upholstery-cleaning",
+    title: "Sofa & Upholstery Cleaning",
+    whyName: "Sofa Cleaning",
+    short: "Restore the freshness, comfort and deep hygiene of your upholstered sofas, cushions and armchairs.",
+    icon: "carpet",
+    image: "/images/service-sofa.webp",
+    detailImage: "/images/about-sofa-vacuum.webp",
+    intro:
+      "Our sofa and upholstery cleaning service removes deep dust, stubborn spots, and allergens to rejuvenate your furniture. We use gentle yet powerful fabric-safe solutions that restore original freshness without damaging texture or colour.",
+    checklistIntro: "We follow a detailed checklist to carefully clean and revitalize your upholstery.",
+    checklist: [
+      "Fabric pre-inspection & spot testing",
+      "Deep dust extraction & vacuuming",
+      "Stain & spot treatment",
+      "Shampoo & fabric sanitization",
+      "Allergen & mite removal",
+      "Odour neutralising treatment",
+      "Cushion deep sanitization",
+      "Fast-drying air blower finish",
+      "Fibre protection coat",
+      "Customized as per your needs",
+    ],
+    ctaEyebrow: "Let's Make Your Furniture Fresh",
+    ctaText: "Enjoy clean, healthy and revitalized sofas with our upholstery specialists.",
+  },
+  {
+    slug: "sanitization-disinfection-service",
+    title: "Sanitization & Disinfection",
+    whyName: "Sanitization Service",
+    short: "Hospital-grade sanitization eliminating 99.9% of bacteria and viruses for safe environments.",
+    icon: "building",
+    image: "/images/mission/mission-cleaning.webp",
+    detailImage: "/images/why-choose-us.webp",
+    intro:
+      "Our sanitization and disinfection service targets high-touch surfaces, shared equipment, and communal zones. Using hospital-grade, eco-friendly disinfectants, we eliminate 99.9% of pathogens to keep your family and workforce safe.",
+    checklistIntro: "We follow strict hygiene protocols to disinfect and protect every zone.",
+    checklist: [
+      "High-touch surface sterilization",
+      "Doorknob & light switch wipe",
+      "Restroom & pantry sanitization",
+      "ULV cold fogging treatment",
+      "Hospital-grade disinfectant usage",
+      "Airborne pathogen neutralization",
+      "Child and pet safe formulas",
+      "Desk & workstation disinfection",
+      "Post-sanitization check",
+      "Certified hygienic clearance",
+    ],
+    ctaEyebrow: "Keep Your Spaces Germ-Free",
+    ctaText: "Protect your family and employees with certified medical-grade disinfection.",
+  },
+  {
+    slug: "move-in-move-out-cleaning",
+    title: "Move-In & Move-Out Cleaning",
+    whyName: "Move In/Out Cleaning",
+    short: "Comprehensive top-to-bottom cleaning ensuring seamless transitions into spotless properties.",
+    icon: "home",
+    image: "/images/project-living.webp",
+    detailImage: "/images/project-kitchen.webp",
+    intro:
+      "Moving into a new space or vacating your current one? Our move-in and move-out cleaning service handles all the deep scrubbing, polishing, and sanitizing so you step into a spotless, welcoming environment with complete peace of mind.",
+    checklistIntro: "We follow an exhaustive checklist to guarantee a 100% spotless handoff.",
+    checklist: [
+      "Full property dusting & cobweb clearing",
+      "Inside & outside cabinet wiping",
+      "Kitchen appliance degreasing",
+      "Bathroom descaling & disinfection",
+      "Window glass & sill cleaning",
+      "Baseboards & trim detailing",
+      "Floor scrubbing & polishing",
+      "Closet & drawer interior wipe",
+      "Trash & debris clearance",
+      "Ready-to-move quality guarantee",
+    ],
+    ctaEyebrow: "Stress-Free Moving Cleaning",
+    ctaText: "Leave the heavy scrubbing to us and focus on settling into your new journey.",
+  },
 ];
 
 // Detail page top photo: /images/services/<slug>-detail.webp (different from the
@@ -158,8 +236,49 @@ const services = [
   s.checklistImage = s.checklistImage || s.image;
 });
 
-export function getServiceBySlug(slug) {
-  return services.find((s) => s.slug === slug) || null;
+const slugAliases: Record<string, string> = {
+  "home-cleaning": "home-deep-cleaning",
+  "deep-cleaning": "home-deep-cleaning",
+  "bathroom-cleaning": "home-deep-cleaning",
+  "bathroom-sanitization": "home-deep-cleaning",
+  "bathroom-sanitization-cleaning": "home-deep-cleaning",
+  "office-cleaning": "office-professional-cleaning",
+  "kitchen-cleaning": "kitchen-hygiene-cleaning",
+  "window-cleaning": "windows-deep-cleaning",
+  "windows-cleaning": "windows-deep-cleaning",
+  "commercial-cleaning": "commercial-building-cleaning",
+  "carpet-cleaning": "deep-carpet-cleaning",
+  "sofa-cleaning": "sofa-upholstery-cleaning",
+  "upholstery-cleaning": "sofa-upholstery-cleaning",
+  "sanitization": "sanitization-disinfection-service",
+  "disinfection": "sanitization-disinfection-service",
+  "move-in-out": "move-in-move-out-cleaning",
+  "move-in-out-cleaning": "move-in-move-out-cleaning",
+};
+
+export function getServiceBySlug(rawSlug?: string | string[]) {
+  if (!rawSlug) return null;
+  const slugStr = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug;
+  if (typeof slugStr !== "string") return null;
+  const clean = decodeURIComponent(slugStr).trim().toLowerCase().replace(/\/$/, "");
+
+  // 1. Direct slug match
+  const direct = services.find((s) => s.slug.toLowerCase() === clean);
+  if (direct) return direct;
+
+  // 2. Alias match
+  const targetSlug = slugAliases[clean];
+  if (targetSlug) {
+    const aliased = services.find((s) => s.slug.toLowerCase() === targetSlug);
+    if (aliased) return aliased;
+  }
+
+  // 3. Partial substring match
+  return (
+    services.find(
+      (s) => s.slug.toLowerCase().includes(clean) || clean.includes(s.slug.toLowerCase())
+    ) || null
+  );
 }
 
 export default services;

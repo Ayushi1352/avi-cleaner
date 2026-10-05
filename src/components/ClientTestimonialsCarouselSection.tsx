@@ -1,11 +1,12 @@
 "use client";
 
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
 import CarouselDots from "./CarouselDots";
+import ScrollReveal from "./ScrollReveal";
 import { QuoteIcon, StarIcon } from "./icons";
 
 // Quotes are kept to a similar length so every card looks equally full.
@@ -38,6 +39,20 @@ const testimonials = [
     role: "Business Owner",
     avatar: "/images/avatar-3.webp",
   },
+  {
+    quote:
+      "Courteous and efficient crew. They handled high-touch surfaces and deep stains with great attention to hygiene. Highly recommended for commercial cleaning!",
+    name: "Vikram Singh",
+    role: "Facility Manager",
+    avatar: "/images/team/team-5.webp",
+  },
+  {
+    quote:
+      "Our workspace has never been healthier or more inviting. Booking was effortless and the spotless results truly exceeded our team's expectations!",
+    name: "Neha Malhotra",
+    role: "HR Director",
+    avatar: "/images/team/team-3.webp",
+  },
 ];
 
 function Stars({ className = "" }) {
@@ -66,6 +81,7 @@ function Author({ t, big = false }) {
         className={`shrink-0 rounded-full border-[3px] border-white shadow-[0_0_0_1px_#dfe7e2] ${
           big ? "h-16 w-16 2xl:h-[88px] 2xl:w-[88px]" : "h-12 w-12 2xl:h-[70px] 2xl:w-[70px]"
         }`}
+        imgClassName="object-cover object-top"
       />
       <div className="min-w-0">
         <p className={`font-bold text-navy ${big ? "text-[16px] 2xl:text-[20px]" : "text-[14px] 2xl:text-[17px]"}`}>
@@ -86,9 +102,33 @@ type CSSVars = CSSProperties & Record<string, string | number>;
 
 // Where a slide sits for a given distance from the centre.
 // --tx-m is the phone offset; --tx / --ry / --sc drive the desktop coverflow.
-function slideStyle(offset: number): CSSVars {
+function slideStyle(offset: number, hasEntered: boolean = true): CSSVars {
   const dir = Math.sign(offset);
   const dist = Math.abs(offset);
+
+  if (!hasEntered) {
+    if (dist === 0) {
+      return {
+        "--tx-m": "0px",
+        "--tx": "0px",
+        "--ry": "0deg",
+        "--sc": 0.88,
+        "--op": 0,
+        transform: "translateY(40px)",
+      };
+    }
+    if (dist === 1) {
+      return {
+        "--tx-m": `calc(${dir * 140}% + ${dir * 40}px)`,
+        "--tx": `calc(${dir * 120}% + ${dir * 16}px)`,
+        "--ry": `${dir * -30}deg`,
+        "--sc": 0.5,
+        "--op": 0,
+        transform: `translateX(${dir * 50}px)`,
+      };
+    }
+  }
+
   if (dist === 0) return { "--tx-m": "0px", "--tx": "0px", "--ry": "0deg", "--sc": 1, "--op": 1 };
   if (dist === 1) {
     return {
@@ -111,10 +151,48 @@ function slideStyle(offset: number): CSSVars {
 export default function TestimonialsSection() {
   // `pos` runs on without wrapping so slides always travel the short way round.
   const [pos, setPos] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
+  const [entranceDone, setEntranceDone] = useState(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
   const total = testimonials.length;
   const index = mod(pos, total);
 
-  const goTo = (i) => {
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setHasEntered(true);
+      setEntranceDone(true);
+      return;
+    }
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          obs.unobserve(el);
+          setTimeout(() => {
+            setEntranceDone(true);
+          }, 1100);
+        }
+      },
+      { threshold: 0.12 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  // Automatic sliding: advance to next slide every 4 seconds unless hovered/focused
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setPos((p) => p + 1);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const goTo = (i: number) => {
     let delta = i - index;
     if (delta > total / 2) delta -= total;
     if (delta < -total / 2) delta += total;
@@ -129,7 +207,14 @@ export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="container-x">
-        <div className="relative overflow-hidden rounded-[20px] bg-[#f7f9fa] px-4 py-8 sm:px-8 sm:py-10 xl:px-12 2xl:rounded-[4px] 2xl:px-[56px] 2xl:pb-[36px] 2xl:pt-[32px]">
+        <div
+          ref={sectionRef}
+          className="relative overflow-hidden rounded-[20px] bg-[#f7f9fa] px-4 py-8 sm:px-8 sm:py-10 xl:px-12 2xl:rounded-[4px] 2xl:px-[56px] 2xl:pb-[36px] 2xl:pt-[32px]"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
           {/* Leaf + handwritten note */}
           <svg
             aria-hidden="true"
@@ -171,19 +256,21 @@ export default function TestimonialsSection() {
           </svg>
 
           {/* Header */}
-          <div className="relative mx-auto max-w-[900px] text-center">
-            <SectionTag center>Testimonials</SectionTag>
-            <h2 className="mt-4 text-[clamp(30px,3.2vw,62px)] font-extrabold leading-[1.02] tracking-[-0.02em] text-navy">
-              What Our Clients are Saying
-              <br />
-              <span className="text-[#2a6a4a]">About Us</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-[760px] text-[15px] leading-[1.4] text-body sm:text-base xl:text-[18px] 2xl:text-[20.5px]">
-              Real feedback from real people. See why homeowners and businesses{" "}
-              <br className="hidden md:block" />
-              trust Avicleaner for their cleaning needs.
-            </p>
-          </div>
+          <ScrollReveal variant="fade-up" duration={700}>
+            <div className="relative mx-auto max-w-[900px] text-center">
+              <SectionTag center>Testimonials</SectionTag>
+              <h2 className="mt-4 text-[clamp(30px,3.2vw,62px)] font-extrabold leading-[1.02] tracking-[-0.02em] text-navy">
+                What Our Clients are Saying
+                <br />
+                <span className="text-[#2a6a4a]">About Us</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-[760px] text-[15px] leading-[1.4] text-body sm:text-base xl:text-[18px] 2xl:text-[20.5px]">
+                Real feedback from real people. See why homeowners and businesses{" "}
+                <br className="hidden md:block" />
+                trust Avicleaner for their cleaning needs.
+              </p>
+            </div>
+          </ScrollReveal>
 
           {/* Slider: every slide shares one grid cell, so all cards get the same size */}
           <div className="relative mt-12 grid 2xl:mt-[30px]">
@@ -192,12 +279,24 @@ export default function TestimonialsSection() {
               const offset = k - pos;
               const active = offset === 0;
               const side = Math.abs(offset) === 1;
+
+              const getDelay = () => {
+                if (entranceDone || !hasEntered) return "0ms";
+                if (offset === 0) return "100ms"; // Center card rises from bottom
+                if (offset === -1) return "320ms"; // Left card slides in from left
+                if (offset === 1) return "540ms"; // Right card slides in from right
+                return "0ms";
+              };
+
               return (
                 <article
                   key={k}
                   aria-hidden={!active}
                   onClick={side ? () => setPos(k) : undefined}
-                  style={slideStyle(offset)}
+                  style={{
+                    ...slideStyle(offset, hasEntered),
+                    transitionDelay: getDelay(),
+                  }}
                   className={`relative flex w-full flex-col justify-center justify-self-center rounded-[24px] px-5 pb-8 pt-12 text-center opacity-(--op) transition-[transform,opacity,background-color,box-shadow] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] [grid-area:1/1] [transform:translateX(var(--tx-m))] motion-reduce:transition-none sm:px-10 lg:w-[46%] lg:[transform:perspective(1200px)_translateX(var(--tx))_rotateY(var(--ry))_scale(var(--sc))] 2xl:px-[70px] 2xl:pb-7 2xl:pt-[62px] ${
                     active
                       ? "z-20 bg-white shadow-[0_20px_50px_-24px_rgba(11,27,69,0.3)]"
@@ -223,10 +322,27 @@ export default function TestimonialsSection() {
             })}
           </div>
 
-          {/* Dots */}
-          <div className="relative mt-8 flex items-center justify-center 2xl:mt-6">
+          {/* Dots & Navigation Arrows */}
+          <div className="relative mt-8 flex items-center justify-center gap-3.5 2xl:mt-6">
+            <button
+              type="button"
+              onClick={() => setPos((p) => p - 1)}
+              aria-label="Previous testimonial"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#124734] shadow-[0_2px_10px_-2px_rgba(11,42,28,0.25)] transition-all hover:bg-[#124734] hover:text-white"
+            >
+              <ChevronLeft className="h-4 w-4" strokeWidth={2.6} />
+            </button>
             <CarouselDots pages={total} index={index} goTo={goTo} />
+            <button
+              type="button"
+              onClick={() => setPos((p) => p + 1)}
+              aria-label="Next testimonial"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#124734] shadow-[0_2px_10px_-2px_rgba(11,42,28,0.25)] transition-all hover:bg-[#124734] hover:text-white"
+            >
+              <ChevronRight className="h-4 w-4" strokeWidth={2.6} />
+            </button>
           </div>
+
           <div className="relative mt-6 flex justify-center">
             <Link
               href="/testimonials"

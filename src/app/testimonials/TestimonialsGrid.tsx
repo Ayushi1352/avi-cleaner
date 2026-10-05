@@ -1,7 +1,14 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import { StarIcon } from "@/components/icons";
 import { RoundQuoteIcon } from "@/components/solidIcons";
+import ScrollReveal from "@/components/ScrollReveal";
+
+const PER_PAGE = 6;
 
 // Client reviews. Replace the stand-in photos with real client headshots.
 const reviews = [
@@ -59,11 +66,29 @@ const reviews = [
     role: "Apartment Resident",
     avatar: "/images/team/team-13.webp",
   },
+  {
+    quote: "Very impressed with the thoroughness and speed. The team sanitized all rooms and left everything smelling fresh and spotless.",
+    name: "Deepak Joshi",
+    role: "Property Manager",
+    avatar: "/images/team/team-7.webp",
+  },
+  {
+    quote: "Outstanding quality and customer care! Booking was effortless and their cleaners took special care with our upholstery.",
+    name: "Kavita Singhania",
+    role: "Homeowner",
+    avatar: "/images/team/team-8.webp",
+  },
+  {
+    quote: "Prompt, honest, and dedicated. They tackled tough grease and dust in our commercial kitchen flawlessly. Truly top-tier service.",
+    name: "Rajesh Patel",
+    role: "Restaurant Owner",
+    avatar: "/images/team/team-9.webp",
+  },
 ];
 
 function ReviewCard({ review }: { review: any }) {
   return (
-    <article className="relative flex h-full min-w-0 flex-col rounded-[14px] bg-white px-5 pb-5 pt-6 shadow-[0_12px_32px_-24px_rgba(11,42,28,0.35)] sm:px-6 2xl:rounded-[18px] 2xl:px-8 2xl:pb-6 2xl:pt-7 3xl:px-[39px] 3xl:pb-[18px] 3xl:pt-[32px]">
+    <article className="card-border-animated relative flex h-full min-w-0 flex-col rounded-[14px] bg-white px-5 pb-5 pt-6 shadow-[0_12px_32px_-24px_rgba(11,42,28,0.35)] sm:px-6 2xl:rounded-[18px] 2xl:px-8 2xl:pb-6 2xl:pt-7 3xl:px-[39px] 3xl:pb-[18px] 3xl:pt-[32px]">
       {/* Pale closing quote mark, top right */}
       <RoundQuoteIcon
         className="absolute right-4 top-4 h-9 w-9 rotate-180 text-[#dcf2e6] sm:h-10 sm:w-10 2xl:right-6 2xl:top-5 2xl:h-12 2xl:w-12 3xl:right-[30px] 3xl:top-[22px] 3xl:h-[58px] 3xl:w-[58px]"
@@ -100,10 +125,27 @@ function ReviewCard({ review }: { review: any }) {
   );
 }
 
-/** Testimonial page body: "What Our Clients Say" with a grid of reviews. */
+/** Testimonial page body: "What Our Clients Say" with a grid of reviews and pagination. */
 export default function TestimonialsGrid() {
+  const [page, setPage] = useState(1);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const totalPages = Math.max(1, Math.ceil(reviews.length / PER_PAGE));
+  const visible = reviews.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  const goTo = (p: number) => {
+    const next = Math.min(Math.max(1, p), totalPages);
+    if (next === page) return;
+    setPage(next);
+    sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const btn =
+    "flex h-10 w-10 items-center justify-center rounded-full text-[14px] font-bold shadow-[0_4px_14px_-4px_rgba(11,42,28,0.3)] transition-colors 2xl:h-12 2xl:w-12 2xl:text-[16px] 3xl:h-[50px] 3xl:w-[50px]";
+  const idle =
+    "bg-white text-[#0b1a12] hover:bg-[#0c3f2e] hover:text-white disabled:pointer-events-none disabled:opacity-60";
+
   return (
-    <section className="w-full bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
+    <section ref={sectionRef} className="w-full scroll-mt-24 bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="relative overflow-hidden bg-gradient-to-br from-[#f5fdf9] via-[#eef8f5] to-[#e6f5ef] pb-10 pt-12 sm:pt-14 2xl:pb-[53px] 2xl:pt-[44px]">
         {/* Leaf sprig, top left */}
         <svg aria-hidden="true" viewBox="0 0 260 420" className="pointer-events-none absolute left-0 top-4 hidden w-[150px] text-[#e2f3eb] md:block 2xl:w-[250px]">
@@ -138,12 +180,56 @@ export default function TestimonialsGrid() {
           </div>
 
           <ul className="mx-auto mt-9 grid max-w-[520px] grid-cols-1 gap-5 md:max-w-none md:grid-cols-2 lg:grid-cols-3 lg:gap-4 xl:gap-6 2xl:mt-[34px] 2xl:gap-[26px] 3xl:gap-x-[28px] 3xl:pl-[20px] 3xl:pr-[14px]">
-            {reviews.map((r) => (
+            {visible.map((r, i) => (
               <li key={r.name} className="min-w-0">
-                <ReviewCard review={r} />
+                <ScrollReveal variant="fade-up" delay={i * 120} duration={600}>
+                  <ReviewCard review={r} />
+                </ScrollReveal>
               </li>
             ))}
           </ul>
+
+          {totalPages > 1 && (
+            <nav aria-label="Testimonials pages" className="mt-10 flex justify-center 2xl:mt-[38px]">
+              <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => goTo(page - 1)}
+                    disabled={page === 1}
+                    aria-label="Previous page"
+                    className={`${btn} ${idle}`}
+                  >
+                    <ChevronLeft className="h-4 w-4" strokeWidth={3} />
+                  </button>
+                </li>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                  <li key={n}>
+                    <button
+                      type="button"
+                      onClick={() => goTo(n)}
+                      aria-label={`Page ${n}`}
+                      aria-current={n === page ? "page" : undefined}
+                      className={`${btn} ${n === page ? "bg-[#0c3f2e] text-white" : idle}`}
+                    >
+                      {n}
+                    </button>
+                  </li>
+                ))}
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => goTo(page + 1)}
+                    disabled={page === totalPages}
+                    aria-label="Next page"
+                    className={`${btn} ${idle}`}
+                  >
+                    <ChevronRight className="h-4 w-4" strokeWidth={3} />
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          )}
         </div>
       </div>
     </section>

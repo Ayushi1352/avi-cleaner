@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
 import CarouselDots from "./CarouselDots";
+import ScrollReveal from "./ScrollReveal";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
 import { BuildingIcon, HomeIcon, LeafIcon } from "./icons";
 
@@ -54,7 +55,7 @@ const posts = [
     title: "How a Clean Office Boosts Productivity",
     excerpt:
       "See how a tidy, sanitized workspace helps teams stay focused, healthy and motivated every day.",
-    image: "/images/blog-4.jpg",
+    image: "/images/blog-4.webp",
     author: { name: "Rahul Mehta", role: "Facility Manager", avatar: "/images/blog-author-1.webp" },
   },
 ];
@@ -64,7 +65,7 @@ function BlogCard({ post }) {
   const href = `/blog/${post.slug}`;
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-[18px] bg-white shadow-[0_16px_40px_-26px_rgba(11,27,69,0.35)] transition-shadow hover:shadow-[0_20px_45px_-20px_rgba(11,27,69,0.4)]">
+    <article className="card-border-animated flex h-full flex-col overflow-hidden rounded-[18px] bg-white shadow-[0_16px_40px_-26px_rgba(11,27,69,0.35)] transition-shadow hover:shadow-[0_20px_45px_-20px_rgba(11,27,69,0.4)]">
       <div className="relative">
         <Link href={href} aria-label={post.title} className="group/img block overflow-hidden">
           <ImagePlaceholder
@@ -103,6 +104,7 @@ function BlogCard({ post }) {
               alt={post.author.name}
               placeholderLabel=""
               className="h-12 w-12 shrink-0 rounded-full 2xl:h-[75px] 2xl:w-[75px]"
+              imgClassName="object-cover object-top"
             />
             <div className="min-w-0">
               <p className="text-[14px] font-bold leading-tight text-navy 2xl:text-[19px]">{post.author.name}</p>
@@ -138,46 +140,57 @@ export default function BlogSection() {
       </svg>
 
       <div className="container-x relative">
-        <div className="mx-auto max-w-[1180px] text-center">
-          <SectionTag center>News &amp; Articles</SectionTag>
-          <h2 className="mt-4 text-[clamp(30px,3.65vw,70px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-navy 2xl:mt-5">
-            Discover Our Latest <span className="text-green">Blog Updates</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-[900px] text-balance text-[15px] leading-[1.6] text-body sm:text-base xl:text-[18px] 2xl:text-[21px]">
-            Stay informed with helpful cleaning tips, expert advice, and the
-            latest news from Avicleaner. Explore our articles to keep your
-            spaces cleaner, healthier and happier.
-          </p>
-        </div>
+        <ScrollReveal variant="fade-up" duration={700}>
+          <div className="mx-auto max-w-[1180px] text-center">
+            <SectionTag center>News &amp; Articles</SectionTag>
+            <h2 className="mt-4 text-[clamp(30px,3.65vw,70px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-navy 2xl:mt-5">
+              Discover Our Latest <span className="text-green">Blog Updates</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-[900px] text-balance text-[15px] leading-[1.6] text-body sm:text-base xl:text-[18px] 2xl:text-[21px]">
+              Stay informed with helpful cleaning tips, expert advice, and the
+              latest news from Avicleaner. Explore our articles to keep your
+              spaces cleaner, healthier and happier.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div
           ref={setViewport}
           className="mt-10 overflow-hidden px-0.5 pb-4 pt-2 [--gap:16px] [--per:1] md:[--per:2] lg:[--per:3] lg:[--gap:20px] 2xl:mt-[42px] 2xl:[--gap:28px] 3xl:px-[10px]"
         >
           <div className={trackClass} style={c.trackStyle}>
-            {posts.map((p) => (
+            {posts.map((p, i) => (
               <div key={p.title} className={slideClass}>
-                <BlogCard post={p} />
+                <ScrollReveal
+                  variant="fade-up"
+                  delay={i * 180}
+                  duration={700}
+                  className="h-full"
+                >
+                  <BlogCard post={p} />
+                </ScrollReveal>
               </div>
             ))}
           </div>
         </div>
 
-        <CarouselDots
-          pages={c.pages}
-          index={c.index}
-          goTo={c.goTo}
-          className="mt-6 justify-center 2xl:mt-8"
-        />
-        <div className="mt-6 flex justify-center">
-          <Link
-            href="/blog"
-            className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
-          >
-            View All Articles
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
+        <ScrollReveal variant="fade-up" delay={300} duration={600}>
+          <CarouselDots
+            pages={c.pages}
+            index={c.index}
+            goTo={c.goTo}
+            className="mt-6 justify-center 2xl:mt-8"
+          />
+          <div className="mt-6 flex justify-center">
+            <Link
+              href="/blog"
+              className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
+            >
+              View All Articles
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

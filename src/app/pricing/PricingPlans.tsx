@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Building2, Crown, House } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { HomeIcon, LeafIcon, ShieldCheckIcon, UsersIcon } from "@/components/icons";
+import ScrollReveal from "@/components/ScrollReveal";
 
 // Photo beside the Compare Plans table.
 const COMPARE_PHOTO = "/images/pricing/compare-cleaner.webp";
@@ -87,7 +88,7 @@ function PlanCard({ plan }: { plan: any }) {
   const Icon = plan.icon;
   return (
     <article
-      className={`relative flex h-full min-w-0 flex-col items-center rounded-[20px] px-5 pb-7 pt-9 text-center shadow-[0_14px_36px_-26px_rgba(11,42,28,0.3)] sm:px-7 lg:px-4 xl:px-6 2xl:rounded-[24px] 2xl:pb-9 2xl:pt-10 3xl:pb-[40px] 3xl:pt-[45px] ${
+      className={`card-border-animated relative flex h-full min-w-0 flex-col items-center rounded-[20px] px-5 pb-7 pt-9 text-center shadow-[0_14px_36px_-26px_rgba(11,42,28,0.3)] sm:px-7 lg:px-4 xl:px-6 2xl:rounded-[24px] 2xl:pb-9 2xl:pt-10 3xl:pb-[40px] 3xl:pt-[45px] ${
         plan.popular ? "bg-[#edfaf3] ring-2 ring-[#d9f1e4]" : "bg-white"
       }`}
     >
@@ -186,9 +187,11 @@ export default function PricingPlans() {
 
           {/* ---------- Plans ---------- */}
           <ul className="mx-auto mt-12 grid max-w-[480px] grid-cols-1 gap-9 md:max-lg:max-w-none md:max-lg:grid-cols-2 md:max-lg:gap-x-5 md:max-lg:gap-y-9 lg:max-w-none lg:grid-cols-3 lg:gap-5 xl:gap-6 2xl:mt-[56px] 2xl:gap-[30px] 3xl:mt-[66px] 3xl:pl-[28px] 3xl:pr-[17px]">
-            {plans.map((p) => (
+            {plans.map((p, i) => (
               <li key={p.name} className="min-w-0">
-                <PlanCard plan={p} />
+                <ScrollReveal variant="fade-up" delay={i * 150} duration={650}>
+                  <PlanCard plan={p} />
+                </ScrollReveal>
               </li>
             ))}
           </ul>

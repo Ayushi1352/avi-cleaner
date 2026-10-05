@@ -167,7 +167,7 @@ export default function BookingForm() {
           <div className="grid min-w-0 grid-cols-1 content-start gap-6 md:grid-cols-2 lg:grid-cols-1 3xl:gap-[26px]">
             <div className="relative aspect-[620/592] w-full overflow-hidden rounded-[16px] 2xl:rounded-[20px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={PHOTO} alt="Avicleaner cleaner wiping a kitchen counter" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-right" />
+              <img src={PHOTO} alt="Avicleaner cleaner wiping a kitchen counter" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[right_top]" />
               <div className="absolute inset-y-0 left-0 w-[55%] bg-gradient-to-r from-white/80 to-transparent" />
               <p className="absolute left-[7%] top-[15%] -rotate-[8deg] font-script text-[clamp(26px,3.1vw,60px)] font-medium leading-[1] text-[#12583f] md:text-[clamp(22px,3.4vw,34px)] lg:text-[clamp(22px,2.6vw,52px)]" aria-hidden="true">
                 A

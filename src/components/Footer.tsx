@@ -22,19 +22,16 @@ const usefulLinks2 = [
   "Services",
   "Blog",
   "Gallery",
-  "Career",
   "FAQ",
   "Contact Us",
 ];
 const serviceLinks = [
-  "Home Cleaning",
-  "Office Cleaning",
-  "Kitchen Cleaning",
-  "Bathroom Cleaning",
-  "Window Cleaning",
-  "Deep Cleaning",
-  "Move In/Out Cleaning",
-  "Customized Cleaning",
+  "Home Deep Cleaning",
+  "Office Professional Cleaning",
+  "Kitchen Hygiene Cleaning",
+  "Windows Deep Cleaning",
+  "Commercial Building Cleaning",
+  "Deep Carpet Cleaning",
 ];
 const socials = [
   { name: "Facebook", icon: FacebookIcon },
@@ -51,9 +48,9 @@ const badges = [
 
 function ColumnTitle({ children }) {
   return (
-    <h4 className="text-[20px] font-bold text-white 2xl:text-[24px]">
+    <h4 className="text-[17px] font-bold text-white 2xl:text-[19px]">
       {children}
-      <span className="mt-3 block h-[5px] w-10 rounded-full bg-[#fadb64] 2xl:mt-4" />
+      <span className="mt-2 block h-[3.5px] w-9 rounded-full bg-[#fadb64] 2xl:mt-2.5" />
     </h4>
   );
 }
@@ -72,32 +69,24 @@ const PAGE_LINKS = {
   Services: "/services",
   FAQ: "/faq",
   "Contact Us": "/contact-us",
-  Career: "/about-us",
   "Home Deep Cleaning": "/services/home-deep-cleaning",
   "Office Professional Cleaning": "/services/office-professional-cleaning",
   "Kitchen Hygiene Cleaning": "/services/kitchen-hygiene-cleaning",
   "Windows Deep Cleaning": "/services/windows-deep-cleaning",
   "Commercial Building Cleaning": "/services/commercial-building-cleaning",
   "Deep Carpet Cleaning": "/services/deep-carpet-cleaning",
-  "Office Cleaning": "/services/office-professional-cleaning",
-  "Kitchen Cleaning": "/services/kitchen-hygiene-cleaning",
-  "Bathroom Cleaning": "/services/home-deep-cleaning",
-  "Window Cleaning": "/services/windows-deep-cleaning",
-  "Deep Cleaning": "/services/home-deep-cleaning",
-  "Move In/Out Cleaning": "/services/home-deep-cleaning",
-  "Customized Cleaning": "/services/commercial-building-cleaning",
 };
 
 function LinkList({ items }) {
   return (
-    <ul className="mt-6 space-y-3.5 2xl:mt-8 2xl:space-y-[17px]">
+    <ul className="mt-4 space-y-2 2xl:mt-5 2xl:space-y-2.5">
       {items.map((item) => (
         <li key={item}>
           <Link
             href={PAGE_LINKS[item] ?? "/services"}
-            className="group inline-flex items-center gap-3 text-[15px] text-white/90 transition hover:text-[#fadb64] 2xl:gap-4 2xl:text-[17px]"
+            className="group inline-flex items-center gap-2 whitespace-nowrap text-[13.5px] text-white/90 transition hover:text-[#fadb64] 2xl:gap-2.5 2xl:text-[14.5px]"
           >
-            <ChevronRight className="h-4 w-4 shrink-0 text-[#fadb64] transition-transform group-hover:translate-x-0.5 2xl:h-5 2xl:w-5" strokeWidth={3} />
+            <ChevronRight className="h-3.5 w-3.5 shrink-0 text-[#fadb64] transition-transform group-hover:translate-x-0.5 2xl:h-4 2xl:w-4" strokeWidth={3} />
             {item}
           </Link>
         </li>
@@ -137,36 +126,36 @@ export default function Footer() {
       </svg>
 
       <div className="container-x relative">
-        <div className="grid grid-cols-1 gap-10 pb-12 pt-14 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:grid-cols-[1.3fr_0.85fr_0.85fr_0.95fr_1.35fr] xl:gap-8 2xl:gap-11 2xl:pb-[56px] 2xl:pt-[66px]">
+        <div className="grid grid-cols-1 gap-8 pb-10 pt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-[1.2fr_0.75fr_0.75fr_1.15fr_1.25fr] xl:gap-6 2xl:gap-8 2xl:pb-12 2xl:pt-12">
           {/* Brand + contact */}
           <div className="min-w-0">
-            <Logo isFooter className="h-[76px] w-[260px] 2xl:h-[96px] 2xl:w-[355px]" />
-            <p className="mt-4 max-w-[380px] text-[15px] leading-[1.55] text-white/85 2xl:text-[18px]">
+            <Logo isFooter className="h-[64px] w-[220px] 2xl:h-[76px] 2xl:w-[270px]" />
+            <p className="mt-3 max-w-[340px] text-[13.5px] leading-[1.5] text-white/85 2xl:text-[14.5px]">
               We provide professional cleaning services for homes and
               businesses, ensuring a cleaner, healthier and more comfortable
               environment for you.
             </p>
-            <ul className="mt-5 space-y-3 text-[15px] text-white/90 2xl:space-y-2.5 2xl:text-[17px]">
-              <li className="flex items-center gap-4 2xl:gap-6">
-                <span className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-[46px] 2xl:w-[46px]">
-                  <Phone className="h-4 w-4 animate-icon-pulse-subtle" fill="currentColor" strokeWidth={0} />
+            <ul className="mt-4 space-y-2.5 text-[13.5px] text-white/90 2xl:space-y-2 2xl:text-[14.5px]">
+              <li className="flex items-center gap-3 2xl:gap-4">
+                <span className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-9 2xl:w-9">
+                  <Phone className="h-3.5 w-3.5 animate-icon-pulse-subtle" fill="currentColor" strokeWidth={0} />
                 </span>
-                <a href="tel:+568925896325" className="transition-colors hover:text-[#fadb64]">+5689 2589 6325</a>
+                <a href="tel:+12025550147" className="transition-colors hover:text-[#fadb64]">+1 (202) 555-0147</a>
               </li>
-              <li className="flex items-center gap-4 2xl:gap-6">
-                <span className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-[46px] 2xl:w-[46px]">
-                  <Mail className="h-4 w-4 animate-icon-float" />
+              <li className="flex items-center gap-3 2xl:gap-4">
+                <span className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-9 2xl:w-9">
+                  <Mail className="h-3.5 w-3.5 animate-icon-float" />
                 </span>
-                <a href="mailto:info@avicleaner.com" className="break-all transition-colors hover:text-[#fadb64]">info@avicleaner.com</a>
+                <a href="mailto:xyz@avicleaner.com" className="break-all transition-colors hover:text-[#fadb64]">xyz@avicleaner.com</a>
               </li>
-              <li className="flex items-center gap-4 2xl:gap-6">
-                <span className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-[46px] 2xl:w-[46px]">
-                  <MapPin className="h-4 w-4 animate-icon-pulse-subtle" />
+              <li className="flex items-center gap-3 2xl:gap-4">
+                <span className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-9 2xl:w-9">
+                  <MapPin className="h-3.5 w-3.5 animate-icon-pulse-subtle" />
                 </span>
-                <span>21 King Street Melbourne, 3000, Australia</span>
+                <span>123 Main Street, Seattle, WA 98101, USA</span>
               </li>
             </ul>
-            <div className="mt-6 flex flex-wrap gap-3 2xl:flex-nowrap">
+            <div className="mt-4 flex flex-wrap gap-2.5 2xl:flex-nowrap">
               {socials.map(({ name, icon: Icon }) => (
                 <a
                   key={name}
@@ -174,44 +163,44 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-white/90 text-white transition-transform duration-300 hover:scale-115 2xl:h-[50px] 2xl:w-[50px]"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-[1.5px] border-white/90 text-white transition-transform duration-300 hover:scale-115 2xl:h-10 2xl:w-10"
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Useful links - Column 1 */}
-          <div className="min-w-0 xl:pt-5">
+          <div className="min-w-0 xl:pt-2">
             <ColumnTitle>Useful Links</ColumnTitle>
             <LinkList items={usefulLinks1} />
           </div>
 
           {/* Useful links - Column 2 */}
-          <div className="min-w-0 xl:pt-5">
+          <div className="min-w-0 xl:pt-2">
             <ColumnTitle>Useful Links</ColumnTitle>
             <LinkList items={usefulLinks2} />
           </div>
 
           {/* Services */}
-          <div className="min-w-0 xl:pt-5">
+          <div className="min-w-0 xl:pt-2">
             <ColumnTitle>Our Services</ColumnTitle>
             <LinkList items={serviceLinks} />
           </div>
 
           {/* Newsletter */}
-          <div className="min-w-0 sm:col-span-2 lg:col-span-2 xl:col-span-1 xl:pt-5">
+          <div className="min-w-0 sm:col-span-2 lg:col-span-2 xl:col-span-1 xl:pt-2">
             <ColumnTitle>Our Newsletter</ColumnTitle>
-            <p className="mt-6 max-w-[380px] text-[15px] leading-[1.55] text-white/85 2xl:mt-8 2xl:text-[18px]">
+            <p className="mt-4 max-w-[340px] text-[13.5px] leading-[1.5] text-white/85 2xl:mt-5 2xl:text-[14.5px]">
               Subscribe to our newsletter for the latest cleaning tips, special
               offers and updates straight to your inbox.
             </p>
             <form
               onSubmit={onSubmit}
-              className="mt-6 flex h-[56px] w-full max-w-[425px] items-center gap-3 rounded-full bg-white pl-5 pr-1.5 2xl:h-[62px] 2xl:pl-7"
+              className="mt-4 flex h-[48px] w-full max-w-[425px] items-center gap-2.5 rounded-full bg-white pl-4 pr-1.5 2xl:h-[52px] 2xl:pl-5"
             >
-              <Mail className="h-5 w-5 shrink-0 text-green-dark" fill="currentColor" stroke="white" />
+              <Mail className="h-4 w-4 shrink-0 text-green-dark" fill="currentColor" stroke="white" />
               <input
                 type="email"
                 required
@@ -219,21 +208,21 @@ export default function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Email Address"
                 aria-label="Email address"
-                className="min-w-0 flex-1 bg-transparent text-[15px] text-navy outline-none placeholder:text-[#8a929e] 2xl:text-[17px]"
+                className="min-w-0 flex-1 bg-transparent text-[13.5px] text-navy outline-none placeholder:text-[#8a929e] 2xl:text-[14.5px]"
               />
               <button
                 type="submit"
                 aria-label="Subscribe"
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#fadb64] text-green-dark transition hover:bg-green-dark hover:text-[#fadb64] 2xl:h-[50px] 2xl:w-[50px]"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#fadb64] text-green-dark transition hover:bg-green-dark hover:text-[#fadb64] 2xl:h-10 2xl:w-10"
               >
-                <SendIcon className="h-5 w-5" />
+                <SendIcon className="h-4 w-4" />
               </button>
             </form>
             {done && (
               <p className="mt-2 text-sm text-[#fadb64]">Thanks for subscribing!</p>
             )}
 
-            <ul className="mt-7 grid max-w-[520px] grid-cols-3 2xl:mt-10">
+            <ul className="mt-5 grid max-w-[460px] grid-cols-3 2xl:mt-6">
               {badges.map(({ icon: Icon, label }, i) => (
                 <li
                   key={label[1]}
@@ -241,10 +230,10 @@ export default function Footer() {
                     i > 0 ? "border-l border-white/25" : ""
                   }`}
                 >
-                  <span className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-[#cfe6d6] text-green-dark shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-[62px] 2xl:w-[62px]">
-                    <Icon className="h-6 w-6 2xl:h-7 2xl:w-7 transition-transform duration-300" />
+                  <span className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#cfe6d6] text-green-dark shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-11 2xl:w-11">
+                    <Icon className="h-5 w-5 2xl:h-6 2xl:w-6 transition-transform duration-300" />
                   </span>
-                  <span className="mt-2.5 whitespace-nowrap text-[12.5px] leading-[1.4] text-white/95 2xl:mt-3 2xl:text-[14px] 3xl:text-[16px]">
+                  <span className="mt-2 whitespace-nowrap text-[11.5px] leading-[1.3] text-white/95 2xl:text-[12.5px]">
                     {label[0]}
                     <br />
                     {label[1]}
@@ -259,12 +248,14 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="relative border-t border-white/20">
         <div className="container-x">
-          <div className="flex flex-col items-center gap-3 py-6 text-center text-[14px] text-white/90 md:flex-row md:justify-between md:text-left 2xl:py-[34px] 2xl:text-[16px]">
+          <div className="flex flex-col items-center gap-2.5 py-4 text-center text-[13px] text-white/90 md:flex-row md:justify-between md:text-left 2xl:py-5 2xl:text-[14px]">
             <p>&copy; 2025 Avicleaner. All Rights Reserved.</p>
-            <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
               <Link href="/privacy-policy" className="hover:text-[#fadb64]">Privacy Policy</Link>
               <span className="text-white/40">|</span>
-              <Link href="/privacy-policy" className="hover:text-[#fadb64]">Terms &amp; Conditions</Link>
+              <Link href="/terms-and-conditions" className="hover:text-[#fadb64]">Terms &amp; Conditions</Link>
+              <span className="text-white/40">|</span>
+              <Link href="/refund-cancellation-policy" className="hover:text-[#fadb64]">Refund &amp; Cancellation Policy</Link>
               <span className="text-white/40">|</span>
               <Link href="/services" className="hover:text-[#fadb64]">Sitemap</Link>
             </nav>

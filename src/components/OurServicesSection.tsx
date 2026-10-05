@@ -46,7 +46,7 @@ const services = [
   {
     icon: Bath,
     title: "Bathroom Sanitization Cleaning",
-    href: "/services",
+    href: "/services/home-deep-cleaning",
     text: "Spotless, disinfected bathrooms that stay fresh for longer.",
     image: "/images/service-bathroom.jpg",
   },
@@ -194,9 +194,8 @@ export default function ServicesSection() {
                   onClick={mobile.prev}
                   disabled={!mobile.canPrev}
                   aria-label="Previous service"
-                  className={`btn-outline flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] transition-opacity duration-200 ${
-                    !mobile.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
-                  }`}
+                  className={`btn-outline flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] transition-opacity duration-200 ${!mobile.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
+                    }`}
                 >
                   <ArrowLeft className="h-5 w-5" />
                 </button>
@@ -205,9 +204,8 @@ export default function ServicesSection() {
                   onClick={mobile.next}
                   disabled={!mobile.canNext}
                   aria-label="Next service"
-                  className={`btn-solid btn-forest flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-200 ${
-                    !mobile.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
-                  }`}
+                  className={`btn-solid btn-forest flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-200 ${!mobile.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
+                    }`}
                 >
                   <ArrowRight className="h-5 w-5" />
                 </button>
@@ -248,9 +246,8 @@ export default function ServicesSection() {
                     onClick={desktop.prev}
                     disabled={!desktop.canPrev}
                     aria-label="Previous service"
-                    className={`btn-outline flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] transition-opacity duration-200 2xl:h-12 2xl:w-12 ${
-                      !desktop.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
-                    }`}
+                    className={`btn-outline flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] transition-opacity duration-200 2xl:h-12 2xl:w-12 ${!desktop.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
+                      }`}
                   >
                     <ArrowLeft className="h-5 w-5" />
                   </button>
@@ -259,9 +256,8 @@ export default function ServicesSection() {
                     onClick={desktop.next}
                     disabled={!desktop.canNext}
                     aria-label="Next service"
-                    className={`btn-solid btn-forest flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-200 2xl:h-12 2xl:w-12 ${
-                      !desktop.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
-                    }`}
+                    className={`btn-solid btn-forest flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-200 2xl:h-12 2xl:w-12 ${!desktop.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
+                      }`}
                   >
                     <ArrowRight className="h-5 w-5" />
                   </button>

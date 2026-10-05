@@ -26,7 +26,7 @@ export default function VideoCard({ video }: { video: VideoData }) {
   const isYT = video.src ? isYouTubeUrl(video.src) : false;
 
   return (
-    <article className="min-w-0">
+    <article className="card-border-animated min-w-0">
       <div className="relative aspect-[570/290] w-full overflow-hidden rounded-[10px] bg-[#0f2a20] 2xl:rounded-[12px]">
         {isYT ? (
           /* YouTube thumbnail + play-button overlay; click → open YT in new tab */

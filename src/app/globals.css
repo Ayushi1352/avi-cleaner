@@ -395,6 +395,57 @@ svg {
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
 }
 
+/* Card animated border effect on hover/focus */
+.card-border-animated {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card-border-animated::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    #2a7c35 0%,
+    #fcde76 35%,
+    #5c9836 70%,
+    #2a7c35 100%
+  );
+  background-size: 250% 250%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.card-border-animated:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -10px rgba(42, 124, 53, 0.22);
+}
+
+.card-border-animated:hover::after {
+  opacity: 1;
+  animation: card-border-sweep 2.8s linear infinite;
+}
+
+@keyframes card-border-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-icon-float,
   .animate-icon-sway,
@@ -404,7 +455,11 @@ svg {
   .animate-icon-radar,
   .animate-icon-wiggle,
   .animate-icon-spin-slow,
-  .animate-icon-shimmer {
+  .animate-icon-shimmer,
+  .card-border-animated:hover::after {
     animation: none !important;
+  }
+  .card-border-animated:hover {
+    transform: none !important;
   }
 }

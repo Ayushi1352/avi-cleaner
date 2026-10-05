@@ -46,33 +46,33 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       role="dialog"
       aria-modal="true"
       aria-label="Image lightbox"
-      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/85 backdrop-blur-sm"
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-4 sm:p-6 backdrop-blur-md"
       onClick={onClose}
     >
-      {/* Card — stop propagation so clicking image doesn't close */}
+      {/* Content wrapper — stop propagation so clicking image doesn't close */}
       <div
-        className="relative mx-4 flex w-[90vw] max-w-[1200px] flex-col items-center"
+        className="relative flex max-h-[92vh] max-w-[92vw] flex-col items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Counter */}
-        <span className="mb-3 select-none rounded-full bg-white/10 px-4 py-1 text-[13px] font-semibold text-white/80 backdrop-blur-sm">
+        <span className="mb-2.5 select-none rounded-full bg-white/15 px-3.5 py-1 text-[13px] font-semibold text-white/90 backdrop-blur-sm">
           {index + 1} / {total}
         </span>
 
-        {/* Image */}
-        <div className="flex h-[70vh] max-h-[700px] w-full items-center justify-center sm:h-[76vh] sm:max-h-[820px]">
+        {/* Image — fits tightly to natural dimensions with no empty space on sides */}
+        <div className="relative flex items-center justify-center overflow-hidden rounded-[14px] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95)] ring-1 ring-white/10 sm:rounded-[18px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             key={photo.src}
             src={photo.src}
             alt={photo.alt}
-            className="h-full w-full rounded-[14px] object-contain shadow-[0_30px_80px_-10px_rgba(0,0,0,0.7)]"
+            className="max-h-[72vh] w-auto max-w-[88vw] object-contain sm:max-h-[78vh] sm:max-w-[82vw]"
             style={{ animation: "lbFadeIn 0.22s ease" }}
           />
         </div>
 
         {/* Caption */}
-        <p className="mt-3 max-w-[80vw] select-none text-center text-[13px] text-white/60">
+        <p className="mt-3 max-w-[85vw] select-none text-center text-[13.5px] font-medium text-white/80">
           {photo.alt}
         </p>
       </div>
@@ -81,7 +81,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       <button
         onClick={onClose}
         aria-label="Close lightbox"
-        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/25 sm:right-6 sm:top-6 sm:h-12 sm:w-12"
+        className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:right-6 sm:top-6 sm:h-12 sm:w-12"
       >
         <X className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.2} />
       </button>
@@ -90,7 +90,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       <button
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
         aria-label="Previous image"
-        className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/30 sm:left-5 sm:h-14 sm:w-14"
+        className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:left-6 sm:h-14 sm:w-14"
       >
         <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} />
       </button>
@@ -99,7 +99,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       <button
         onClick={(e) => { e.stopPropagation(); onNext(); }}
         aria-label="Next image"
-        className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/30 sm:right-5 sm:h-14 sm:w-14"
+        className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:right-6 sm:h-14 sm:w-14"
       >
         <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} />
       </button>

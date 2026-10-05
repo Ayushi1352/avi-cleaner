@@ -1,10 +1,15 @@
+"use client";
+
+import { useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import ServiceIcon from "./serviceIcons";
 import services from "./servicesData";
+
+const PER_PAGE = 6;
 
 function ServiceCard({ service }: { service: any }) {
   const href = `/services/${service.slug}`;
@@ -49,10 +54,27 @@ function ServiceCard({ service }: { service: any }) {
   );
 }
 
-/** "What We Provide — Comprehensive Cleaning Services You Can Trust" grid. */
+/** "What We Provide — Comprehensive Cleaning Services You Can Trust" grid with pagination. */
 export default function ServicesGrid() {
+  const [page, setPage] = useState(1);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const totalPages = Math.max(1, Math.ceil(services.length / PER_PAGE));
+  const visible = services.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  const goTo = (p: number) => {
+    const next = Math.min(Math.max(1, p), totalPages);
+    if (next === page) return;
+    setPage(next);
+    sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const btn =
+    "flex h-10 w-10 items-center justify-center rounded-full text-[14px] font-bold shadow-[0_4px_14px_-4px_rgba(11,42,28,0.3)] transition-colors 2xl:h-12 2xl:w-12 2xl:text-[16px] 3xl:h-[50px] 3xl:w-[50px]";
+  const idle =
+    "bg-white text-[#0b1a12] hover:bg-[#0c3f2e] hover:text-white disabled:pointer-events-none disabled:opacity-60";
+
   return (
-    <section className="w-full bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
+    <section ref={sectionRef} className="w-full scroll-mt-24 bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="relative overflow-hidden bg-[#f3fbf6] py-12 sm:py-14 2xl:pb-[48px] 2xl:pt-[40px]">
         {/* Leaf, top left */}
         <svg aria-hidden="true" viewBox="0 0 300 330" className="pointer-events-none absolute left-0 top-10 hidden w-[200px] text-[#e2f4ea] md:block 2xl:w-[300px]">
@@ -77,12 +99,54 @@ export default function ServicesGrid() {
           </div>
 
           <ul className="mx-auto mt-10 grid max-w-[1800px] grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-3 2xl:mt-[34px] 2xl:gap-[28px] 3xl:px-[6px]">
-            {services.map((s) => (
+            {visible.map((s) => (
               <li key={s.slug} className="min-w-0">
                 <ServiceCard service={s} />
               </li>
             ))}
           </ul>
+
+          {totalPages > 1 && (
+            <nav aria-label="Services pages" className="mt-10 flex justify-center 2xl:mt-[38px]">
+              <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => goTo(page - 1)}
+                    disabled={page === 1}
+                    aria-label="Previous page"
+                    className={`${btn} ${idle}`}
+                  >
+                    <ChevronLeft className="h-4 w-4" strokeWidth={3} />
+                  </button>
+                </li>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                  <li key={n}>
+                    <button
+                      type="button"
+                      onClick={() => goTo(n)}
+                      aria-label={`Page ${n}`}
+                      aria-current={n === page ? "page" : undefined}
+                      className={`${btn} ${n === page ? "bg-[#0c3f2e] text-white" : idle}`}
+                    >
+                      {n}
+                    </button>
+                  </li>
+                ))}
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => goTo(page + 1)}
+                    disabled={page === totalPages}
+                    aria-label="Next page"
+                    className={`${btn} ${idle}`}
+                  >
+                    <ChevronRight className="h-4 w-4" strokeWidth={3} />
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          )}
         </div>
       </div>
     </section>

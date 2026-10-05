@@ -74,7 +74,7 @@ export default function BlogArticle({ post }: { post: any }) {
             <img
               src={post.image}
               alt={post.title}
-              className="aspect-[1180/640] w-full rounded-[14px] object-cover 2xl:rounded-[18px]"
+              className="aspect-[1180/640] w-full rounded-[14px] object-cover object-[center_top] 2xl:rounded-[18px]"
             />
 
             <p className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px] text-[#5a6172] xl:text-[15px] 2xl:mt-7 2xl:gap-x-9 2xl:text-[18px] 3xl:mt-[44px] 3xl:gap-x-[46px] 3xl:text-[24px]">
@@ -119,7 +119,7 @@ export default function BlogArticle({ post }: { post: any }) {
               src={post.image2}
               alt=""
               loading="lazy"
-              className="mt-6 aspect-[1180/392] w-full rounded-[14px] object-cover 2xl:mt-8 2xl:rounded-[18px]"
+              className="mt-6 aspect-[1180/392] w-full rounded-[14px] object-cover object-[center_top] 2xl:mt-8 2xl:rounded-[18px]"
             />
 
             <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between 2xl:mt-9">
@@ -162,7 +162,7 @@ export default function BlogArticle({ post }: { post: any }) {
 
             <SideCard title="Recent Posts">
               <ul>
-                {recentPosts.map((p) => (
+                {recentPosts.slice(0, 3).map((p) => (
                   <li key={p.slug} className="border-b border-[#e6ebe9] py-4 last:border-b-0 last:pb-0 2xl:py-5 3xl:py-[26px]">
                     <Link href={`/blog/${p.slug}`} className="group flex items-center gap-3.5 2xl:gap-5 3xl:gap-[32px]">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -170,7 +170,7 @@ export default function BlogArticle({ post }: { post: any }) {
                         src={p.image}
                         alt=""
                         loading="lazy"
-                        className="aspect-[168/128] w-[92px] shrink-0 rounded-[8px] object-cover lg:w-[76px] xl:w-[100px] 2xl:w-[130px] 2xl:rounded-[10px] 3xl:w-[168px]"
+                        className="aspect-[168/128] w-[92px] shrink-0 rounded-[8px] object-cover object-[center_top] lg:w-[76px] xl:w-[100px] 2xl:w-[130px] 2xl:rounded-[10px] 3xl:w-[168px]"
                       />
                       <span className="min-w-0">
                         <span className="block text-[15px] font-medium leading-[1.35] text-[#1d2433] transition-colors group-hover:text-green lg:text-[14px] xl:text-[16px] 2xl:text-[19px] 3xl:text-[25px]">

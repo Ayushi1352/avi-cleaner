@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 import { LeafIcon, ShieldCheckIcon, SparklesIcon } from "./icons";
 
 // Clean photo with the wall frame and the green swoosh baked in behind the cleaner.
@@ -57,14 +58,14 @@ export default function HeroSection() {
 
       <div className="container-x relative z-10">
         <div className="flex flex-col py-10 sm:py-14 lg:min-h-[500px] lg:justify-center lg:py-12 xl:min-h-[580px] 2xl:min-h-[700px] 3xl:min-h-[862px] 3xl:py-[90px]">
-          <div className="w-full max-w-[620px] lg:max-w-[56%] 3xl:max-w-[940px] 3xl:pl-[26px]">
+          <ScrollReveal variant="fade-up" duration={750} className="w-full max-w-[620px] lg:max-w-[56%] 3xl:max-w-[940px] 3xl:pl-[26px]">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 sm:gap-4 3xl:gap-[18px]">
-              <span className="h-[3px] w-10 shrink-0 rounded-full bg-green 2xl:w-[56px]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.26em] text-[#2b4f73] sm:text-[13px] 2xl:text-[15px] 3xl:text-[17px] 3xl:tracking-[0.32em]">
-                Cleaner Spaces Happier Lives
-              </span>
-            </div>
+                <span className="h-[3px] w-10 shrink-0 rounded-full bg-green 2xl:w-[56px]" />
+                <span className="text-[11px] font-medium uppercase tracking-[0.26em] text-[#2b4f73] sm:text-[13px] 2xl:text-[15px] 3xl:text-[17px] 3xl:tracking-[0.32em]">
+                  Cleaner Spaces Happier Lives
+                </span>
+              </div>
 
             {/* Heading: first two lines large, third line a step smaller */}
             <h1 className="mt-5 text-[clamp(34px,4.52vw,86px)] font-extrabold tracking-[-0.005em] text-[#06264b] 2xl:mt-6 3xl:mt-[30px]">
@@ -103,34 +104,36 @@ export default function HeroSection() {
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Feature badges */}
-          <ul className="mt-9 grid w-full grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-4 lg:max-w-[52%] lg:grid-cols-2 xl:flex xl:w-auto xl:max-w-none xl:flex-nowrap xl:gap-0 2xl:mt-12 3xl:pl-[26px]">
-            {features.map(({ icon: Icon, line1, line2 }, i) => (
-              <li
-                key={line1}
-                className={`relative flex min-w-0 items-center gap-2.5 sm:gap-3 3xl:gap-[14px] ${
-                  i === 0
-                    ? "xl:pr-3.5 2xl:pr-5 3xl:pr-6"
-                    : "hero-divider xl:px-3.5 2xl:px-5 3xl:px-6"
-                }`}
-              >
-                <span className="relative flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#e7f4e8] text-green shadow-sm transition-all duration-300 hover:scale-115 hover:shadow-[0_6px_18px_rgba(42,124,53,0.3)] sm:h-12 sm:w-12 2xl:h-14 2xl:w-14 3xl:h-[74px] 3xl:w-[74px]">
-                  <Icon className="h-7 w-7 sm:h-8 sm:w-8 2xl:h-9 2xl:w-9 3xl:h-12 3xl:w-12 transition-transform duration-300" />
-                </span>
-                <span className="min-w-0 text-[12.5px] font-medium leading-[1.4] text-[#12305a] sm:text-[13px] xl:whitespace-nowrap xl:text-[14px] 2xl:text-[15px] 3xl:text-[18px]">
-                  {line1}
-                  <br />
-                  {line2}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <ScrollReveal variant="fade-up" delay={200} duration={750} className="w-full">
+            <ul className="mt-9 grid w-full grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-4 lg:max-w-[52%] lg:grid-cols-2 xl:flex xl:w-auto xl:max-w-none xl:flex-nowrap xl:gap-0 2xl:mt-12 3xl:pl-[26px]">
+              {features.map(({ icon: Icon, line1, line2 }, i) => (
+                <li
+                  key={line1}
+                  className={`relative flex min-w-0 items-center gap-2.5 sm:gap-3 3xl:gap-[14px] ${
+                    i === 0
+                      ? "xl:pr-3.5 2xl:pr-5 3xl:pr-6"
+                      : "hero-divider xl:px-3.5 2xl:px-5 3xl:px-6"
+                  }`}
+                >
+                  <span className="relative flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#e7f4e8] text-green shadow-sm transition-all duration-300 hover:scale-115 hover:shadow-[0_6px_18px_rgba(42,124,53,0.3)] sm:h-12 sm:w-12 2xl:h-14 2xl:w-14 3xl:h-[74px] 3xl:w-[74px]">
+                    <Icon className="h-7 w-7 sm:h-8 sm:w-8 2xl:h-9 2xl:w-9 3xl:h-12 3xl:w-12 transition-transform duration-300" />
+                  </span>
+                  <span className="min-w-0 text-[12.5px] font-medium leading-[1.4] text-[#12305a] sm:text-[13px] xl:whitespace-nowrap xl:text-[14px] 2xl:text-[15px] 3xl:text-[18px]">
+                    {line1}
+                    <br />
+                    {line2}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </ScrollReveal>
 
           {/* Mobile / tablet photo */}
           <div className="relative mt-10 aspect-[4/3] w-full overflow-hidden rounded-[24px] sm:aspect-[16/9] lg:hidden">
-            <HeroImage className="absolute inset-0 h-full w-full object-cover object-[72%_center]" />
+            <HeroImage className="absolute inset-0 h-full w-full object-cover object-[72%_15%]" />
           </div>
         </div>
       </div>

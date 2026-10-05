@@ -40,8 +40,8 @@ const members: Member[] = [
       intro:
         "Priya ensures that every cleaning project is completed with perfection. With a focus on client satisfaction and team coordination, she keeps our operations running smoothly and delivers high-quality service every time.",
       email: "priya@avicleaner.com",
-      phone: "+91 98765 43210",
-      location: "New Delhi, India",
+      phone: "+1 (202) 555-0147",
+      location: "123 Main Street, Seattle, WA 98101, USA",
       photoQuote: "Clean spaces create happier lives.",
       strengths: ["Reliable Leadership", "Team Management", "Excellent Communication", "Passionate About Clean Spaces"],
       about: [
@@ -140,8 +140,8 @@ export function getMemberDetail(member) {
       d.intro ||
       `${first} makes sure every cleaning job is done with care and attention to detail. As our ${member.role}, ${first} helps us deliver fresh, healthy and spotless spaces for every client.`,
     email: d.email || `${first.toLowerCase()}@avicleaner.com`,
-    phone: d.phone || "+5689 2589 6325",
-    location: d.location || "21 King Street Melbourne, Australia",
+    phone: d.phone || "+1 (202) 555-0147",
+    location: d.location || "123 Main Street, Seattle, WA 98101, USA",
     photoQuote: d.photoQuote || "Clean spaces create happier lives.",
     strengths: d.strengths || ["Reliable Service", "Great Teamwork", "Attention to Detail", "Passionate About Clean Spaces"],
     about: d.about || [

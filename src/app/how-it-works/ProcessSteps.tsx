@@ -81,7 +81,7 @@ export default function ProcessSteps() {
                       src={s.image}
                       alt={s.title}
                       loading="lazy"
-                      className="aspect-[374/336] w-full rounded-[14px] object-cover 2xl:rounded-[18px]"
+                      className="aspect-[374/336] w-full rounded-[14px] object-cover object-[center_top] 2xl:rounded-[18px]"
                     />
                     <h3 className="mt-5 text-[19px] font-bold leading-tight text-[#0b1a12] lg:text-[17px] xl:text-[20px] 2xl:mt-7 2xl:text-[25px] 3xl:mt-[34px] 3xl:text-[30px]">
                       {s.title}
@@ -116,7 +116,7 @@ export default function ProcessSteps() {
               src={WHY_PHOTO}
               alt="Avicleaner cleaner wiping a kitchen counter"
               loading="lazy"
-              className="mx-auto aspect-[661/604] w-full max-w-[560px] rounded-[18px] object-cover lg:max-w-none 2xl:rounded-[22px]"
+              className="mx-auto aspect-[661/604] w-full max-w-[560px] rounded-[18px] object-cover object-[center_top] lg:max-w-none 2xl:rounded-[22px]"
             />
 
             <div className="min-w-0">

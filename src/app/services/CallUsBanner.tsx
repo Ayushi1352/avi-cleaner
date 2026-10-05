@@ -9,7 +9,7 @@ const features = [
   { icon: ShieldCheck, lines: ["Safe &", "Eco-Friendly"] },
 ];
 
-const PHONE = "+5689 2589 6325";
+const PHONE = "+1 (202) 555-0147";
 const CALL_PHOTO = "/images/services/call-cleaner.webp";
 
 /** "Need Help? — Need a Deep Clean? Call Us for Immediate Service!" banner. */

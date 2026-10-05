@@ -13,12 +13,12 @@ const details = [
   {
     icon: (c: string) => <MapPin className={c} fill="currentColor" stroke="#1f634a" strokeWidth={1.8} />,
     title: "Our Location",
-    lines: ["121 King Street, Melbourne,", "3000, Australia"],
+    lines: ["123 Main Street, Seattle,", "WA 98101, USA"],
   },
   {
     icon: (c: string) => <Phone className={c} fill="currentColor" strokeWidth={0} />,
     title: "Call Us",
-    lines: ["(+61 3 8376 6284)", "(+800 2345 6789)"],
+    lines: ["+1 (202) 555-0147"],
   },
   {
     icon: (c: string) => (
@@ -28,7 +28,7 @@ const details = [
       </svg>
     ),
     title: "Email Us",
-    lines: ["info@cleanmax.com", "cleanmax@gmail.com"],
+    lines: ["xyz@avicleaner.com"],
   },
 ];
 
@@ -172,8 +172,12 @@ export default function ContactForm() {
                   <span className="block text-[16px] font-bold leading-tight lg:text-[15px] 2xl:text-[17px] 3xl:text-[19px]">{title}</span>
                   <span className="mt-1.5 block break-words text-[14.5px] leading-[1.55] text-white/85 lg:text-[13.5px] 2xl:text-[16px] 3xl:text-[18px]">
                     {lines[0]}
-                    <br />
-                    {lines[1]}
+                    {lines[1] && (
+                      <>
+                        <br />
+                        {lines[1]}
+                      </>
+                    )}
                   </span>
                 </span>
               </li>

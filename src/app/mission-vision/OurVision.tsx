@@ -41,10 +41,10 @@ export default function OurVision() {
       </svg>
 
       <div className="container-x relative">
-        <div className="lg:px-6 xl:px-10 2xl:pl-[50px] 2xl:pr-[90px] 3xl:pl-[50px] 3xl:pr-[146px]">
-          <div className="grid grid-cols-1 items-center gap-12 xl:grid-cols-[802fr_720fr] xl:gap-14 2xl:gap-[93px]">
+        <div className="lg:px-2 xl:px-10 2xl:pl-[50px] 2xl:pr-[90px] 3xl:pl-[50px] 3xl:pr-[146px]">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[802fr_720fr] lg:gap-8 xl:gap-14 2xl:gap-[93px]">
             {/* ---------- Visual ---------- */}
-            <div className="@container order-2 mx-auto w-full min-w-0 max-w-[802px] xl:order-1">
+            <div className="@container order-2 mx-auto w-full min-w-0 max-w-[802px] lg:order-1">
               {/* Phones */}
               <div className="sm:hidden">
                 <PhotoSlot
@@ -69,7 +69,7 @@ export default function OurVision() {
             </div>
 
             {/* ---------- Text ---------- */}
-            <div className="order-1 min-w-0 max-w-[760px] xl:order-2">
+            <div className="order-1 min-w-0 max-w-[760px] lg:order-2">
               <SectionEyebrow>Our Vision</SectionEyebrow>
               <h2 className="mt-4 text-[clamp(32px,3.95vw,76px)] font-bold leading-[1.08] tracking-[-0.02em] text-[#101418] 2xl:mt-4">
                 Cleaner Spaces

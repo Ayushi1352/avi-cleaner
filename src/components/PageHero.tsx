@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const BANNER_BG =
   "/images/page-banner-cleaner.webp";
@@ -44,22 +45,23 @@ export default function PageHero({ title, crumb, breadcrumbs }: PageHeroProps) {
       <img
         src={BANNER_BG}
         alt="Avicleaner page banner"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[68%_center] sm:object-[72%_center] lg:object-[78%_center]"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[68%_20%] sm:object-[72%_20%] lg:object-[78%_22%]"
       />
 
       {/* Dark gradient overlay on the left to ensure perfect text contrast while preserving image details on right */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 via-45% to-black/20 lg:from-black/75 lg:via-black/40 lg:to-transparent" />
 
       <div className="container-x relative z-10">
-        <div className="flex min-h-[240px] min-w-0 flex-col justify-center py-12 sm:min-h-[290px] md:min-h-[340px] lg:min-h-[390px] xl:min-h-[430px] 2xl:pl-6 3xl:pl-10">
-          <h1 className="break-words text-[clamp(2.2rem,4.4vw,4.8rem)] font-bold leading-[1.1] tracking-tight text-white drop-shadow-sm">
-            {title}
-          </h1>
+        <ScrollReveal variant="fade-up" duration={600}>
+          <div className="flex min-h-[240px] min-w-0 flex-col justify-center py-12 sm:min-h-[290px] md:min-h-[340px] lg:min-h-[390px] xl:min-h-[430px] 2xl:pl-6 3xl:pl-10">
+            <h1 className="break-words text-[clamp(2.2rem,4.4vw,4.8rem)] font-bold leading-[1.1] tracking-tight text-white drop-shadow-sm">
+              {title}
+            </h1>
 
-          <nav
-            aria-label="Breadcrumb"
-            className="mt-4 inline-flex w-fit max-w-full flex-nowrap items-center gap-x-1.5 gap-y-1 whitespace-nowrap rounded-full border border-white/25 bg-black/35 px-3.5 py-2 text-[clamp(10px,3.2vw,13px)] font-medium sm:flex-wrap sm:whitespace-normal text-white backdrop-blur-md sm:mt-5 sm:gap-x-3 sm:px-6 sm:py-2.5 sm:text-[15px] xl:mt-6 xl:px-7 xl:py-3 xl:text-[16px]"
-          >
+            <nav
+              aria-label="Breadcrumb"
+              className="mt-4 inline-flex w-fit max-w-full flex-nowrap items-center gap-x-1.5 gap-y-1 whitespace-nowrap rounded-full border border-white/25 bg-black/35 px-3.5 py-2 text-[clamp(10px,3.2vw,13px)] font-medium sm:flex-wrap sm:whitespace-normal text-white backdrop-blur-md sm:mt-5 sm:gap-x-3 sm:px-6 sm:py-2.5 sm:text-[15px] xl:mt-6 xl:px-7 xl:py-3 xl:text-[16px]"
+            >
             <Link href="/" className="shrink-0 text-white/90 transition-colors hover:text-white hover:underline">
               Home
             </Link>
@@ -90,7 +92,8 @@ export default function PageHero({ title, crumb, breadcrumbs }: PageHeroProps) {
             })}
           </nav>
         </div>
-      </div>
-    </section>
+      </ScrollReveal>
+    </div>
+  </section>
   );
 }

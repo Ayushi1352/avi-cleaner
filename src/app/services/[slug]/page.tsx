@@ -11,10 +11,16 @@ export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const service = getServiceBySlug(slug);
-  if (!service) return { title: "Service | Avicleaner" };
+export const dynamicParams = true;
+
+type PageProps = {
+  params: Promise<{ slug: string }> | { slug: string };
+};
+
+export async function generateMetadata({ params }: PageProps) {
+  const resolved = await Promise.resolve(params);
+  const service = getServiceBySlug(resolved?.slug);
+  if (!service) return { title: "Services | Avicleaner" };
   return {
     title: `${service.title} | Avicleaner`,
     description: service.short,
@@ -23,9 +29,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 // Navbar and footer come from the root layout; the page banner and CTA banner are shared with other pages.
 // Intro, checklist and "why choose" sections are unique to this page.
-export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const service = getServiceBySlug(slug);
+export default async function ServiceDetailPage({ params }: PageProps) {
+  const resolved = await Promise.resolve(params);
+  const service = getServiceBySlug(resolved?.slug);
   if (!service) notFound();
 
   return (

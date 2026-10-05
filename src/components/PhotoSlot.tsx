@@ -14,7 +14,7 @@ export default function PhotoSlot({
   alt = "",
   label = "Image",
   className = "",
-  imgClassName = "object-cover object-center",
+  imgClassName = "object-cover object-[center_top]",
   placeholderClassName = "bg-mint text-green-dark/70",
 }) {
   const [failed, setFailed] = useState(!src);

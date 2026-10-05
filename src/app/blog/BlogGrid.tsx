@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, ChevronLeft, ChevronRight, User } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 import posts from "./blogPostsData";
 
 const PER_PAGE = 6;
@@ -10,14 +11,14 @@ const PER_PAGE = 6;
 function BlogCard({ post }: { post: any }) {
   const href = `/blog/${post.slug}`;
   return (
-    <article className="flex h-full min-w-0 flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_10px_30px_-18px_rgba(11,42,28,0.4)] 2xl:rounded-[14px]">
+    <article className="card-border-animated flex h-full min-w-0 flex-col overflow-hidden rounded-[12px] bg-white shadow-[0_10px_30px_-18px_rgba(11,42,28,0.4)] 2xl:rounded-[14px]">
       <Link href={href} aria-label={post.title} className="group relative block aspect-[563/204] w-full overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={post.image}
           alt=""
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          className="absolute inset-0 h-full w-full object-cover object-[center_top] transition-transform duration-500 group-hover:scale-[1.04]"
         />
         <span className="absolute left-3 top-3 rounded-[8px] bg-[#124734] px-3 py-1 text-[12.5px] font-medium text-white xl:text-[13.5px] 2xl:left-5 2xl:top-5 2xl:px-4 2xl:py-1.5 2xl:text-[15px] 3xl:rounded-[10px] 3xl:text-[17px]">
           {post.category}
@@ -82,9 +83,11 @@ export default function BlogGrid() {
     <section ref={sectionRef} className="w-full scroll-mt-24 bg-[#fbfcfc] py-10 sm:py-12 xl:py-13 2xl:py-[46px]">
       <div className="container-x">
         <ul className="mx-auto grid max-w-[560px] grid-cols-1 gap-6 md:max-w-none md:grid-cols-2 lg:grid-cols-3 lg:gap-5 2xl:gap-x-[34px] 2xl:gap-y-[26px] 3xl:px-[24px]">
-          {visible.map((p) => (
+          {visible.map((p, i) => (
             <li key={p.slug} className="min-w-0">
-              <BlogCard post={p} />
+              <ScrollReveal variant="fade-up" delay={i * 120} duration={600}>
+                <BlogCard post={p} />
+              </ScrollReveal>
             </li>
           ))}
         </ul>

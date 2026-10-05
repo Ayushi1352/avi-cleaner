@@ -1,6 +1,7 @@
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import ImagePlaceholder from "./ImagePlaceholder";
+import ScrollReveal from "./ScrollReveal";
 import {
   DiamondIcon,
   LeafIcon,
@@ -114,7 +115,7 @@ export default function AboutSection({ showButton = true }) {
 
       <div className="container-x relative">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[955fr_762fr] lg:gap-10 xl:gap-14 2xl:gap-[clamp(56px,3.8vw,72px)]">
-          {/* ---------- Collage ---------- */}
+          {/* ---------- Collage: Stationary (Image vahi hai) ---------- */}
           <div className="@container mx-auto w-full min-w-0 max-w-[720px] lg:max-w-none">
             {/* Phones: stacked collage */}
             <div className="grid grid-cols-2 gap-3 sm:hidden">
@@ -175,8 +176,8 @@ export default function AboutSection({ showButton = true }) {
             </div>
           </div>
 
-          {/* ---------- Content ---------- */}
-          <div className="min-w-0 font-poppins lg:pt-[1vw]">
+          {/* ---------- Content: Slides in from the right (Text aara h side se) ---------- */}
+          <ScrollReveal variant="fade-left" duration={800} className="min-w-0 font-poppins lg:pt-[1vw]">
             <div className="flex items-center gap-4">
               <span className="h-[2.5px] w-[clamp(40px,2.6vw,49px)] shrink-0 rounded-full bg-green" />
               <span className="text-[clamp(16px,1.42vw,27px)] font-medium leading-[1.3] text-green">
@@ -230,7 +231,7 @@ export default function AboutSection({ showButton = true }) {
                 <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
               </Link>
             )}
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

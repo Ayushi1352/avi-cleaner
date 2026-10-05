@@ -58,7 +58,7 @@ const posts = [
     slug: "how-a-clean-office-boosts-productivity",
     category: "Office Cleaning",
     date: "Jul 15, 2024",
-    image: "/images/blog-4.jpg",
+    image: "/images/blog-4.webp",
     image2: "/images/service-office.webp",
     author: "Rahul Mehta",
     recent: true,
@@ -153,7 +153,7 @@ export function getPostDetail(post) {
   };
 }
 
-export const recentPosts = posts.filter((p) => p.recent);
+export const recentPosts = posts.filter((p) => p.recent).slice(0, 3);
 
 export const popularCategories = [
   { name: "Home Cleaning", count: "12" },
