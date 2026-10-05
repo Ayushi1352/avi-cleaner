@@ -1,7 +1,6 @@
 import { ArrowRight, Mail, Map, MapPin, Phone, PhoneCall } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
-import ScrollReveal from "@/components/ScrollReveal";
 
 const cards = [
   {
@@ -33,7 +32,7 @@ const cards = [
 function ContactCard({ card }: { card: any }) {
   const Icon = card.icon;
   return (
-    <article className="card-border-animated flex h-full min-w-0 flex-col items-center rounded-[16px] bg-[linear-gradient(180deg,#fff_62%,#f0faf4_100%)] px-4 pb-7 pt-7 text-center shadow-[0_16px_40px_-26px_rgba(11,42,28,0.4)] md:px-3 md:pb-[clamp(20px,2.35vw,45px)] md:pt-[clamp(20px,1.85vw,35px)] xl:px-5 2xl:rounded-[20px]">
+    <article className="flex h-full min-w-0 flex-col items-center rounded-[16px] bg-[linear-gradient(180deg,#fff_62%,#f0faf4_100%)] px-4 pb-7 pt-7 text-center shadow-[0_16px_40px_-26px_rgba(11,42,28,0.4)] md:px-3 md:pb-[clamp(20px,2.35vw,45px)] md:pt-[clamp(20px,1.85vw,35px)] xl:px-5 2xl:rounded-[20px]">
       {/* Icon with the pale blob peeking out behind it */}
       <span className="relative flex h-[76px] w-[76px] shrink-0 items-center justify-center md:h-[clamp(58px,5.75vw,110px)] md:w-[clamp(58px,5.75vw,110px)]">
         <span aria-hidden="true" className="absolute -left-[24%] top-[12%] h-[88%] w-[88%] rounded-full bg-[#e6f3d3]" />
@@ -126,11 +125,9 @@ export default function ContactInfo() {
           </div>
 
           <ul className="mx-auto mt-8 grid max-w-[420px] grid-cols-1 gap-6 md:max-w-none md:grid-cols-3 md:gap-4 xl:gap-6 2xl:mt-[44px] 2xl:max-w-[77vw] 2xl:gap-[30px] 3xl:max-w-[1476px]">
-            {cards.map((card, i) => (
+            {cards.map((card) => (
               <li key={card.title} className="min-w-0">
-                <ScrollReveal variant="fade-up" delay={i * 150} duration={650}>
-                  <ContactCard card={card} />
-                </ScrollReveal>
+                <ContactCard card={card} />
               </li>
             ))}
           </ul>

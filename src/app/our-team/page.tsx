@@ -12,7 +12,7 @@ export const metadata = {
 export default function TeamPage() {
   return (
     <main className="grow">
-      <PageHero title="Our Team" crumb="Team" />
+      <PageHero title="Our Team" crumb="Our Team" />
       <TeamGrid />
     </main>
   );

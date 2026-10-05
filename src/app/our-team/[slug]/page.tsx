@@ -3,7 +3,7 @@ import PageHero from "@/components/PageHero";
 import MemberProfile from "./MemberProfile";
 import MemberTabs from "./MemberTabs";
 import MemberJourney from "./MemberJourney";
-import members, { getMemberBySlug, getMemberDetail } from "@/app/team/teamMembersData";
+import members, { getMemberBySlug, getMemberDetail } from "@/app/our-team/teamMembersData";
 
 // Pre-build one detail page per team member.
 export function generateStaticParams() {
@@ -33,7 +33,7 @@ export default async function TeamDetailPage({ params }: { params: Promise<{ slu
       <PageHero
         title={detail.name}
         breadcrumbs={[
-          { label: "Team", href: "/team" },
+          { label: "Our Team", href: "/our-team" },
           { label: detail.name },
         ]}
       />

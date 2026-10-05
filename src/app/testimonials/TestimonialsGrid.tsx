@@ -6,7 +6,6 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import { StarIcon } from "@/components/icons";
 import { RoundQuoteIcon } from "@/components/solidIcons";
-import ScrollReveal from "@/components/ScrollReveal";
 
 const PER_PAGE = 6;
 
@@ -88,7 +87,7 @@ const reviews = [
 
 function ReviewCard({ review }: { review: any }) {
   return (
-    <article className="card-border-animated relative flex h-full min-w-0 flex-col rounded-[14px] bg-white px-5 pb-5 pt-6 shadow-[0_12px_32px_-24px_rgba(11,42,28,0.35)] sm:px-6 2xl:rounded-[18px] 2xl:px-8 2xl:pb-6 2xl:pt-7 3xl:px-[39px] 3xl:pb-[18px] 3xl:pt-[32px]">
+    <article className="relative flex h-full min-w-0 flex-col rounded-[14px] bg-white px-5 pb-5 pt-6 shadow-[0_12px_32px_-24px_rgba(11,42,28,0.35)] sm:px-6 2xl:rounded-[18px] 2xl:px-8 2xl:pb-6 2xl:pt-7 3xl:px-[39px] 3xl:pb-[18px] 3xl:pt-[32px]">
       {/* Pale closing quote mark, top right */}
       <RoundQuoteIcon
         className="absolute right-4 top-4 h-9 w-9 rotate-180 text-[#dcf2e6] sm:h-10 sm:w-10 2xl:right-6 2xl:top-5 2xl:h-12 2xl:w-12 3xl:right-[30px] 3xl:top-[22px] 3xl:h-[58px] 3xl:w-[58px]"
@@ -180,11 +179,9 @@ export default function TestimonialsGrid() {
           </div>
 
           <ul className="mx-auto mt-9 grid max-w-[520px] grid-cols-1 gap-5 md:max-w-none md:grid-cols-2 lg:grid-cols-3 lg:gap-4 xl:gap-6 2xl:mt-[34px] 2xl:gap-[26px] 3xl:gap-x-[28px] 3xl:pl-[20px] 3xl:pr-[14px]">
-            {visible.map((r, i) => (
+            {visible.map((r) => (
               <li key={r.name} className="min-w-0">
-                <ScrollReveal variant="fade-up" delay={i * 120} duration={600}>
-                  <ReviewCard review={r} />
-                </ScrollReveal>
+                <ReviewCard review={r} />
               </li>
             ))}
           </ul>

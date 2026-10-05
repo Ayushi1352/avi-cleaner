@@ -18,7 +18,7 @@ const usefulLinks1 = [
 ];
 
 const usefulLinks2 = [
-  "Awards & Certificates",
+  "Award & Certificate",
   "Services",
   "Blog",
   "Gallery",
@@ -60,10 +60,11 @@ const PAGE_LINKS = {
   "About Us": "/about-us",
   "Why Choose Us": "/why-choose-us",
   "Mission & Vision": "/mission-vision",
-  "Our Team": "/team",
+  "Our Team": "/our-team",
   "How It Works": "/how-it-works",
   Testimonials: "/testimonials",
-  "Awards & Certificates": "/awards",
+  "Award & Certificate": "/award-and-certificate",
+  "Awards & Certificates": "/award-and-certificate",
   Gallery: "/gallery",
   Blog: "/blog",
   Services: "/services",
