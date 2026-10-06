@@ -1,7 +1,7 @@
-import awardsData from "@/data/awards.json";
+import { site } from "@/data";
 
-// Text lives in src/data/awards.json under text.TrophyIllustration.
-const copy = awardsData.text.TrophyIllustration;
+// Text lives in src/data/site.json.
+const copy = site.awardsPage.text.TrophyIllustration;
 
 // Simple gold trophy illustrations for the Awards page.
 // Swap these for real trophy photos when you have them.

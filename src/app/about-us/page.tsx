@@ -2,12 +2,12 @@ import AboutHero from "./AboutHero";
 import AboutSection from "@/components/AboutSection";
 import CtaBannerSection from "@/components/CtaBannerSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import aboutData from "@/data/about.json";
+import { site } from "@/data";
 
-// Text lives in src/data/about.json under text.Page.
-const copy = aboutData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.aboutPage.text.Page;
 
-export const metadata = aboutData.meta.Page;
+export const metadata = site.aboutPage.meta.Page;
 
 export default function AboutUsPage() {
   return (

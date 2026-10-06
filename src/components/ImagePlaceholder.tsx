@@ -2,6 +2,13 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Image as ImageIcon } from "lucide-react";
+import { site, pickIcons } from "@/data";
+
+// UI text, links and images live in src/data/site.json.
+const uiText = site.siteMeta.text.ImagePlaceholder;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { image: ImageIcon };
+const uiIcons = pickIcons(site.siteMeta.icons.ImagePlaceholder, uiIconMap);
 
 /**
  * Image slot. Put your file in /public/images with the same name as `src`
@@ -13,7 +20,7 @@ export default function ImagePlaceholder({
   alt = "",
   className = "",
   imgClassName = "object-cover object-[center_top]",
-  placeholderLabel = "Image",
+  placeholderLabel = uiText.image,
   children = null,
 }: {
   src?: string;
@@ -47,7 +54,7 @@ export default function ImagePlaceholder({
         />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-3 text-center text-green-dark/70 select-none">
-          <ImageIcon className="h-7 w-7" strokeWidth={1.6} />
+          <uiIcons.image className="h-7 w-7" strokeWidth={1.6} />
           <span className="max-w-full break-all text-[11px] font-semibold uppercase tracking-wider">
             {placeholderLabel}
           </span>

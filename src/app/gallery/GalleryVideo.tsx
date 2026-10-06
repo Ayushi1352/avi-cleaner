@@ -7,15 +7,22 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import ScrollReveal from "@/components/ScrollReveal";
 import GalleryVideoCard from "./GalleryVideoCard";
-import galleryData from "@/data/gallery.json";
+import { site, fill, pickIcons } from "@/data";
 
-// Text lives in src/data/gallery.json under text.GalleryVideo.
-const copy = galleryData.text.GalleryVideo;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.galleryPage.text.GalleryVideo;
+const uiLinks = site.galleryPage.links.GalleryVideo;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "chevron-left": ChevronLeft, "chevron-right": ChevronRight, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.galleryPage.icons.GalleryVideo, uiIconMap);
 
-const PER_PAGE = 6;
+// Text lives in src/data/site.json.
+const copy = site.galleryPage.text.GalleryVideo;
 
-// Content lives in src/data/gallery.json.
-const videos = galleryData.videos;
+const PER_PAGE = site.galleryPage.settings.GalleryVideo.perPage;
+
+// Content lives in src/data/site.json.
+const videos = site.galleryPage.videos;
 
 /** Gallery page video section: "See Our Cleaning in Action" with pagination. */
 export default function GalleryVideo() {
@@ -90,7 +97,7 @@ export default function GalleryVideo() {
                   aria-label={copy.previousPage}
                   className={`${btn} ${idle}`}
                 >
-                  <ChevronLeft className="h-4 w-4" strokeWidth={3} />
+                  <uiIcons.chevronLeft className="h-4 w-4" strokeWidth={3} />
                 </button>
               </li>
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
@@ -98,7 +105,7 @@ export default function GalleryVideo() {
                   <button
                     type="button"
                     onClick={() => goTo(n)}
-                    aria-label={`Page ${n}`}
+                    aria-label={fill(uiText.pageN, { n })}
                     aria-current={n === page ? "page" : undefined}
                     className={`${btn} ${n === page ? "bg-[#0c3f2e] text-white" : idle}`}
                   >
@@ -114,7 +121,7 @@ export default function GalleryVideo() {
                   aria-label={copy.nextPage}
                   className={`${btn} ${idle}`}
                 >
-                  <ChevronRight className="h-4 w-4" strokeWidth={3} />
+                  <uiIcons.chevronRight className="h-4 w-4" strokeWidth={3} />
                 </button>
               </li>
             </ul>
@@ -123,11 +130,11 @@ export default function GalleryVideo() {
 
         <div className="mt-10 text-center 2xl:mt-[52px]">
           <Link
-            href="/book-now"
+            href={uiLinks.bookNow}
             className="btn-solid btn-yellow group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-9 py-3.5 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] xl:text-[17px] 2xl:px-14 2xl:py-5 2xl:text-[21px] 3xl:h-[82px] 3xl:w-[416px] 3xl:gap-5 3xl:px-0 3xl:py-0 3xl:text-[24px]"
           >
             {copy.bookACleaningService}
-            <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+            <uiIcons.arrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
           </Link>
         </div>
       </div>

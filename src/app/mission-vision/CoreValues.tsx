@@ -1,11 +1,11 @@
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { LeafIcon, ShieldCheckIcon, StarIcon, UsersIcon } from "@/components/icons";
-import missionVisionData from "@/data/mission-vision.json";
+import { site } from "@/data";
 
-// Text lives in src/data/mission-vision.json under text.CoreValues.
-const copy = missionVisionData.text.CoreValues;
+// Text lives in src/data/site.json.
+const copy = site.missionVisionPage.text.CoreValues;
 
-// Icons by the name used in src/data/mission-vision.json.
+// Icons by the name used in src/data/site.json.
 const valuesIcons = {
   users: UsersIcon,
   leaf: LeafIcon,
@@ -13,8 +13,8 @@ const valuesIcons = {
   star: StarIcon,
 };
 
-// Content lives in src/data/mission-vision.json.
-const values = missionVisionData.values.map((item) => ({ ...item, icon: valuesIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const values = site.missionVisionPage.values.map((item) => ({ ...item, icon: valuesIcons[item.icon] }));
 
 /** "Our Core Values — What Drives Us". */
 export default function CoreValues() {

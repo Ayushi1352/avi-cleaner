@@ -2,12 +2,12 @@ import PageHero from "@/components/PageHero";
 import ContactInfo from "./ContactInfo";
 import ContactForm from "./ContactForm";
 import ContactMap from "./ContactMap";
-import contactData from "@/data/contact.json";
+import { site } from "@/data";
 
-// Text lives in src/data/contact.json under text.Page.
-const copy = contactData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.contactPage.text.Page;
 
-export const metadata = contactData.meta.Page;
+export const metadata = site.contactPage.meta.Page;
 
 export default function ContactUsPage() {
   return (

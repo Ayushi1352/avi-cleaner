@@ -8,15 +8,22 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import ServiceIcon from "./serviceIcons";
 import services from "./servicesData";
-import servicesJson from "@/data/services.json";
+import { site, fill, pickIcons } from "@/data";
 
-// Text lives in src/data/services.json under text.ServicesGrid.
-const copy = servicesJson.text.ServicesGrid;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.servicesPage.text.ServicesGrid;
+const uiLinks = site.servicesPage.links.ServicesGrid;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight, "chevron-left": ChevronLeft, "chevron-right": ChevronRight };
+const uiIcons = pickIcons(site.servicesPage.icons.ServicesGrid, uiIconMap);
 
-const PER_PAGE = 6;
+// Text lives in src/data/site.json.
+const copy = site.servicesPage.text.ServicesGrid;
+
+const PER_PAGE = site.servicesPage.settings.ServicesGrid.perPage;
 
 function ServiceCard({ service }: { service: any }) {
-  const href = `/services/${service.slug}`;
+  const href = fill(uiLinks.servicesSlug, { slug: service.slug });
   return (
     <article className="grid h-full grid-cols-1 rounded-[20px] bg-white p-1.5 shadow-[0_14px_36px_-26px_rgba(11,42,28,0.35)] sm:grid-cols-[48%_1fr] md:grid-cols-1 xl:grid-cols-[47%_1fr]">
       {/* Photo + icon badge */}
@@ -50,7 +57,7 @@ function ServiceCard({ service }: { service: any }) {
             className="btn-solid btn-yellow group inline-flex items-center gap-2.5 whitespace-nowrap rounded-full px-6 py-2.5 text-[14px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:px-6 2xl:py-3 2xl:text-[15px] 3xl:px-[34px] 3xl:py-[14px] 3xl:text-[17px]"
           >
             {copy.readMore}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+            <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
           </Link>
         </div>
       </div>
@@ -120,7 +127,7 @@ export default function ServicesGrid() {
                     aria-label={copy.previousPage}
                     className={`${btn} ${idle}`}
                   >
-                    <ChevronLeft className="h-4 w-4" strokeWidth={3} />
+                    <uiIcons.chevronLeft className="h-4 w-4" strokeWidth={3} />
                   </button>
                 </li>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
@@ -128,7 +135,7 @@ export default function ServicesGrid() {
                     <button
                       type="button"
                       onClick={() => goTo(n)}
-                      aria-label={`Page ${n}`}
+                      aria-label={fill(uiText.pageN, { n })}
                       aria-current={n === page ? "page" : undefined}
                       className={`${btn} ${n === page ? "bg-[#0c3f2e] text-white" : idle}`}
                     >
@@ -144,7 +151,7 @@ export default function ServicesGrid() {
                     aria-label={copy.nextPage}
                     className={`${btn} ${idle}`}
                   >
-                    <ChevronRight className="h-4 w-4" strokeWidth={3} />
+                    <uiIcons.chevronRight className="h-4 w-4" strokeWidth={3} />
                   </button>
                 </li>
               </ul>

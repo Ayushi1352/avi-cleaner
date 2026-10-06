@@ -3,10 +3,17 @@ import { ArrowRight } from "lucide-react";
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { EyeIcon } from "./missionVisionIcons";
-import missionVisionData from "@/data/mission-vision.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/mission-vision.json under text.OurVision.
-const copy = missionVisionData.text.OurVision;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.missionVisionPage.links.OurVision;
+const uiImages = site.missionVisionPage.images.OurVision;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { eye: EyeIcon, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.missionVisionPage.icons.OurVision, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.missionVisionPage.text.OurVision;
 
 function FocusCard({ className = "" }: { className?: string }) {
   return (
@@ -14,7 +21,7 @@ function FocusCard({ className = "" }: { className?: string }) {
       className={`rounded-[18px] bg-[#10463a] p-6 text-white shadow-[0_18px_40px_-20px_rgba(13,66,51,0.6)] sm:rounded-[clamp(14px,2.2cqw,18px)] sm:px-[clamp(22px,7.1cqw,57px)] sm:py-[clamp(18px,3.7cqw,30px)] ${className}`}
     >
       <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#daf6e7] text-[#0d2e22] sm:h-[clamp(60px,13.7cqw,110px)] sm:w-[clamp(60px,13.7cqw,110px)]">
-        <EyeIcon className="h-1/2 w-1/2" />
+        <uiIcons.eye className="h-1/2 w-1/2" />
       </span>
       <h3 className="mt-4 text-[22px] font-bold leading-tight sm:mt-[clamp(10px,2.2cqw,18px)] sm:text-[clamp(20px,3.75cqw,30px)]">
         {copy.ourFocus}
@@ -52,7 +59,7 @@ export default function OurVision() {
               {/* Phones */}
               <div className="sm:hidden">
                 <PhotoSlot
-                  src="/images/mission/vision-window.webp"
+                  src={uiImages.visionWindow}
                   alt={copy.yellowGlovedHandCleaningA}
                   label={copy.missionVisionWindowJpg}
                   className="relative aspect-[4/3] w-full rounded-[20px]"
@@ -63,7 +70,7 @@ export default function OurVision() {
               {/* Tablet + desktop */}
               <div className="relative hidden aspect-[802/641] w-full sm:block">
                 <PhotoSlot
-                  src="/images/mission/vision-window.webp"
+                  src={uiImages.visionWindow}
                   alt={copy.yellowGlovedHandCleaningA}
                   label={copy.missionVisionWindowJpg}
                   className="absolute right-0 top-0 h-[91.2%] w-[92.9%] rounded-[clamp(16px,2.7cqw,22px)]"
@@ -96,11 +103,11 @@ export default function OurVision() {
                 </strong>
               </p>
               <Link
-                href="/about-us"
+                href={uiLinks.aboutUs}
                 className="btn-solid btn-yellow group mt-8 inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] sm:text-base 2xl:mt-9 2xl:px-10 2xl:py-[18px] 2xl:text-[19px] 3xl:h-[82px] 3xl:w-[268px] 3xl:justify-center 3xl:text-[22px]"
               >
                 {copy.aboutUs}
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                <uiIcons.arrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
             </div>
           </div>

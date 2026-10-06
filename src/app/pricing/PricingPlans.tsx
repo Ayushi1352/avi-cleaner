@@ -2,23 +2,32 @@ import Link from "next/link";
 import { ArrowRight, Building2, Crown, House } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { HomeIcon, LeafIcon, ShieldCheckIcon, UsersIcon } from "@/components/icons";
-import pricingData from "@/data/pricing.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/pricing.json under text.PricingPlans.
-const copy = pricingData.text.PricingPlans;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.pricingPage.text.PricingPlans;
+const uiLinks = site.pricingPage.links.PricingPlans;
+const uiImages = site.pricingPage.images.PricingPlans;
+const uiSymbols = site.siteMeta.symbols;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { check: CheckIcon, "arrow-right": ArrowRight, home: HomeIcon };
+const uiIcons = pickIcons(site.pricingPage.icons.PricingPlans, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.pricingPage.text.PricingPlans;
 
 // Photo beside the Compare Plans table.
-const COMPARE_PHOTO = "/images/pricing/compare-cleaner.webp";
+const COMPARE_PHOTO = uiImages.compareCleaner;
 
-// Icons by the name used in src/data/pricing.json.
+// Icons by the name used in src/data/site.json.
 const plansIcons = {
   house: House,
   building2: Building2,
   crown: Crown,
 };
 
-// Content lives in src/data/pricing.json.
-const plans = pricingData.plans.map((item) => ({ ...item, icon: plansIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const plans = site.pricingPage.plans.map((item) => ({ ...item, icon: plansIcons[item.icon] }));
 
 function WalletIcon({ className = "" }: { className?: string }) {
   return (
@@ -33,7 +42,7 @@ function WalletIcon({ className = "" }: { className?: string }) {
   );
 }
 
-// Icons by the name used in src/data/pricing.json.
+// Icons by the name used in src/data/site.json.
 const perksIcons = {
   wallet: WalletIcon,
   users: UsersIcon,
@@ -41,12 +50,12 @@ const perksIcons = {
   "shield-check": ShieldCheckIcon,
 };
 
-// Content lives in src/data/pricing.json.
-const perks = pricingData.perks.map((item) => ({ ...item, icon: perksIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const perks = site.pricingPage.perks.map((item) => ({ ...item, icon: perksIcons[item.icon] }));
 
 // [feature, basic, standard, premium]
-// Content lives in src/data/pricing.json.
-const compareRows = pricingData.compareRows;
+// Content lives in src/data/site.json.
+const compareRows = site.pricingPage.compareRows;
 
 function CheckIcon({ className = "" }: { className?: string }) {
   return (
@@ -79,7 +88,7 @@ function PlanCard({ plan }: { plan: any }) {
       </h3>
 
       <p className="mt-1 flex items-start justify-center whitespace-nowrap text-[#174634] 3xl:mt-0">
-        <span className="mt-[0.2em] text-[20px] font-bold leading-none lg:text-[17px] xl:text-[21px] 2xl:text-[26px] 3xl:text-[32px]">$</span>
+        <span className="mt-[0.2em] text-[20px] font-bold leading-none lg:text-[17px] xl:text-[21px] 2xl:text-[26px] 3xl:text-[32px]">{uiSymbols.currency}</span>
         <span className="text-[46px] font-bold leading-[1.15] tracking-[-0.01em] lg:text-[38px] xl:text-[48px] 2xl:text-[60px] 3xl:text-[73px]">
           {plan.price}
         </span>
@@ -98,7 +107,7 @@ function PlanCard({ plan }: { plan: any }) {
       <ul className="mt-5 w-full space-y-2.5 text-left lg:px-0 xl:px-3 2xl:mt-6 2xl:space-y-3.5 2xl:px-8 3xl:mt-[26px] 3xl:space-y-[13px] 3xl:px-[44px]">
         {plan.features.map((f: string) => (
           <li key={f} className="flex min-w-0 items-start gap-2.5 text-[15px] font-medium leading-[1.4] text-[#1d2433] lg:text-[13.5px] xl:text-[16px] 2xl:gap-3.5 2xl:text-[20px] 3xl:gap-[16px] 3xl:text-[23.5px]">
-            <CheckIcon className="mt-[0.1em] h-[1.15em] w-[1.15em] shrink-0" />
+            <uiIcons.check className="mt-[0.1em] h-[1.15em] w-[1.15em] shrink-0" />
             <span className="min-w-0">{f}</span>
           </li>
         ))}
@@ -106,11 +115,11 @@ function PlanCard({ plan }: { plan: any }) {
 
       <div className="mt-auto pt-7 2xl:pt-9 3xl:pt-[44px]">
         <Link
-          href="/book-now"
+          href={uiLinks.bookNow}
           className="btn-solid btn-yellow group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-9 py-3 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] xl:px-11 xl:text-[16px] 2xl:px-14 2xl:py-4 2xl:text-[20px] 3xl:h-[77px] 3xl:w-[331px] 3xl:gap-5 3xl:px-0 3xl:py-0 3xl:text-[25px]"
         >
           {copy.getStarted}
-          <ArrowRight className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
+          <uiIcons.arrowRight className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
         </Link>
       </div>
     </article>
@@ -211,7 +220,7 @@ export default function PricingPlans() {
                       <th scope="col" className="px-2.5 py-2.5 text-left font-semibold sm:px-5 2xl:py-3.5 3xl:h-[62px] 3xl:px-[34px] 3xl:py-0">
                         {copy.features}
                       </th>
-                      {["Basic", "Standard", "Premium"].map((h) => (
+                      {[uiText.basic, uiText.standard, uiText.premium].map((h) => (
                         <th key={h} scope="col" className="border-l border-white/25 px-1 py-2.5 text-center font-semibold 2xl:py-3.5 3xl:py-0">
                           {h}
                         </th>
@@ -228,12 +237,12 @@ export default function PricingPlans() {
                           <td key={i} className="border-l border-[#e6eeea] px-1 text-center align-middle">
                             {on ? (
                               <>
-                                <CheckIcon className="mx-auto h-[1.1em] w-[1.1em]" />
+                                <uiIcons.check className="mx-auto h-[1.1em] w-[1.1em]" />
                                 <span className="sr-only">{copy.included}</span>
                               </>
                             ) : (
                               <>
-                                <span aria-hidden="true" className="text-[#8b9794]">&mdash;</span>
+                                <span aria-hidden="true" className="text-[#8b9794]">{"—"}</span>
                                 <span className="sr-only">{copy.notIncluded}</span>
                               </>
                             )}
@@ -257,7 +266,7 @@ export default function PricingPlans() {
               />
               <div className="absolute bottom-0 right-0 flex max-w-[calc(100%-12px)] items-center gap-3 rounded-tl-[14px] bg-[#1d4a37]/95 px-4 py-3 text-white lg:gap-2.5 lg:px-3 xl:gap-4 xl:px-5 xl:py-4 2xl:rounded-tl-[18px] 3xl:gap-[24px] 3xl:py-[22px] 3xl:pl-[28px] 3xl:pr-[58px]">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-[#1d4a37] lg:h-10 lg:w-10 xl:h-14 xl:w-14 2xl:h-[72px] 2xl:w-[72px] 3xl:h-[92px] 3xl:w-[92px]">
-                  <HomeIcon className="h-1/2 w-1/2" />
+                  <uiIcons.home className="h-1/2 w-1/2" />
                 </span>
                 <span className="text-[14px] font-medium leading-[1.4] lg:text-[13px] xl:text-[16px] 2xl:text-[21px] 3xl:text-[26px]">
                   {copy.aCleanerHome}

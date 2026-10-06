@@ -1,9 +1,12 @@
-import contactData from "@/data/contact.json";
+import { site, fillContact } from "@/data";
 
-// Text lives in src/data/contact.json under text.ContactMap.
-const copy = contactData.text.ContactMap;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.contactPage.links.ContactMap;
 
-const MAP_SRC = "https://www.google.com/maps?q=123+Main+Street,+Seattle,+WA+98101,+USA&z=15&output=embed";
+// Text lives in src/data/site.json.
+const copy = site.contactPage.text.ContactMap;
+
+const MAP_SRC = fillContact(uiLinks.mapEmbed);
 
 /** Contact page: full-width Google map ("View on Map" scrolls here). */
 export default function ContactMap() {

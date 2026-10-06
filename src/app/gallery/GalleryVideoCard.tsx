@@ -1,3 +1,9 @@
+
+import { site, fill } from "@/data";
+
+// UI text, links and images live in src/data/site.json.
+const uiText = site.galleryPage.text.GalleryVideoCard;
+
 /**
  * Video card.
  * - If `video.src` is a YouTube URL (youtu.be / youtube.com), the card shows
@@ -34,7 +40,7 @@ export default function VideoCard({ video }: { video: VideoData }) {
             href={video.src}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Play video: ${video.title}`}
+            aria-label={fill(uiText.playVideoTitle, { title: video.title })}
             className="group absolute inset-0"
           >
             {/* Thumbnail */}

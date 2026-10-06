@@ -1,27 +1,33 @@
 import { ArrowRight, Mail, Map, MapPin, Phone, PhoneCall } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
-import contactData from "@/data/contact.json";
+import { site, pickIcons, fillContact } from "@/data";
 
-// Text lives in src/data/contact.json under text.ContactInfo.
-const copy = contactData.text.ContactInfo;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.contactPage.text.ContactInfo;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.contactPage.icons.ContactInfo, uiIconMap);
 
-// Icons by the name used in src/data/contact.json.
+// Text lives in src/data/site.json.
+const copy = site.contactPage.text.ContactInfo;
+
+// Icons by the name used in src/data/site.json.
 const cardsIcons = {
   "map-pin": MapPin,
   "phone-call": PhoneCall,
   mail: Mail,
 };
 
-// Icons by the name used in src/data/contact.json.
+// Icons by the name used in src/data/site.json.
 const cardsActionIcons = {
   map: (c: string) => <Map className={c} fill="currentColor" stroke="#e3f6ec" strokeWidth={1.6} />,
   phone: (c: string) => <Phone className={c} fill="currentColor" strokeWidth={0} />,
   mail: (c: string) => <Mail className={c} strokeWidth={2.2} />,
 };
 
-// Content lives in src/data/contact.json.
-const cards = contactData.cards.map((item) => ({ ...item, icon: cardsIcons[item.icon], actionIcon: cardsActionIcons[item.actionIcon] }));
+// Content lives in src/data/site.json.
+const cards = site.contactPage.cards.map((item) => ({ ...item, lines: item.lines.map(fillContact), href: fillContact(item.href), icon: cardsIcons[item.icon], actionIcon: cardsActionIcons[item.actionIcon] }));
 
 function ContactCard({ card }: { card: any }) {
   const Icon = card.icon;
@@ -59,7 +65,7 @@ function ContactCard({ card }: { card: any }) {
             {card.actionIcon("h-[1.6em] w-[1.6em] shrink-0")}
           </span>
           {card.action}
-          <ArrowRight className="h-[1em] w-[1em] shrink-0 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+          <uiIcons.arrowRight className="h-[1em] w-[1em] shrink-0 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
         </a>
       </div>
     </article>
@@ -88,7 +94,7 @@ export default function ContactInfo() {
         {/* Handwritten notes and paper plane (wide screens only) */}
         <HandwrittenNote className="absolute right-[3%] top-[6%] hidden text-[clamp(26px,2.3vw,44px)] xl:block" color="text-[#12583f]" />
         <HandwrittenNote
-          lines={["Let's", "Connect!"]}
+          lines={[uiText.lets, uiText.connect]}
           color="text-[#12583f]"
           className="absolute left-[1.8%] top-[57%] hidden text-[clamp(28px,2.4vw,46px)] 2xl:block"
         />

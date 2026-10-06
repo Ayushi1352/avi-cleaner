@@ -1,8 +1,8 @@
 import PageHero from "@/components/PageHero";
-import aboutData from "@/data/about.json";
+import { site } from "@/data";
 
-// Text lives in src/data/about.json under text.AboutHero.
-const copy = aboutData.text.AboutHero;
+// Text lives in src/data/site.json.
+const copy = site.aboutPage.text.AboutHero;
 
 /** Section 1: page banner with title and breadcrumb pill. */
 export default function AboutHero() {

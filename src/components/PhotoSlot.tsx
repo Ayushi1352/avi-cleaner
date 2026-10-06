@@ -2,6 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Image as ImageIcon } from "lucide-react";
+import { site, pickIcons } from "@/data";
+
+// UI text, links and images live in src/data/site.json.
+const uiText = site.siteMeta.text.PhotoSlot;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { image: ImageIcon };
+const uiIcons = pickIcons(site.siteMeta.icons.PhotoSlot, uiIconMap);
 
 /**
  * Image slot for the About page. Put the file at `src` (inside /public)
@@ -12,7 +19,7 @@ import { Image as ImageIcon } from "lucide-react";
 export default function PhotoSlot({
   src,
   alt = "",
-  label = "Image",
+  label = uiText.image,
   className = "",
   imgClassName = "object-cover object-[center_top]",
   placeholderClassName = "bg-mint text-green-dark/70",
@@ -29,7 +36,7 @@ export default function PhotoSlot({
     <div className={`overflow-hidden ${failed ? placeholderClassName : ""} ${className}`}>
       {failed ? (
         <div className="absolute inset-0 flex select-none flex-col items-center justify-center gap-2 p-3 text-center">
-          <ImageIcon className="h-7 w-7" strokeWidth={1.6} />
+          <uiIcons.image className="h-7 w-7" strokeWidth={1.6} />
           <span className="max-w-full break-all text-[11px] font-semibold uppercase tracking-wider">
             {label}
           </span>

@@ -2,12 +2,12 @@ import PageHero from "@/components/PageHero";
 import ServicesGrid from "./ServicesGrid";
 import CallUsBanner from "./CallUsBanner";
 import CleaningProcess from "./CleaningProcess";
-import servicesData from "@/data/services.json";
+import { site } from "@/data";
 
-// Text lives in src/data/services.json under text.Page.
-const copy = servicesData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.servicesPage.text.Page;
 
-export const metadata = servicesData.meta.Page;
+export const metadata = site.servicesPage.meta.Page;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 export default function ServicesPage() {

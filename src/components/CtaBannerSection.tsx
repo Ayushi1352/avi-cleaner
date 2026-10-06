@@ -4,25 +4,32 @@ import Link from "next/link";
 import ImagePlaceholder from "./ImagePlaceholder";
 import ScrollReveal from "./ScrollReveal";
 import { LeafIcon, ShieldCheckIcon, UsersIcon } from "./icons";
-import homeData from "@/data/home.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/home.json under text.CtaBannerSection.
-const copy = homeData.text.CtaBannerSection;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.ctaBannerSection.links.CtaBannerSection;
+const uiImages = site.ctaBannerSection.images.CtaBannerSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { house: House, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.ctaBannerSection.icons.CtaBannerSection, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.ctaBannerSection;
 
 // Cleaner photo, widened to the right so it fills the banner behind the badge.
-const CTA_PHOTO = "/images/cta-cleaner-wide.webp";
+const CTA_PHOTO = uiImages.ctaCleanerWide;
 // Room photo that shows faintly through the green panel.
-const CTA_ROOM = "/images/project-living.webp";
+const CTA_ROOM = uiImages.projectLiving;
 
-// Icons by the name used in src/data/home.json.
+// Icons by the name used in src/data/site.json.
 const badgesIcons = {
   leaf: LeafIcon,
   "shield-check": ShieldCheckIcon,
   users: UsersIcon,
 };
 
-// Content lives in src/data/home.json.
-const badges = homeData.ctaBadges.map((item) => ({ ...item, icon: badgesIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const badges = site.ctaBannerSection.ctaBadges.map((item) => ({ ...item, icon: badgesIcons[item.icon] }));
 
 function Spark({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
   return (
@@ -38,7 +45,7 @@ function BrighterBadge({ className = "" }) {
       className={`flex aspect-square flex-col items-center justify-center rounded-full bg-[#fcde76] text-center text-[#1f5a41] shadow-lg ${className}`}
     >
       <span className="relative block h-[30%] w-[30%] cursor-pointer transition-transform duration-300 hover:scale-125">
-        <House className="h-full w-full animate-icon-pulse-subtle" strokeWidth={2} />
+        <uiIcons.house className="h-full w-full animate-icon-pulse-subtle" strokeWidth={2} />
         <Spark className="absolute -left-[38%] top-[38%] h-[30%] w-[30%] animate-icon-twinkle" />
         <Spark className="absolute -right-[30%] -top-[12%] h-[34%] w-[34%] animate-icon-twinkle" style={{ animationDelay: "0.7s" }} />
         <Spark className="absolute -left-[12%] -top-[8%] h-[18%] w-[18%] animate-icon-twinkle" style={{ animationDelay: "1.4s" }} />
@@ -111,11 +118,11 @@ export default function CtaBannerSection({ eyebrow = copy.defaultEyebrow }) {
                 {copy.cleaningServiceNowAndEnjoy}
               </p>
               <Link
-                href="/book-now"
+                href={uiLinks.bookNow}
                 className="btn-solid btn-yellow group mt-7 inline-flex h-12 items-center gap-3 rounded-full px-7 text-[15px] font-bold [--btn:#fcde76] lg:mt-[clamp(16px,1.1vw,21px)] lg:h-[clamp(48px,3.31vw,63px)] lg:gap-[clamp(10px,0.8vw,15px)] lg:px-[clamp(24px,2.2vw,42px)] lg:text-[clamp(15px,1vw,19px)]"
               >
                 {copy.requestAQuote}
-                <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
+                <uiIcons.arrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
               </Link>
             </ScrollReveal>
           </div>

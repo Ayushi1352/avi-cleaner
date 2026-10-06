@@ -2,10 +2,14 @@ import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { UsersIcon } from "@/components/icons";
 import { BriefcaseSolidIcon, CapSolidIcon, GearSolidIcon, RoundQuoteIcon } from "@/components/solidIcons";
-import teamData from "@/data/team.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/team.json under text.MemberJourney.
-const copy = teamData.text.MemberJourney;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "round-quote": RoundQuoteIcon, "briefcase-solid": BriefcaseSolidIcon };
+const uiIcons = pickIcons(site.teamPage.icons.MemberJourney, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.teamPage.text.MemberJourney;
 
 const timelineIcons: Record<string, any> = {
   briefcase: BriefcaseSolidIcon,
@@ -51,14 +55,14 @@ export default function MemberJourney({ member }: { member: any }) {
                   <path fill="currentColor" d="M96 140c0-22 8-38 24-46v46H96Z" />
                 </svg>
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-[#0f4a35] 2xl:h-[72px] 2xl:w-[72px] 3xl:h-[88px] 3xl:w-[88px]">
-                  <RoundQuoteIcon className="h-[58%] w-[58%]" />
+                  <uiIcons.roundQuote className="h-[58%] w-[58%]" />
                 </span>
                 <div className="relative min-w-0">
                   <blockquote className="max-w-[14.2em] text-[15px] italic leading-[1.42] xl:text-[17px] 2xl:text-[20px] 3xl:text-[22px]">
-                    &ldquo;{member.journeyQuote}&rdquo;
+                    {"“"}{member.journeyQuote}{"”"}
                   </blockquote>
                   <figcaption className="mt-3 text-[14px] font-semibold 2xl:mt-[18px] 2xl:text-[19px] 3xl:text-[22px]">
-                    &mdash; {member.name}
+                    {"—"} {member.name}
                   </figcaption>
                 </div>
               </figure>
@@ -79,7 +83,7 @@ export default function MemberJourney({ member }: { member: any }) {
           {/* ---------- Timeline ---------- */}
           <ol className="min-w-0 lg:flex lg:flex-col">
             {member.experience.map((e: any, i: number) => {
-              const Icon = timelineIcons[e.icon] || BriefcaseSolidIcon;
+              const Icon = timelineIcons[e.icon] || uiIcons.briefcaseSolid;
               const last = i === member.experience.length - 1;
               return (
                 <li key={e.title + e.years} className="relative grid grid-cols-[44px_1fr] gap-3 pb-5 last:pb-0! lg:flex-1 sm:grid-cols-[60px_1fr] sm:gap-6 2xl:grid-cols-[84px_1fr] 2xl:gap-[41px] 2xl:pb-[32px]">

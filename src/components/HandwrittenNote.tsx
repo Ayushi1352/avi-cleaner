@@ -1,5 +1,11 @@
+
+import { site } from "@/data";
+
+// UI text, links and images live in src/data/site.json.
+const uiText = site.siteMeta.text.HandwrittenNote;
+
 /** Handwritten "Cleaner Spaces Happier Lives" note with a yellow underline. */
-export default function ScriptNote({ className = "", color = "text-[#2f6d4a]", lines = ["Cleaner", "Spaces", "Happier", "Lives"] }) {
+export default function ScriptNote({ className = "", color = "text-[#2f6d4a]", lines = [uiText.cleaner, uiText.spaces, uiText.happier, uiText.lives] }) {
   return (
     <p
       className={`pointer-events-none -rotate-[14deg] font-script font-medium leading-[0.95] ${color} ${className}`}

@@ -5,13 +5,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import siteData from "@/data/site.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/site.json under text.Navbar.
-const copy = siteData.text.Navbar;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.navbar.links.Navbar;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight, x: X, menu: Menu };
+const uiIcons = pickIcons(site.navbar.icons.Navbar, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.navbar.text.Navbar;
 
 // Content lives in src/data/site.json.
-const navLinks = siteData.navLinks;
+const navLinks = site.navbar.navLinks;
 
 // A link is active on its own page and on its sub-pages (e.g. /blog/some-post).
 const isActive = (href, pathname) =>
@@ -50,7 +56,7 @@ export default function Navbar() {
       <div className="container-x">
         <div className="flex h-[72px] items-center justify-between gap-4 sm:h-[80px] lg:h-[84px] xl:h-[96px] 2xl:h-[112px] 3xl:h-[138px]">
           {/* Logo */}
-          <Link href="/" aria-label={copy.avicleanerHome} className="shrink-0">
+          <Link href={uiLinks.home} aria-label={copy.avicleanerHome} className="shrink-0">
             <Logo className="h-[46px] w-[150px] sm:h-[54px] sm:w-[180px] lg:h-[52px] lg:w-[170px] xl:h-[64px] xl:w-[230px] 2xl:h-[80px] 2xl:w-[310px] 3xl:h-[100px] 3xl:w-[410px]" />
           </Link>
 
@@ -74,21 +80,21 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <Link
-            href="/book-now"
+            href={uiLinks.bookNow}
             className="btn-solid group hidden shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-5 py-2.5 text-[15px] font-semibold [--btn:#3f7f2c] lg:inline-flex xl:px-7 xl:py-3 xl:text-[17px] 2xl:px-9 2xl:py-4 2xl:text-[19px] 3xl:px-10 3xl:py-[22px] 3xl:text-[21px]"
           >
             {copy.bookNow}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 2xl:h-5 2xl:w-5" strokeWidth={2.4} />
+            <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 2xl:h-5 2xl:w-5" strokeWidth={2.4} />
           </Link>
 
           {/* Mobile controls */}
           <div className="flex items-center gap-2 lg:hidden">
             {!open && (
               <Link
-                href="/book-now"
+                href={uiLinks.bookNow}
                 className="btn-solid hidden items-center gap-2 rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-5 py-2.5 text-sm font-semibold [--btn:#3f7f2c] sm:inline-flex"
               >
-                {copy.bookNow + " "}<ArrowRight className="h-4 w-4" />
+                {copy.bookNow + " "}<uiIcons.arrowRight className="h-4 w-4" />
               </Link>
             )}
             <button
@@ -98,7 +104,7 @@ export default function Navbar() {
               aria-expanded={open}
               className="rounded-xl p-2 text-navy transition hover:bg-mint"
             >
-              {open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+              {open ? <uiIcons.x className="h-7 w-7" /> : <uiIcons.menu className="h-7 w-7" />}
             </button>
           </div>
         </div>
@@ -133,11 +139,11 @@ export default function Navbar() {
 
             <div className="mt-4 border-t border-[#f0f3f6] pt-4 pb-2 sm:pb-4">
               <Link
-                href="/book-now"
+                href={uiLinks.bookNow}
                 onClick={() => setOpen(false)}
                 className="btn-solid flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-green-light to-[#3f7f2c] px-6 py-3.5 text-base font-semibold text-white shadow-md shadow-green/20 [--btn:#3f7f2c]"
               >
-                {copy.bookNow + " "}<ArrowRight className="h-4 w-4" />
+                {copy.bookNow + " "}<uiIcons.arrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>

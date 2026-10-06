@@ -1,11 +1,11 @@
 import PageHero from "@/components/PageHero";
 import TeamGrid from "./TeamGrid";
-import teamData from "@/data/team.json";
+import { site } from "@/data";
 
-// Text lives in src/data/team.json under text.Page.
-const copy = teamData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.teamPage.text.Page;
 
-export const metadata = teamData.meta.Page;
+export const metadata = site.teamPage.meta.Page;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 // The team grid is unique to this page.

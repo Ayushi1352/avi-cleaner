@@ -5,12 +5,18 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import ScrollReveal from "@/components/ScrollReveal";
 import { SparklesIcon } from "@/components/icons";
-import servicesData from "@/data/services.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/services.json under text.CleaningProcess.
-const copy = servicesData.text.CleaningProcess;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.servicesPage.links.CleaningProcess;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "chevron-right": ChevronRight, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.servicesPage.icons.CleaningProcess, uiIconMap);
 
-// Icons by the name used in src/data/services.json.
+// Text lives in src/data/site.json.
+const copy = site.servicesPage.text.CleaningProcess;
+
+// Icons by the name used in src/data/site.json.
 const stepsIcons = {
   "calendar-days": (c: string) => <CalendarDays className={c} strokeWidth={1.8} />,
   users: (c: string) => <Users className={c} strokeWidth={1.8} />,
@@ -18,8 +24,8 @@ const stepsIcons = {
   house: (c: string) => <House className={c} strokeWidth={1.8} />,
 };
 
-// Content lives in src/data/services.json.
-const steps = servicesData.processSteps.map((item) => ({ ...item, icon: stepsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const steps = site.servicesPage.processSteps.map((item) => ({ ...item, icon: stepsIcons[item.icon] }));
 
 /** "How It Works — How Our Cleaning Process Works For You". */
 export default function CleaningProcess() {
@@ -81,7 +87,7 @@ export default function CleaningProcess() {
                   <span aria-hidden="true" className="absolute left-full top-[30%] z-10 hidden w-10 -translate-y-1/2 items-center justify-center lg:flex 2xl:w-[56px] 3xl:left-[calc(100%-62px)] 3xl:top-[40.5%] 3xl:w-[180px]">
                     <span className="absolute inset-x-0 top-1/2 border-t-[3px] border-dotted border-[#1f5a41]/70" />
                     <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#1f5a41] text-white 2xl:h-[46px] 2xl:w-[46px] 3xl:h-[50px] 3xl:w-[50px] 3xl:shadow-[0_0_0_9px_#fbfefc]">
-                      <ChevronRight className="h-4 w-4 2xl:h-6 2xl:w-6" strokeWidth={2.6} />
+                      <uiIcons.chevronRight className="h-4 w-4 2xl:h-6 2xl:w-6" strokeWidth={2.6} />
                     </span>
                   </span>
                 )}
@@ -100,11 +106,11 @@ export default function CleaningProcess() {
                 {copy.itsThatEasy}
               </p>
               <Link
-                href="/book-now"
+                href={uiLinks.bookNow}
                 className="btn-solid btn-yellow group order-first inline-flex items-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] sm:order-2 2xl:px-11 2xl:py-[19px] 2xl:text-[19px] 3xl:px-[48px] 3xl:py-[19px] 3xl:text-[22px]"
               >
                 {copy.bookYourCleaningToday}
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                <uiIcons.arrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
               <div className="hidden items-center gap-3 sm:order-3 sm:flex 2xl:pr-[20px]" aria-hidden="true">
                 <svg viewBox="0 0 40 30" className="h-7 w-9 text-[#1f5a41]" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round">

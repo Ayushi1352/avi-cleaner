@@ -5,10 +5,15 @@ import CleaningChecklist from "./CleaningChecklist";
 import WhyChooseService from "./WhyChooseService";
 import PartnerCtaSection from "@/components/PartnerCtaSection";
 import services, { getServiceBySlug } from "@/app/services/servicesData";
-import servicesJson from "@/data/services.json";
+import { site, fill } from "@/data";
 
-// Text lives in src/data/services.json under text.DetailPage.
-const copy = servicesJson.text.DetailPage;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.servicesPage.text.DetailPage;
+const uiLinks = site.servicesPage.links.DetailPage;
+const uiImages = site.servicesPage.images.DetailPage;
+
+// Text lives in src/data/site.json.
+const copy = site.servicesPage.text.DetailPage;
 
 // Pre-build one detail page per service.
 export function generateStaticParams() {
@@ -24,9 +29,9 @@ type PageProps = {
 export async function generateMetadata({ params }: PageProps) {
   const resolved = await Promise.resolve(params);
   const service = getServiceBySlug(resolved?.slug);
-  if (!service) return { title: "Services | Avicleaner" };
+  if (!service) return { title: uiText.servicesAvicleaner };
   return {
-    title: `${service.title} | Avicleaner`,
+    title: fill(uiText.titleAvicleaner, { title: service.title }),
     description: service.short,
   };
 }
@@ -43,7 +48,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <PageHero
         title={service.title}
         breadcrumbs={[
-          { label: "Services", href: "/services" },
+          { label: uiText.services, href: uiLinks.services },
           { label: service.title },
         ]}
       />
@@ -52,11 +57,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <WhyChooseService service={service} />
       <PartnerCtaSection
         eyebrow={service.ctaEyebrow}
-        title={`Book Your ${service.title} Today!`}
+        title={fill(uiText.bookYourTitleToday, { title: service.title })}
         text={service.ctaText}
         buttonLabel={copy.getAFreeQuote}
-        buttonHref="/book-now"
-        image="/images/services/detail-cta.webp"
+        buttonHref={uiLinks.bookNow}
+        image={uiImages.detailCta}
         showLeaf={false}
         wide
       />

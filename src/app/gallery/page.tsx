@@ -1,12 +1,12 @@
 import PageHero from "@/components/PageHero";
 import GalleryPhotos from "./GalleryPhotos";
 import GalleryVideo from "./GalleryVideo";
-import galleryData from "@/data/gallery.json";
+import { site } from "@/data";
 
-// Text lives in src/data/gallery.json under text.Page.
-const copy = galleryData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.galleryPage.text.Page;
 
-export const metadata = galleryData.meta.Page;
+export const metadata = site.galleryPage.meta.Page;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 export default function GalleryPage() {

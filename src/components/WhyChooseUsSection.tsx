@@ -5,16 +5,24 @@ import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
 import ScrollReveal from "./ScrollReveal";
 import { LeafIcon, PlayIcon } from "./icons";
-import homeData from "@/data/home.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/home.json under text.WhyChooseUsSection.
-const copy = homeData.text.WhyChooseUsSection;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.whyChooseUsSection.text.WhyChooseUsSection;
+const uiLinks = site.whyChooseUsSection.links.WhyChooseUsSection;
+const uiImages = site.whyChooseUsSection.images.WhyChooseUsSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight, play: PlayIcon, leaf: LeafIcon };
+const uiIcons = pickIcons(site.whyChooseUsSection.icons.WhyChooseUsSection, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.whyChooseUsSection;
 
 type CSSVars = CSSProperties & Record<string, string | number>;
 
 const SECTION_ACCENT_COLOR = "#2f7d4f";
 
-// Icons by the name used in src/data/home.json.
+// Icons by the name used in src/data/site.json.
 const statsIcons = {
   "shield-check": ShieldCheck,
   users: Users,
@@ -22,8 +30,8 @@ const statsIcons = {
   star: Star,
 };
 
-// Content lives in src/data/home.json.
-const stats = homeData.stats.map((item) => ({ ...item, icon: statsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const stats = site.whyChooseUsSection.stats.map((item) => ({ ...item, icon: statsIcons[item.icon] }));
 
 export default function WhyChooseUsSection() {
   return (
@@ -42,7 +50,7 @@ export default function WhyChooseUsSection() {
           {/* Out-of-focus plant in the bottom-right corner (behind the content) */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/plant-blur.webp"
+            src={uiImages.plantBlur}
             alt=""
             aria-hidden="true"
             loading="lazy"
@@ -88,19 +96,19 @@ export default function WhyChooseUsSection() {
 
               <div className="mt-8 flex flex-wrap gap-3 2xl:mt-7">
                 <Link
-                  href="/book-now"
+                  href={uiLinks.bookNow}
                   className="btn-solid group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold 2xl:px-[42px] 2xl:py-5 2xl:text-[18px]"
                   style={{ "--btn": SECTION_ACCENT_COLOR } as CSSVars}
                 >
                   {copy.getAFreeQuote}
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  <uiIcons.arrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Link>
                 <Link
-                  href="/why-choose-us"
+                  href={uiLinks.whyChooseUs}
                   className="btn-outline group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold [--btn-ink:#0b1b45] [--btn:#2f7d4f] 2xl:px-[42px] 2xl:py-5 2xl:text-[18px]"
                 >
                   {copy.viewAllBenefits}
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  <uiIcons.arrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Link>
               </div>
             </div>
@@ -121,15 +129,15 @@ export default function WhyChooseUsSection() {
 
               <div className="why-choose-image-wrap relative mt-16 sm:mt-10 sm:mr-[15%]">
                 <ImagePlaceholder
-                  src="/images/home/why-choose-us.webp"
+                  src={uiImages.whyChooseUs}
                   alt={copy.cleanerMoppingALivingRoom}
-                  placeholderLabel="Why Choose Us image"
+                  placeholderLabel={uiText.whyChooseUsImage}
                   className="aspect-[715/620] w-full rounded-[28px] rounded-tl-[90px] sm:rounded-[36px] sm:rounded-tl-[140px]"
                 />
 
                 {/* Play button with radar ring pulse */}
                 <Link
-                  href="https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  href={uiLinks.video}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={copy.watchOurCleaningVideoOn}
@@ -137,13 +145,13 @@ export default function WhyChooseUsSection() {
                 >
                   <span className="absolute inset-0 rounded-full bg-green/20 animate-icon-radar pointer-events-none" />
                   <span className="absolute inset-0 rounded-full bg-white/70 animate-ping opacity-30 pointer-events-none" />
-                  <PlayIcon className="ml-1 h-6 w-6 sm:h-8 sm:w-8" />
+                  <uiIcons.play className="ml-1 h-6 w-6 sm:h-8 sm:w-8" />
                 </Link>
 
                 {/* Clean Greener Brighter */}
                 <div className="why-choose-badge absolute -left-2 top-[10%] flex flex-col justify-center rounded-[18px] bg-[#2f5d45] px-4 py-4 text-white shadow-lg sm:-left-6 sm:px-5 sm:py-5 2xl:-left-[25px] 2xl:h-[155px] 2xl:w-[147px] 2xl:rounded-[20px] 2xl:px-6">
                   <span className="inline-block cursor-pointer transition-transform duration-300 hover:scale-125 self-start">
-                    <LeafIcon className="h-6 w-6 sm:h-8 sm:w-8" />
+                    <uiIcons.leaf className="h-6 w-6 sm:h-8 sm:w-8" />
                   </span>
                   <span className="mt-2 text-[13px] font-semibold leading-[1.3] sm:text-[15px] 2xl:text-[18px]">
                     {copy.clean}
@@ -157,7 +165,7 @@ export default function WhyChooseUsSection() {
                 {/* A cleaner today */}
                 <div className="why-choose-cta absolute -bottom-6 right-2 flex max-w-[calc(100%-16px)] items-center gap-3 rounded-[14px] bg-white px-4 py-3 shadow-[0_12px_30px_-12px_rgba(11,27,69,0.35)] sm:bottom-[8%] sm:right-[-13%] sm:px-5 sm:py-4 2xl:gap-4 2xl:px-6">
                   <span className="inline-block cursor-pointer transition-transform duration-300 hover:scale-125">
-                    <LeafIcon className="h-7 w-7 shrink-0 text-green 2xl:h-9 2xl:w-9" />
+                    <uiIcons.leaf className="h-7 w-7 shrink-0 text-green 2xl:h-9 2xl:w-9" />
                   </span>
                   <span className="text-[13px] font-medium leading-[1.35] text-navy sm:text-[14px] 2xl:text-[17px]">
                     {copy.aCleanerToday}

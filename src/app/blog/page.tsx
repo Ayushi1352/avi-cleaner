@@ -1,11 +1,11 @@
 import PageHero from "@/components/PageHero";
 import BlogGrid from "./BlogGrid";
-import blogData from "@/data/blog.json";
+import { site } from "@/data";
 
-// Text lives in src/data/blog.json under text.Page.
-const copy = blogData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.blogPage.text.Page;
 
-export const metadata = blogData.meta.Page;
+export const metadata = site.blogPage.meta.Page;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 export default function BlogPage() {

@@ -3,12 +3,18 @@ import { ArrowRight } from "lucide-react";
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { HomeIcon, LeafIcon, ShieldCheckIcon, SparklesIcon, UsersIcon } from "@/components/icons";
-import servicesData from "@/data/services.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/services.json under text.ServiceOverview.
-const copy = servicesData.text.ServiceOverview;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.servicesPage.links.ServiceOverview;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { users: UsersIcon, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.servicesPage.icons.ServiceOverview, uiIconMap);
 
-// Icons by the name used in src/data/services.json.
+// Text lives in src/data/site.json.
+const copy = site.servicesPage.text.ServiceOverview;
+
+// Icons by the name used in src/data/site.json.
 const featuresIcons = {
   leaf: LeafIcon,
   "shield-check": ShieldCheckIcon,
@@ -16,8 +22,8 @@ const featuresIcons = {
   home: HomeIcon,
 };
 
-// Content lives in src/data/services.json.
-const features = servicesData.overviewFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const features = site.servicesPage.overviewFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
 
 /** Service Detail top: photo with trust badge, title, intro, features and CTA. */
 export default function ServiceOverview({ service }: { service: any }) {
@@ -36,7 +42,7 @@ export default function ServiceOverview({ service }: { service: any }) {
             />
             <div className="absolute bottom-3 left-3 flex max-w-[calc(100%-24px)] items-center gap-3 rounded-[14px] bg-[#14503a] px-3.5 py-3 text-white sm:bottom-5 sm:left-5 2xl:bottom-[12px] 2xl:left-[38px] 2xl:gap-4 2xl:rounded-[16px] 2xl:px-5 2xl:py-4 3xl:gap-6 3xl:pr-6">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#14503a] 2xl:h-[58px] 2xl:w-[58px] 3xl:h-[82px] 3xl:w-[82px]">
-                <UsersIcon className="h-1/2 w-1/2" />
+                <uiIcons.users className="h-1/2 w-1/2" />
               </span>
               <span className="min-w-0 text-[13px] font-medium leading-[1.35] sm:text-[15px] 2xl:text-[20px] 3xl:text-[24px]">
                 {copy.trustedBy}
@@ -72,11 +78,11 @@ export default function ServiceOverview({ service }: { service: any }) {
             </ul>
 
             <Link
-              href="/book-now"
+              href={uiLinks.bookNow}
               className="btn-solid btn-yellow group mt-8 inline-flex items-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:mt-10 2xl:px-11 2xl:py-5 2xl:text-[20px] 3xl:mt-[52px] 3xl:min-w-[354px] 3xl:justify-center 3xl:gap-5 3xl:py-[27px] 3xl:text-[25px]"
             >
               {copy.getAFreeQuote}
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+              <uiIcons.arrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
             </Link>
           </div>
         </div>

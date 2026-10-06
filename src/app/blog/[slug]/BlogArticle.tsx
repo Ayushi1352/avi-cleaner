@@ -3,12 +3,18 @@ import { CalendarDays, Folder, User } from "lucide-react";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon } from "@/components/socialIcons";
 import { RoundQuoteIcon } from "@/components/solidIcons";
 import { popularCategories, recentPosts, relatedTags, sidebarTags } from "@/app/blog/blogPostsData";
-import blogData from "@/data/blog.json";
+import { site, fill, pickIcons } from "@/data";
 
-// Text lives in src/data/blog.json under text.BlogArticle.
-const copy = blogData.text.BlogArticle;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.blogPage.links.BlogArticle;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "calendar-days": CalendarDays, user: User, folder: Folder, "round-quote": RoundQuoteIcon };
+const uiIcons = pickIcons(site.blogPage.icons.BlogArticle, uiIconMap);
 
-// Icons by the name used in src/data/blog.json.
+// Text lives in src/data/site.json.
+const copy = site.blogPage.text.BlogArticle;
+
+// Icons by the name used in src/data/site.json.
 const socialsIcons = {
   linkedin: LinkedinIcon,
   instagram: InstagramIcon,
@@ -16,8 +22,8 @@ const socialsIcons = {
   x: XIcon,
 };
 
-// Content lives in src/data/blog.json.
-const socials = blogData.articleSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const socials = site.blogPage.articleSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
 
 const BODY = "text-[15px] leading-[1.6] text-[#5a6172] sm:text-base xl:text-[17px] 2xl:text-[20px] 3xl:text-[25.5px] 3xl:leading-[1.62]";
 const YELLOW = "btn-solid btn-yellow [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd96a]";
@@ -25,7 +31,7 @@ const YELLOW = "btn-solid btn-yellow [--btn-fg:#101418] [--btn-ink:#101418] [--b
 function Tag({ children, small = false }: { children: React.ReactNode; small?: boolean }) {
   return (
     <Link
-      href="/blog"
+      href={uiLinks.blog}
       className={`${YELLOW} inline-flex items-center rounded-full font-semibold ${
         small
           ? "px-4 py-1.5 text-[13px] 2xl:px-5 2xl:py-2 2xl:text-[15px] 3xl:px-[26px] 3xl:py-[13px] 3xl:text-[19px]"
@@ -87,15 +93,15 @@ export default function BlogArticle({ post }: { post: any }) {
 
             <p className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px] text-[#5a6172] xl:text-[15px] 2xl:mt-7 2xl:gap-x-9 2xl:text-[18px] 3xl:mt-[44px] 3xl:gap-x-[46px] 3xl:text-[24px]">
               <span className="inline-flex items-center gap-2 2xl:gap-3 3xl:gap-[18px]">
-                <CalendarDays className="h-[1.15em] w-[1.15em] text-[#f6c84a]" strokeWidth={2.4} />
+                <uiIcons.calendarDays className="h-[1.15em] w-[1.15em] text-[#f6c84a]" strokeWidth={2.4} />
                 {post.date}
               </span>
               <span className="inline-flex items-center gap-2 2xl:gap-3 3xl:gap-[18px]">
-                <User className="h-[1.15em] w-[1.15em] text-[#f6c84a]" fill="currentColor" strokeWidth={0} />
-                {copy.by + " "}{typeof post.author === "object" ? post.author.name : (post.author || "Admin")}
+                <uiIcons.user className="h-[1.15em] w-[1.15em] text-[#f6c84a]" fill="currentColor" strokeWidth={0} />
+                {copy.by + " "}{typeof post.author === "object" ? post.author.name : (post.author || site.blogPage.postDefaults.author)}
               </span>
               <span className="inline-flex items-center gap-2 2xl:gap-3 3xl:gap-[18px]">
-                <Folder className="h-[1.15em] w-[1.15em] text-[#f6c84a]" fill="currentColor" strokeWidth={0} />
+                <uiIcons.folder className="h-[1.15em] w-[1.15em] text-[#f6c84a]" fill="currentColor" strokeWidth={0} />
                 {post.category}
               </span>
             </p>
@@ -113,10 +119,10 @@ export default function BlogArticle({ post }: { post: any }) {
 
             <blockquote className="mt-6 flex gap-4 rounded-[14px] bg-[#edf5f2] p-5 sm:gap-6 sm:p-6 2xl:mt-8 2xl:gap-8 2xl:rounded-[18px] 2xl:px-10 2xl:py-8 3xl:mt-[34px] 3xl:gap-[52px] 3xl:py-[44px] 3xl:pl-[52px] 3xl:pr-[40px]">
               <span className="shrink-0 border-b-[3px] border-[#f6c84a] pb-1.5 self-start text-[#124734] 2xl:border-b-4 2xl:pb-2">
-                <RoundQuoteIcon className="h-8 w-8 rotate-180 2xl:h-11 2xl:w-11 3xl:h-[58px] 3xl:w-[58px]" />
+                <uiIcons.roundQuote className="h-8 w-8 rotate-180 2xl:h-11 2xl:w-11 3xl:h-[58px] 3xl:w-[58px]" />
               </span>
               <p className="min-w-0 text-[15px] font-medium italic leading-[1.6] text-[#124734] sm:text-base xl:text-[17px] 2xl:text-[20px] 3xl:text-[25.5px] 3xl:leading-[1.75]">
-                &ldquo;{post.quote}&rdquo;
+                {"“"}{post.quote}{"”"}
               </p>
             </blockquote>
 
@@ -157,11 +163,11 @@ export default function BlogArticle({ post }: { post: any }) {
                 {popularCategories.map((c) => (
                   <li key={c.name} className="border-b border-[#e6ebe9] last:border-b-0">
                     <Link
-                      href="/blog"
+                      href={uiLinks.blog}
                       className="flex items-center justify-between gap-3 py-3 text-[15px] text-[#3f4a5a] transition-colors hover:text-green xl:text-[16px] 2xl:py-4 2xl:text-[20px] 3xl:py-[21px] 3xl:text-[27px]"
                     >
                       <span className="min-w-0">{c.name}</span>
-                      <span className="shrink-0">({c.count})</span>
+                      <span className="shrink-0">{"("}{c.count}{")"}</span>
                     </Link>
                   </li>
                 ))}
@@ -170,9 +176,9 @@ export default function BlogArticle({ post }: { post: any }) {
 
             <SideCard title={copy.recentPosts}>
               <ul>
-                {recentPosts.slice(0, 3).map((p) => (
+                {recentPosts.slice(0, site.blogPage.settings.BlogArticle.recentPosts).map((p) => (
                   <li key={p.slug} className="border-b border-[#e6ebe9] py-4 last:border-b-0 last:pb-0 2xl:py-5 3xl:py-[26px]">
-                    <Link href={`/blog/${p.slug}`} className="group flex items-center gap-3.5 2xl:gap-5 3xl:gap-[32px]">
+                    <Link href={fill(uiLinks.blogSlug, { slug: p.slug })} className="group flex items-center gap-3.5 2xl:gap-5 3xl:gap-[32px]">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={p.image}
@@ -185,7 +191,7 @@ export default function BlogArticle({ post }: { post: any }) {
                           {p.title}
                         </span>
                         <span className="mt-1.5 flex items-center gap-2 text-[13.5px] text-[#5a6172] lg:text-[13px] xl:text-[14.5px] 2xl:mt-2.5 2xl:gap-3 2xl:text-[17px] 3xl:text-[23px]">
-                          <CalendarDays className="h-[1.1em] w-[1.1em] shrink-0 text-[#f6c84a]" strokeWidth={2.4} />
+                          <uiIcons.calendarDays className="h-[1.1em] w-[1.1em] shrink-0 text-[#f6c84a]" strokeWidth={2.4} />
                           {p.date}
                         </span>
                       </span>

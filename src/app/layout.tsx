@@ -2,7 +2,7 @@ import { Plus_Jakarta_Sans, Poppins, Caveat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
-import siteData from "@/data/site.json";
+import { site } from "@/data";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -25,12 +25,12 @@ const caveat = Caveat({
   display: "swap",
 });
 
-export const metadata = siteData.meta.Layout;
+export const metadata = site.siteMeta.meta.Layout;
 
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
+      lang={site.siteMeta.lang}
       className={`${jakarta.variable} ${poppins.variable} ${caveat.variable}`}
     >
       <body className="font-sans antialiased">

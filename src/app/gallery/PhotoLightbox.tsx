@@ -2,10 +2,16 @@
 
 import { useEffect, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import galleryData from "@/data/gallery.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/gallery.json under text.PhotoLightbox.
-const copy = galleryData.text.PhotoLightbox;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.galleryPage.text.PhotoLightbox;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { x: X, "chevron-left": ChevronLeft, "chevron-right": ChevronRight };
+const uiIcons = pickIcons(site.galleryPage.icons.PhotoLightbox, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.galleryPage.text.PhotoLightbox;
 
 interface Photo {
   src: string;
@@ -60,7 +66,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
       >
         {/* Counter */}
         <span className="mb-2.5 select-none rounded-full bg-white/15 px-3.5 py-1 text-[13px] font-semibold text-white/90 backdrop-blur-sm">
-          {index + 1} / {total}
+          {index + 1} {"/"} {total}
         </span>
 
         {/* Image — fits tightly to natural dimensions with no empty space on sides */}
@@ -87,7 +93,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
         aria-label={copy.closeLightbox}
         className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:right-6 sm:top-6 sm:h-12 sm:w-12"
       >
-        <X className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.2} />
+        <uiIcons.x className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2.2} />
       </button>
 
       {/* Prev button */}
@@ -96,7 +102,7 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
         aria-label={copy.previousImage}
         className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:left-6 sm:h-14 sm:w-14"
       >
-        <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} />
+        <uiIcons.chevronLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} />
       </button>
 
       {/* Next button */}
@@ -105,16 +111,11 @@ export default function Lightbox({ photos, index, onClose, onPrev, onNext }: Lig
         aria-label={copy.nextImage}
         className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/30 sm:right-6 sm:h-14 sm:w-14"
       >
-        <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} />
+        <uiIcons.chevronRight className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} />
       </button>
 
       {/* Fade-in keyframe injected inline (no extra CSS file needed) */}
-      <style>{`
-        @keyframes lbFadeIn {
-          from { opacity: 0; transform: scale(0.96); }
-          to   { opacity: 1; transform: scale(1); }
-        }
-      `}</style>
+      <style>{uiText.keyframesLbfadeinFromOpacity0}</style>
     </div>
   );
 }

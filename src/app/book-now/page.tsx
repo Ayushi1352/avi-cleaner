@@ -1,11 +1,11 @@
 import PageHero from "@/components/PageHero";
 import BookingForm from "./BookingForm";
-import bookingData from "@/data/booking.json";
+import { site } from "@/data";
 
-// Text lives in src/data/booking.json under text.Page.
-const copy = bookingData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.bookingPage.text.Page;
 
-export const metadata = bookingData.meta.Page;
+export const metadata = site.bookingPage.meta.Page;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 export default function BookNowPage() {

@@ -6,33 +6,39 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import { StarIcon } from "@/components/icons";
 import { RoundQuoteIcon } from "@/components/solidIcons";
-import testimonialsData from "@/data/testimonials.json";
+import { site, fill, pickIcons } from "@/data";
 
-// Text lives in src/data/testimonials.json under text.TestimonialsGrid.
-const copy = testimonialsData.text.TestimonialsGrid;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.testimonialsPage.text.TestimonialsGrid;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "round-quote": RoundQuoteIcon, star: StarIcon, "chevron-left": ChevronLeft, "chevron-right": ChevronRight };
+const uiIcons = pickIcons(site.testimonialsPage.icons.TestimonialsGrid, uiIconMap);
 
-const PER_PAGE = 6;
+// Text lives in src/data/site.json.
+const copy = site.testimonialsPage.text.TestimonialsGrid;
+
+const PER_PAGE = site.testimonialsPage.settings.TestimonialsGrid.perPage;
 
 // Client reviews. Replace the stand-in photos with real client headshots.
-// Content lives in src/data/testimonials.json.
-const reviews = testimonialsData.reviews;
+// Content lives in src/data/site.json.
+const reviews = site.testimonialsPage.reviews;
 
 function ReviewCard({ review }: { review: any }) {
   return (
     <article className="relative flex h-full min-w-0 flex-col rounded-[14px] bg-white px-5 pb-5 pt-6 shadow-[0_12px_32px_-24px_rgba(11,42,28,0.35)] sm:px-6 2xl:rounded-[18px] 2xl:px-8 2xl:pb-6 2xl:pt-7 3xl:px-[39px] 3xl:pb-[18px] 3xl:pt-[32px]">
       {/* Pale closing quote mark, top right */}
-      <RoundQuoteIcon
+      <uiIcons.roundQuote
         className="absolute right-4 top-4 h-9 w-9 rotate-180 text-[#dcf2e6] sm:h-10 sm:w-10 2xl:right-6 2xl:top-5 2xl:h-12 2xl:w-12 3xl:right-[30px] 3xl:top-[22px] 3xl:h-[58px] 3xl:w-[58px]"
       />
 
       <div className="flex gap-1 text-[#f8a91c] 3xl:gap-[5px]" role="img" aria-label={copy.text5OutOf5Stars}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <StarIcon key={i} className="h-[18px] w-[18px] 2xl:h-[22px] 2xl:w-[22px] 3xl:h-[28px] 3xl:w-[28px]" />
+        {Array.from({ length: site.testimonialsPage.settings.TestimonialsGrid.stars }).map((_, i) => (
+          <uiIcons.star key={i} className="h-[18px] w-[18px] 2xl:h-[22px] 2xl:w-[22px] 3xl:h-[28px] 3xl:w-[28px]" />
         ))}
       </div>
 
       <blockquote className="mt-3 pr-6 text-[15px] leading-[1.5] text-[#5a6172] lg:pr-2 lg:text-[14px] xl:text-[16px] 2xl:mt-4 2xl:pr-8 2xl:text-[19px] 3xl:mt-[14px] 3xl:pr-[34px] 3xl:text-[22.5px] 3xl:leading-[31px]">
-        &ldquo;{review.quote}&rdquo;
+        {"“"}{review.quote}{"”"}
       </blockquote>
 
       <footer className="mt-auto flex items-center gap-3.5 pt-4 2xl:gap-5 2xl:pt-5 3xl:gap-[22px] 3xl:pt-[18px]">
@@ -128,7 +134,7 @@ export default function TestimonialsGrid() {
                     aria-label={copy.previousPage}
                     className={`${btn} ${idle}`}
                   >
-                    <ChevronLeft className="h-4 w-4" strokeWidth={3} />
+                    <uiIcons.chevronLeft className="h-4 w-4" strokeWidth={3} />
                   </button>
                 </li>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
@@ -136,7 +142,7 @@ export default function TestimonialsGrid() {
                     <button
                       type="button"
                       onClick={() => goTo(n)}
-                      aria-label={`Page ${n}`}
+                      aria-label={fill(uiText.pageN, { n })}
                       aria-current={n === page ? "page" : undefined}
                       className={`${btn} ${n === page ? "bg-[#0c3f2e] text-white" : idle}`}
                     >
@@ -152,7 +158,7 @@ export default function TestimonialsGrid() {
                     aria-label={copy.nextPage}
                     className={`${btn} ${idle}`}
                   >
-                    <ChevronRight className="h-4 w-4" strokeWidth={3} />
+                    <uiIcons.chevronRight className="h-4 w-4" strokeWidth={3} />
                   </button>
                 </li>
               </ul>

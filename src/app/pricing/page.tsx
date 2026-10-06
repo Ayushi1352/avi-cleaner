@@ -1,11 +1,11 @@
 import PageHero from "@/components/PageHero";
 import PricingPlans from "./PricingPlans";
-import pricingData from "@/data/pricing.json";
+import { site } from "@/data";
 
-// Text lives in src/data/pricing.json under text.Page.
-const copy = pricingData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.pricingPage.text.Page;
 
-export const metadata = pricingData.meta.Page;
+export const metadata = site.pricingPage.meta.Page;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 export default function PricingPage() {

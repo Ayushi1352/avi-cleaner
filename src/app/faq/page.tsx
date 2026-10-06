@@ -1,11 +1,11 @@
 import PageHero from "@/components/PageHero";
 import FaqAccordion from "./FaqAccordion";
-import faqData from "@/data/faq.json";
+import { site } from "@/data";
 
-// Text lives in src/data/faq.json under text.Page.
-const copy = faqData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.faqPage.text.Page;
 
-export const metadata = faqData.meta.Page;
+export const metadata = site.faqPage.meta.Page;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 export default function FaqPage() {

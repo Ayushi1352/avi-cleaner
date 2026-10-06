@@ -14,15 +14,22 @@ import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
 import { SparklesIcon } from "./icons";
-import homeData from "@/data/home.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/home.json under text.OurServicesSection.
-const copy = homeData.text.OurServicesSection;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.ourServicesSection.links.OurServicesSection;
+const uiImages = site.ourServicesSection.images.OurServicesSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { sparkles: SparklesIcon, "arrow-right": ArrowRight, "arrow-left": ArrowLeft };
+const uiIcons = pickIcons(site.ourServicesSection.icons.OurServicesSection, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.ourServicesSection;
 
 const SERVICE_BANNER_IMAGE =
-  "/images/home/services-banner.webp";
+  uiImages.servicesBanner;
 
-// Icons by the name used in src/data/home.json.
+// Icons by the name used in src/data/site.json.
 const servicesIcons = {
   utensils: Utensils,
   house: House,
@@ -31,8 +38,8 @@ const servicesIcons = {
   "app-window": AppWindow,
 };
 
-// Content lives in src/data/home.json.
-const services = homeData.services.map((item) => ({ ...item, icon: servicesIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const services = site.ourServicesSection.services.map((item) => ({ ...item, icon: servicesIcons[item.icon] }));
 
 function ServiceCard({ service }) {
   const Icon = service.icon;
@@ -47,7 +54,7 @@ function ServiceCard({ service }) {
         />
         <span className="absolute -left-1 -top-1 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full border-[4px] border-white bg-[#2f5d45] text-white shadow-md transition-transform duration-300 hover:scale-115 hover:shadow-[0_10px_25px_-5px_rgba(47,93,69,0.5)] 2xl:h-[92px] 2xl:w-[92px] 2xl:border-[5px]">
           <Icon className="h-7 w-7 2xl:h-9 2xl:w-9 animate-icon-pulse-subtle" strokeWidth={1.6} />
-          <SparklesIcon className="absolute right-3 top-3 h-3 w-3 text-yellow 2xl:right-4 2xl:top-4 2xl:h-4 2xl:w-4 animate-icon-twinkle" />
+          <uiIcons.sparkles className="absolute right-3 top-3 h-3 w-3 text-yellow 2xl:right-4 2xl:top-4 2xl:h-4 2xl:w-4 animate-icon-twinkle" />
         </span>
       </div>
       <h3 className="mt-5 text-[18px] font-bold leading-[1.25] text-navy lg:mt-3.5 2xl:mt-4 xl:text-[18px] 2xl:text-[20px] 3xl:text-[22px]">
@@ -62,7 +69,7 @@ function ServiceCard({ service }) {
           className="btn-solid btn-yellow group/btn inline-flex items-center gap-3 rounded-full px-7 py-3 text-[14px] font-semibold 2xl:px-8 2xl:py-3 2xl:text-[15px] 3xl:px-9 3xl:py-[14px]"
         >
           {copy.readMore}
-          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+          <uiIcons.arrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
         </Link>
       </div>
     </article>
@@ -82,11 +89,11 @@ function ProvideCard({ className = "" }) {
         {copy.fromDeepCleaningToRegular}
       </p>
       <Link
-        href="/book-now"
+        href={uiLinks.bookNow}
         className="btn-solid btn-forest group mt-7 inline-flex items-center gap-3 whitespace-nowrap rounded-full px-7 py-3.5 text-[14px] font-medium lg:mt-5 2xl:mt-5 2xl:px-8 2xl:py-3.5 2xl:text-[15px] 3xl:mt-6 3xl:px-9 3xl:py-4 3xl:text-[16px]"
       >
         {copy.requestAQuote}
-        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </Link>
     </div>
   );
@@ -110,11 +117,11 @@ export default function ServicesSection() {
 
       <div className="shrink-0 self-start sm:self-center">
         <Link
-          href="/services"
+          href={uiLinks.services}
           className="btn-outline group inline-flex items-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] sm:px-6 sm:py-2.5 sm:text-[14px] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
         >
           <span className="whitespace-nowrap">{copy.viewAllServices}</span>
-          <ArrowRight className="h-3.5 w-3.5 stroke-[2.2] transition-transform group-hover:translate-x-1 sm:h-4 sm:w-4" />
+          <uiIcons.arrowRight className="h-3.5 w-3.5 stroke-[2.2] transition-transform group-hover:translate-x-1 sm:h-4 sm:w-4" />
         </Link>
       </div>
     </div>
@@ -170,7 +177,7 @@ export default function ServicesSection() {
                   className={`btn-outline flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] transition-opacity duration-200 ${!mobile.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
                     }`}
                 >
-                  <ArrowLeft className="h-5 w-5" />
+                  <uiIcons.arrowLeft className="h-5 w-5" />
                 </button>
                 <button
                   type="button"
@@ -180,7 +187,7 @@ export default function ServicesSection() {
                   className={`btn-solid btn-forest flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-200 ${!mobile.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
                     }`}
                 >
-                  <ArrowRight className="h-5 w-5" />
+                  <uiIcons.arrowRight className="h-5 w-5" />
                 </button>
               </div>
             </div>
@@ -222,7 +229,7 @@ export default function ServicesSection() {
                     className={`btn-outline flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] transition-opacity duration-200 2xl:h-12 2xl:w-12 ${!desktop.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
                       }`}
                   >
-                    <ArrowLeft className="h-5 w-5" />
+                    <uiIcons.arrowLeft className="h-5 w-5" />
                   </button>
                   <button
                     type="button"
@@ -232,7 +239,7 @@ export default function ServicesSection() {
                     className={`btn-solid btn-forest flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-200 2xl:h-12 2xl:w-12 ${!desktop.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
                       }`}
                   >
-                    <ArrowRight className="h-5 w-5" />
+                    <uiIcons.arrowRight className="h-5 w-5" />
                   </button>
                 </div>
               </div>

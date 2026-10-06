@@ -6,13 +6,20 @@ import { ArrowRight, ChevronDown, Clock, MessageCircleMore } from "lucide-react"
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import { ShieldCheckIcon, ThumbUpIcon, UsersIcon } from "@/components/icons";
-import faqData from "@/data/faq.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/faq.json under text.FaqAccordion.
-const copy = faqData.text.FaqAccordion;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.faqPage.links.FaqAccordion;
+const uiImages = site.faqPage.images.FaqAccordion;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "chevron-down": ChevronDown, "message-circle-more": MessageCircleMore, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.faqPage.icons.FaqAccordion, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.faqPage.text.FaqAccordion;
 
 // Put your own photo here to replace the stand-in.
-const PHOTO = "/images/about-supplies.webp";
+const PHOTO = uiImages.aboutSupplies;
 
 function BroomIcon({ className = "" }: { className?: string }) {
   return (
@@ -53,7 +60,7 @@ function GearIcon({ className = "" }: { className?: string }) {
   );
 }
 
-// Icons by the name used in src/data/faq.json.
+// Icons by the name used in src/data/site.json.
 const faqsIcons = {
   broom: BroomIcon,
   calendar: CalendarIcon,
@@ -65,8 +72,8 @@ const faqsIcons = {
   "thumb-up": ThumbUpIcon,
 };
 
-// Content lives in src/data/faq.json.
-const faqs = faqData.faqs.map((item) => ({ ...item, icon: faqsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const faqs = site.faqPage.faqs.map((item) => ({ ...item, icon: faqsIcons[item.icon] }));
 
 function FaqItem({ faq, index, open, onToggle }: {
   faq: any;
@@ -95,7 +102,7 @@ function FaqItem({ faq, index, open, onToggle }: {
           <span className="min-w-0 flex-1 text-[15px] font-semibold leading-snug text-[#0b1a12] sm:text-[16px] xl:text-[18px] 2xl:text-[21px] 3xl:text-[25px]">
             {faq.q}
           </span>
-          <ChevronDown
+          <uiIcons.chevronDown
             className={`h-5 w-5 shrink-0 text-[#0b1a12] transition-transform duration-300 2xl:h-6 2xl:w-6 3xl:h-7 3xl:w-7 ${open ? "rotate-180" : ""}`}
             strokeWidth={2.4}
           />
@@ -171,7 +178,7 @@ export default function FaqAccordion() {
                 </svg>
 
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#d9f3e5] text-[#12583f] 2xl:h-[68px] 2xl:w-[68px] 3xl:h-[80px] 3xl:w-[80px]">
-                  <MessageCircleMore className="h-[52%] w-[52%]" strokeWidth={2} />
+                  <uiIcons.messageCircleMore className="h-[52%] w-[52%]" strokeWidth={2} />
                 </span>
                 <p className="mt-5 text-[12px] font-bold uppercase tracking-[0.2em] 2xl:mt-6 2xl:text-[13px] 3xl:mt-[30px] 3xl:text-[15px]">
                   {copy.stillHaveQuestions}
@@ -183,11 +190,11 @@ export default function FaqAccordion() {
                   {copy.cantFindTheAnswerYoure}
                 </p>
                 <Link
-                  href="/contact-us"
+                  href={uiLinks.contactUs}
                   className="btn-solid btn-yellow group mt-5 inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-7 py-3 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] 2xl:mt-6 2xl:px-9 2xl:py-3.5 2xl:text-[18px] 3xl:mt-[26px] 3xl:h-[62px] 3xl:w-[225px] 3xl:px-0 3xl:py-0 3xl:text-[20px]"
                 >
                   {copy.contactUs}
-                  <ArrowRight className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
+                  <uiIcons.arrowRight className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
                 </Link>
               </div>
             </div>

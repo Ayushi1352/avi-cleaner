@@ -9,19 +9,27 @@ import {
   ThumbUpIcon,
   UsersIcon,
 } from "./icons";
-import homeData from "@/data/home.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/home.json under text.AboutSection.
-const copy = homeData.text.AboutSection;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.aboutUsSection.text.AboutSection;
+const uiLinks = site.aboutUsSection.links.AboutSection;
+const uiImages = site.aboutUsSection.images.AboutSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { sprout: SproutIcon, users: UsersIcon, "shield-check": ShieldCheck, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.aboutUsSection.icons.AboutSection, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.aboutUsSection;
 
 const ABOUT_IMG_1 =
-  "/images/home/about-1.webp";
+  uiImages.about1;
 const ABOUT_IMG_2 =
-  "/images/home/about-2.webp";
+  uiImages.about2;
 const ABOUT_IMG_3 =
-  "/images/home/about-3.webp";
+  uiImages.about3;
 
-// Icons by the name used in src/data/home.json.
+// Icons by the name used in src/data/site.json.
 const featuresIcons = {
   diamond: DiamondIcon,
   users: UsersIcon,
@@ -29,15 +37,15 @@ const featuresIcons = {
   "thumb-up": ThumbUpIcon,
 };
 
-// Content lives in src/data/home.json.
-const features = homeData.aboutFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const features = site.aboutUsSection.aboutFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
 
 function CleanBadge({ className = "" }) {
   return (
     <div
       className={`flex aspect-square flex-col items-center justify-center rounded-full border-[clamp(4px,0.65cqw,6px)] border-white bg-[#2a7a38] text-center text-white shadow-[0_10px_30px_-12px_rgba(0,0,0,0.3)] ${className}`}
     >
-      <SproutIcon className="mb-[5%] h-[22%] w-[22%]" />
+      <uiIcons.sprout className="mb-[5%] h-[22%] w-[22%]" />
       <span className="font-poppins text-[clamp(11px,1.95cqw,19px)] font-medium leading-[1.15]">
         {copy.clean}
         <br />
@@ -54,9 +62,9 @@ function StatCard({ className = "" }) {
     <div
       className={`flex flex-col items-center justify-center rounded-[24px] bg-[#f3f8f3] text-center sm:rounded-[clamp(20px,3cqw,30px)] ${className}`}
     >
-      <UsersIcon className="h-[clamp(28px,6.6cqw,64px)] w-[clamp(28px,6.6cqw,64px)] text-green" />
+      <uiIcons.users className="h-[clamp(28px,6.6cqw,64px)] w-[clamp(28px,6.6cqw,64px)] text-green" />
       <span className="mt-[clamp(4px,1cqw,10px)] font-poppins text-[clamp(26px,4.9cqw,47px)] font-bold leading-none text-navy">
-        30+
+        {uiText.text30}
       </span>
       <span className="mt-[clamp(6px,1.5cqw,14px)] font-poppins text-[clamp(12px,2.1cqw,20px)] text-[#48536f]">
         {copy.yearsOfExperience}
@@ -72,7 +80,7 @@ function TrustedBadge({ className = "" }) {
     >
       <span className="relative flex h-[clamp(34px,5.6cqw,54px)] w-[clamp(34px,5.6cqw,54px)] shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#2a7a38] text-white shadow-sm transition-transform duration-300 hover:scale-115">
         <span className="absolute inset-0 rounded-full bg-[#2a7a38]/40 animate-ping opacity-30 pointer-events-none" />
-        <ShieldCheck className="h-[56%] w-[56%] animate-icon-heartbeat" strokeWidth={2} />
+        <uiIcons.shieldCheck className="h-[56%] w-[56%] animate-icon-heartbeat" strokeWidth={2} />
       </span>
       <span className="whitespace-nowrap font-poppins text-[clamp(11px,1.95cqw,19px)] font-medium leading-[1.25] text-navy">
         {copy.trustedBy}
@@ -232,11 +240,11 @@ export default function AboutSection({ showButton = true }) {
 
             {showButton && (
               <Link
-                href="/about-us"
+                href={uiLinks.aboutUs}
                 className="btn-solid group mt-[clamp(30px,2.1vw,40px)] inline-flex h-[clamp(50px,3.9vw,74px)] items-center gap-[clamp(10px,0.75vw,14px)] rounded-full px-[clamp(28px,2.5vw,48px)] text-[clamp(15px,1.1vw,21px)] font-medium"
               >
                 {copy.readMore}
-                <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
+                <uiIcons.arrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
               </Link>
             )}
           </ScrollReveal>

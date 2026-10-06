@@ -2,12 +2,16 @@ import { Gem, Leaf, ShieldCheck, Users } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { LeafIcon } from "@/components/icons";
 import TrophyIllustration from "./TrophyIllustration";
-import awardsData from "@/data/awards.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/awards.json under text.AwardsGrid.
-const copy = awardsData.text.AwardsGrid;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { leaf: LeafIcon };
+const uiIcons = pickIcons(site.awardsPage.icons.AwardsGrid, uiIconMap);
 
-// Icons by the name used in src/data/awards.json.
+// Text lives in src/data/site.json.
+const copy = site.awardsPage.text.AwardsGrid;
+
+// Icons by the name used in src/data/site.json.
 const achievementsIcons = {
   gem: Gem,
   leaf: Leaf,
@@ -15,14 +19,14 @@ const achievementsIcons = {
   "shield-check": ShieldCheck,
 };
 
-// Content lives in src/data/awards.json.
-const achievements = awardsData.achievements.map((item) => ({ ...item, icon: achievementsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const achievements = site.awardsPage.achievements.map((item) => ({ ...item, icon: achievementsIcons[item.icon] }));
 
-// Content lives in src/data/awards.json.
-const awards = awardsData.awards;
+// Content lives in src/data/site.json.
+const awards = site.awardsPage.awards;
 
-// Content lives in src/data/awards.json.
-const certificates = awardsData.certificates;
+// Content lives in src/data/site.json.
+const certificates = site.awardsPage.certificates;
 
 const EYEBROW =
   "[&>span:nth-child(2)]:font-semibold 3xl:[&>span:first-child]:w-[52px] 3xl:[&>span:last-child]:w-[52px] 3xl:[&>span:nth-child(2)]:text-[24px]";
@@ -39,7 +43,7 @@ function Certificate({ cert }: { cert: any }) {
       >
         {cert.mark === "leaf" ? (
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2a8c4a] text-white lg:h-10 lg:w-10 xl:h-14 xl:w-14 2xl:h-[72px] 2xl:w-[72px] 3xl:h-[88px] 3xl:w-[88px]">
-            <LeafIcon className="h-[58%] w-[58%]" />
+            <uiIcons.leaf className="h-[58%] w-[58%]" />
           </span>
         ) : (
           <span

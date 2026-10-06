@@ -8,24 +8,30 @@ import CarouselDots from "./CarouselDots";
 import ScrollReveal from "./ScrollReveal";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
 import { BuildingIcon, HomeIcon, LeafIcon } from "./icons";
-import homeData from "@/data/home.json";
+import { site, fill, pickIcons } from "@/data";
 
-// Text lives in src/data/home.json under text.NewsAndArticlesSection.
-const copy = homeData.text.NewsAndArticlesSection;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.blogSection.links.NewsAndArticlesSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.blogSection.icons.NewsAndArticlesSection, uiIconMap);
 
-// Icons by the name used in src/data/home.json.
+// Text lives in src/data/site.json.
+const copy = site.blogSection;
+
+// Icons by the name used in src/data/site.json.
 const postsIcons = {
   home: HomeIcon,
   building: BuildingIcon,
   leaf: LeafIcon,
 };
 
-// Content lives in src/data/home.json.
-const posts = homeData.news.map((item) => ({ ...item, icon: postsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const posts = site.blogSection.news.map((item) => ({ ...item, icon: postsIcons[item.icon] }));
 
 function BlogCard({ post }) {
   const Icon = post.icon;
-  const href = `/blog/${post.slug}`;
+  const href = fill(uiLinks.blogSlug, { slug: post.slug });
 
   return (
     <article className="card-border-animated flex h-full flex-col overflow-hidden rounded-[18px] bg-white shadow-[0_16px_40px_-26px_rgba(11,27,69,0.35)] transition-shadow hover:shadow-[0_20px_45px_-20px_rgba(11,27,69,0.4)]">
@@ -79,7 +85,7 @@ function BlogCard({ post }) {
             className="group inline-flex shrink-0 items-center gap-2 text-[14px] font-semibold text-navy transition hover:text-green 2xl:gap-3 2xl:text-[18px]"
           >
             {copy.readMore}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 2xl:h-5 2xl:w-5" />
+            <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 2xl:h-5 2xl:w-5" />
           </Link>
         </div>
       </div>
@@ -144,11 +150,11 @@ export default function BlogSection() {
           />
           <div className="mt-6 flex justify-center">
             <Link
-              href="/blog"
+              href={uiLinks.blog}
               className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
             >
               {copy.viewAllArticles}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </ScrollReveal>

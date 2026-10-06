@@ -1,12 +1,15 @@
 "use client";
 
-import siteData from "@/data/site.json";
+import { site } from "@/data";
 
-// Text lives in src/data/site.json under text.Logo.
-const copy = siteData.text.Logo;
+// UI text, links and images live in src/data/site.json.
+const uiImages = site.navbar.images.Logo;
+
+// Text lives in src/data/site.json.
+const copy = site.navbar.text.Logo;
 
 
-const MAIN_LOGO = "/images/logo.png";
+const MAIN_LOGO = uiImages.logo;
 
 export default function Logo({
   className = "",

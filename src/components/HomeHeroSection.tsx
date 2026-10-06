@@ -2,13 +2,20 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { LeafIcon, ShieldCheckIcon, SparklesIcon } from "./icons";
-import homeData from "@/data/home.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/home.json under text.HomeHeroSection.
-const copy = homeData.text.HomeHeroSection;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.hero.links.HomeHeroSection;
+const uiImages = site.hero.images.HomeHeroSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.hero.icons.HomeHeroSection, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.hero;
 
 // Clean photo with the wall frame and the green swoosh baked in behind the cleaner.
-const HERO_IMAGE = "/images/hero-banner-arc.webp";
+const HERO_IMAGE = uiImages.heroBannerArc;
 
 /* Solid home icon drawn to match the hero design. */
 function HeroHomeIcon({ className }) {
@@ -31,7 +38,7 @@ function HeroHomeIcon({ className }) {
   );
 }
 
-// Icons by the name used in src/data/home.json.
+// Icons by the name used in src/data/site.json.
 const featuresIcons = {
   leaf: LeafIcon,
   "shield-check": ShieldCheckIcon,
@@ -39,8 +46,8 @@ const featuresIcons = {
   "hero-home": HeroHomeIcon,
 };
 
-// Content lives in src/data/home.json.
-const features = homeData.heroFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const features = site.hero.heroFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
 
 function HeroImage({ className }) {
   return (
@@ -98,18 +105,18 @@ export default function HeroSection() {
             {/* Buttons */}
             <div className="mt-7 flex flex-wrap gap-3 sm:gap-5 2xl:mt-8 3xl:gap-[22px]">
               <Link
-                href="/book-now"
+                href={uiLinks.bookNow}
                 className="btn-solid group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[16px] font-bold [--btn:#327b37] xl:px-9 xl:py-4 xl:text-[18px] 2xl:text-[20px] 3xl:h-[72px] 3xl:w-[272px] 3xl:gap-5 3xl:text-[24px]"
               >
                 {copy.bookNow}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
+                <uiIcons.arrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
               </Link>
               <Link
-                href="/contact-us"
+                href={uiLinks.contactUs}
                 className="btn-outline group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[15px] font-bold [--btn-bg:rgb(255_255_255/0.5)] [--btn:#06264b] xl:px-9 xl:py-4 xl:text-[17px] 2xl:text-[19px] 3xl:h-[72px] 3xl:w-[255px] 3xl:gap-4 3xl:text-[22px]"
               >
                 {copy.contactUs}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
+                <uiIcons.arrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
               </Link>
             </div>
           </ScrollReveal>

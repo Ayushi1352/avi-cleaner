@@ -1,11 +1,11 @@
 import PageHero from "@/components/PageHero";
 import AwardsGrid from "./AwardsGrid";
-import awardsData from "@/data/awards.json";
+import { site } from "@/data";
 
-// Text lives in src/data/awards.json under text.Page.
-const copy = awardsData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.awardsPage.text.Page;
 
-export const metadata = awardsData.meta.Page;
+export const metadata = site.awardsPage.meta.Page;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 export default function AwardsPage() {

@@ -2,15 +2,18 @@ import { Clock, ShieldCheck } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { LeafIcon, ThumbUpIcon, UsersIcon } from "@/components/icons";
 import { GearSolidIcon } from "@/components/solidIcons";
-import howItWorksData from "@/data/how-it-works.json";
+import { site } from "@/data";
 
-// Text lives in src/data/how-it-works.json under text.ProcessSteps.
-const copy = howItWorksData.text.ProcessSteps;
+// UI text, links and images live in src/data/site.json.
+const uiImages = site.howItWorksPage.images.ProcessSteps;
 
-// Content lives in src/data/how-it-works.json.
-const steps = howItWorksData.steps;
+// Text lives in src/data/site.json.
+const copy = site.howItWorksPage.text.ProcessSteps;
 
-// Icons by the name used in src/data/how-it-works.json.
+// Content lives in src/data/site.json.
+const steps = site.howItWorksPage.steps;
+
+// Icons by the name used in src/data/site.json.
 const benefitsIcons = {
   clock: (c: string) => <Clock className={c} strokeWidth={2.2} />,
   gear: (c: string) => <GearSolidIcon className={c} />,
@@ -20,10 +23,10 @@ const benefitsIcons = {
   leaf: (c: string) => <LeafIcon className={c} />,
 };
 
-// Content lives in src/data/how-it-works.json.
-const benefits = howItWorksData.benefits.map((item) => ({ ...item, icon: benefitsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const benefits = site.howItWorksPage.benefits.map((item) => ({ ...item, icon: benefitsIcons[item.icon] }));
 
-const WHY_PHOTO = "/images/how-it-works/why-it-works.webp";
+const WHY_PHOTO = uiImages.whyItWorks;
 const EYEBROW =
   "[&>span:nth-child(2)]:font-medium 3xl:[&>span:first-child]:w-[48px] 3xl:[&>span:last-child]:w-[48px] 3xl:[&>span:nth-child(2)]:text-[24px]";
 

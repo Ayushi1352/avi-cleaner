@@ -1,15 +1,23 @@
 import Link from "next/link";
 import { ArrowRight, Headphones } from "lucide-react";
 import { HomeIcon } from "@/components/icons";
-import notFoundData from "@/data/not-found.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/not-found.json under text.NotFound.
-const copy = notFoundData.text.NotFound;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.notFoundPage.text.NotFound;
+const uiLinks = site.notFoundPage.links.NotFound;
+const uiImages = site.notFoundPage.images.NotFound;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.notFoundPage.icons.NotFound, uiIconMap);
 
-export const metadata = notFoundData.meta.NotFound;
+// Text lives in src/data/site.json.
+const copy = site.notFoundPage;
+
+export const metadata = site.notFoundPage.meta.NotFound;
 
 // Photo on the right side of the page (stand-in: swap for your own).
-const PHOTO = "/images/about-supplies.webp";
+const PHOTO = uiImages.aboutSupplies;
 
 function Spark({ className = "" }) {
   return (
@@ -49,15 +57,15 @@ function ZeroMark({ className = "" }) {
   );
 }
 
-// Icons by the name used in src/data/not-found.json.
+// Icons by the name used in src/data/site.json.
 const quickLinksIcons = {
   home: (c) => <HomeIcon className={c} />,
   spark: (c) => <Spark className={c} />,
   headphones: (c) => <Headphones className={c} strokeWidth={2.4} />,
 };
 
-// Content lives in src/data/not-found.json.
-const quickLinks = notFoundData.quickLinks.map((item) => ({ ...item, icon: quickLinksIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const quickLinks = site.notFoundPage.quickLinks.map((item) => ({ ...item, icon: quickLinksIcons[item.icon] }));
 
 export default function NotFound() {
   return (
@@ -74,7 +82,7 @@ export default function NotFound() {
         {/* Blurred plant, bottom left */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/plant-blur.webp"
+          src={uiImages.plantBlur}
           alt=""
           aria-hidden="true"
           className="pointer-events-none absolute bottom-0 left-0 -z-10 hidden h-[42%] w-auto max-w-none! -translate-x-[45%] translate-y-[20%] -scale-x-100 lg:block"
@@ -108,23 +116,23 @@ export default function NotFound() {
                 {copy.thePageYoureLookingFor}
               </p>
               <Link
-                href="/"
+                href={uiLinks.home}
                 className="btn-solid btn-yellow group mt-7 inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] 2xl:mt-9 2xl:px-10 2xl:py-[18px] 2xl:text-[21px] 3xl:h-[72px] 3xl:w-[288px] 3xl:px-0 3xl:py-0 3xl:text-[25px]"
               >
                 {copy.backToHome}
-                <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                <uiIcons.arrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
             </div>
 
             {/* ---------- 404 mark ---------- */}
             <div className="min-w-0 text-center">
               <p
-                aria-label="404"
+                aria-label={uiText.text404}
                 className="flex items-center justify-center text-[clamp(110px,30vw,230px)] font-black leading-[0.9] tracking-[-0.04em] text-[#0f3f2d] lg:text-[clamp(120px,15.6vw,300px)]"
               >
-                <span aria-hidden="true">4</span>
+                <span aria-hidden="true">{"4"}</span>
                 <ZeroMark className="mx-[0.02em] h-[0.92em] w-auto shrink-0" />
-                <span aria-hidden="true">4</span>
+                <span aria-hidden="true">{"4"}</span>
               </p>
               <p className="mt-4 -rotate-[5deg] font-script text-[clamp(26px,3.3vw,62px)] font-medium leading-[1.05] text-[#1f5a41] 2xl:mt-8" aria-hidden="true">
                 {copy.cleanPathsAlways}

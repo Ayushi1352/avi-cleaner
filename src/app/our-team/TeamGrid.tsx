@@ -7,14 +7,21 @@ import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import members from "./teamMembersData";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon } from "@/components/socialIcons";
-import teamData from "@/data/team.json";
+import { site, fill, pickIcons } from "@/data";
 
-// Text lives in src/data/team.json under text.TeamGrid.
-const copy = teamData.text.TeamGrid;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.teamPage.text.TeamGrid;
+const uiLinks = site.teamPage.links.TeamGrid;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "chevron-left": ChevronLeft, "chevron-right": ChevronRight };
+const uiIcons = pickIcons(site.teamPage.icons.TeamGrid, uiIconMap);
 
-const PER_PAGE = 8;
+// Text lives in src/data/site.json.
+const copy = site.teamPage.text.TeamGrid;
 
-// Icons by the name used in src/data/team.json.
+const PER_PAGE = site.teamPage.settings.TeamGrid.perPage;
+
+// Icons by the name used in src/data/site.json.
 const socialsIcons = {
   facebook: FacebookIcon,
   x: XIcon,
@@ -22,8 +29,8 @@ const socialsIcons = {
   instagram: InstagramIcon,
 };
 
-// Content lives in src/data/team.json.
-const socials = teamData.gridSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const socials = site.teamPage.gridSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
 
 /** Page numbers with ellipsis, e.g. 1 2 3 … 5 */
 function pageItems(total: number, current: number) {
@@ -43,7 +50,7 @@ function pageItems(total: number, current: number) {
 function MemberCard({ member }: { member: any }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-[16px] bg-white shadow-[0_14px_36px_-24px_rgba(11,42,28,0.35)] 2xl:rounded-[18px]">
-      <Link href={`/our-team/${member.slug}`} aria-label={`View ${member.name}`} className="group block overflow-hidden">
+      <Link href={fill(uiLinks.ourTeamSlug, { slug: member.slug })} aria-label={fill(uiText.viewName, { name: member.name })} className="group block overflow-hidden">
         <PhotoSlot
           src={member.photo}
           alt={member.name}
@@ -53,7 +60,7 @@ function MemberCard({ member }: { member: any }) {
         />
       </Link>
       <div className="flex flex-1 flex-col items-center px-4 pb-6 pt-5 text-center 2xl:pb-7 2xl:pt-[18px]">
-        <Link href={`/our-team/${member.slug}`} className="group/name block">
+        <Link href={fill(uiLinks.ourTeamSlug, { slug: member.slug })} className="group/name block">
           <h3 className="text-[19px] font-bold leading-tight text-[#0c2c1e] transition-colors group-hover/name:text-green xl:text-[21px] 2xl:text-[24px] 3xl:text-[27.5px]">
             {member.name}
           </h3>
@@ -68,7 +75,7 @@ function MemberCard({ member }: { member: any }) {
                 href={socialLinks[name as keyof typeof socialLinks]}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${member.name} on ${name}`}
+                aria-label={fill(uiText.nameOnName2, { name: member.name, name2: name })}
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-[#c9efdd] text-[#06160f] transition hover:bg-green-dark hover:text-white xl:h-10 xl:w-10 2xl:h-12 2xl:w-12 3xl:h-[54px] 3xl:w-[54px]"
               >
                 <Icon className="h-[18px] w-[18px] xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 3xl:h-[29px] 3xl:w-[29px]" />
@@ -165,20 +172,20 @@ export default function TeamGrid() {
                 aria-label={copy.previousPage}
                 className={`${btn} bg-[#e3f5eb] text-[#0b2a1c] hover:bg-[#0f5a36] hover:text-white disabled:pointer-events-none`}
               >
-                <ChevronLeft className="h-4 w-4" strokeWidth={2.6} />
+                <uiIcons.chevronLeft className="h-4 w-4" strokeWidth={2.6} />
               </button>
             </li>
             {pageItems(totalPages, page).map((item, i) =>
               item === "…" ? (
                 <li key={`gap-${i}`} className={`${btn} bg-[#e3f5eb] text-[#0b2a1c]`}>
-                  …
+                  {"…"}
                 </li>
               ) : (
                 <li key={item}>
                   <button
                     type="button"
                     onClick={() => goTo(item as number)}
-                    aria-label={`Page ${item}`}
+                    aria-label={fill(uiText.pageItem, { item })}
                     aria-current={item === page ? "page" : undefined}
                     className={`${btn} ${item === page
                         ? "bg-[#0f5a36] text-white"
@@ -198,7 +205,7 @@ export default function TeamGrid() {
                 aria-label={copy.nextPage}
                 className={`${btn} bg-[#e3f5eb] text-[#0b2a1c] hover:bg-[#0f5a36] hover:text-white disabled:pointer-events-none`}
               >
-                <ChevronRight className="h-4 w-4" strokeWidth={2.6} />
+                <uiIcons.chevronRight className="h-4 w-4" strokeWidth={2.6} />
               </button>
             </li>
           </ul>

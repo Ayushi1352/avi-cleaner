@@ -1,14 +1,14 @@
 import PageHero from "@/components/PageHero";
 import PolicyContent, { type PolicySection } from "@/components/PolicyContent";
-import policiesData from "@/data/policies.json";
+import { site } from "@/data";
 
-// Text lives in src/data/policies.json under text.RefundCancellationPolicyPage.
-const copy = policiesData.text.RefundCancellationPolicyPage;
+// Text lives in src/data/site.json.
+const copy = site.policiesPage.text.RefundCancellationPolicyPage;
 
-export const metadata = policiesData.meta.RefundCancellationPolicyPage;
+export const metadata = site.policiesPage.meta.RefundCancellationPolicyPage;
 
-// Content lives in src/data/policies.json.
-const sections: PolicySection[] = policiesData.refund;
+// Content lives in src/data/site.json.
+const sections: PolicySection[] = site.policiesPage.refund;
 
 // Navbar and footer come from the root layout; the page banner is shared with the other pages.
 export default function RefundCancellationPolicyPage() {

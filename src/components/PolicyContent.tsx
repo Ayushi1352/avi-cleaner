@@ -1,8 +1,8 @@
 import SectionEyebrow from "@/components/SectionEyebrow";
-import siteData from "@/data/site.json";
+import { contact } from "@/data";
 
-// Text lives in src/data/site.json under text.PolicyContent.
-const copy = siteData.text.PolicyContent;
+// UI text, links and images live in src/data/site.json.
+const uiContact = contact;
 
 export type PolicySection = {
   title: string;
@@ -77,15 +77,15 @@ export default function PolicyContent({
                   )}
                   {s.contact && (
                     <p className="mt-3 flex flex-col gap-2 text-[15px] font-bold text-[#0f4a35] sm:text-base lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-6 xl:text-[19px] 2xl:mt-5 2xl:gap-x-11 2xl:text-[24px] 3xl:text-[31px]">
-                      <a href="mailto:xyz@avicleaner.com" className="break-all hover:text-green">
-                        {copy.xyzAvicleanerCom}
+                      <a href={uiContact.emailHref} className="break-all hover:text-green">
+                        {uiContact.email}
                       </a>
                       <span aria-hidden="true" className="hidden h-[1.1em] w-px bg-[#4b5565] lg:block" />
-                      <a href="tel:+12025550147" className="hover:text-green">
-                        +1 (202) 555-0147
+                      <a href={uiContact.phoneHref} className="hover:text-green">
+                        {uiContact.phone}
                       </a>
                       <span aria-hidden="true" className="hidden h-[1.1em] w-px bg-[#4b5565] lg:block" />
-                      <span className="font-medium text-[#0b1a12]">{copy.text123MainStreetSeattleWa}</span>
+                      <span className="font-medium text-[#0b1a12]">{uiContact.address}</span>
                     </p>
                   )}
                 </div>

@@ -1,22 +1,25 @@
-import servicesData from "@/data/services.json";
+import { site, fill } from "@/data";
+
+// UI text, links and images live in src/data/site.json.
+const uiImages = site.servicesPage.images.servicesData;
 
 // Services for the Services page and the Service Detail pages.
 // Each service gets a detail page at /services/<slug>.
 // Photos go in /public/images/services/ with the file names used below.
 // `image` is the card photo on the Services page.
 
-// Content lives in src/data/services.json.
-const services = servicesData.services.map((item) => ({ ...item }));
+// Content lives in src/data/site.json.
+const services = site.servicesPage.services.map((item) => ({ ...item }));
 
 // Detail page top photo: /images/services/<slug>-detail.webp (different from the
 // card photo). The card photo is reused in the checklist section of the detail page.
 (services as Array<(typeof services)[number] & { detailImage?: string; checklistImage?: string }>).forEach((s) => {
-  s.detailImage = s.detailImage || `/images/services/${s.slug}-detail.webp`;
+  s.detailImage = s.detailImage || fill(uiImages.slugDetail, { slug: s.slug });
   s.checklistImage = s.checklistImage || s.image;
 });
 
-// Content lives in src/data/services.json.
-const slugAliases: Record<string, string> = servicesData.slugAliases;
+// Content lives in src/data/site.json.
+const slugAliases: Record<string, string> = site.servicesPage.slugAliases;
 
 export function getServiceBySlug(rawSlug?: string | string[]) {
   if (!rawSlug) return null;

@@ -8,20 +8,27 @@ import CarouselDots from "./CarouselDots";
 import ScrollReveal from "./ScrollReveal";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
 import { BuildingIcon, HomeIcon, SofaIcon } from "./icons";
-import homeData from "@/data/home.json";
+import { site, fill, pickIcons } from "@/data";
 
-// Text lives in src/data/home.json under text.RecentProjectsSection.
-const copy = homeData.text.RecentProjectsSection;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.recentProjectsSection.text.RecentProjectsSection;
+const uiLinks = site.recentProjectsSection.links.RecentProjectsSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.recentProjectsSection.icons.RecentProjectsSection, uiIconMap);
 
-// Icons by the name used in src/data/home.json.
+// Text lives in src/data/site.json.
+const copy = site.recentProjectsSection.text.RecentProjectsSection;
+
+// Icons by the name used in src/data/site.json.
 const projectsIcons = {
   home: HomeIcon,
   building: BuildingIcon,
   sofa: SofaIcon,
 };
 
-// Content lives in src/data/home.json.
-const projects = homeData.projects.map((item) => ({ ...item, icon: projectsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const projects = site.recentProjectsSection.projects.map((item) => ({ ...item, icon: projectsIcons[item.icon] }));
 
 function ProjectCard({ project }) {
   const Icon = project.icon;
@@ -49,11 +56,11 @@ function ProjectCard({ project }) {
           </p>
         </div>
         <Link
-          href="/gallery"
-          aria-label={`View ${project.title}`}
+          href={uiLinks.gallery}
+          aria-label={fill(uiText.viewTitle, { title: project.title })}
           className="btn-solid flex h-11 w-11 shrink-0 items-center justify-center rounded-full [--btn:#26683f] sm:h-12 sm:w-12 2xl:h-[70px] 2xl:w-[70px]"
         >
-          <ArrowRight className="h-5 w-5 2xl:h-7 2xl:w-7" />
+          <uiIcons.arrowRight className="h-5 w-5 2xl:h-7 2xl:w-7" />
         </Link>
       </div>
     </ImagePlaceholder>
@@ -108,11 +115,11 @@ export default function RecentProjectsSection() {
           />
           <div className="mt-6 flex justify-center">
             <Link
-              href="/gallery"
+              href={uiLinks.gallery}
               className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#26683f] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
             >
               {copy.viewAllProjects}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </ScrollReveal>

@@ -2,10 +2,13 @@ import { Heart } from "lucide-react";
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { LeafIcon, ShieldCheckIcon, UsersIcon } from "@/components/icons";
-import servicesData from "@/data/services.json";
+import { site } from "@/data";
 
-// Text lives in src/data/services.json under text.WhyChooseService.
-const copy = servicesData.text.WhyChooseService;
+// UI text, links and images live in src/data/site.json.
+const uiImages = site.servicesPage.images.WhyChooseService;
+
+// Text lives in src/data/site.json.
+const copy = site.servicesPage.text.WhyChooseService;
 
 /* Solid icons drawn to match the design. */
 function CoinsSolidIcon({ className = "" }: { className?: string }) {
@@ -39,7 +42,7 @@ function CalendarSolidIcon({ className = "" }: { className?: string }) {
   );
 }
 
-// Icons by the name used in src/data/services.json.
+// Icons by the name used in src/data/site.json.
 const itemsIcons = {
   users: (c: string) => <UsersIcon className={c} />,
   "shield-check": (c: string) => <ShieldCheckIcon className={c} />,
@@ -49,8 +52,8 @@ const itemsIcons = {
   heart: (c: string) => <Heart className={c} fill="currentColor" strokeWidth={0} />,
 };
 
-// Content lives in src/data/services.json.
-const items = servicesData.whyChooseItems.map((item) => ({ ...item, icon: itemsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const items = site.servicesPage.whyChooseItems.map((item) => ({ ...item, icon: itemsIcons[item.icon] }));
 
 /** "Why Choose Us — Why Choose Our <Service>?" */
 export default function WhyChooseService({ service }: { service: any }) {
@@ -59,9 +62,9 @@ export default function WhyChooseService({ service }: { service: any }) {
       <div className="container-x">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,40%)_1fr] xl:gap-12 2xl:gap-[76px] 3xl:grid-cols-[573px_1fr] 3xl:pl-[12px]">
           <PhotoSlot
-            src={service.whyImage || "/images/services/why-choose-service.webp"}
+            src={service.whyImage || uiImages.whyChooseService}
             alt={copy.glovedHandsWipingAMarble}
-            label={(service.whyImage || "/images/services/why-choose-service.webp").replace("/images/", "")}
+            label={(service.whyImage || uiImages.whyChooseService).replace("/images/", "")}
             className="relative mx-auto aspect-square w-full max-w-[573px] rounded-[18px] shadow-[0_18px_40px_-28px_rgba(11,42,28,0.45)] 2xl:rounded-[20px]"
           />
 

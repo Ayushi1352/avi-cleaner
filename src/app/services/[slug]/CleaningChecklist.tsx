@@ -1,10 +1,16 @@
 import PhotoSlot from "@/components/PhotoSlot";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { HomeIcon } from "@/components/icons";
-import servicesData from "@/data/services.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/services.json under text.CleaningChecklist.
-const copy = servicesData.text.CleaningChecklist;
+// UI text, links and images live in src/data/site.json.
+const uiImages = site.servicesPage.images.CleaningChecklist;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { check: CheckIcon, home: HomeIcon };
+const uiIcons = pickIcons(site.servicesPage.icons.CleaningChecklist, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.servicesPage.text.CleaningChecklist;
 
 function CheckIcon({ className = "" }: { className?: string }) {
   return (
@@ -40,7 +46,7 @@ export default function CleaningChecklist({ service }: { service: any }) {
                 <ul key={c} className="space-y-3.5 2xl:space-y-[26px]">
                   {col.map((item: string) => (
                     <li key={item} className="flex min-w-0 items-start gap-3 text-[15px] leading-snug text-[#1d2433] xl:text-[16px] 2xl:gap-4 2xl:text-[20px] 3xl:gap-[18px] 3xl:whitespace-nowrap 3xl:text-[23px]">
-                      <CheckIcon className="mt-[0.05em] h-[1.3em] w-[1.3em] shrink-0" />
+                      <uiIcons.check className="mt-[0.05em] h-[1.3em] w-[1.3em] shrink-0" />
                       <span className="min-w-0">{item}</span>
                     </li>
                   ))}
@@ -52,14 +58,14 @@ export default function CleaningChecklist({ service }: { service: any }) {
           {/* Photo */}
           <div className="relative mx-auto w-full min-w-0 max-w-[700px]">
             <PhotoSlot
-              src={service.checklistImage || "/images/services/checklist-room.webp"}
+              src={service.checklistImage || uiImages.checklistRoom}
               alt={service.title}
-              label={(service.checklistImage || "/images/services/checklist-room.webp").replace("/images/", "")}
+              label={(service.checklistImage || uiImages.checklistRoom).replace("/images/", "")}
               className="relative aspect-[680/550] w-full rounded-[16px] 2xl:rounded-[18px]"
             />
             <div className="absolute bottom-0 right-0 flex max-w-[calc(100%-16px)] items-center gap-3 rounded-[14px] bg-[#0b3f2e] px-4 py-3 text-white 2xl:gap-5 2xl:rounded-[18px] 2xl:px-7 2xl:py-5 3xl:gap-[28px] 3xl:py-[26px] 3xl:pl-[22px] 3xl:pr-[30px]">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#0f4a35] 2xl:h-[56px] 2xl:w-[56px] 3xl:h-[84px] 3xl:w-[84px]">
-                <HomeIcon className="h-1/2 w-1/2" />
+                <uiIcons.home className="h-1/2 w-1/2" />
               </span>
               <span className="text-[14px] font-medium leading-[1.45] sm:text-[15px] 2xl:text-[20px] 3xl:text-[26px]">
                 {copy.aHealthierHome}

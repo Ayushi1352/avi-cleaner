@@ -2,7 +2,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionEyebrow from "./SectionEyebrow";
 import ScrollReveal from "./ScrollReveal";
-import siteData from "@/data/site.json";
+import { site, pickIcons } from "@/data";
+
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.partnerCtaSection.links.PartnerCtaSection;
+const uiImages = site.partnerCtaSection.images.PartnerCtaSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.partnerCtaSection.icons.PartnerCtaSection, uiIconMap);
 
 /**
  * Dark green call-to-action banner.
@@ -10,12 +17,12 @@ import siteData from "@/data/site.json";
  * other pages (e.g. Service Detail) pass their own text.
  */
 export default function PartnerCtaSection({
-  eyebrow = siteData.text.PartnerCtaSection.eyebrow,
-  title = siteData.text.PartnerCtaSection.title,
-  text = siteData.text.PartnerCtaSection.text,
-  buttonLabel = siteData.text.PartnerCtaSection.buttonLabel,
-  buttonHref = "/contact-us",
-  image = "/images/mission/partner-cta.webp",
+  eyebrow = site.partnerCtaSection.text.PartnerCtaSection.eyebrow,
+  title = site.partnerCtaSection.text.PartnerCtaSection.title,
+  text = site.partnerCtaSection.text.PartnerCtaSection.text,
+  buttonLabel = site.partnerCtaSection.text.PartnerCtaSection.buttonLabel,
+  buttonHref = uiLinks.contactUs,
+  image = uiImages.partnerCta,
   showLeaf = true,
   // "wide" = full-width banner with larger type (Service Detail page).
   wide = false,
@@ -70,7 +77,7 @@ export default function PartnerCtaSection({
                 className={`btn-solid btn-yellow group inline-flex w-fit shrink-0 items-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:px-11 2xl:py-6 2xl:text-[21px] 3xl:h-[90px] 3xl:justify-center ${wide ? "3xl:min-w-[368px] 3xl:gap-5 3xl:text-[25px]" : "3xl:min-w-[305px] 3xl:text-[24px]"}`}
               >
                 {buttonLabel}
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
+                <uiIcons.arrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
               </Link>
             </ScrollReveal>
           </div>

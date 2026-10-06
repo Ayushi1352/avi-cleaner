@@ -5,15 +5,21 @@ import { ArrowRight, FileText, Mail, MapPin, MessageCircleMore, Phone, ShieldChe
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
 import { ThumbUpIcon, UsersIcon } from "@/components/icons";
-import contactData from "@/data/contact.json";
+import { site, pickIcons, fillContact } from "@/data";
 
-// Text lives in src/data/contact.json under text.ContactForm.
-const copy = contactData.text.ContactForm;
+// UI text, links and images live in src/data/site.json.
+const uiImages = site.contactPage.images.ContactForm;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { user: User, phone: Phone, mail: Mail, "file-text": FileText, "message-circle-more": MessageCircleMore, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.contactPage.icons.ContactForm, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.contactPage.text.ContactForm;
 
 // Put your own photo here to replace the stand-in.
-const PHOTO = "/images/services/call-cleaner.webp";
+const PHOTO = uiImages.callCleaner;
 
-// Icons by the name used in src/data/contact.json.
+// Icons by the name used in src/data/site.json.
 const detailsIcons = {
   "map-pin": (c: string) => <MapPin className={c} fill="currentColor" stroke="#1f634a" strokeWidth={1.8} />,
   phone: (c: string) => <Phone className={c} fill="currentColor" strokeWidth={0} />,
@@ -25,18 +31,18 @@ const detailsIcons = {
   ),
 };
 
-// Content lives in src/data/contact.json.
-const details = contactData.details.map((item) => ({ ...item, icon: detailsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const details = site.contactPage.details.map((item) => ({ ...item, lines: item.lines.map(fillContact), icon: detailsIcons[item.icon] }));
 
-// Icons by the name used in src/data/contact.json.
+// Icons by the name used in src/data/site.json.
 const promisesIcons = {
   "shield-check": (c: string) => <ShieldCheck className={c} strokeWidth={2} />,
   users: (c: string) => <UsersIcon className={c} />,
   "thumb-up": (c: string) => <ThumbUpIcon className={c} />,
 };
 
-// Content lives in src/data/contact.json.
-const promises = contactData.promises.map((item) => ({ ...item, icon: promisesIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const promises = site.contactPage.promises.map((item) => ({ ...item, icon: promisesIcons[item.icon] }));
 
 const BOX =
   "w-full rounded-[10px] border border-[#e2ebe6] bg-white pl-12 pr-4 text-[15px] text-[#0b1a12] outline-none transition placeholder:text-[#7c8794] focus:border-[#1f7a4d] focus:ring-2 focus:ring-[#1f7a4d]/20 2xl:pl-[60px] 2xl:text-[16px] 3xl:rounded-[12px] 3xl:pl-[74px] 3xl:text-[17px]";
@@ -92,19 +98,19 @@ export default function ContactForm() {
           </p>
 
           <form onSubmit={onSubmit} className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:mt-7 2xl:gap-5 3xl:gap-x-[20px] 3xl:gap-y-[22px]">
-            <Field label={copy.yourName} icon={User}>
+            <Field label={copy.yourName} icon={uiIcons.user}>
               <input type="text" name="name" required autoComplete="name" placeholder={copy.yourName} className={`${BOX} ${HEIGHT}`} />
             </Field>
-            <Field label={copy.phoneNumber} icon={Phone}>
+            <Field label={copy.phoneNumber} icon={uiIcons.phone}>
               <input type="tel" name="phone" required autoComplete="tel" placeholder={copy.phoneNumber} className={`${BOX} ${HEIGHT}`} />
             </Field>
-            <Field label={copy.emailAddress} icon={Mail}>
+            <Field label={copy.emailAddress} icon={uiIcons.mail}>
               <input type="email" name="email" required autoComplete="email" placeholder={copy.emailAddress} className={`${BOX} ${HEIGHT}`} />
             </Field>
-            <Field label={copy.subject} icon={FileText}>
+            <Field label={copy.subject} icon={uiIcons.fileText}>
               <input type="text" name="subject" placeholder={copy.subject} className={`${BOX} ${HEIGHT}`} />
             </Field>
-            <Field label={copy.yourMessage} icon={MessageCircleMore} className="sm:col-span-2">
+            <Field label={copy.yourMessage} icon={uiIcons.messageCircleMore} className="sm:col-span-2">
               <textarea
                 name="message"
                 required
@@ -120,7 +126,7 @@ export default function ContactForm() {
                 className="btn-solid btn-yellow group inline-flex h-[54px] w-full items-center justify-center gap-3 rounded-full text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] 2xl:h-[60px] 2xl:text-[18px] 3xl:h-[66px] 3xl:gap-4 3xl:text-[19px]"
               >
                 {copy.submitNow}
-                <ArrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
+                <uiIcons.arrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
               </button>
               {sent && (
                 <p role="status" className="mt-3 text-[15px] font-semibold text-[#12583f] 2xl:text-[17px]">

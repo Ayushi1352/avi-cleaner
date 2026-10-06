@@ -2,12 +2,12 @@ import PageHero from "@/components/PageHero";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import CtaBannerSection from "@/components/CtaBannerSection";
 import ClientTestimonialsCarouselSection from "@/components/ClientTestimonialsCarouselSection";
-import whyChooseUsData from "@/data/why-choose-us.json";
+import { site } from "@/data";
 
-// Text lives in src/data/why-choose-us.json under text.Page.
-const copy = whyChooseUsData.text.Page;
+// Text lives in src/data/site.json.
+const copy = site.whyChooseUsPage;
 
-export const metadata = whyChooseUsData.meta.Page;
+export const metadata = site.whyChooseUsPage.meta.Page;
 
 // Only the page banner is unique to this page.
 // Every other section is shared with the home and about pages.

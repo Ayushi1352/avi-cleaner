@@ -1,10 +1,10 @@
-import siteData from "@/data/site.json";
+import { site } from "@/data";
 
 // Brand icons for team member social links.
 
 // Where each social icon takes the visitor. Swap in the real profile URLs here.
 // Content lives in src/data/site.json.
-export const socialLinks: Record<string, string> = siteData.socialLinks;
+export const socialLinks: Record<string, string> = site.footer.socialLinks;
 
 export function FacebookIcon(props) {
   return (

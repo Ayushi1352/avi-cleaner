@@ -4,16 +4,25 @@ import { useState, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PhotoLightbox from "./PhotoLightbox";
 import ScrollReveal from "@/components/ScrollReveal";
-import galleryData from "@/data/gallery.json";
+import { site, fill, pickIcons } from "@/data";
 
-// Text lives in src/data/gallery.json under text.GalleryPhotos.
-const copy = galleryData.text.GalleryPhotos;
+// UI text, links and images live in src/data/site.json.
+const uiText = site.galleryPage.text.GalleryPhotos;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "chevron-left": ChevronLeft, "chevron-right": ChevronRight };
+const uiIcons = pickIcons(site.galleryPage.icons.GalleryPhotos, uiIconMap);
 
-const PER_PAGE = 6;
+// Text lives in src/data/site.json.
+const copy = site.galleryPage.text.GalleryPhotos;
+
+const PER_PAGE = site.galleryPage.settings.GalleryPhotos.perPage;
+
+// Which part of a photo stays in view. A photo in site.json can set "focus": "top".
+const PHOTO_FOCUS: Record<string, string> = { top: "object-top", default: "object-[center_top]" };
 
 // Gallery photos (stand-ins from the rest of the site; swap in your own).
-// Content lives in src/data/gallery.json.
-const photos = galleryData.photos;
+// Content lives in src/data/site.json.
+const photos = site.galleryPage.photos;
 
 /** Gallery page photos grid and lightbox with pagination. */
 export default function GalleryPhotos() {
@@ -62,7 +71,7 @@ export default function GalleryPhotos() {
                     onClick={() => openAt(globalIndex)}
                     role="button"
                     tabIndex={0}
-                    aria-label={`View image: ${p.alt}`}
+                    aria-label={fill(uiText.viewImageAlt, { alt: p.alt })}
                     onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && openAt(globalIndex)}
                   >
                     <div className="relative overflow-hidden">
@@ -71,7 +80,7 @@ export default function GalleryPhotos() {
                         src={p.src}
                         alt={p.alt}
                         loading="lazy"
-                        className={`block aspect-[573/378] h-full w-full object-cover ${p.pos || "object-[center_top]"} transition-transform duration-500 group-hover:scale-105`}
+                        className={`block aspect-[573/378] h-full w-full object-cover ${PHOTO_FOCUS[p.focus] || PHOTO_FOCUS.default} transition-transform duration-500 group-hover:scale-105`}
                       />
                       <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/30">
                         <span className="flex h-12 w-12 scale-75 items-center justify-center rounded-full bg-white/90 text-[#14573f] opacity-0 shadow-lg transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
@@ -100,7 +109,7 @@ export default function GalleryPhotos() {
                     aria-label={copy.previousPage}
                     className={`${btn} ${idle}`}
                   >
-                    <ChevronLeft className="h-4 w-4" strokeWidth={3} />
+                    <uiIcons.chevronLeft className="h-4 w-4" strokeWidth={3} />
                   </button>
                 </li>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
@@ -108,7 +117,7 @@ export default function GalleryPhotos() {
                     <button
                       type="button"
                       onClick={() => goTo(n)}
-                      aria-label={`Page ${n}`}
+                      aria-label={fill(uiText.pageN, { n })}
                       aria-current={n === page ? "page" : undefined}
                       className={`${btn} ${n === page ? "bg-[#0c3f2e] text-white" : idle}`}
                     >
@@ -124,7 +133,7 @@ export default function GalleryPhotos() {
                     aria-label={copy.nextPage}
                     className={`${btn} ${idle}`}
                   >
-                    <ChevronRight className="h-4 w-4" strokeWidth={3} />
+                    <uiIcons.chevronRight className="h-4 w-4" strokeWidth={3} />
                   </button>
                 </li>
               </ul>

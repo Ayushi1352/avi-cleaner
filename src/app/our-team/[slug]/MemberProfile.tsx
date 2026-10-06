@@ -3,15 +3,22 @@ import PhotoSlot from "@/components/PhotoSlot";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon } from "@/components/socialIcons";
 import { LeafIcon, StarIcon, UsersIcon } from "@/components/icons";
 import { MailSolidIcon, PinSolidIcon, RoundQuoteIcon, ShieldSolidIcon } from "@/components/solidIcons";
-import teamData from "@/data/team.json";
+import { site, fill, pickIcons } from "@/data";
+
+// UI text, links and images live in src/data/site.json.
+const uiText = site.teamPage.text.MemberProfile;
+const uiLinks = site.teamPage.links.MemberProfile;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "shield-solid": ShieldSolidIcon, users: UsersIcon, star: StarIcon, leaf: LeafIcon, "mail-solid": MailSolidIcon, "phone-solid": PhoneSolidIcon, "pin-solid": PinSolidIcon, "round-quote": RoundQuoteIcon };
+const uiIcons = pickIcons(site.teamPage.icons.MemberProfile, uiIconMap);
 
 function PhoneSolidIcon({ className = "" }: { className?: string }) {
   return <Phone className={className} fill="currentColor" strokeWidth={0} />;
 }
 
-const strengthIcons = [ShieldSolidIcon, UsersIcon, StarIcon, LeafIcon];
+const strengthIcons = [uiIcons.shieldSolid, uiIcons.users, uiIcons.star, uiIcons.leaf];
 
-// Icons by the name used in src/data/team.json.
+// Icons by the name used in src/data/site.json.
 const socialsIcons = {
   facebook: FacebookIcon,
   x: XIcon,
@@ -19,15 +26,15 @@ const socialsIcons = {
   instagram: InstagramIcon,
 };
 
-// Content lives in src/data/team.json.
-const socials = teamData.profileSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const socials = site.teamPage.profileSocials.map((item) => ({ ...item, icon: socialsIcons[item.icon] }));
 
 /** Top of the Team Detail page: photo, name, contact info and strengths. */
 export default function MemberProfile({ member }: { member: any }) {
   const contacts = [
-    { icon: MailSolidIcon, text: member.email, href: `mailto:${member.email}` },
-    { icon: PhoneSolidIcon, text: member.phone, href: `tel:${member.phone.replace(/\s/g, "")}` },
-    { icon: PinSolidIcon, text: member.location },
+    { icon: uiIcons.mailSolid, text: member.email, href: fill(uiLinks.mailtoEmail, { email: member.email }) },
+    { icon: uiIcons.phoneSolid, text: member.phone, href: fill(uiLinks.telPhone, { phone: member.phone.replace(/\s/g, "") }) },
+    { icon: uiIcons.pinSolid, text: member.location },
   ];
 
   return (
@@ -45,10 +52,10 @@ export default function MemberProfile({ member }: { member: any }) {
             />
             <div className="absolute bottom-0 left-0 flex w-[92%] items-center gap-4 rounded-tr-[18px] bg-gradient-to-r from-[#0f4a35] to-[#1b5a41] px-5 py-5 text-white sm:w-[86%] 2xl:gap-6 2xl:rounded-tr-[20px] 2xl:px-[28px] 2xl:py-[30px] 3xl:gap-[46px] 3xl:pl-[66px]">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-[#0f4a35] 2xl:h-[72px] 2xl:w-[72px] 3xl:h-[90px] 3xl:w-[90px]">
-                <RoundQuoteIcon className="h-[58%] w-[58%]" />
+                <uiIcons.roundQuote className="h-[58%] w-[58%]" />
               </span>
               <p className="min-w-0 max-w-[12.5em] text-[15px] font-medium leading-[1.6] xl:text-[16px] 2xl:text-[19px] 3xl:text-[24px]">
-                &ldquo;{member.photoQuote}&rdquo;
+                {"“"}{member.photoQuote}{"”"}
               </p>
             </div>
           </div>
@@ -91,7 +98,7 @@ export default function MemberProfile({ member }: { member: any }) {
                     href={socialLinks[name as keyof typeof socialLinks]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${member.name} on ${name}`}
+                    aria-label={fill(uiText.nameOnName2, { name: member.name, name2: name })}
                     className="btn-solid flex h-11 w-11 items-center justify-center rounded-full [--btn:#0f4a35] 2xl:h-[58px] 2xl:w-[58px] 3xl:h-[70px] 3xl:w-[70px]"
                   >
                     <Icon className="h-5 w-5 2xl:h-6 2xl:w-6 3xl:h-[34px] 3xl:w-[34px]" />

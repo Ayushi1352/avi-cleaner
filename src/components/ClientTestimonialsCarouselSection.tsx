@@ -8,25 +8,32 @@ import SectionTag from "./SectionTag";
 import CarouselDots from "./CarouselDots";
 import ScrollReveal from "./ScrollReveal";
 import { QuoteIcon, StarIcon } from "./icons";
-import homeData from "@/data/home.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/home.json under text.ClientTestimonialsCarouselSection.
-const copy = homeData.text.ClientTestimonialsCarouselSection;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.testimonialSection.links.ClientTestimonialsCarouselSection;
+const uiImages = site.testimonialSection.images.ClientTestimonialsCarouselSection;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { star: StarIcon, quote: QuoteIcon, "chevron-left": ChevronLeft, "chevron-right": ChevronRight, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.testimonialSection.icons.ClientTestimonialsCarouselSection, uiIconMap);
+
+// Text lives in src/data/site.json.
+const copy = site.testimonialSection.text.ClientTestimonialsCarouselSection;
 
 // Quotes are kept to a similar length so every card looks equally full.
-// Content lives in src/data/home.json.
-const testimonials = homeData.testimonials;
+// Content lives in src/data/site.json.
+const testimonials = site.testimonialSection.testimonials;
 
 function Stars({ className = "" }) {
   return (
     <div className={`flex justify-center gap-1.5 text-[#f7b924] ${className}`}>
-      {Array.from({ length: 5 }).map((_, i) => (
+      {Array.from({ length: site.testimonialSection.settings.ClientTestimonialsCarouselSection.stars }).map((_, i) => (
         <span
           key={i}
           className="inline-block transition-transform duration-300 hover:scale-135 hover:rotate-6 cursor-pointer"
           style={{ animationDelay: `${i * 180}ms` }}
         >
-          <StarIcon className="h-full w-auto animate-icon-shimmer" />
+          <uiIcons.star className="h-full w-auto animate-icon-shimmer" />
         </span>
       ))}
     </div>
@@ -200,7 +207,7 @@ export default function TestimonialsSection() {
           {/* Out-of-focus plant leaves in the bottom-left corner */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/plant-blur.webp"
+            src={uiImages.plantBlur}
             alt=""
             aria-hidden="true"
             loading="lazy"
@@ -272,11 +279,11 @@ export default function TestimonialsSection() {
                       active ? "opacity-100" : "opacity-0"
                     }`}
                   >
-                    <QuoteIcon className="h-6 w-6 2xl:h-7 2xl:w-7" />
+                    <uiIcons.quote className="h-6 w-6 2xl:h-7 2xl:w-7" />
                   </span>
                   <Stars className="h-5 2xl:h-6" />
                   <p className="mt-5 text-balance text-[15px] leading-[1.5] text-body sm:text-base xl:text-[18px] 2xl:mt-6 2xl:text-[20px]">
-                    &ldquo;{t.quote}&rdquo;
+                    {"“"}{t.quote}{"”"}
                   </p>
                   <Author t={t} big />
                 </article>
@@ -292,7 +299,7 @@ export default function TestimonialsSection() {
               aria-label={copy.previousTestimonial}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#124734] shadow-[0_2px_10px_-2px_rgba(11,42,28,0.25)] transition-all hover:bg-[#124734] hover:text-white"
             >
-              <ChevronLeft className="h-4 w-4" strokeWidth={2.6} />
+              <uiIcons.chevronLeft className="h-4 w-4" strokeWidth={2.6} />
             </button>
             <CarouselDots pages={total} index={index} goTo={goTo} />
             <button
@@ -301,17 +308,17 @@ export default function TestimonialsSection() {
               aria-label={copy.nextTestimonial}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#124734] shadow-[0_2px_10px_-2px_rgba(11,42,28,0.25)] transition-all hover:bg-[#124734] hover:text-white"
             >
-              <ChevronRight className="h-4 w-4" strokeWidth={2.6} />
+              <uiIcons.chevronRight className="h-4 w-4" strokeWidth={2.6} />
             </button>
           </div>
 
           <div className="relative mt-6 flex justify-center">
             <Link
-              href="/testimonials"
+              href={uiLinks.testimonials}
               className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a6a4a] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
             >
               {copy.viewAllTestimonials}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

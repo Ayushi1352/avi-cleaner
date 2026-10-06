@@ -2,22 +2,30 @@ import Link from "next/link";
 import { ArrowRight, Clock, Phone, ShieldCheck } from "lucide-react";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import HandwrittenNote from "@/components/HandwrittenNote";
-import servicesData from "@/data/services.json";
+import { site, fill, pickIcons, contact } from "@/data";
 
-// Text lives in src/data/services.json under text.CallUsBanner.
-const copy = servicesData.text.CallUsBanner;
+// UI text, links and images live in src/data/site.json.
+const uiLinks = site.servicesPage.links.CallUsBanner;
+const uiImages = site.servicesPage.images.CallUsBanner;
+const uiContact = contact;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { phone: Phone, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.servicesPage.icons.CallUsBanner, uiIconMap);
 
-// Icons by the name used in src/data/services.json.
+// Text lives in src/data/site.json.
+const copy = site.servicesPage.text.CallUsBanner;
+
+// Icons by the name used in src/data/site.json.
 const featuresIcons = {
   clock: Clock,
   "shield-check": ShieldCheck,
 };
 
-// Content lives in src/data/services.json.
-const features = servicesData.callUsFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const features = site.servicesPage.callUsFeatures.map((item) => ({ ...item, icon: featuresIcons[item.icon] }));
 
-const PHONE = "+1 (202) 555-0147";
-const CALL_PHOTO = "/images/services/call-cleaner.webp";
+const PHONE = uiContact.phone;
+const CALL_PHOTO = uiImages.callCleaner;
 
 /** "Need Help? — Need a Deep Clean? Call Us for Immediate Service!" banner. */
 export default function CallUsBanner() {
@@ -80,9 +88,9 @@ export default function CallUsBanner() {
             </ul>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-6 2xl:mt-10 2xl:gap-x-14">
-              <a href={`tel:${PHONE.replace(/\s/g, "")}`} className="group flex items-center gap-4 2xl:gap-6">
+              <a href={fill(uiLinks.telPhone, { phone: PHONE.replace(/\s/g, "") })} className="group flex items-center gap-4 2xl:gap-6">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#fdd86b] text-[#0f2a20] 2xl:h-[66px] 2xl:w-[66px] 3xl:h-[82px] 3xl:w-[82px]">
-                  <Phone className="h-5 w-5 2xl:h-7 2xl:w-7 3xl:h-8 3xl:w-8" fill="currentColor" strokeWidth={0} />
+                  <uiIcons.phone className="h-5 w-5 2xl:h-7 2xl:w-7 3xl:h-8 3xl:w-8" fill="currentColor" strokeWidth={0} />
                 </span>
                 <span className="min-w-0">
                   <span className="block text-[13px] text-white/90 2xl:text-[17px] 3xl:text-[20px]">{copy.callUsNow}</span>
@@ -92,11 +100,11 @@ export default function CallUsBanner() {
                 </span>
               </a>
               <Link
-                href="/book-now"
+                href={uiLinks.bookNow}
                 className="btn-solid btn-yellow group inline-flex items-center gap-3 whitespace-nowrap rounded-full px-7 py-3.5 text-[15px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:px-10 2xl:py-[18px] 2xl:text-[18px] 3xl:min-w-[290px] 3xl:justify-center 3xl:py-[21px] 3xl:text-[21px]"
               >
                 {copy.bookAService}
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                <uiIcons.arrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
             </div>
           </div>

@@ -16,19 +16,25 @@ import {
   User,
 } from "lucide-react";
 import { LeafIcon } from "@/components/icons";
-import bookingData from "@/data/booking.json";
+import { site, pickIcons } from "@/data";
 
-// Text lives in src/data/booking.json under text.BookingForm.
-const copy = bookingData.text.BookingForm;
+// UI text, links and images live in src/data/site.json.
+const uiImages = site.bookingPage.images.BookingForm;
+// Icons by the name used in src/data/site.json.
+const uiIconMap = { "calendar-days": CalendarDays, user: User, phone: Phone, mail: Mail, "layout-grid": LayoutGrid, "chevron-down": ChevronDown, clock: Clock, "map-pin": MapPin, "file-text": FileText, "arrow-right": ArrowRight };
+const uiIcons = pickIcons(site.bookingPage.icons.BookingForm, uiIconMap);
 
-const PHOTO = "/images/service-kitchen.webp";
+// Text lives in src/data/site.json.
+const copy = site.bookingPage.text.BookingForm;
 
-// Content lives in src/data/booking.json.
-const serviceOptions = bookingData.serviceOptions;
-// Content lives in src/data/booking.json.
-const timeOptions = bookingData.timeOptions;
+const PHOTO = uiImages.serviceKitchen;
 
-// Icons by the name used in src/data/booking.json.
+// Content lives in src/data/site.json.
+const serviceOptions = site.bookingPage.serviceOptions;
+// Content lives in src/data/site.json.
+const timeOptions = site.bookingPage.timeOptions;
+
+// Icons by the name used in src/data/site.json.
 const reasonsIcons = {
   "shield-check": (c: string) => <ShieldCheck className={c} strokeWidth={2} />,
   "calendar-days": (c: string) => <CalendarDays className={c} strokeWidth={2} />,
@@ -36,8 +42,8 @@ const reasonsIcons = {
   headphones: (c: string) => <Headphones className={c} strokeWidth={2} />,
 };
 
-// Content lives in src/data/booking.json.
-const reasons = bookingData.reasons.map((item) => ({ ...item, icon: reasonsIcons[item.icon] }));
+// Content lives in src/data/site.json.
+const reasons = site.bookingPage.reasons.map((item) => ({ ...item, icon: reasonsIcons[item.icon] }));
 
 const LABEL = "block text-[15px] font-medium text-[#0b1a12] xl:text-[16px] 2xl:text-[19px] 3xl:text-[23px]";
 const BOX =
@@ -55,7 +61,7 @@ function Field({ label, required = true, icon: Icon, children, className = "" }:
   return (
     <label className={`block min-w-0 ${className}`}>
       <span className={LABEL}>
-        {label} {required && <span className="text-[#e5484d]">*</span>}
+        {label} {required && <span className="text-[#e5484d]">{"*"}</span>}
       </span>
       <span className="relative mt-2 block 2xl:mt-2.5 3xl:mt-[14px]">
         <Icon className={ICON} strokeWidth={1.9} />
@@ -87,7 +93,7 @@ export default function BookingForm() {
                 <span className="mt-2 block h-[4px] w-10 rounded-full bg-[#fdd659] 2xl:mt-3 2xl:w-[60px]" />
               </h2>
               <p className="flex w-fit shrink-0 items-center gap-3 rounded-[12px] bg-[#e6f6ee] px-4 py-3 2xl:gap-4 2xl:px-6 2xl:py-4 3xl:gap-[22px] 3xl:py-[18px] 3xl:pl-[28px] 3xl:pr-[26px]">
-                <CalendarDays className="h-7 w-7 shrink-0 text-[#12583f] 2xl:h-9 2xl:w-9 3xl:h-[46px] 3xl:w-[46px]" strokeWidth={1.9} />
+                <uiIcons.calendarDays className="h-7 w-7 shrink-0 text-[#12583f] 2xl:h-9 2xl:w-9 3xl:h-[46px] 3xl:w-[46px]" strokeWidth={1.9} />
                 <span>
                   <span className="block text-[14px] font-bold leading-tight text-[#12583f] xl:text-[15px] 2xl:text-[19px] 3xl:text-[23px]">
                     {copy.quickEasyBooking}
@@ -103,40 +109,40 @@ export default function BookingForm() {
             </p>
 
             <form onSubmit={onSubmit} className="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2 2xl:mt-8 2xl:gap-x-7 2xl:gap-y-7 3xl:mt-[44px] 3xl:gap-x-[32px] 3xl:gap-y-[44px]">
-              <Field label={copy.fullName} icon={User}>
+              <Field label={copy.fullName} icon={uiIcons.user}>
                 <input type="text" name="name" required autoComplete="name" placeholder={copy.enterYourFullName} className={`${BOX} ${HEIGHT}`} />
               </Field>
-              <Field label={copy.phoneNumber} icon={Phone}>
+              <Field label={copy.phoneNumber} icon={uiIcons.phone}>
                 <input type="tel" name="phone" required autoComplete="tel" placeholder={copy.enterYourPhoneNumber} className={`${BOX} ${HEIGHT}`} />
               </Field>
-              <Field label={copy.emailAddress} icon={Mail}>
+              <Field label={copy.emailAddress} icon={uiIcons.mail}>
                 <input type="email" name="email" required autoComplete="email" placeholder={copy.enterYourEmailAddress} className={`${BOX} ${HEIGHT}`} />
               </Field>
-              <Field label={copy.serviceType} icon={LayoutGrid}>
+              <Field label={copy.serviceType} icon={uiIcons.layoutGrid}>
                 <select name="service" required defaultValue="" className={`${BOX} ${HEIGHT} appearance-none pr-11 invalid:text-[#8a929e]`}>
                   <option value="" disabled>{copy.selectService}</option>
                   {serviceOptions.map((o) => (
                     <option key={o} value={o}>{o}</option>
                   ))}
                 </select>
-                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#0b1a12] 2xl:right-6 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
+                <uiIcons.chevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#0b1a12] 2xl:right-6 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
               </Field>
-              <Field label={copy.preferredDate} icon={CalendarDays}>
+              <Field label={copy.preferredDate} icon={uiIcons.calendarDays}>
                 <input type="date" name="date" required className={`${BOX} ${HEIGHT} invalid:text-[#8a929e]`} />
               </Field>
-              <Field label={copy.preferredTime} icon={Clock}>
+              <Field label={copy.preferredTime} icon={uiIcons.clock}>
                 <select name="time" required defaultValue="" className={`${BOX} ${HEIGHT} appearance-none pr-11 invalid:text-[#8a929e]`}>
                   <option value="" disabled>{copy.selectTime}</option>
                   {timeOptions.map((o) => (
                     <option key={o} value={o}>{o}</option>
                   ))}
                 </select>
-                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#0b1a12] 2xl:right-6 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
+                <uiIcons.chevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#0b1a12] 2xl:right-6 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
               </Field>
-              <Field label={copy.address} icon={MapPin} className="sm:col-span-2">
+              <Field label={copy.address} icon={uiIcons.mapPin} className="sm:col-span-2">
                 <input type="text" name="address" required autoComplete="street-address" placeholder={copy.enterYourCompleteAddress} className={`${BOX} ${HEIGHT}`} />
               </Field>
-              <Field label={copy.specialInstructionsOptional} required={false} icon={FileText} className="sm:col-span-2">
+              <Field label={copy.specialInstructionsOptional} required={false} icon={uiIcons.fileText} className="sm:col-span-2">
                 <textarea
                   name="notes"
                   rows={3}
@@ -150,9 +156,9 @@ export default function BookingForm() {
                   type="submit"
                   className="btn-solid group inline-flex h-[54px] w-full max-w-[420px] items-center justify-center gap-3 rounded-full text-[18px] font-bold [--btn:#0b4a35] 2xl:h-[66px] 2xl:max-w-[520px] 2xl:text-[23px] 3xl:h-[82px] 3xl:max-w-[652px] 3xl:gap-[22px] 3xl:text-[29px]"
                 >
-                  <CalendarDays className="h-[1.05em] w-[1.05em]" strokeWidth={2.2} />
+                  <uiIcons.calendarDays className="h-[1.05em] w-[1.05em]" strokeWidth={2.2} />
                   {copy.bookNow}
-                  <ArrowRight className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                  <uiIcons.arrowRight className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
                 </button>
                 <p className="mt-3 text-[14px] text-[#5a6172] 2xl:mt-5 2xl:text-[17px] 3xl:text-[20.5px]">
                   {copy.byBookingYouAgreeTo}

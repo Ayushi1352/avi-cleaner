@@ -1,3 +1,9 @@
+
+import { site, fill } from "@/data";
+
+// UI text, links and images live in src/data/site.json.
+const uiText = site.siteMeta.text.CarouselDots;
+
 export default function CarouselDots({ pages, index, goTo, className = "" }) {
   if (pages <= 1) return null;
   return (
@@ -7,7 +13,7 @@ export default function CarouselDots({ pages, index, goTo, className = "" }) {
           key={i}
           type="button"
           onClick={() => goTo(i)}
-          aria-label={`Go to slide ${i + 1}`}
+          aria-label={fill(uiText.goToSlideN, { n: i + 1 })}
           className={`h-3 w-3 rounded-full transition-colors 2xl:h-[14px] 2xl:w-[14px] ${
             i === index ? "bg-green-dark" : "bg-[#d9dee5] hover:bg-[#b8c2cc]"
           }`}

@@ -1,4 +1,4 @@
-import blogData from "@/data/blog.json";
+import { site, fill } from "@/data";
 
 // Blog posts for the Blog page and the Blog Detail pages.
 // Each post gets a detail page at /blog/<slug>.
@@ -8,12 +8,12 @@ import blogData from "@/data/blog.json";
 // are optional. Anything left out is filled with the placeholder text below.
 
 const DEFAULT_BODY =
-  blogData.postDefaults.body;
+  site.blogPage.postDefaults.body;
 const DEFAULT_EXCERPT =
-  blogData.postDefaults.excerpt;
+  site.blogPage.postDefaults.excerpt;
 
-// Content lives in src/data/blog.json.
-const posts = blogData.posts.map((item) => ({ ...item }));
+// Content lives in src/data/site.json.
+const posts = site.blogPage.posts.map((item) => ({ ...item }));
 
 export const slugify = (text) =>
   text
@@ -47,7 +47,7 @@ export interface Post {
     p.authorAvatar = (p.author as { name: string; role?: string; avatar?: string }).avatar;
     p.author = (p.author as { name: string }).name;
   }
-  p.author = (p.author as string) || "Admin";
+  p.author = (p.author as string) || site.blogPage.postDefaults.author;
   p.excerpt = p.excerpt || DEFAULT_EXCERPT;
 });
 
@@ -59,30 +59,30 @@ export function getPostBySlug(slug) {
 export function getPostDetail(post) {
   return {
     ...post,
-    image2: post.image2 || blogData.postDefaults.image2,
-    intro: post.intro || `${post.excerpt} A clean space is healthier, calmer and more welcoming, and a few good habits make it easy to keep it that way.`,
+    image2: post.image2 || site.blogPage.postDefaults.image2,
+    intro: post.intro || fill(site.blogPage.postDefaults.intro, { excerpt: post.excerpt }),
     body: post.body || DEFAULT_BODY,
-    subheading: post.subheading || blogData.postDefaults.subheading,
+    subheading: post.subheading || site.blogPage.postDefaults.subheading,
     subtext:
       post.subtext ||
-      blogData.postDefaults.subtext,
+      site.blogPage.postDefaults.subtext,
     quote:
       post.quote ||
-      blogData.postDefaults.quote,
+      site.blogPage.postDefaults.quote,
     closing:
       post.closing ||
-      blogData.postDefaults.closing,
+      site.blogPage.postDefaults.closing,
   };
 }
 
-export const recentPosts = posts.filter((p) => p.recent).slice(0, 3);
+export const recentPosts = posts.filter((p) => p.recent).slice(0, site.blogPage.settings.BlogArticle.recentPosts);
 
-// Content lives in src/data/blog.json.
-export const popularCategories = blogData.popularCategories;
+// Content lives in src/data/site.json.
+export const popularCategories = site.blogPage.popularCategories;
 
-// Content lives in src/data/blog.json.
-export const sidebarTags = blogData.sidebarTags;
-// Content lives in src/data/blog.json.
-export const relatedTags = blogData.relatedTags;
+// Content lives in src/data/site.json.
+export const sidebarTags = site.blogPage.sidebarTags;
+// Content lives in src/data/site.json.
+export const relatedTags = site.blogPage.relatedTags;
 
 export default posts;
