@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import FaqAccordion from "./FaqAccordion";
+import FaqAccordion from "@/components/FaqAccordion";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

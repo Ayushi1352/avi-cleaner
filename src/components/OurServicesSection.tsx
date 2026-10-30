@@ -13,8 +13,9 @@ import {
 import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
-import { SparklesIcon } from "./icons";
-import { site, pickIcons } from "@/data";
+import { SparklesIcon } from "@/components/icons";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiLinks = site.ourServicesSection.links.OurServicesSection;
@@ -53,8 +54,8 @@ function ServiceCard({ service }) {
           className="aspect-[305/190] w-full rounded-[10px] lg:aspect-auto lg:h-[clamp(100px,15vh,190px)]"
         />
         <span className="absolute -left-1 -top-1 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full border-[4px] border-white bg-[#2f5d45] text-white shadow-md transition-transform duration-300 hover:scale-115 hover:shadow-[0_10px_25px_-5px_rgba(47,93,69,0.5)] 2xl:h-[92px] 2xl:w-[92px] 2xl:border-[5px]">
-          <Icon className="h-7 w-7 2xl:h-9 2xl:w-9 animate-icon-pulse-subtle" strokeWidth={1.6} />
-          <uiIcons.sparkles className="absolute right-3 top-3 h-3 w-3 text-yellow 2xl:right-4 2xl:top-4 2xl:h-4 2xl:w-4 animate-icon-twinkle" />
+          <Icon data-motion="pulse" className="h-7 w-7 2xl:h-9 2xl:w-9" strokeWidth={1.6} />
+          <uiIcons.sparkles data-motion="twinkle" className="absolute right-3 top-3 h-3 w-3 text-yellow 2xl:right-4 2xl:top-4 2xl:h-4 2xl:w-4" />
         </span>
       </div>
       <h3 className="mt-5 text-[18px] font-bold leading-[1.25] text-navy lg:mt-3.5 2xl:mt-4 xl:text-[18px] 2xl:text-[20px] 3xl:text-[22px]">
@@ -66,7 +67,7 @@ function ServiceCard({ service }) {
       <div className="mt-auto pt-6 lg:pt-4">
         <Link
           href={service.href}
-          className="btn-solid btn-yellow group/btn inline-flex items-center gap-3 rounded-full px-7 py-3 text-[14px] font-semibold 2xl:px-8 2xl:py-3 2xl:text-[15px] 3xl:px-9 3xl:py-[14px]"
+          className={`${ui.btnSolid} ${ui.btnYellow} group/btn inline-flex items-center gap-3 rounded-full px-7 py-3 text-[14px] font-semibold 2xl:px-8 2xl:py-3 2xl:text-[15px] 3xl:px-9 3xl:py-[14px]`}
         >
           {copy.readMore}
           <uiIcons.arrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -90,7 +91,7 @@ function ProvideCard({ className = "" }) {
       </p>
       <Link
         href={uiLinks.bookNow}
-        className="btn-solid btn-forest group mt-7 inline-flex items-center gap-3 whitespace-nowrap rounded-full px-7 py-3.5 text-[14px] font-medium lg:mt-5 2xl:mt-5 2xl:px-8 2xl:py-3.5 2xl:text-[15px] 3xl:mt-6 3xl:px-9 3xl:py-4 3xl:text-[16px]"
+        className={`${ui.btnSolid} ${ui.btnForest} group mt-7 inline-flex items-center gap-3 whitespace-nowrap rounded-full px-7 py-3.5 text-[14px] font-medium lg:mt-5 2xl:mt-5 2xl:px-8 2xl:py-3.5 2xl:text-[15px] 3xl:mt-6 3xl:px-9 3xl:py-4 3xl:text-[16px]`}
       >
         {copy.requestAQuote}
         <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -100,8 +101,8 @@ function ProvideCard({ className = "" }) {
 }
 
 export default function ServicesSection() {
-  const mobile = useCarousel(services.length, { loop: false });
-  const desktop = useCarousel(services.length, { loop: false });
+  const { setViewport: setMobileViewport, ...mobile } = useCarousel(services.length, { loop: false });
+  const { setViewport: setDesktopViewport, ...desktop } = useCarousel(services.length, { loop: false });
 
   const header = (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between lg:items-center">
@@ -118,7 +119,7 @@ export default function ServicesSection() {
       <div className="shrink-0 self-start sm:self-center">
         <Link
           href={uiLinks.services}
-          className="btn-outline group inline-flex items-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] sm:px-6 sm:py-2.5 sm:text-[14px] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
+          className={`${ui.btnOutline} group inline-flex items-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] sm:px-6 sm:py-2.5 sm:text-[14px] 2xl:px-7 2xl:py-3 2xl:text-[15px]`}
         >
           <span className="whitespace-nowrap">{copy.viewAllServices}</span>
           <uiIcons.arrowRight className="h-3.5 w-3.5 stroke-[2.2] transition-transform group-hover:translate-x-1 sm:h-4 sm:w-4" />
@@ -129,7 +130,7 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="scroll-mt-24 bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
-      <div className="container-x">
+      <div className={ui.container}>
         <div className="relative overflow-hidden rounded-[20px] bg-[#f7f9fa] lg:rounded-[4px]">
           {/* Decorative pale leaves */}
           <svg
@@ -148,7 +149,7 @@ export default function ServicesSection() {
               <ImagePlaceholder
                 src={SERVICE_BANNER_IMAGE}
                 alt={copy.avicleanerCleaningTeam}
-                placeholderLabel="service-team.jpg"
+                placeholderLabel={SERVICE_BANNER_IMAGE.replace("/images/", "")}
                 className="aspect-[4/3] w-full rounded-[16px] md:aspect-auto md:min-h-[340px]"
                 imgClassName="object-cover object-top"
               />
@@ -157,7 +158,7 @@ export default function ServicesSection() {
 
             <div className="min-w-0">
               <div
-                ref={mobile.setViewport}
+                ref={setMobileViewport}
                 className="overflow-hidden py-3 [--gap:16px] [--per:1] sm:[--per:2]"
               >
                 <div className={trackClass} style={mobile.trackStyle}>
@@ -174,7 +175,7 @@ export default function ServicesSection() {
                   onClick={mobile.prev}
                   disabled={!mobile.canPrev}
                   aria-label={copy.previousService}
-                  className={`btn-outline flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] transition-opacity duration-200 ${!mobile.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
+                  className={`${ui.btnOutline} flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] ${!mobile.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
                     }`}
                 >
                   <uiIcons.arrowLeft className="h-5 w-5" />
@@ -184,7 +185,7 @@ export default function ServicesSection() {
                   onClick={mobile.next}
                   disabled={!mobile.canNext}
                   aria-label={copy.nextService}
-                  className={`btn-solid btn-forest flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-200 ${!mobile.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
+                  className={`${ui.btnSolid} ${ui.btnForest} flex h-11 w-11 items-center justify-center rounded-full ${!mobile.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
                     }`}
                 >
                   <uiIcons.arrowRight className="h-5 w-5" />
@@ -198,7 +199,7 @@ export default function ServicesSection() {
             <ImagePlaceholder
               src={SERVICE_BANNER_IMAGE}
               alt={copy.avicleanerCleaningTeam}
-              placeholderLabel="service-team.jpg"
+              placeholderLabel={SERVICE_BANNER_IMAGE.replace("/images/", "")}
               className="absolute inset-y-0 left-0 w-[29.9%]"
               imgClassName="object-cover object-top"
             />
@@ -209,7 +210,7 @@ export default function ServicesSection() {
               <ProvideCard className="relative z-10 w-[clamp(270px,17.5vw,318px)] shrink-0" />
               <div className="min-w-0 flex-1">
                 <div
-                  ref={desktop.setViewport}
+                  ref={setDesktopViewport}
                   className="overflow-hidden py-3 [--gap:16px] lg:[--per:1] xl:[--per:2] xl:[--gap:20px] 2xl:[--per:3] 2xl:[--gap:24px]"
                 >
                   <div className={trackClass} style={desktop.trackStyle}>
@@ -226,7 +227,7 @@ export default function ServicesSection() {
                     onClick={desktop.prev}
                     disabled={!desktop.canPrev}
                     aria-label={copy.previousService}
-                    className={`btn-outline flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] transition-opacity duration-200 2xl:h-12 2xl:w-12 ${!desktop.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
+                    className={`${ui.btnOutline} flex h-11 w-11 items-center justify-center rounded-full [--btn-ink:#6b7384] [--btn-ring:#d9e2dc] [--btn:#1f5a41] 2xl:h-12 2xl:w-12 ${!desktop.canPrev ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
                       }`}
                   >
                     <uiIcons.arrowLeft className="h-5 w-5" />
@@ -236,7 +237,7 @@ export default function ServicesSection() {
                     onClick={desktop.next}
                     disabled={!desktop.canNext}
                     aria-label={copy.nextService}
-                    className={`btn-solid btn-forest flex h-11 w-11 items-center justify-center rounded-full transition-opacity duration-200 2xl:h-12 2xl:w-12 ${!desktop.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
+                    className={`${ui.btnSolid} ${ui.btnForest} flex h-11 w-11 items-center justify-center rounded-full 2xl:h-12 2xl:w-12 ${!desktop.canNext ? "opacity-35 cursor-not-allowed pointer-events-none" : "cursor-pointer"
                       }`}
                   >
                     <uiIcons.arrowRight className="h-5 w-5" />

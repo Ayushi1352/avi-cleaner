@@ -6,9 +6,10 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
 import CarouselDots from "./CarouselDots";
-import ScrollReveal from "./ScrollReveal";
-import { QuoteIcon, StarIcon } from "./icons";
-import { site, pickIcons } from "@/data";
+import ScrollReveal from "@/components/ScrollReveal";
+import { QuoteIcon, StarIcon } from "@/components/icons";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiLinks = site.testimonialSection.links.ClientTestimonialsCarouselSection;
@@ -33,7 +34,7 @@ function Stars({ className = "" }) {
           className="inline-block transition-transform duration-300 hover:scale-135 hover:rotate-6 cursor-pointer"
           style={{ animationDelay: `${i * 180}ms` }}
         >
-          <uiIcons.star className="h-full w-auto animate-icon-shimmer" />
+          <uiIcons.star data-motion="shimmer" className="h-full w-auto" />
         </span>
       ))}
     </div>
@@ -131,11 +132,6 @@ export default function TestimonialsSection() {
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setHasEntered(true);
-      setEntranceDone(true);
-      return;
-    }
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -175,7 +171,7 @@ export default function TestimonialsSection() {
 
   return (
     <section id="testimonials" className="bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
-      <div className="container-x">
+      <div className={ui.container}>
         <div
           ref={sectionRef}
           className="relative overflow-hidden rounded-[20px] bg-[#f7f9fa] px-4 py-8 sm:px-8 sm:py-10 xl:px-12 2xl:rounded-[4px] 2xl:px-[56px] 2xl:pb-[36px] 2xl:pt-[32px]"
@@ -315,7 +311,7 @@ export default function TestimonialsSection() {
           <div className="relative mt-6 flex justify-center">
             <Link
               href={uiLinks.testimonials}
-              className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a6a4a] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
+              className={`${ui.btnOutline} group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a6a4a] 2xl:px-7 2xl:py-3 2xl:text-[15px]`}
             >
               {copy.viewAllTestimonials}
               <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

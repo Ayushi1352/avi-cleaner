@@ -3,9 +3,10 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck, Smile, Star, Users } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
-import ScrollReveal from "./ScrollReveal";
-import { LeafIcon, PlayIcon } from "./icons";
-import { site, pickIcons } from "@/data";
+import ScrollReveal from "@/components/ScrollReveal";
+import { LeafIcon, PlayIcon } from "@/components/icons";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiText = site.whyChooseUsSection.text.WhyChooseUsSection;
@@ -35,8 +36,8 @@ const stats = site.whyChooseUsSection.stats.map((item) => ({ ...item, icon: stat
 
 export default function WhyChooseUsSection() {
   return (
-    <section id="why-us" className="why-choose-section bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
-      <div className="container-x">
+    <section id="why-us" className="bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
+      <div className={ui.container}>
         <div className="relative overflow-hidden rounded-[20px] bg-[#f7f9fa] px-5 py-8 sm:px-8 sm:py-9 lg:px-10 xl:px-[72px] xl:py-10 2xl:rounded-[4px] 2xl:py-[36px] 2xl:pl-[96px] 2xl:pr-[40px]">
           {/* Pale leaf decoration */}
           <svg
@@ -57,7 +58,7 @@ export default function WhyChooseUsSection() {
             className="pointer-events-none absolute -bottom-12 right-0 hidden h-[68%] w-auto max-w-none! translate-x-[30%] select-none lg:block opacity-80"
           />
 
-          <div className="why-choose-grid relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.08fr_1fr] lg:gap-10 2xl:gap-[64px]">
+          <div className="relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.08fr_1fr] lg:gap-5 xl:gap-10 2xl:gap-[64px]">
             {/* ---------- Content: Stationary (Text vahi hai) ---------- */}
             <div className="min-w-0">
               <SectionTag accentColor={SECTION_ACCENT_COLOR}>{copy.whyChooseUs}</SectionTag>
@@ -74,7 +75,7 @@ export default function WhyChooseUsSection() {
                 {stats.map(({ icon: Icon, value, label, sub, anim }) => (
                   <li
                     key={label}
-                    className="card-border-animated flex min-w-0 items-center gap-4 rounded-[16px] bg-[#eef5f0] px-4 py-5 lg:gap-3 lg:px-3.5 xl:gap-4 xl:px-5 2xl:gap-[26px] 2xl:px-[24px] 2xl:py-[26px]"
+                    data-card-border className={`${ui.cardBorder} flex min-w-0 items-center gap-4 rounded-[16px] bg-[#eef5f0] px-4 py-5 lg:gap-3 lg:px-3.5 xl:gap-4 xl:px-5 2xl:gap-[26px] 2xl:px-[24px] 2xl:py-[26px]`}
                   >
                     <span className="relative flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#2f5d45] text-white shadow-sm transition-transform duration-300 hover:scale-115 hover:shadow-[0_8px_20px_-4px_rgba(47,93,69,0.5)] lg:h-12 lg:w-12 xl:h-16 xl:w-16 2xl:h-[80px] 2xl:w-[80px]">
                       <Icon className={`h-6 w-6 2xl:h-8 2xl:w-8 ${anim}`} strokeWidth={1.7} />
@@ -97,7 +98,7 @@ export default function WhyChooseUsSection() {
               <div className="mt-8 flex flex-wrap gap-3 2xl:mt-7">
                 <Link
                   href={uiLinks.bookNow}
-                  className="btn-solid group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold 2xl:px-[42px] 2xl:py-5 2xl:text-[18px]"
+                  className={`${ui.btnSolid} group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold 2xl:px-[42px] 2xl:py-5 2xl:text-[18px]`}
                   style={{ "--btn": SECTION_ACCENT_COLOR } as CSSVars}
                 >
                   {copy.getAFreeQuote}
@@ -105,7 +106,7 @@ export default function WhyChooseUsSection() {
                 </Link>
                 <Link
                   href={uiLinks.whyChooseUs}
-                  className="btn-outline group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold [--btn-ink:#0b1b45] [--btn:#2f7d4f] 2xl:px-[42px] 2xl:py-5 2xl:text-[18px]"
+                  className={`${ui.btnOutline} group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold [--btn-ink:#0b1b45] [--btn:#2f7d4f] 2xl:px-[42px] 2xl:py-5 2xl:text-[18px]`}
                 >
                   {copy.viewAllBenefits}
                   <uiIcons.arrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -114,9 +115,9 @@ export default function WhyChooseUsSection() {
             </div>
 
             {/* ---------- Visual ---------- */}
-            <ScrollReveal variant="fade-left" duration={800} className="why-choose-visual relative mx-auto w-full min-w-0 max-w-[760px] pt-6 sm:pt-12 lg:pt-16 2xl:pt-[84px]">
+            <ScrollReveal variant="fade-left" duration={800} className="relative mx-auto w-full min-w-0 max-w-[760px] pt-6 sm:pt-12 lg:max-w-[560px] lg:pt-10 xl:max-w-[760px] xl:pt-16 2xl:pt-[84px]">
               {/* Handwritten note */}
-              <p className="why-choose-note absolute right-2 top-0 -rotate-[10deg] text-right font-script text-[24px] font-semibold leading-[0.95] text-navy sm:right-0 sm:text-[30px] 2xl:text-[40px]">
+              <p className="absolute right-2 top-0 -rotate-[10deg] text-right font-script text-[24px] font-semibold leading-[0.95] text-navy sm:right-0 sm:text-[30px] lg:-right-2 lg:top-1 lg:text-[2.1rem] xl:right-0 xl:top-0 xl:text-[30px] 2xl:text-[40px]">
                 {copy.trusted}
                 <br />
                 {copy.cleaning}
@@ -127,7 +128,7 @@ export default function WhyChooseUsSection() {
                 </svg>
               </p>
 
-              <div className="why-choose-image-wrap relative mt-16 sm:mt-10 sm:mr-[15%]">
+              <div className="relative mt-16 sm:mt-10 sm:mr-[15%] lg:mr-0 lg:mt-6 xl:mr-[15%] xl:mt-10">
                 <ImagePlaceholder
                   src={uiImages.whyChooseUs}
                   alt={copy.cleanerMoppingALivingRoom}
@@ -143,13 +144,13 @@ export default function WhyChooseUsSection() {
                   aria-label={copy.watchOurCleaningVideoOn}
                   className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-green-dark shadow-[0_10px_30px_-8px_rgba(0,0,0,0.35)] transition-transform duration-300 hover:scale-115 hover:shadow-[0_15px_35px_-6px_rgba(42,124,53,0.4)] sm:h-20 sm:w-20 2xl:h-[90px] 2xl:w-[90px]"
                 >
-                  <span className="absolute inset-0 rounded-full bg-green/20 animate-icon-radar pointer-events-none" />
+                  <span data-motion="radar" className="absolute inset-0 rounded-full bg-green/20 pointer-events-none" />
                   <span className="absolute inset-0 rounded-full bg-white/70 animate-ping opacity-30 pointer-events-none" />
                   <uiIcons.play className="ml-1 h-6 w-6 sm:h-8 sm:w-8" />
                 </Link>
 
                 {/* Clean Greener Brighter */}
-                <div className="why-choose-badge absolute -left-2 top-[10%] flex flex-col justify-center rounded-[18px] bg-[#2f5d45] px-4 py-4 text-white shadow-lg sm:-left-6 sm:px-5 sm:py-5 2xl:-left-[25px] 2xl:h-[155px] 2xl:w-[147px] 2xl:rounded-[20px] 2xl:px-6">
+                <div className="absolute -left-2 top-[10%] flex flex-col justify-center rounded-[18px] bg-[#2f5d45] px-4 py-4 text-white shadow-lg sm:-left-6 sm:px-5 sm:py-5 lg:-left-2 lg:top-[12%] xl:-left-6 xl:top-[10%] 2xl:-left-[25px] 2xl:h-[155px] 2xl:w-[147px] 2xl:rounded-[20px] 2xl:px-6">
                   <span className="inline-block cursor-pointer transition-transform duration-300 hover:scale-125 self-start">
                     <uiIcons.leaf className="h-6 w-6 sm:h-8 sm:w-8" />
                   </span>
@@ -163,7 +164,7 @@ export default function WhyChooseUsSection() {
                 </div>
 
                 {/* A cleaner today */}
-                <div className="why-choose-cta absolute -bottom-6 right-2 flex max-w-[calc(100%-16px)] items-center gap-3 rounded-[14px] bg-white px-4 py-3 shadow-[0_12px_30px_-12px_rgba(11,27,69,0.35)] sm:bottom-[8%] sm:right-[-13%] sm:px-5 sm:py-4 2xl:gap-4 2xl:px-6">
+                <div className="absolute -bottom-6 right-2 flex max-w-[calc(100%-16px)] items-center gap-3 rounded-[14px] bg-white px-4 py-3 shadow-[0_12px_30px_-12px_rgba(11,27,69,0.35)] sm:bottom-[8%] sm:right-[-13%] lg:bottom-3 lg:right-2 xl:bottom-[8%] xl:right-[-13%] sm:px-5 sm:py-4 2xl:gap-4 2xl:px-6">
                   <span className="inline-block cursor-pointer transition-transform duration-300 hover:scale-125">
                     <uiIcons.leaf className="h-7 w-7 shrink-0 text-green 2xl:h-9 2xl:w-9" />
                   </span>

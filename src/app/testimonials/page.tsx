@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import TestimonialsGrid from "./TestimonialsGrid";
+import TestimonialsGrid from "@/components/TestimonialsGrid";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

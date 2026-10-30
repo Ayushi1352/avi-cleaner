@@ -1,7 +1,7 @@
 import PageHero from "@/components/PageHero";
-import ContactInfo from "./ContactInfo";
-import ContactForm from "./ContactForm";
-import ContactMap from "./ContactMap";
+import ContactInfo from "@/components/ContactInfo";
+import ContactForm from "@/components/ContactForm";
+import ContactMap from "@/components/ContactMap";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

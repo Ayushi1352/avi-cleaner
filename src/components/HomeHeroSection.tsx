@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
-import { LeafIcon, ShieldCheckIcon, SparklesIcon } from "./icons";
-import { site, pickIcons } from "@/data";
+import ScrollReveal from "@/components/ScrollReveal";
+import { LeafIcon, ShieldCheckIcon, SparklesIcon } from "@/components/icons";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiLinks = site.hero.links.HomeHeroSection;
@@ -17,10 +18,25 @@ const copy = site.hero;
 // Clean photo with the wall frame and the green swoosh baked in behind the cleaner.
 const HERO_IMAGE = uiImages.heroBannerArc;
 
+/* Hero photo: full hero height, pushed off the right edge by 6.4% of the hero width (the design
+   value). On taller heroes the photo grows, so it is pushed further right to keep the cleaner clear
+   of the text column. */
+const HERO_PHOTO = "absolute top-0 right-[min(-6.4cqw,calc(43.5cqw_-_109.2cqh))] h-full w-auto max-w-none";
+
+/* Fades the photo into the page tint on the left (frame, sofa and cleaner stay fully visible), with a
+   soft patch behind the feature badges. Wider than the 1920px container, the fade stays tied to the
+   text column. */
+const HERO_FADE =
+  "bg-[image:radial-gradient(ellipse_20%_14%_at_40%_87%,rgb(246_250_253/0.92)_60%,rgb(246_250_253/0)_100%),linear-gradient(90deg,#f6fafd_0%,rgb(246_250_253/0.97)_30%,rgb(246_250_253/0.8)_39%,rgb(246_250_253/0.35)_46%,rgb(246_250_253/0)_51.5%)] min-[1920px]:bg-[image:radial-gradient(ellipse_20%_14%_at_40%_87%,rgb(246_250_253/0.92)_60%,rgb(246_250_253/0)_100%),linear-gradient(90deg,#f6fafd_0%,rgb(246_250_253/0.97)_calc(50%_-_384px),rgb(246_250_253/0.8)_calc(50%_-_211px),rgb(246_250_253/0.35)_calc(50%_-_77px),rgb(246_250_253/0)_calc(50%_+_29px))]";
+
+/* Bottom-left corner of the same photo (blurred plant), independent of where the main photo sits. */
+const HERO_PLANT =
+  "absolute bottom-0 left-0 h-[22%] w-[7.5%] bg-no-repeat bg-[position:left_bottom] bg-[length:auto_454.5%] [mask-image:radial-gradient(ellipse_100%_100%_at_0%_100%,#000_35%,transparent_100%)]";
+
 /* Solid home icon drawn to match the hero design. */
 function HeroHomeIcon({ className }) {
   return (
-    <svg className={`animate-icon-float ${className}`} viewBox="0 0 24 24" aria-hidden="true">
+    <svg data-motion="float" className={className} viewBox="0 0 24 24" aria-hidden="true">
       <path
         fill="none"
         stroke="currentColor"
@@ -64,14 +80,14 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#f6fafd]">
       {/* Desktop: photo anchored to the right, fading to the page tint on the left */}
-      <div className="hero-photo-wrap pointer-events-none absolute inset-0 hidden lg:block">
-        <HeroImage className="hero-photo" />
-        <div className="hero-fade absolute inset-0" />
+      <div className="pointer-events-none absolute inset-0 hidden [container-type:size] lg:block">
+        <HeroImage className={HERO_PHOTO} />
+        <div className={`${HERO_FADE} absolute inset-0`} />
         {/* Blurred plant peeking in at the bottom-left corner */}
-        <div className="hero-plant" aria-hidden="true" />
+        <div className={HERO_PLANT} style={{ backgroundImage: `url(${HERO_IMAGE})` }} aria-hidden="true" />
       </div>
 
-      <div className="container-x relative z-10">
+      <div className={`${ui.container} relative z-10`}>
         <div className="flex flex-col py-10 sm:py-14 lg:min-h-[500px] lg:justify-center lg:py-12 xl:min-h-[580px] 2xl:min-h-[700px] 3xl:min-h-[862px] 3xl:py-[90px]">
           <ScrollReveal variant="fade-up" duration={750} className="w-full max-w-[620px] lg:max-w-[56%] 3xl:max-w-[940px] 3xl:pl-[26px]">
             {/* Eyebrow */}
@@ -106,14 +122,14 @@ export default function HeroSection() {
             <div className="mt-7 flex flex-wrap gap-3 sm:gap-5 2xl:mt-8 3xl:gap-[22px]">
               <Link
                 href={uiLinks.bookNow}
-                className="btn-solid group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[16px] font-bold [--btn:#327b37] xl:px-9 xl:py-4 xl:text-[18px] 2xl:text-[20px] 3xl:h-[72px] 3xl:w-[272px] 3xl:gap-5 3xl:text-[24px]"
+                className={`${ui.btnSolid} group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[16px] font-bold [--btn:#327b37] xl:px-9 xl:py-4 xl:text-[18px] 2xl:text-[20px] 3xl:h-[72px] 3xl:w-[272px] 3xl:gap-5 3xl:text-[24px]`}
               >
                 {copy.bookNow}
                 <uiIcons.arrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
               </Link>
               <Link
                 href={uiLinks.contactUs}
-                className="btn-outline group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[15px] font-bold [--btn-bg:rgb(255_255_255/0.5)] [--btn:#06264b] xl:px-9 xl:py-4 xl:text-[17px] 2xl:text-[19px] 3xl:h-[72px] 3xl:w-[255px] 3xl:gap-4 3xl:text-[22px]"
+                className={`${ui.btnOutline} group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[15px] font-bold [--btn-bg:rgb(255_255_255/0.5)] [--btn:#06264b] xl:px-9 xl:py-4 xl:text-[17px] 2xl:text-[19px] 3xl:h-[72px] 3xl:w-[255px] 3xl:gap-4 3xl:text-[22px]`}
               >
                 {copy.contactUs}
                 <uiIcons.arrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
@@ -130,7 +146,7 @@ export default function HeroSection() {
                   className={`relative flex min-w-0 items-center gap-2.5 sm:gap-3 3xl:gap-[14px] ${
                     i === 0
                       ? "xl:pr-3.5 2xl:pr-5 3xl:pr-6"
-                      : "hero-divider xl:px-3.5 2xl:px-5 3xl:px-6"
+                      : "xl:px-3.5 xl:before:absolute xl:before:left-0 xl:before:top-[10%] xl:before:h-[80%] xl:before:w-px xl:before:bg-[#d3dae2] xl:before:content-[''] 2xl:px-5 3xl:px-6"
                   }`}
                 >
                   <span className="relative flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#e7f4e8] text-green shadow-sm transition-all duration-300 hover:scale-115 hover:shadow-[0_6px_18px_rgba(42,124,53,0.3)] sm:h-12 sm:w-12 2xl:h-14 2xl:w-14 3xl:h-[74px] 3xl:w-[74px]">

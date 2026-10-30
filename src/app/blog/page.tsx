@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import BlogGrid from "./BlogGrid";
+import BlogGrid from "@/components/BlogGrid";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

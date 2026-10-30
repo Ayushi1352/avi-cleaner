@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import ProcessSteps from "./ProcessSteps";
+import ProcessSteps from "@/components/ProcessSteps";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Headphones } from "lucide-react";
 import { HomeIcon } from "@/components/icons";
 import { site, pickIcons } from "@/data";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiText = site.notFoundPage.text.NotFound;
@@ -101,7 +102,7 @@ export default function NotFound() {
           {copy.lives}
         </p>
 
-        <div className="container-x">
+        <div className={ui.container}>
           <div className="grid grid-cols-1 items-center gap-10 pb-10 pt-12 sm:pt-16 lg:grid-cols-[minmax(0,30%)_minmax(0,36%)] lg:gap-8 lg:pb-14 lg:pt-20 xl:gap-12 2xl:pb-[80px] 2xl:pt-[150px] 3xl:grid-cols-[530px_680px] 3xl:gap-[24px] 3xl:pl-[58px] 3xl:pt-[196px]">
             {/* ---------- Text ---------- */}
             <div className="min-w-0 text-center lg:text-left">
@@ -117,7 +118,7 @@ export default function NotFound() {
               </p>
               <Link
                 href={uiLinks.home}
-                className="btn-solid btn-yellow group mt-7 inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd659] 2xl:mt-9 2xl:px-10 2xl:py-[18px] 2xl:text-[21px] 3xl:h-[72px] 3xl:w-[288px] 3xl:px-0 3xl:py-0 3xl:text-[25px]"
+                className={`${ui.btnSolid} ${ui.btnYellow} group mt-7 inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[16px] font-bold 2xl:mt-9 2xl:px-10 2xl:py-[18px] 2xl:text-[21px] 3xl:h-[72px] 3xl:w-[288px] 3xl:px-0 3xl:py-0 3xl:text-[25px]`}
               >
                 {copy.backToHome}
                 <uiIcons.arrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />

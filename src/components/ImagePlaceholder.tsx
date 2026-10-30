@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Image as ImageIcon } from "lucide-react";
-import { site, pickIcons } from "@/data";
+import { site, pickIcons } from "@/data/index";
 
 // UI text, links and images live in src/data/site.json.
 const uiText = site.siteMeta.text.ImagePlaceholder;

@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import BookingForm from "./BookingForm";
+import BookingForm from "@/components/BookingForm";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

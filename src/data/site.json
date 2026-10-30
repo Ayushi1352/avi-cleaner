@@ -1,319 +1,51 @@
 {
   "Cleaning": {
-    "templateComponents": {
-      "template-1": {
-        "shared": {
-          "Header": "CleaningHeader1",
-          "Footer": "CleaningFooter1"
+    "theme": {
+      "colors": {
+        "navy": "#0b1b45",
+        "green": "#2a7c35",
+        "green-light": "#5c9836",
+        "green-dark": "#1f5a41",
+        "yellow": "#fcd964",
+        "mint": "#e6f2e8",
+        "mint-soft": "#f3f8f4",
+        "body": "#4b5565",
+        "muted": "#6b7384",
+        "page": "#f5f5f5"
+      },
+      "fonts": {
+        "sans": {
+          "family": "Plus Jakarta Sans",
+          "fallback": "ui-sans-serif, system-ui, sans-serif",
+          "weights": [
+            400,
+            500,
+            600,
+            700,
+            800
+          ],
+          "italic": false
         },
-        "pages": {
-          "home": {
-            "components": [
-              {
-                "key": "Banner",
-                "component": "CleaningBanner1"
-              },
-              {
-                "key": "About",
-                "component": "CleaningAbout1"
-              },
-              {
-                "key": "Services",
-                "component": "CleaningServices1"
-              },
-              {
-                "key": "WhyChooseUs",
-                "component": "CleaningWhyChooseUs1"
-              },
-              {
-                "key": "RecentProjects",
-                "component": "CleaningRecentProjects1"
-              },
-              {
-                "key": "CtaBanner",
-                "component": "CleaningCtaBanner1"
-              },
-              {
-                "key": "Testimonial",
-                "component": "CleaningTestimonial1"
-              },
-              {
-                "key": "Blog",
-                "component": "CleaningBlog1"
-              }
-            ]
-          },
-          "about-us": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "AboutPage",
-                "component": "CleaningAboutPage1"
-              },
-              {
-                "key": "About",
-                "component": "CleaningAbout1"
-              },
-              {
-                "key": "CtaBanner",
-                "component": "CleaningCtaBanner1"
-              },
-              {
-                "key": "WhyChooseUs",
-                "component": "CleaningWhyChooseUs1"
-              }
-            ]
-          },
-          "why-choose-us": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "WhyChooseUsPage",
-                "component": "CleaningWhyChooseUsPage1"
-              },
-              {
-                "key": "WhyChooseUs",
-                "component": "CleaningWhyChooseUs1"
-              },
-              {
-                "key": "CtaBanner",
-                "component": "CleaningCtaBanner1"
-              },
-              {
-                "key": "Testimonial",
-                "component": "CleaningTestimonial1"
-              }
-            ]
-          },
-          "mission-vision": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "MissionVision",
-                "component": "CleaningMissionVision1"
-              },
-              {
-                "key": "PartnerCta",
-                "component": "CleaningPartnerCta1"
-              }
-            ]
-          },
-          "our-team": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Team",
-                "component": "CleaningTeam1"
-              }
-            ]
-          },
-          "team-detail": {
-            "expand": "members",
-            "components": [
-              {
-                "key": "TeamDetail",
-                "component": "CleaningTeamDetail1"
-              }
-            ]
-          },
-          "how-it-works": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "HowItWorks",
-                "component": "CleaningHowItWorks1"
-              }
-            ]
-          },
-          "testimonials": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "TestimonialsPage",
-                "component": "CleaningTestimonialsPage1"
-              }
-            ]
-          },
-          "award-and-certificate": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Awards",
-                "component": "CleaningAwards1"
-              }
-            ]
-          },
-          "services": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "ServicesPage",
-                "component": "CleaningServicesPage1"
-              }
-            ]
-          },
-          "service-detail": {
-            "expand": "services",
-            "components": [
-              {
-                "key": "ServiceDetail",
-                "component": "CleaningServiceDetail1"
-              },
-              {
-                "key": "PartnerCta",
-                "component": "CleaningPartnerCta1"
-              }
-            ]
-          },
-          "pricing": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Pricing",
-                "component": "CleaningPricing1"
-              }
-            ]
-          },
-          "gallery": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Gallery",
-                "component": "CleaningGallery1"
-              }
-            ]
-          },
-          "blog": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "BlogPage",
-                "component": "CleaningBlogPage1"
-              }
-            ]
-          },
-          "blog-detail": {
-            "expand": "posts",
-            "components": [
-              {
-                "key": "BlogDetail",
-                "component": "CleaningBlogDetail1"
-              }
-            ]
-          },
-          "faq": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "FAQ",
-                "component": "CleaningFAQ1"
-              }
-            ]
-          },
-          "contact-us": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Contact",
-                "component": "CleaningContact1"
-              }
-            ]
-          },
-          "book-now": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Booking",
-                "component": "CleaningBooking1"
-              }
-            ]
-          },
-          "privacy-policy": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Policies",
-                "component": "CleaningPolicies1"
-              }
-            ]
-          },
-          "refund-cancellation-policy": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Policies",
-                "component": "CleaningPolicies1"
-              }
-            ]
-          },
-          "terms-and-conditions": {
-            "components": [
-              {
-                "key": "PageBanner",
-                "component": "CleaningPageBanner1"
-              },
-              {
-                "key": "Policies",
-                "component": "CleaningPolicies1"
-              }
-            ]
-          },
-          "not-found": {
-            "components": [
-              {
-                "key": "NotFound",
-                "component": "CleaningNotFound1"
-              }
-            ]
-          }
+        "poppins": {
+          "family": "Poppins",
+          "fallback": "ui-sans-serif, system-ui, sans-serif",
+          "weights": [
+            400,
+            500,
+            600,
+            700
+          ],
+          "italic": false
+        },
+        "script": {
+          "family": "Caveat",
+          "fallback": "cursive",
+          "weights": [
+            500,
+            600,
+            700
+          ],
+          "italic": false
         }
       }
     },
@@ -464,18 +196,17 @@
               "How It Works": "/how-it-works",
               "Testimonials": "/testimonials",
               "Award & Certificate": "/award-and-certificate",
-              "Awards & Certificates": "/award-and-certificate",
               "Gallery": "/gallery",
               "Blog": "/blog",
               "Services": "/services",
               "FAQ": "/faq",
               "Contact Us": "/contact-us",
-              "Home Deep Cleaning": "/services/home-deep-cleaning",
-              "Office Professional Cleaning": "/services/office-professional-cleaning",
-              "Kitchen Hygiene Cleaning": "/services/kitchen-hygiene-cleaning",
-              "Windows Deep Cleaning": "/services/windows-deep-cleaning",
-              "Commercial Building Cleaning": "/services/commercial-building-cleaning",
-              "Deep Carpet Cleaning": "/services/deep-carpet-cleaning"
+              "Home Deep Cleaning": "/services/service-details",
+              "Office Professional Cleaning": "/services/service-details",
+              "Kitchen Hygiene Cleaning": "/services/service-details",
+              "Windows Deep Cleaning": "/services/service-details",
+              "Commercial Building Cleaning": "/services/service-details",
+              "Deep Carpet Cleaning": "/services/service-details"
             },
             "socialLinks": {
               "Facebook": "https://www.facebook.com/",
@@ -675,37 +406,37 @@
               {
                 "icon": "utensils",
                 "title": "Kitchen Hygiene Cleaning",
-                "href": "/services/kitchen-hygiene-cleaning",
+                "href": "/services/service-details",
                 "text": "Thorough cleaning to keep your kitchen fresh, safe and germ-free.",
                 "image": "/images/home/service-kitchen-hygiene.webp"
               },
               {
                 "icon": "house",
                 "title": "Home Deep Cleaning",
-                "href": "/services/home-deep-cleaning",
+                "href": "/services/service-details",
                 "text": "Detailed cleaning for a healthier and more comfortable home.",
                 "image": "/images/home/service-home-deep.webp"
               },
               {
                 "icon": "spray-can",
                 "title": "Office Professional Cleaning",
-                "href": "/services/office-professional-cleaning",
+                "href": "/services/service-details",
                 "text": "Clean and organized workspaces for a more productive environment.",
                 "image": "/images/home/service-office-professional.webp"
               },
               {
                 "icon": "bath",
                 "title": "Bathroom Sanitization Cleaning",
-                "href": "/services/home-deep-cleaning",
+                "href": "/services/service-details",
                 "text": "Spotless, disinfected bathrooms that stay fresh for longer.",
-                "image": "/images/service-bathroom.jpg"
+                "image": "/images/service-bathroom.webp"
               },
               {
                 "icon": "app-window",
                 "title": "Window & Glass Cleaning",
-                "href": "/services/windows-deep-cleaning",
+                "href": "/services/service-details",
                 "text": "Streak-free windows and glass that let the light shine in.",
-                "image": "/images/service-window.jpg"
+                "image": "/images/service-window.webp"
               }
             ],
             "readMore": "Read More",
@@ -851,14 +582,14 @@
                 "icon": "home",
                 "title": "Bathroom Sparkle Clean",
                 "text": "A sanitized, shining bathroom that feels brand new.",
-                "image": "/images/project-bathroom.jpg"
+                "image": "/images/project-bathroom.webp"
               },
               {
                 "tag": "Office Cleaning",
                 "icon": "building",
                 "title": "Reception Area Makeover",
                 "text": "A welcoming, spotless first impression for visitors.",
-                "image": "/images/project-reception.jpg"
+                "image": "/images/project-reception.webp"
               }
             ],
             "text": {
@@ -948,7 +679,7 @@
                 "quote": "Avicleaner did an amazing job at our home! The team was professional, on time, and paid great attention to detail. Our house has never looked this clean and fresh.",
                 "name": "Priya Sharma",
                 "role": "Happy Homeowner",
-                "avatar": "/images/avatar-1.webp"
+                "avatar": "/images/about-cleaner-woman.webp"
               },
               {
                 "quote": "Professional, reliable, and thorough! Avicleaner transformed our space completely. Great customer service and eco-friendly products that are safe for our family.",
@@ -966,7 +697,7 @@
                 "quote": "Excellent service! Our office looks so clean and organized now. The staff was friendly, efficient, and careful with our equipment. We will definitely book again!",
                 "name": "Rahul Mehta",
                 "role": "Business Owner",
-                "avatar": "/images/avatar-3.webp"
+                "avatar": "/images/blog-author-1.webp"
               },
               {
                 "quote": "Courteous and efficient crew. They handled high-touch surfaces and deep stains with great attention to hygiene. Highly recommended for commercial cleaning!",
@@ -1028,7 +759,7 @@
           "CleaningBlog1": {
             "news": [
               {
-                "slug": "top-5-tips-for-a-spotless-home",
+                "href": "/blog/blog-details",
                 "day": "18",
                 "month": "Mar 2024",
                 "category": "Home Cleaning",
@@ -1039,11 +770,11 @@
                 "author": {
                   "name": "Priya Sharma",
                   "role": "Cleaning Expert",
-                  "avatar": "/images/blog-author-3.webp"
+                  "avatar": "/images/about-cleaner-woman.webp"
                 }
               },
               {
-                "slug": "why-professional-cleaning-saves-you-time",
+                "href": "/blog/blog-details",
                 "day": "26",
                 "month": "Apr 2024",
                 "category": "Cleaning Tips",
@@ -1058,7 +789,7 @@
                 }
               },
               {
-                "slug": "eco-friendly-cleaning-effective-solutions",
+                "href": "/blog/blog-details",
                 "day": "07",
                 "month": "Jun 2024",
                 "category": "Eco-Friendly",
@@ -1073,7 +804,7 @@
                 }
               },
               {
-                "slug": "how-a-clean-office-boosts-productivity",
+                "href": "/blog/blog-details",
                 "day": "15",
                 "month": "Jul 2024",
                 "category": "Office Cleaning",
@@ -1096,7 +827,6 @@
             "viewAllArticles": "View All Articles",
             "links": {
               "NewsAndArticlesSection": {
-                "blogSlug": "/blog/{slug}",
                 "blog": "/blog"
               }
             },
@@ -1230,7 +960,7 @@
                 "spaceShineWithCareAnd": "space shine with care and consistency.",
                 "ourServices": "Our Services",
                 "yellowGlovedHandWipingA": "Yellow-gloved hand wiping a counter with a green cloth",
-                "missionMissionCleaningJpg": "mission/mission-cleaning.jpg"
+                "missionCleaningLabel": "mission/mission-cleaning.webp"
               },
               "OurVision": {
                 "ourFocus": "Our Focus",
@@ -1238,7 +968,7 @@
                 "andBrighterFuture": "and brighter future",
                 "forEveryone": "for everyone.",
                 "yellowGlovedHandCleaningA": "Yellow-gloved hand cleaning a window with a squeegee",
-                "missionVisionWindowJpg": "mission/vision-window.jpg",
+                "visionWindowLabel": "mission/vision-window.webp",
                 "ourVision": "Our Vision",
                 "cleanerSpaces": "Cleaner Spaces",
                 "happierLives": "Happier Lives",
@@ -1298,9 +1028,10 @@
                 "name": "Priya Sharma",
                 "role": "Operations Manager",
                 "photo": "/images/team/team-1.webp",
+                "href": "/our-team/team-details",
                 "detail": {
-                  "photo": "/images/team/detail/priya-sharma.webp",
-                  "journeyPhoto": "/images/team/detail/priya-sharma-2.webp",
+                  "photo": "/images/team/team-1.webp",
+                  "journeyPhoto": "/images/team/team-3.webp",
                   "intro": "Priya ensures that every cleaning project is completed with perfection. With a focus on client satisfaction and team coordination, she keeps our operations running smoothly and delivers high-quality service every time.",
                   "email": "priya@avicleaner.com",
                   "photoQuote": "Clean spaces create happier lives.",
@@ -1372,77 +1103,92 @@
               {
                 "name": "Rahul Verma",
                 "role": "Cleaning Specialist",
-                "photo": "/images/team/team-2.webp"
+                "photo": "/images/team/team-2.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Neha Singh",
                 "role": "Cleaning Specialist",
-                "photo": "/images/team/team-3.webp"
+                "photo": "/images/team/team-3.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Amit Kumar",
                 "role": "Customer Relations Manager",
-                "photo": "/images/team/team-4.webp"
+                "photo": "/images/team/team-4.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Vikram Patel",
                 "role": "Team Leader",
-                "photo": "/images/team/team-5.webp"
+                "photo": "/images/team/team-5.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Sneha Gupta",
                 "role": "Housekeeping Expert",
-                "photo": "/images/team/team-6.webp"
+                "photo": "/images/team/team-6.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Arjun Mehta",
                 "role": "Deep Cleaning Specialist",
-                "photo": "/images/team/team-7.webp"
+                "photo": "/images/team/team-7.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Kavya Joshi",
                 "role": "Quality Supervisor",
-                "photo": "/images/team/team-8.webp"
+                "photo": "/images/team/team-8.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Rohan Das",
                 "role": "Window Cleaning Expert",
-                "photo": "/images/team/team-9.webp"
+                "photo": "/images/team/team-5.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Ananya Rao",
                 "role": "Office Cleaning Specialist",
-                "photo": "/images/team/team-10.webp"
+                "photo": "/images/team/team-1.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Karan Malhotra",
                 "role": "Carpet Care Specialist",
-                "photo": "/images/team/team-11.webp"
+                "photo": "/images/team/team-4.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Pooja Nair",
                 "role": "Kitchen Hygiene Expert",
-                "photo": "/images/team/team-12.webp"
+                "photo": "/images/team/team-3.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Siddharth Jain",
                 "role": "Move In/Out Specialist",
-                "photo": "/images/team/team-13.webp"
+                "photo": "/images/team/team-2.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Meera Iyer",
                 "role": "Eco Cleaning Advisor",
-                "photo": "/images/team/team-14.webp"
+                "photo": "/images/team/team-6.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Aditya Kapoor",
                 "role": "Field Supervisor",
-                "photo": "/images/team/team-15.webp"
+                "photo": "/images/team/team-7.webp",
+                "href": "/our-team/team-details"
               },
               {
                 "name": "Riya Chawla",
                 "role": "Bathroom Sanitization Expert",
-                "photo": "/images/team/team-16.webp"
+                "photo": "/images/team/team-8.webp",
+                "href": "/our-team/team-details"
               }
             ],
             "gridSocials": [
@@ -1583,7 +1329,6 @@
                 "nameDetails": "{name} details"
               },
               "DetailPage": {
-                "teamMemberAvicleaner": "Team Member | Avicleaner",
                 "nameRoleAvicleaner": "{name} - {role} | Avicleaner",
                 "meetNameRoleAtAvicleaner": "Meet {name}, {role} at Avicleaner.",
                 "ourTeam": "Our Team"
@@ -1596,9 +1341,6 @@
               }
             },
             "links": {
-              "TeamGrid": {
-                "ourTeamSlug": "/our-team/{slug}"
-              },
               "MemberProfile": {
                 "mailtoEmail": "mailto:{email}",
                 "telPhone": "tel:{phone}"
@@ -1664,25 +1406,25 @@
                 "no": "01",
                 "title": "Book a Service",
                 "text": "Choose your service, select a convenient date and time, and book online or via phone in just a few clicks.",
-                "image": "/images/services/step-book.webp"
+                "image": "/images/service-office.webp"
               },
               {
                 "no": "02",
                 "title": "Team Arrives",
                 "text": "Our trained and verified cleaning team arrives at your location on time with all necessary equipment.",
-                "image": "/images/services/step-team.webp"
+                "image": "/images/team/team-1.webp"
               },
               {
                 "no": "03",
                 "title": "Cleaning Process",
                 "text": "Our team follows a detailed checklist to deep clean every corner, ensuring a safe, fresh and healthy environment.",
-                "image": "/images/services/step-cleaning.webp"
+                "image": "/images/mission/mission-cleaning.webp"
               },
               {
                 "no": "04",
                 "title": "Final Result",
                 "text": "Enjoy a spotless, refreshed space. We ensure your complete satisfaction before we leave.",
-                "image": "/images/services/step-result.webp"
+                "image": "/images/project-living.webp"
               }
             ],
             "benefits": [
@@ -1740,7 +1482,7 @@
             },
             "images": {
               "ProcessSteps": {
-                "whyItWorks": "/images/how-it-works/why-it-works.webp"
+                "whyItWorks": "/images/service-kitchen.webp"
               }
             }
           }
@@ -1790,19 +1532,19 @@
                 "quote": "Amazing service! Friendly staff and excellent attention to detail. My house feels so fresh and clean.",
                 "name": "Karan Mehta",
                 "role": "Homeowner",
-                "avatar": "/images/team/team-11.webp"
+                "avatar": "/images/team/team-4.webp"
               },
               {
                 "quote": "Reliable and professional cleaning service. They made our office look brand new. Great work!",
                 "name": "Anjali Rao",
                 "role": "Business Owner",
-                "avatar": "/images/team/team-10.webp"
+                "avatar": "/images/team/team-1.webp"
               },
               {
                 "quote": "The team is fantastic! They are punctual, well-trained and very polite. I’m really happy with their service.",
                 "name": "Suresh Nair",
                 "role": "Apartment Resident",
-                "avatar": "/images/team/team-13.webp"
+                "avatar": "/images/team/team-2.webp"
               },
               {
                 "quote": "Very impressed with the thoroughness and speed. The team sanitized all rooms and left everything smelling fresh and spotless.",
@@ -1820,7 +1562,7 @@
                 "quote": "Prompt, honest, and dedicated. They tackled tough grease and dust in our commercial kitchen flawlessly. Truly top-tier service.",
                 "name": "Rajesh Patel",
                 "role": "Restaurant Owner",
-                "avatar": "/images/team/team-9.webp"
+                "avatar": "/images/team/team-5.webp"
               }
             ],
             "text": {
@@ -1991,12 +1733,13 @@
           "CleaningServicesPage1": {
             "services": [
               {
-                "slug": "home-deep-cleaning",
+                "href": "/services/service-details",
                 "title": "Home Deep Cleaning",
                 "whyName": "Home Cleaning",
                 "short": "A healthier and fresher home for you and your family. We clean every corner with care and attention.",
                 "icon": "home",
-                "image": "/images/services/home-deep-cleaning.webp",
+                "image": "/images/project-living.webp",
+                "detailImage": "/images/about-cleaner-woman.webp",
                 "intro": "Our home deep cleaning service is designed to give you a fresh, healthy and spotless living space. We clean every corner with care and attention, removing dust, dirt and allergens to make your home safer and more comfortable for you and your family.",
                 "checklistIntro": "We follow a detailed checklist to ensure your home gets a complete and thorough cleaning.",
                 "checklist": [
@@ -2015,215 +1758,62 @@
                 "ctaText": "Enjoy a cleaner, fresher and healthier home with our professional cleaning services."
               },
               {
-                "slug": "office-professional-cleaning",
+                "href": "/services/service-details",
                 "title": "Office Professional Cleaning",
                 "short": "Keep your workplace clean, productive and welcoming with our professional office cleaning services.",
                 "icon": "office",
-                "image": "/images/services/office-professional-cleaning.webp",
-                "intro": "Our office cleaning service keeps your workplace clean, organised and welcoming. We work around your schedule to clean desks, meeting rooms, kitchens and washrooms, so your team can focus on work in a healthy environment.",
-                "checklistIntro": "We follow a detailed checklist to keep every part of your office fresh and hygienic.",
-                "checklist": [
-                  "Desk & workstation cleaning",
-                  "Vacuuming & mopping floors",
-                  "Meeting room cleaning",
-                  "Pantry & kitchen cleaning",
-                  "Washroom sanitization",
-                  "Glass & partition cleaning",
-                  "Trash & recycling removal",
-                  "Door handle & switch disinfection",
-                  "Reception area cleaning",
-                  "Flexible after-hours cleaning"
-                ],
-                "ctaEyebrow": "Let's Make Your Office Spotless",
-                "ctaText": "Give your team a cleaner, healthier and more productive workplace."
+                "image": "/images/project-office.webp"
               },
               {
-                "slug": "kitchen-hygiene-cleaning",
+                "href": "/services/service-details",
                 "title": "Kitchen Hygiene Cleaning",
                 "short": "We ensure a spotless and germ-free kitchen so you can enjoy a safe and healthy cooking space.",
                 "icon": "kitchen",
-                "image": "/images/services/kitchen-hygiene-cleaning.webp",
-                "intro": "Our kitchen hygiene cleaning removes grease, grime and germs from every surface. From cabinets to appliances, we leave your kitchen spotless and safe, so you can cook with complete peace of mind.",
-                "checklistIntro": "We follow a detailed checklist so every corner of your kitchen is clean and germ-free.",
-                "checklist": [
-                  "Countertop degreasing",
-                  "Cabinet cleaning (inside & out)",
-                  "Stove & chimney cleaning",
-                  "Sink & tap descaling",
-                  "Refrigerator cleaning",
-                  "Microwave & oven cleaning",
-                  "Tile & backsplash cleaning",
-                  "Floor scrubbing & mopping",
-                  "Trash bin sanitization",
-                  "Customized as per your needs"
-                ],
-                "ctaEyebrow": "Let's Make Your Kitchen Spotless",
-                "ctaText": "Enjoy a cleaner, safer and healthier kitchen with our hygiene experts."
+                "image": "/images/project-kitchen.webp"
               },
               {
-                "slug": "windows-deep-cleaning",
+                "href": "/services/service-details",
                 "title": "Windows Deep Cleaning",
                 "short": "Crystal clear windows for a brighter and more inviting space. We remove dirt, dust and stains effectively.",
                 "icon": "window",
-                "image": "/images/services/windows-deep-cleaning.webp",
-                "intro": "Our windows deep cleaning gives you crystal clear glass inside and out. We remove dirt, dust, water spots and stains from glass, frames and tracks, so more light fills your space.",
-                "checklistIntro": "We follow a detailed checklist to leave every window clean, clear and streak-free.",
-                "checklist": [
-                  "Interior glass cleaning",
-                  "Exterior glass cleaning",
-                  "Frame & sill wiping",
-                  "Window track cleaning",
-                  "Mesh & screen cleaning",
-                  "Hard water stain removal",
-                  "Grill & bar cleaning",
-                  "Streak-free finish",
-                  "Balcony glass cleaning",
-                  "Customized as per your needs"
-                ],
-                "ctaEyebrow": "Let's Make Your Windows Shine",
-                "ctaText": "Enjoy brighter rooms and a clearer view with our window experts."
+                "image": "/images/mission/vision-window.webp"
               },
               {
-                "slug": "commercial-building-cleaning",
+                "href": "/services/service-details",
                 "title": "Commercial Building Cleaning",
                 "short": "Complete cleaning solutions for commercial spaces, ensuring a clean, safe and professional environment.",
                 "icon": "building",
-                "image": "/images/services/commercial-building-cleaning.webp",
-                "intro": "Our commercial building cleaning covers lobbies, corridors, offices, washrooms and common areas. Our trained teams use safe products and a clear checklist to keep your building clean, safe and professional every day.",
-                "checklistIntro": "We follow a detailed checklist to keep every floor and common area clean and safe.",
-                "checklist": [
-                  "Lobby & reception cleaning",
-                  "Corridor & staircase cleaning",
-                  "Lift & elevator cleaning",
-                  "Washroom sanitization",
-                  "Floor scrubbing & polishing",
-                  "Glass facade (ground level)",
-                  "Common area disinfection",
-                  "Trash & recycling management",
-                  "Parking area sweeping",
-                  "Scheduled daily or weekly visits"
-                ],
-                "ctaEyebrow": "Let's Make Your Building Spotless",
-                "ctaText": "Keep your commercial space clean, safe and professional every day."
+                "image": "/images/service-office.webp"
               },
               {
-                "slug": "deep-carpet-cleaning",
+                "href": "/services/service-details",
                 "title": "Deep Carpet Cleaning",
                 "short": "Remove deep-seated dirt, allergens and stains with our advanced carpet cleaning methods.",
                 "icon": "carpet",
-                "image": "/images/services/deep-carpet-cleaning.webp",
-                "intro": "Our deep carpet cleaning lifts out dirt, allergens and stains that regular vacuuming leaves behind. We use advanced equipment and safe solutions to refresh your carpets and rugs without damaging the fibres.",
-                "checklistIntro": "We follow a detailed checklist to bring your carpets back to life.",
-                "checklist": [
-                  "Pre-inspection of carpet type",
-                  "Deep vacuuming",
-                  "Spot & stain treatment",
-                  "Shampoo or steam cleaning",
-                  "Allergen & dust mite removal",
-                  "Odour removal",
-                  "Rug & mat cleaning",
-                  "Fast-drying process",
-                  "Fibre-safe solutions",
-                  "Customized as per your needs"
-                ],
-                "ctaEyebrow": "Let's Make Your Carpets Fresh",
-                "ctaText": "Enjoy softer, cleaner and healthier carpets with our deep cleaning service."
+                "image": "/images/about-sofa-vacuum.webp"
               },
               {
-                "slug": "sofa-upholstery-cleaning",
+                "href": "/services/service-details",
                 "title": "Sofa & Upholstery Cleaning",
-                "whyName": "Sofa Cleaning",
                 "short": "Restore the freshness, comfort and deep hygiene of your upholstered sofas, cushions and armchairs.",
                 "icon": "carpet",
-                "image": "/images/service-sofa.webp",
-                "detailImage": "/images/about-sofa-vacuum.webp",
-                "intro": "Our sofa and upholstery cleaning service removes deep dust, stubborn spots, and allergens to rejuvenate your furniture. We use gentle yet powerful fabric-safe solutions that restore original freshness without damaging texture or colour.",
-                "checklistIntro": "We follow a detailed checklist to carefully clean and revitalize your upholstery.",
-                "checklist": [
-                  "Fabric pre-inspection & spot testing",
-                  "Deep dust extraction & vacuuming",
-                  "Stain & spot treatment",
-                  "Shampoo & fabric sanitization",
-                  "Allergen & mite removal",
-                  "Odour neutralising treatment",
-                  "Cushion deep sanitization",
-                  "Fast-drying air blower finish",
-                  "Fibre protection coat",
-                  "Customized as per your needs"
-                ],
-                "ctaEyebrow": "Let's Make Your Furniture Fresh",
-                "ctaText": "Enjoy clean, healthy and revitalized sofas with our upholstery specialists."
+                "image": "/images/about-sofa-vacuum.webp"
               },
               {
-                "slug": "sanitization-disinfection-service",
+                "href": "/services/service-details",
                 "title": "Sanitization & Disinfection",
-                "whyName": "Sanitization Service",
                 "short": "Hospital-grade sanitization eliminating 99.9% of bacteria and viruses for safe environments.",
                 "icon": "building",
-                "image": "/images/mission/mission-cleaning.webp",
-                "detailImage": "/images/why-choose-us.webp",
-                "intro": "Our sanitization and disinfection service targets high-touch surfaces, shared equipment, and communal zones. Using hospital-grade, eco-friendly disinfectants, we eliminate 99.9% of pathogens to keep your family and workforce safe.",
-                "checklistIntro": "We follow strict hygiene protocols to disinfect and protect every zone.",
-                "checklist": [
-                  "High-touch surface sterilization",
-                  "Doorknob & light switch wipe",
-                  "Restroom & pantry sanitization",
-                  "ULV cold fogging treatment",
-                  "Hospital-grade disinfectant usage",
-                  "Airborne pathogen neutralization",
-                  "Child and pet safe formulas",
-                  "Desk & workstation disinfection",
-                  "Post-sanitization check",
-                  "Certified hygienic clearance"
-                ],
-                "ctaEyebrow": "Keep Your Spaces Germ-Free",
-                "ctaText": "Protect your family and employees with certified medical-grade disinfection."
+                "image": "/images/mission/mission-cleaning.webp"
               },
               {
-                "slug": "move-in-move-out-cleaning",
+                "href": "/services/service-details",
                 "title": "Move-In & Move-Out Cleaning",
-                "whyName": "Move In/Out Cleaning",
                 "short": "Comprehensive top-to-bottom cleaning ensuring seamless transitions into spotless properties.",
                 "icon": "home",
-                "image": "/images/project-living.webp",
-                "detailImage": "/images/project-kitchen.webp",
-                "intro": "Moving into a new space or vacating your current one? Our move-in and move-out cleaning service handles all the deep scrubbing, polishing, and sanitizing so you step into a spotless, welcoming environment with complete peace of mind.",
-                "checklistIntro": "We follow an exhaustive checklist to guarantee a 100% spotless handoff.",
-                "checklist": [
-                  "Full property dusting & cobweb clearing",
-                  "Inside & outside cabinet wiping",
-                  "Kitchen appliance degreasing",
-                  "Bathroom descaling & disinfection",
-                  "Window glass & sill cleaning",
-                  "Baseboards & trim detailing",
-                  "Floor scrubbing & polishing",
-                  "Closet & drawer interior wipe",
-                  "Trash & debris clearance",
-                  "Ready-to-move quality guarantee"
-                ],
-                "ctaEyebrow": "Stress-Free Moving Cleaning",
-                "ctaText": "Leave the heavy scrubbing to us and focus on settling into your new journey."
+                "image": "/images/project-living.webp"
               }
             ],
-            "slugAliases": {
-              "home-cleaning": "home-deep-cleaning",
-              "deep-cleaning": "home-deep-cleaning",
-              "bathroom-cleaning": "home-deep-cleaning",
-              "bathroom-sanitization": "home-deep-cleaning",
-              "bathroom-sanitization-cleaning": "home-deep-cleaning",
-              "office-cleaning": "office-professional-cleaning",
-              "kitchen-cleaning": "kitchen-hygiene-cleaning",
-              "window-cleaning": "windows-deep-cleaning",
-              "windows-cleaning": "windows-deep-cleaning",
-              "commercial-cleaning": "commercial-building-cleaning",
-              "carpet-cleaning": "deep-carpet-cleaning",
-              "sofa-cleaning": "sofa-upholstery-cleaning",
-              "upholstery-cleaning": "sofa-upholstery-cleaning",
-              "sanitization": "sanitization-disinfection-service",
-              "disinfection": "sanitization-disinfection-service",
-              "move-in-out": "move-in-move-out-cleaning",
-              "move-in-out-cleaning": "move-in-move-out-cleaning"
-            },
             "callUsFeatures": [
               {
                 "icon": "clock",
@@ -2253,28 +1843,28 @@
                 "title": "Book a Service",
                 "text": "Choose your service, select a convenient date and time, and book online or via phone in just a few clicks.",
                 "icon": "calendar-days",
-                "image": "/images/services/step-book.webp"
+                "image": "/images/service-office.webp"
               },
               {
                 "no": "02",
                 "title": "Team Arrives",
                 "text": "Our trained and verified cleaning team arrives at your location on time with all necessary equipment.",
                 "icon": "users",
-                "image": "/images/services/step-team.webp"
+                "image": "/images/team/team-1.webp"
               },
               {
                 "no": "03",
                 "title": "Cleaning Process",
                 "text": "Our team follows a detailed checklist to deep clean every corner, ensuring a safe, fresh and healthy environment.",
                 "icon": "sparkles",
-                "image": "/images/services/step-cleaning.webp"
+                "image": "/images/mission/mission-cleaning.webp"
               },
               {
                 "no": "04",
                 "title": "Final Result",
                 "text": "Enjoy a spotless, refreshed space. We ensure your complete satisfaction before we leave.",
                 "icon": "house",
-                "image": "/images/services/step-result.webp"
+                "image": "/images/project-living.webp"
               }
             ],
             "overviewFeatures": [
@@ -2390,7 +1980,6 @@
               },
               "DetailPage": {
                 "getAFreeQuote": "Get a Free Quote",
-                "servicesAvicleaner": "Services | Avicleaner",
                 "titleAvicleaner": "{title} | Avicleaner",
                 "services": "Services",
                 "bookYourTitleToday": "Book Your {title} Today!"
@@ -2407,19 +1996,13 @@
             },
             "images": {
               "CallUsBanner": {
-                "callCleaner": "/images/services/call-cleaner.webp"
-              },
-              "servicesData": {
-                "slugDetail": "/images/services/{slug}-detail.webp"
-              },
-              "CleaningChecklist": {
-                "checklistRoom": "/images/services/checklist-room.webp"
+                "callCleaner": "/images/team/team-3.webp"
               },
               "DetailPage": {
-                "detailCta": "/images/services/detail-cta.webp"
+                "detailCta": "/images/project-living.webp"
               },
               "WhyChooseService": {
-                "whyChooseService": "/images/services/why-choose-service.webp"
+                "whyChooseService": "/images/mission/mission-cleaning.webp"
               }
             },
             "links": {
@@ -2429,9 +2012,6 @@
               },
               "CleaningProcess": {
                 "bookNow": "/book-now"
-              },
-              "ServicesGrid": {
-                "servicesSlug": "/services/{slug}"
               },
               "DetailPage": {
                 "services": "/services",
@@ -2626,7 +2206,7 @@
             },
             "images": {
               "PricingPlans": {
-                "compareCleaner": "/images/pricing/compare-cleaner.webp"
+                "compareCleaner": "/images/team/team-3.webp"
               }
             },
             "icons": {
@@ -2702,7 +2282,7 @@
               {
                 "title": "Home Cleaning Service",
                 "text": "See how we clean and refresh your home.",
-                "thumb": "/images/cta-cleaner.webp",
+                "thumb": "/images/avatar-2.webp",
                 "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
               },
               {
@@ -2714,7 +2294,7 @@
               {
                 "title": "Sofa Deep Cleaning",
                 "text": "Watch the deep cleaning process for a fresh look.",
-                "thumb": "/images/service-sofa.webp",
+                "thumb": "/images/about-sofa-vacuum.webp",
                 "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
               },
               {
@@ -2851,7 +2431,7 @@
             "posts": [
               {
                 "title": "Top 5 Tips for a Spotless Home",
-                "slug": "top-5-tips-for-a-spotless-home",
+                "href": "/blog/blog-details",
                 "category": "Home Cleaning",
                 "date": "Mar 18, 2024",
                 "image": "/images/home/blog-spotless-home.webp",
@@ -2865,97 +2445,88 @@
               },
               {
                 "title": "Why Professional Cleaning Saves You Time",
-                "slug": "why-professional-cleaning-saves-you-time",
+                "href": "/blog/blog-details",
                 "category": "Cleaning Tips",
                 "date": "Apr 26, 2024",
                 "image": "/images/home/blog-professional-cleaning.webp",
-                "image2": "/images/about-sofa-vacuum.webp",
                 "author": "Rahul Mehta",
                 "recent": true,
-                "excerpt": "Discover how professional cleaning services can help you save time, reduce stress, and enjoy a healthier space.",
-                "intro": "In today's fast-paced world, hours spent scrubbing tiles and vacuuming carpets can easily consume your valuable leisure and family time. Professional cleaning gives you back precious weekend hours while delivering deeper sanitation.",
-                "subheading": "Efficiency Meets Deep Hygiene",
-                "subtext": "Trained professionals use industrial-grade equipment, specialized sanitization methods, and systematic checklists to cover areas that are often overlooked."
+                "excerpt": "Discover how professional cleaning services can help you save time, reduce stress, and enjoy a healthier space."
               },
               {
                 "title": "Eco-Friendly Cleaning Effective Solutions",
-                "slug": "eco-friendly-cleaning-effective-solutions",
+                "href": "/blog/blog-details",
                 "category": "Eco Friendly",
                 "date": "Jun 07, 2024",
                 "image": "/images/home/blog-eco-friendly.webp",
-                "image2": "/images/mission/mission-cleaning.webp",
                 "author": "Sneha Kapoor",
                 "recent": true,
-                "excerpt": "Learn simple and sustainable cleaning solutions that are safe for your family and the environment.",
-                "intro": "Switching to green cleaning products protects indoor air quality, protects waterways, and keeps pets and children safe from harmful residues.",
-                "subheading": "Non-Toxic & Highly Effective",
-                "subtext": "Natural citrus solvents, baking soda, and plant-derived surfactants cut through grease and grime just as powerfully as traditional chemical cleaners."
+                "excerpt": "Learn simple and sustainable cleaning solutions that are safe for your family and the environment."
               },
               {
                 "title": "How a Clean Office Boosts Productivity",
-                "slug": "how-a-clean-office-boosts-productivity",
+                "href": "/blog/blog-details",
                 "category": "Office Cleaning",
                 "date": "Jul 15, 2024",
                 "image": "/images/blog-4.webp",
-                "image2": "/images/service-office.webp",
                 "author": "Rahul Mehta",
                 "recent": true,
-                "excerpt": "See how a tidy, sanitized workspace helps teams stay focused, healthy and motivated every day.",
-                "intro": "The physical condition of an office speaks volumes about its culture and directly influences employee focus and morale. A tidy, well-sanitized desk and clutter-free common area set the tone for peak cognitive performance.",
-                "subheading": "Workplace Wellness",
-                "subtext": "Sanitized desks, fresh air circulation, and sparkling communal areas instill pride in the workplace and foster better collaborative focus."
+                "excerpt": "See how a tidy, sanitized workspace helps teams stay focused, healthy and motivated every day."
               },
               {
                 "title": "10 Simple Cleaning Tips for a Healthier Home",
+                "href": "/blog/blog-details",
                 "category": "Cleaning Tips",
                 "date": "Dec 20, 2022",
                 "image": "/images/service-kitchen.webp"
               },
               {
                 "title": "Must-Have Cleaning Supplies for Every Home",
+                "href": "/blog/blog-details",
                 "category": "Home Cleaning",
                 "date": "Dec 20, 2022",
                 "image": "/images/about-supplies.webp"
               },
               {
                 "title": "How a Clean Workspace Boosts Productivity",
+                "href": "/blog/blog-details",
                 "category": "Office Cleaning",
                 "date": "Dec 20, 2022",
                 "image": "/images/service-office.webp"
               },
               {
                 "title": "Eco-Friendly Cleaning: A Better Tomorrow",
+                "href": "/blog/blog-details",
                 "category": "Eco Friendly",
                 "date": "Dec 20, 2022",
                 "image": "/images/mission/mission-cleaning.webp"
               },
               {
                 "title": "How Often Should You Clean Different Areas of Your Home?",
+                "href": "/blog/blog-details",
                 "category": "Cleaning Tips",
                 "date": "Dec 20, 2022",
                 "image": "/images/about-sofa-vacuum.webp"
               },
               {
                 "title": "Our Commitment to Cleaner, Healthier Communities",
+                "href": "/blog/blog-details",
                 "category": "Company News",
                 "date": "Dec 20, 2022",
                 "image": "/images/mission/partner-cta.webp"
               },
               {
                 "title": "Why Your Business Needs Professional Cleaning Services",
-                "slug": "why-your-business-needs-professional-cleaning-services",
+                "href": "/blog/blog-details",
                 "category": "Office Cleaning",
                 "date": "Dec 20, 2022",
                 "image": "/images/service-team.webp",
-                "image2": "/images/cta-cleaner.webp",
                 "recent": true,
-                "excerpt": "Discover how professional commercial cleaning elevates workplace health, impresses visiting clients, and boosts team productivity.",
-                "intro": "A clean, well-maintained workplace speaks volumes about your company's professionalism. Professional cleaning services protect employee health, reduce sick days, and ensure that your commercial premises always make a sterling first impression on visiting clients and partners.",
-                "subheading": "Key Benefits of Professional Commercial Cleaning",
-                "subtext": "From medical-grade sanitization of communal areas to regular floor and window maintenance, professional cleaners use industry-grade equipment and eco-friendly products that keep your workplace spotless, safe, and productive."
+                "excerpt": "Discover how professional commercial cleaning elevates workplace health, impresses visiting clients, and boosts team productivity."
               },
               {
                 "title": "How to Keep Your Home Clean and Healthy",
+                "href": "/blog/blog-details",
                 "category": "Home Cleaning",
                 "date": "Dec 18, 2022",
                 "image": "/images/project-living.webp",
@@ -2963,6 +2534,7 @@
               },
               {
                 "title": "Best Office Cleaning Tips for Productivity",
+                "href": "/blog/blog-details",
                 "category": "Office Cleaning",
                 "date": "Dec 15, 2022",
                 "image": "/images/project-office.webp",
@@ -2970,6 +2542,7 @@
               },
               {
                 "title": "Eco-Friendly Cleaning for a Better Tomorrow",
+                "href": "/blog/blog-details",
                 "category": "Eco Friendly",
                 "date": "Dec 12, 2022",
                 "image": "/images/why-choose-us.webp",
@@ -2977,12 +2550,14 @@
               },
               {
                 "title": "Window Cleaning Made Simple",
+                "href": "/blog/blog-details",
                 "category": "Cleaning Tips",
                 "date": "Dec 10, 2022",
                 "image": "/images/mission/vision-window.webp"
               },
               {
                 "title": "A Spotless Kitchen in Five Easy Steps",
+                "href": "/blog/blog-details",
                 "category": "Deep Cleaning",
                 "date": "Dec 08, 2022",
                 "image": "/images/project-kitchen.webp"
@@ -3052,7 +2627,7 @@
             "postDefaults": {
               "body": "Maintaining a clean and hygienic space has a direct impact on your well-being, comfort, and peace of mind. Regular deep cleaning eliminates microscopic allergens, prevents mold buildup, and creates an environment where everyone can breathe easily and thrive. Our professional team recommends adopting systematic daily habits combined with periodic seasonal deep cleans to keep your property looking and feeling its very best.",
               "excerpt": "Discover essential cleaning advice and expert strategies to maintain spotless, healthy living and working spaces effortlessly.",
-              "image2": "/images/cta-cleaner.webp",
+              "image2": "/images/avatar-2.webp",
               "subheading": "Why It Matters",
               "subtext": "Regular, well-planned cleaning removes dust, germs and allergens before they build up. This results in a fresher space, better health and more time for the things you enjoy.",
               "quote": "A clean space is not just about appearances—it is the foundation of good health, productivity, and peace of mind.",
@@ -3082,7 +2657,6 @@
                 "blog": "Blog"
               },
               "DetailPage": {
-                "blogAvicleaner": "Blog | Avicleaner",
                 "titleAvicleaner": "{title} | Avicleaner",
                 "blog": "Blog"
               }
@@ -3094,12 +2668,8 @@
               }
             },
             "links": {
-              "BlogGrid": {
-                "blogSlug": "/blog/{slug}"
-              },
               "BlogArticle": {
-                "blog": "/blog",
-                "blogSlug": "/blog/{slug}"
+                "blog": "/blog"
               },
               "DetailPage": {
                 "blog": "/blog"
@@ -3335,7 +2905,7 @@
             },
             "images": {
               "ContactForm": {
-                "callCleaner": "/images/services/call-cleaner.webp"
+                "callCleaner": "/images/team/team-3.webp"
               }
             },
             "icons": {

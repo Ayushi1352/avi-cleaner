@@ -1,5 +1,5 @@
 
-import { site } from "@/data";
+import { site } from "@/data/index";
 
 // UI text, links and images live in src/data/site.json.
 const uiText = site.siteMeta.text.HandwrittenNote;

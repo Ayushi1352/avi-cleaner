@@ -1,6 +1,6 @@
 import PageHero from "@/components/PageHero";
-import GalleryPhotos from "./GalleryPhotos";
-import GalleryVideo from "./GalleryVideo";
+import GalleryPhotos from "@/components/GalleryPhotos";
+import GalleryVideo from "@/components/GalleryVideo";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import PrivacyContent from "./PrivacyContent";
+import PrivacyContent from "@/components/PrivacyContent";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

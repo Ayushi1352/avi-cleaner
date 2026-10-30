@@ -1,5 +1,6 @@
 import SectionEyebrow from "@/components/SectionEyebrow";
-import { contact } from "@/data";
+import { contact } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiContact = contact;
@@ -36,7 +37,7 @@ export default function PolicyContent({
   return (
     <section className="w-full overflow-x-clip bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="bg-[#f6fbf9] pb-8 pt-12 sm:pt-14 2xl:pb-[30px] 2xl:pt-[58px]">
-        <div className="container-x">
+        <div className={ui.container}>
           <div className="mx-auto max-w-[1500px] text-center">
             <SectionEyebrow
               center

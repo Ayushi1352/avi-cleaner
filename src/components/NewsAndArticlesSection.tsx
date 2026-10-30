@@ -5,10 +5,11 @@ import { ArrowRight } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
 import CarouselDots from "./CarouselDots";
-import ScrollReveal from "./ScrollReveal";
+import ScrollReveal from "@/components/ScrollReveal";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
-import { BuildingIcon, HomeIcon, LeafIcon } from "./icons";
-import { site, fill, pickIcons } from "@/data";
+import { BuildingIcon, HomeIcon, LeafIcon } from "@/components/icons";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiLinks = site.blogSection.links.NewsAndArticlesSection;
@@ -31,10 +32,10 @@ const posts = site.blogSection.news.map((item) => ({ ...item, icon: postsIcons[i
 
 function BlogCard({ post }) {
   const Icon = post.icon;
-  const href = fill(uiLinks.blogSlug, { slug: post.slug });
+  const href = post.href;
 
   return (
-    <article className="card-border-animated flex h-full flex-col overflow-hidden rounded-[18px] bg-white shadow-[0_16px_40px_-26px_rgba(11,27,69,0.35)] transition-shadow hover:shadow-[0_20px_45px_-20px_rgba(11,27,69,0.4)]">
+    <article data-card-border className={`${ui.cardBorder} flex h-full flex-col overflow-hidden rounded-[18px] bg-white shadow-[0_16px_40px_-26px_rgba(11,27,69,0.35)]`}>
       <div className="relative">
         <Link href={href} aria-label={post.title} className="group/img block overflow-hidden">
           <ImagePlaceholder
@@ -108,7 +109,7 @@ export default function BlogSection() {
         <path fill="none" stroke="#fff" strokeWidth="10" strokeLinecap="round" d="M40 70c90 60 160 150 200 250" />
       </svg>
 
-      <div className="container-x relative">
+      <div className={`${ui.container} relative`}>
         <ScrollReveal variant="fade-up" duration={700}>
           <div className="mx-auto max-w-[1180px] text-center">
             <SectionTag center>{copy.newsArticles}</SectionTag>
@@ -151,7 +152,7 @@ export default function BlogSection() {
           <div className="mt-6 flex justify-center">
             <Link
               href={uiLinks.blog}
-              className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
+              className={`${ui.btnOutline} group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#2a7c35] 2xl:px-7 2xl:py-3 2xl:text-[15px]`}
             >
               {copy.viewAllArticles}
               <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

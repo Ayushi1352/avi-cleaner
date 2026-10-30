@@ -1,4 +1,4 @@
-import AboutHero from "./AboutHero";
+import AboutHero from "@/components/AboutHero";
 import AboutSection from "@/components/AboutSection";
 import CtaBannerSection from "@/components/CtaBannerSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";

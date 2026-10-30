@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import AwardsGrid from "./AwardsGrid";
+import AwardsGrid from "@/components/AwardsGrid";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

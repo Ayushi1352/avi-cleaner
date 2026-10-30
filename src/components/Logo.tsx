@@ -1,6 +1,6 @@
 "use client";
 
-import { site } from "@/data";
+import { site } from "@/data/index";
 
 // UI text, links and images live in src/data/site.json.
 const uiImages = site.navbar.images.Logo;
@@ -13,10 +13,8 @@ const MAIN_LOGO = uiImages.logo;
 
 export default function Logo({
   className = "",
-  isFooter = false,
 }: {
   className?: string;
-  isFooter?: boolean;
 }) {
   return (
     <div className={`flex items-center select-none ${className}`}>

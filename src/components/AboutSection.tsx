@@ -1,15 +1,16 @@
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import ImagePlaceholder from "./ImagePlaceholder";
-import ScrollReveal from "./ScrollReveal";
+import ScrollReveal from "@/components/ScrollReveal";
 import {
   DiamondIcon,
   LeafIcon,
   SproutIcon,
   ThumbUpIcon,
   UsersIcon,
-} from "./icons";
-import { site, pickIcons } from "@/data";
+} from "@/components/icons";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiText = site.aboutUsSection.text.AboutSection;
@@ -80,7 +81,7 @@ function TrustedBadge({ className = "" }) {
     >
       <span className="relative flex h-[clamp(34px,5.6cqw,54px)] w-[clamp(34px,5.6cqw,54px)] shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#2a7a38] text-white shadow-sm transition-transform duration-300 hover:scale-115">
         <span className="absolute inset-0 rounded-full bg-[#2a7a38]/40 animate-ping opacity-30 pointer-events-none" />
-        <uiIcons.shieldCheck className="h-[56%] w-[56%] animate-icon-heartbeat" strokeWidth={2} />
+        <uiIcons.shieldCheck data-motion="heartbeat" className="h-[56%] w-[56%]" strokeWidth={2} />
       </span>
       <span className="whitespace-nowrap font-poppins text-[clamp(11px,1.95cqw,19px)] font-medium leading-[1.25] text-navy">
         {copy.trustedBy}
@@ -129,7 +130,7 @@ export default function AboutSection({ showButton = true }) {
         />
       </svg>
 
-      <div className="container-x relative">
+      <div className={`${ui.container} relative`}>
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[955fr_762fr] lg:gap-10 xl:gap-14 2xl:gap-[clamp(56px,3.8vw,72px)]">
           {/* ---------- Collage: Stationary (Image vahi hai) ---------- */}
           <div className="@container mx-auto w-full min-w-0 max-w-[720px] lg:max-w-none">
@@ -139,7 +140,7 @@ export default function AboutSection({ showButton = true }) {
                 <ImagePlaceholder
                   src={ABOUT_IMG_1}
                   alt={copy.avicleanerCleanerSmilingAndReady}
-                  placeholderLabel="about-cleaner-woman.jpg"
+                  placeholderLabel={ABOUT_IMG_1.replace("/images/", "")}
                   className="aspect-[4/3] w-full rounded-[22px]"
                 />
                 <CleanBadge className="absolute -bottom-6 right-4 z-10 w-[104px]" />
@@ -147,14 +148,14 @@ export default function AboutSection({ showButton = true }) {
               <ImagePlaceholder
                 src={ABOUT_IMG_2}
                 alt={copy.sofaBeingVacuumed}
-                placeholderLabel="about-sofa-vacuum.jpg"
+                placeholderLabel={ABOUT_IMG_2.replace("/images/", "")}
                 className="aspect-square w-full rounded-[20px]"
               />
               <div className="relative">
                 <ImagePlaceholder
                   src={ABOUT_IMG_3}
                   alt={copy.cleaningSuppliesBucketWithBottles}
-                  placeholderLabel="about-supplies.jpg"
+                  placeholderLabel={ABOUT_IMG_3.replace("/images/", "")}
                   className="aspect-square w-full rounded-[20px]"
                 />
                 {/* Sits on the third photo, like the tablet/desktop collage */}
@@ -168,13 +169,13 @@ export default function AboutSection({ showButton = true }) {
               <ImagePlaceholder
                 src={ABOUT_IMG_1}
                 alt={copy.avicleanerCleanerSmilingAndReady}
-                placeholderLabel="about-cleaner-woman.jpg"
+                placeholderLabel={ABOUT_IMG_1.replace("/images/", "")}
                 className="absolute left-0 top-0 h-[67.5%] w-[64.2%] rounded-[clamp(18px,3.4cqw,32px)]"
               />
               <ImagePlaceholder
                 src={ABOUT_IMG_2}
                 alt={copy.sofaBeingVacuumed}
-                placeholderLabel="about-sofa-vacuum.jpg"
+                placeholderLabel={ABOUT_IMG_2.replace("/images/", "")}
                 className="absolute right-0 top-0 h-[52.2%] w-[33.5%] rounded-[clamp(18px,3.4cqw,32px)]"
               />
               {/* White frame cuts the notch out of the two photos above it */}
@@ -182,7 +183,7 @@ export default function AboutSection({ showButton = true }) {
                 <ImagePlaceholder
                   src={ABOUT_IMG_3}
                   alt={copy.cleaningSuppliesBucketWithBottles}
-                  placeholderLabel="about-supplies.jpg"
+                  placeholderLabel={ABOUT_IMG_3.replace("/images/", "")}
                   className="h-full w-full rounded-[clamp(18px,3.4cqw,32px)]"
                 />
               </div>
@@ -241,7 +242,7 @@ export default function AboutSection({ showButton = true }) {
             {showButton && (
               <Link
                 href={uiLinks.aboutUs}
-                className="btn-solid group mt-[clamp(30px,2.1vw,40px)] inline-flex h-[clamp(50px,3.9vw,74px)] items-center gap-[clamp(10px,0.75vw,14px)] rounded-full px-[clamp(28px,2.5vw,48px)] text-[clamp(15px,1.1vw,21px)] font-medium"
+                className={`${ui.btnSolid} group mt-[clamp(30px,2.1vw,40px)] inline-flex h-[clamp(50px,3.9vw,74px)] items-center gap-[clamp(10px,0.75vw,14px)] rounded-full px-[clamp(28px,2.5vw,48px)] text-[clamp(15px,1.1vw,21px)] font-medium`}
               >
                 {copy.readMore}
                 <uiIcons.arrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />

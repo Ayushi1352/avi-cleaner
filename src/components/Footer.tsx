@@ -6,7 +6,8 @@ import { ChevronRight, Mail, MapPin, Phone } from "lucide-react";
 import Logo from "./Logo";
 import { LeafIcon, SendIcon, ShieldCheckIcon, UsersIcon } from "./icons";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, socialLinks, XIcon, YoutubeIcon } from "./socialIcons";
-import { site, pickIcons, contact } from "@/data";
+import { site, pickIcons, contact } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiLinks = site.footer.links.Footer;
@@ -106,7 +107,7 @@ export default function Footer() {
         <path fill="currentColor" d="m60 40 6 16 16 6-16 6-6 16-6-16-16-6 16-6 6-16Zm20 60 4 10 10 4-10 4-4 10-4-10-10-4 10-4 4-10Z" />
       </svg>
 
-      <div className="container-x relative">
+      <div className={`${ui.container} relative`}>
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 pb-10 pt-10 sm:grid-cols-[1.4fr_1fr_1fr] sm:gap-6 lg:grid-cols-3 xl:grid-cols-[minmax(258px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] xl:gap-6 2xl:grid-cols-[minmax(342px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] 3xl:grid-cols-[minmax(442px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] 2xl:gap-8 2xl:pb-12 2xl:pt-12">
           {/* Brand + contact */}
           <div className="col-span-2 min-w-0 sm:col-span-1">
@@ -123,19 +124,19 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-[13.5px] text-white/90 2xl:space-y-2 2xl:text-[14.5px]">
               <li className="flex items-center gap-3 2xl:gap-4">
                 <span className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-9 2xl:w-9">
-                  <uiIcons.phone className="h-3.5 w-3.5 animate-icon-pulse-subtle" fill="currentColor" strokeWidth={0} />
+                  <uiIcons.phone data-motion="pulse" className="h-3.5 w-3.5" fill="currentColor" strokeWidth={0} />
                 </span>
                 <a href={uiContact.phoneHref} className="transition-colors hover:text-[#fadb64]">{uiContact.phone}</a>
               </li>
               <li className="flex items-center gap-3 2xl:gap-4">
                 <span className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-9 2xl:w-9">
-                  <uiIcons.mail className="h-3.5 w-3.5 animate-icon-float" />
+                  <uiIcons.mail data-motion="float" className="h-3.5 w-3.5" />
                 </span>
                 <a href={uiContact.emailHref} className="break-all transition-colors hover:text-[#fadb64]">{uiContact.email}</a>
               </li>
               <li className="flex items-center gap-3 2xl:gap-4">
                 <span className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1c6a4d] text-white shadow-sm transition-transform duration-300 hover:scale-115 2xl:h-9 2xl:w-9">
-                  <uiIcons.mapPin className="h-3.5 w-3.5 animate-icon-pulse-subtle" />
+                  <uiIcons.mapPin data-motion="pulse" className="h-3.5 w-3.5" />
                 </span>
                 <span>{uiContact.address}</span>
               </li>
@@ -231,7 +232,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="relative border-t border-white/20">
-        <div className="container-x">
+        <div className={ui.container}>
           <div className="flex flex-col items-center gap-2.5 py-4 text-center text-[13px] text-white/90 md:flex-row md:justify-between md:text-left 2xl:py-5 2xl:text-[14px]">
             <p>{copy.text2025AvicleanerAllRightsReserved}</p>
             <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">

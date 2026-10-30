@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import { site, pickIcons } from "@/data";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiLinks = site.pageBanner.links.PageHero;
@@ -62,7 +63,7 @@ export default function PageHero({ title, crumb, breadcrumbs }: PageHeroProps) {
       {/* Dark gradient overlay on the left to ensure perfect text contrast while preserving image details on right */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 via-45% to-black/20 lg:from-black/75 lg:via-black/40 lg:to-transparent" />
 
-      <div className="container-x relative z-10">
+      <div className={`${ui.container} relative z-10`}>
         <ScrollReveal variant="fade-up" duration={600}>
           <div className="flex min-h-[240px] min-w-0 flex-col justify-center py-12 sm:min-h-[290px] md:min-h-[340px] lg:min-h-[390px] xl:min-h-[430px] 2xl:pl-6 3xl:pl-10">
             <h1 className="break-words text-[clamp(2.2rem,4.4vw,4.8rem)] font-bold leading-[1.1] tracking-tight text-white drop-shadow-sm">

@@ -1,7 +1,7 @@
 import PageHero from "@/components/PageHero";
-import ServicesGrid from "./ServicesGrid";
-import CallUsBanner from "./CallUsBanner";
-import CleaningProcess from "./CleaningProcess";
+import ServicesGrid from "@/components/ServicesGrid";
+import CallUsBanner from "@/components/CallUsBanner";
+import CleaningProcess from "@/components/CleaningProcess";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

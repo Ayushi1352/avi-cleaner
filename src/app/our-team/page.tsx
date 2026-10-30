@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import TeamGrid from "./TeamGrid";
+import TeamGrid from "@/components/TeamGrid";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

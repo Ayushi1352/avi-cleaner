@@ -1,10 +1,10 @@
-import React from "react";
 import { ArrowRight, House } from "lucide-react";
 import Link from "next/link";
 import ImagePlaceholder from "./ImagePlaceholder";
-import ScrollReveal from "./ScrollReveal";
-import { LeafIcon, ShieldCheckIcon, UsersIcon } from "./icons";
-import { site, pickIcons } from "@/data";
+import ScrollReveal from "@/components/ScrollReveal";
+import { LeafIcon, ShieldCheckIcon, UsersIcon } from "@/components/icons";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiLinks = site.ctaBannerSection.links.CtaBannerSection;
@@ -31,9 +31,10 @@ const badgesIcons = {
 // Content lives in src/data/site.json.
 const badges = site.ctaBannerSection.ctaBadges.map((item) => ({ ...item, icon: badgesIcons[item.icon] }));
 
-function Spark({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
+// Twinkling star; delay (ms) staggers it against the others.
+function Spark({ className = "", delay = 0 }: { className?: string; delay?: number }) {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className} style={style}>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-motion="twinkle" data-motion-delay={delay} className={className}>
       <path d="M12 1c1 6.2 3.8 9 10 10-6.2 1-9 3.8-10 10-1-6.2-3.8-9-10-10 6.2-1 9-3.8 10-10Z" />
     </svg>
   );
@@ -45,10 +46,10 @@ function BrighterBadge({ className = "" }) {
       className={`flex aspect-square flex-col items-center justify-center rounded-full bg-[#fcde76] text-center text-[#1f5a41] shadow-lg ${className}`}
     >
       <span className="relative block h-[30%] w-[30%] cursor-pointer transition-transform duration-300 hover:scale-125">
-        <uiIcons.house className="h-full w-full animate-icon-pulse-subtle" strokeWidth={2} />
-        <Spark className="absolute -left-[38%] top-[38%] h-[30%] w-[30%] animate-icon-twinkle" />
-        <Spark className="absolute -right-[30%] -top-[12%] h-[34%] w-[34%] animate-icon-twinkle" style={{ animationDelay: "0.7s" }} />
-        <Spark className="absolute -left-[12%] -top-[8%] h-[18%] w-[18%] animate-icon-twinkle" style={{ animationDelay: "1.4s" }} />
+        <uiIcons.house data-motion="pulse" className="h-full w-full" strokeWidth={2} />
+        <Spark className="absolute -left-[38%] top-[38%] h-[30%] w-[30%]" />
+        <Spark className="absolute -right-[30%] -top-[12%] h-[34%] w-[34%]" delay={700} />
+        <Spark className="absolute -left-[12%] -top-[8%] h-[18%] w-[18%]" delay={1400} />
       </span>
       <span className="mt-[5%] text-[10px] font-semibold leading-[1.2] sm:text-[11px] lg:text-[clamp(11px,0.84vw,16px)]">
         {copy.aCleaner}
@@ -64,7 +65,7 @@ function BrighterBadge({ className = "" }) {
 export default function CtaBannerSection({ eyebrow = copy.defaultEyebrow }) {
   return (
     <section className="bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
-      <div className="container-x">
+      <div className={ui.container}>
         <div className="relative overflow-hidden rounded-[20px] bg-[#f1faf9] lg:grid lg:min-h-[clamp(430px,31.77vw,604px)] lg:grid-rows-[437fr_167fr] lg:rounded-[6px]">
           {/* Shape of the green panel (S-curve on the right, soft dip bottom-left) */}
           <svg width="0" height="0" aria-hidden="true" className="absolute">
@@ -119,7 +120,7 @@ export default function CtaBannerSection({ eyebrow = copy.defaultEyebrow }) {
               </p>
               <Link
                 href={uiLinks.bookNow}
-                className="btn-solid btn-yellow group mt-7 inline-flex h-12 items-center gap-3 rounded-full px-7 text-[15px] font-bold [--btn:#fcde76] lg:mt-[clamp(16px,1.1vw,21px)] lg:h-[clamp(48px,3.31vw,63px)] lg:gap-[clamp(10px,0.8vw,15px)] lg:px-[clamp(24px,2.2vw,42px)] lg:text-[clamp(15px,1vw,19px)]"
+                className={`${ui.btnSolid} ${ui.btnYellow} group mt-7 inline-flex h-12 items-center gap-3 rounded-full px-7 text-[15px] font-bold lg:mt-[clamp(16px,1.1vw,21px)] lg:h-[clamp(48px,3.31vw,63px)] lg:gap-[clamp(10px,0.8vw,15px)] lg:px-[clamp(24px,2.2vw,42px)] lg:text-[clamp(15px,1vw,19px)]`}
               >
                 {copy.requestAQuote}
                 <uiIcons.arrowRight className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
@@ -159,7 +160,7 @@ export default function CtaBannerSection({ eyebrow = copy.defaultEyebrow }) {
             <ImagePlaceholder
               src={CTA_PHOTO}
               alt={copy.avicleanerCleanerWipingACounter}
-              placeholderLabel="cta-cleaner-wide.webp"
+              placeholderLabel={CTA_PHOTO.replace("/images/", "")}
               className="aspect-[4/3] w-full sm:aspect-[16/9]"
               imgClassName="object-cover object-[48%_20%]"
             />

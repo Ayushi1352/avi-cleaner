@@ -5,10 +5,11 @@ import { ArrowRight } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import SectionTag from "./SectionTag";
 import CarouselDots from "./CarouselDots";
-import ScrollReveal from "./ScrollReveal";
+import ScrollReveal from "@/components/ScrollReveal";
 import useCarousel, { slideClass, trackClass } from "./useCarousel";
-import { BuildingIcon, HomeIcon, SofaIcon } from "./icons";
-import { site, fill, pickIcons } from "@/data";
+import { BuildingIcon, HomeIcon, SofaIcon } from "@/components/icons";
+import { site, fill, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiText = site.recentProjectsSection.text.RecentProjectsSection;
@@ -37,7 +38,7 @@ function ProjectCard({ project }) {
       src={project.image}
       alt={project.title}
       placeholderLabel={project.image.replace("/images/", "")}
-      className="card-border-animated aspect-square w-full rounded-[20px] shadow-[0_16px_40px_-24px_rgba(11,27,69,0.45)] 2xl:rounded-[24px]"
+      data-card-border className={`${ui.cardBorder} aspect-square w-full rounded-[20px] shadow-[0_16px_40px_-24px_rgba(11,27,69,0.45)] 2xl:rounded-[24px]`}
     >
       {/* Tag */}
       <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-[13px] font-semibold text-navy backdrop-blur-sm sm:left-5 sm:top-5 2xl:left-8 2xl:top-7 2xl:gap-3 2xl:px-6 2xl:py-3.5 2xl:text-[17px]">
@@ -58,7 +59,7 @@ function ProjectCard({ project }) {
         <Link
           href={uiLinks.gallery}
           aria-label={fill(uiText.viewTitle, { title: project.title })}
-          className="btn-solid flex h-11 w-11 shrink-0 items-center justify-center rounded-full [--btn:#26683f] sm:h-12 sm:w-12 2xl:h-[70px] 2xl:w-[70px]"
+          className={`${ui.btnSolid} flex h-11 w-11 shrink-0 items-center justify-center rounded-full [--btn:#26683f] sm:h-12 sm:w-12 2xl:h-[70px] 2xl:w-[70px]`}
         >
           <uiIcons.arrowRight className="h-5 w-5 2xl:h-7 2xl:w-7" />
         </Link>
@@ -72,7 +73,7 @@ export default function RecentProjectsSection() {
 
   return (
     <section id="projects" className="bg-[#f6fbfb] pt-11 sm:pt-13 xl:pt-14 2xl:pt-[48px] pb-8 sm:pb-9 xl:pb-10 2xl:pb-[34px]">
-      <div className="container-x">
+      <div className={ui.container}>
         <ScrollReveal variant="fade-up" duration={700}>
           <div className="mx-auto max-w-[900px] text-center">
             <SectionTag center>{copy.ourRecentWork}</SectionTag>
@@ -116,7 +117,7 @@ export default function RecentProjectsSection() {
           <div className="mt-6 flex justify-center">
             <Link
               href={uiLinks.gallery}
-              className="btn-outline group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#26683f] 2xl:px-7 2xl:py-3 2xl:text-[15px]"
+              className={`${ui.btnOutline} group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:#0b1b45] [--btn:#26683f] 2xl:px-7 2xl:py-3 2xl:text-[15px]`}
             >
               {copy.viewAllProjects}
               <uiIcons.arrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

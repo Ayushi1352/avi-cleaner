@@ -1,7 +1,7 @@
 import PageHero from "@/components/PageHero";
-import OurMission from "./OurMission";
-import OurVision from "./OurVision";
-import CoreValues from "./CoreValues";
+import OurMission from "@/components/OurMission";
+import OurVision from "@/components/OurVision";
+import CoreValues from "@/components/CoreValues";
 import PartnerCtaSection from "@/components/PartnerCtaSection";
 import { site } from "@/data";
 

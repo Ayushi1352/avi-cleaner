@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import PricingPlans from "./PricingPlans";
+import PricingPlans from "@/components/PricingPlans";
 import { site } from "@/data";
 
 // Text lives in src/data/site.json.

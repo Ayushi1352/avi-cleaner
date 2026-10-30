@@ -2,7 +2,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionEyebrow from "./SectionEyebrow";
 import ScrollReveal from "./ScrollReveal";
-import { site, pickIcons } from "@/data";
+import { site, pickIcons } from "@/data/index";
+import { ui } from "@/components/ui";
 
 // UI text, links and images live in src/data/site.json.
 const uiLinks = site.partnerCtaSection.links.PartnerCtaSection;
@@ -29,7 +30,7 @@ export default function PartnerCtaSection({
 }) {
   return (
     <section className="w-full bg-white py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
-      <div className="container-x">
+      <div className={ui.container}>
         <div className={`relative isolate overflow-hidden rounded-[20px] bg-[#014430] 2xl:rounded-[26px] ${wide ? "" : "2xl:mx-[20px] 3xl:ml-[32px] 3xl:mr-[76px]"}`}>
           {/* Photo on the right, tinted green (drop the file in to show it) */}
           <div
@@ -74,7 +75,7 @@ export default function PartnerCtaSection({
             <ScrollReveal variant="fade-up" delay={150} duration={600} className="shrink-0">
               <Link
                 href={buttonHref}
-                className={`btn-solid btn-yellow group inline-flex w-fit shrink-0 items-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[16px] font-bold [--btn-fg:#101418] [--btn-ink:#101418] [--btn:#fdd86b] 2xl:px-11 2xl:py-6 2xl:text-[21px] 3xl:h-[90px] 3xl:justify-center ${wide ? "3xl:min-w-[368px] 3xl:gap-5 3xl:text-[25px]" : "3xl:min-w-[305px] 3xl:text-[24px]"}`}
+                className={`${ui.btnSolid} ${ui.btnYellow} group inline-flex w-fit shrink-0 items-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[16px] font-bold 2xl:px-11 2xl:py-6 2xl:text-[21px] 3xl:h-[90px] 3xl:justify-center ${wide ? "3xl:min-w-[368px] 3xl:gap-5 3xl:text-[25px]" : "3xl:min-w-[305px] 3xl:text-[24px]"}`}
               >
                 {buttonLabel}
                 <uiIcons.arrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
