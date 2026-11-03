@@ -85,7 +85,7 @@ export const AwardsGrid = ({ data }: { data?: AwardsData }) => {
         <div className={`${ui.container} text-center`}>
           <SectionEyebrow center compact className={EYEBROW}>{data.awards.label}</SectionEyebrow>
           <h2 className={H2}>{data.awards.title}</h2>
-          <p className={`${LEAD} max-w-[820px]`}>
+          <p className={LEAD}>
             {data.awards.description}
           </p>
 
@@ -114,7 +114,7 @@ export const AwardsGrid = ({ data }: { data?: AwardsData }) => {
         <div className={`${ui.container} text-center`}>
           <SectionEyebrow center compact className={EYEBROW}>{data.certificates.label}</SectionEyebrow>
           <h2 className={H2}>{data.certificates.title}</h2>
-          <p className={`${LEAD} max-w-[900px]`}>
+          <p className={LEAD}>
             {data.certificates.description}
           </p>
 

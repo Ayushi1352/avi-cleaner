@@ -336,3 +336,8 @@ body {
   color: var(--color-heading);
   background-color: var(--color-bg-page);
 }
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
