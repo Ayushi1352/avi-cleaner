@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, type FormEvent, type ReactNode } from "react";
-import type { BookingData } from "@/types/templates.types";
+import type { ReactNode } from "react";
+import type { BookingData, GlobalUIData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
+import { FormSuccess, Spinner } from "@/components/ui/FormSuccess";
+import { useDummySubmit } from "@/components/ui/useDummySubmit";
 import { ui } from "@/components/ui/styles";
 
 const LABEL = "block text-[15px] font-medium text-[var(--color-title)] xl:text-[16px] 2xl:text-[19px] 3xl:text-[23px]";
@@ -32,17 +34,12 @@ function Field({ label, required = true, icon, children, className = "" }: {
 }
 
 /** Book Now page body: booking form with a photo and "Why Book With Us?". */
-export const BookingForm = ({ data }: { data?: BookingData }) => {
-  const [sent, setSent] = useState(false);
+export const BookingForm = ({ data, ui: labels }: { data?: BookingData; ui: GlobalUIData }) => {
+  // Dummy submit: nothing is sent anywhere yet. "Booking…" for a moment, then the form clears
+  // and the thank-you card shows for 5 seconds.
+  const submit = useDummySubmit();
   if (!data) return null;
   const { fields } = data;
-
-  // Dummy submit: nothing is sent anywhere yet, the form clears and shows the thank-you note.
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    e.currentTarget.reset();
-    setSent(true);
-  };
 
   return (
     <section className="w-full bg-[var(--color-bg-card)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
@@ -71,7 +68,8 @@ export const BookingForm = ({ data }: { data?: BookingData }) => {
               {data.description}
             </p>
 
-            <form onSubmit={onSubmit} className="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2 2xl:mt-8 2xl:gap-x-7 2xl:gap-y-7 3xl:mt-[44px] 3xl:gap-x-[32px] 3xl:gap-y-[44px]">
+            {/* remounting the form (via key) after each send clears every field */}
+            <form key={submit.round} onSubmit={submit.onSubmit} onInput={submit.onInput} aria-busy={submit.sending} className="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2 2xl:mt-8 2xl:gap-x-7 2xl:gap-y-7 3xl:mt-[44px] 3xl:gap-x-[32px] 3xl:gap-y-[44px]">
               <Field label={fields.name.label} icon={fields.name.icon}>
                 <input type="text" name="name" required autoComplete="name" placeholder={fields.name.placeholder} className={`${BOX} ${HEIGHT}`} />
               </Field>
@@ -117,19 +115,36 @@ export const BookingForm = ({ data }: { data?: BookingData }) => {
               <div className="text-center sm:col-span-2">
                 <button
                   type="submit"
-                  className={`${ui.btnSolid} group inline-flex h-[54px] w-full max-w-[420px] items-center justify-center gap-3 rounded-full text-[18px] font-bold [--btn:var(--color-booking-button)] 2xl:h-[66px] 2xl:max-w-[520px] 2xl:text-[23px] 3xl:h-[82px] 3xl:max-w-[652px] 3xl:gap-[22px] 3xl:text-[29px]`}
+                  disabled={submit.sending}
+                  className={`${ui.btnSolid} group inline-flex disabled:cursor-wait disabled:opacity-80 h-[54px] w-full max-w-[420px] items-center justify-center gap-3 rounded-full text-[18px] font-bold [--btn:var(--color-booking-button)] 2xl:h-[66px] 2xl:max-w-[520px] 2xl:text-[23px] 3xl:h-[82px] 3xl:max-w-[652px] 3xl:gap-[22px] 3xl:text-[29px]`}
                 >
-                  <Icon name={data.submit.icon} className="h-[1.05em] w-[1.05em]" strokeWidth={2.2} />
-                  {data.submit.label}
-                  <Icon name={data.submit.arrowIcon} className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                  {submit.sending ? (
+                    <>
+                      <Spinner name={labels.formSuccess.sendingIcon} className="h-[1.05em] w-[1.05em]" />
+                      {data.sendingText}
+                    </>
+                  ) : (
+                    <>
+                      <Icon name={data.submit.icon} className="h-[1.05em] w-[1.05em]" strokeWidth={2.2} />
+                      {data.submit.label}
+                      <Icon name={data.submit.arrowIcon} className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                    </>
+                  )}
                 </button>
                 <p className="mt-3 text-[14px] text-[var(--color-text-grey)] 2xl:mt-5 2xl:text-[17px] 3xl:text-[20.5px]">
                   {data.terms}
                 </p>
-                {sent && (
-                  <p role="status" className="mt-3 text-[15px] font-semibold text-[var(--color-form-accent)] 2xl:text-[18px]">
-                    {data.success}
-                  </p>
+                {submit.showMessage && (
+                  <FormSuccess
+                    name={submit.name}
+                    title={data.successTitle}
+                    message={data.successMessage}
+                    leaving={submit.status === "leaving"}
+                    visibleFor={submit.visibleFor}
+                    onClose={submit.dismiss}
+                    ui={labels.formSuccess}
+                    className="mt-4 2xl:mt-5"
+                  />
                 )}
               </div>
             </form>

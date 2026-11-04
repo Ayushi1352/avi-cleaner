@@ -26,8 +26,16 @@ const fontVariables = {
 } as CSSProperties;
 
 export const metadata: Metadata = {
-  title: commonData.metadata.title,
+  title: {
+    default: commonData.metadata.title,
+    template: `%s | ${commonData.metadata.siteName}`,
+  },
   description: commonData.metadata.description,
+  icons: {
+    icon: commonData.metadata.icon,
+    shortcut: commonData.metadata.icon,
+    apple: commonData.metadata.icon,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -38,7 +46,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       // Smooth scrolling, no sideways scroll, and the green scrollbar on the page and on every scroll box.
       // Every icon eases its hover moves with a small bounce, and everything clickable gets the pointer.
-      className={`${fontClasses} max-w-full overflow-x-clip scroll-smooth [&::-webkit-scrollbar]:w-[9px] [&::-webkit-scrollbar-track]:bg-[var(--color-scrollbar-track)] [&::-webkit-scrollbar-thumb]:rounded-[4px] [&::-webkit-scrollbar-thumb]:bg-[var(--color-primary)] [&_*::-webkit-scrollbar]:w-[9px] [&_*::-webkit-scrollbar-track]:bg-[var(--color-scrollbar-track)] [&_*::-webkit-scrollbar-thumb]:rounded-[4px] [&_*::-webkit-scrollbar-thumb]:bg-[var(--color-primary)] [&_svg]:[transition:transform_0.3s_cubic-bezier(0.34,1.56,0.64,1),filter_0.3s_ease] [&_:where(a[href],button:not(:disabled),select,summary,[role=button])]:cursor-pointer`}
+      // People who ask their system for less motion get no smooth scroll and no animations.
+      className={`${fontClasses} max-w-full overflow-x-clip scroll-smooth [&::-webkit-scrollbar]:w-[9px] [&::-webkit-scrollbar-track]:bg-[var(--color-scrollbar-track)] [&::-webkit-scrollbar-thumb]:rounded-[4px] [&::-webkit-scrollbar-thumb]:bg-[var(--color-primary)] [&_*::-webkit-scrollbar]:w-[9px] [&_*::-webkit-scrollbar-track]:bg-[var(--color-scrollbar-track)] [&_*::-webkit-scrollbar-thumb]:rounded-[4px] [&_*::-webkit-scrollbar-thumb]:bg-[var(--color-primary)] [&_svg]:[transition:transform_0.3s_cubic-bezier(0.34,1.56,0.64,1),filter_0.3s_ease] [&_:where(a[href],button:not(:disabled),select,summary,[role=button])]:cursor-pointer motion-reduce:scroll-auto motion-reduce:[&_*]:!animate-none motion-reduce:[&_*]:!duration-[0.01ms]`}
     >
       <body className="max-w-full overflow-x-clip antialiased">
         <Motion />

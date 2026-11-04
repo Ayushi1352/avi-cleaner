@@ -14,7 +14,7 @@ export default function BookNowPage() {
   return (
     <main className="flex-1">
       <Breadcrumb data={commonData.bookingBreadcrumb} ui={commonData.globalUI} />
-      <BookingForm data={sectionData.Booking?.variants?.CleaningBooking1} />
+      <BookingForm data={sectionData.Booking?.variants?.CleaningBooking1} ui={commonData.globalUI} />
     </main>
   );
 }

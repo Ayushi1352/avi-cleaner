@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, type FormEvent, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { CompanyData, ContactFormData, GlobalUIData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
+import { FormSuccess, Spinner } from "@/components/ui/FormSuccess";
+import { useDummySubmit } from "@/components/ui/useDummySubmit";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
 import { contactField } from "@/components/ui/helpers";
@@ -31,16 +33,11 @@ function Field({ label, icon, children, className = "" }: {
 
 /** Contact page: "Send us a Message" form, cleaner photo and the contact details panel. */
 export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormData; company: CompanyData; ui: GlobalUIData }) => {
-  const [sent, setSent] = useState(false);
+  // Dummy submit: nothing is sent anywhere yet. "Sending…" for a moment, then the form clears
+  // and the thank-you card shows for 5 seconds.
+  const submit = useDummySubmit();
   if (!data) return null;
   const { fields } = data;
-
-  // Dummy submit: nothing is sent anywhere yet, the form clears and shows the thank-you note.
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    e.currentTarget.reset();
-    setSent(true);
-  };
 
   return (
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
@@ -64,7 +61,8 @@ export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormD
             {data.description}
           </p>
 
-          <form onSubmit={onSubmit} className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:mt-7 2xl:gap-5 3xl:gap-x-[20px] 3xl:gap-y-[22px]">
+          {/* remounting the form (via key) after each send clears every field */}
+          <form key={submit.round} onSubmit={submit.onSubmit} onInput={submit.onInput} aria-busy={submit.sending} className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:mt-7 2xl:gap-5 3xl:gap-x-[20px] 3xl:gap-y-[22px]">
             <Field label={fields.name.label} icon={fields.name.icon}>
               <input type="text" name="name" required autoComplete="name" placeholder={fields.name.label} className={`${BOX} ${HEIGHT}`} />
             </Field>
@@ -90,15 +88,32 @@ export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormD
             <div className="sm:col-span-2">
               <button
                 type="submit"
-                className={`${ui.btnSolid} ${ui.btnYellow} group inline-flex h-[54px] w-full items-center justify-center gap-3 rounded-full text-[16px] font-bold 2xl:h-[60px] 2xl:text-[18px] 3xl:h-[66px] 3xl:gap-4 3xl:text-[19px]`}
+                disabled={submit.sending}
+                className={`${ui.btnSolid} ${ui.btnYellow} group inline-flex disabled:cursor-wait disabled:opacity-80 h-[54px] w-full items-center justify-center gap-3 rounded-full text-[16px] font-bold 2xl:h-[60px] 2xl:text-[18px] 3xl:h-[66px] 3xl:gap-4 3xl:text-[19px]`}
               >
-                {data.submit.label}
-                <Icon name={data.submit.icon} className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
+                {submit.sending ? (
+                  <>
+                    <Spinner name={labels.formSuccess.sendingIcon} className="h-[1.1em] w-[1.1em]" />
+                    {data.sendingText}
+                  </>
+                ) : (
+                  <>
+                    {data.submit.label}
+                    <Icon name={data.submit.icon} className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
+                  </>
+                )}
               </button>
-              {sent && (
-                <p role="status" className="mt-3 text-[15px] font-semibold text-[var(--color-form-accent)] 2xl:text-[17px]">
-                  {data.success}
-                </p>
+              {submit.showMessage && (
+                <FormSuccess
+                  name={submit.name}
+                  title={data.successTitle}
+                  message={data.successMessage}
+                  leaving={submit.status === "leaving"}
+                  visibleFor={submit.visibleFor}
+                  onClose={submit.dismiss}
+                  ui={labels.formSuccess}
+                  className="mt-4 2xl:mt-5"
+                />
               )}
             </div>
           </form>

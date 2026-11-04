@@ -32,6 +32,21 @@ const config: Config = {
       borderColor: {
         DEFAULT: "currentColor",
       },
+      // Form thank-you card: fades in, and a thin bar shows the time left before it closes itself.
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        shrinkWidth: {
+          "0%": { width: "100%" },
+          "100%": { width: "0%" },
+        },
+      },
+      animation: {
+        "fade-in": "fadeIn 450ms ease",
+        "shrink-width": "shrinkWidth linear forwards",
+      },
       fontFamily: {
         sans: ["var(--font-primary)"],
         poppins: ["var(--font-secondary)"],

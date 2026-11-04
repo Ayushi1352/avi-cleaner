@@ -34,11 +34,11 @@ export const GalleryPhotos = ({ data }: { data?: GalleryPhotosData }) => {
   const close = useCallback(() => setLightboxIndex(null), []);
   const prev = useCallback(
     () => setLightboxIndex((i) => (i === null ? 0 : (i - 1 + photos.length) % photos.length)),
-    []
+    [photos.length]
   );
   const next = useCallback(
     () => setLightboxIndex((i) => (i === null ? 0 : (i + 1) % photos.length)),
-    []
+    [photos.length]
   );
 
   const btn =

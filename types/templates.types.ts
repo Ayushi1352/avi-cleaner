@@ -14,7 +14,9 @@ export interface ThemeData {
 
 export interface SiteMetadataData {
   title: string;
+  siteName: string;
   description: string;
+  icon: string;
   lang: string;
 }
 
@@ -26,6 +28,15 @@ export interface GlobalUIData {
   imageIcon: string;
   currency: string;
   noteLines: string[];
+  formSuccess: FormSuccessUI;
+}
+
+/** Shared bits of the thank-you card and spinner every form uses */
+export interface FormSuccessUI {
+  successIcon: string;
+  closeIcon: string;
+  closeLabel: string;
+  sendingIcon: string;
 }
 
 export interface SocialLink {
@@ -775,7 +786,10 @@ export interface ContactFormData {
   description: string;
   fields: Record<"name" | "phone" | "email" | "subject" | "message", LabelIcon>;
   submit: LabelIcon;
-  success: string;
+  sendingText: string;
+  /** {name} is the first name typed in the form */
+  successTitle: string;
+  successMessage: string;
   noteLines: string[];
   image: ImageData;
   details: ContactDetailItem[];
@@ -807,7 +821,10 @@ export interface BookingData {
   timeOptions: string[];
   submit: { label: string; icon: string; arrowIcon: string };
   terms: string;
-  success: string;
+  sendingText: string;
+  /** {name} is the first name typed in the form */
+  successTitle: string;
+  successMessage: string;
   image: ImageData;
   noteLines: string[];
   reasonsTitle: string;
