@@ -2,25 +2,23 @@ import type { Metadata } from "next";
 import rawData from "@/data/templates.json";
 import type { CleaningTemplateData } from "@/types/templates.types";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { ServiceOverview } from "@/components/sections/ServiceOverview";
-import { CleaningChecklist } from "@/components/sections/CleaningChecklist";
-import { WhyChooseService } from "@/components/sections/WhyChooseService";
-import { PartnerCtaSection } from "@/components/sections/PartnerCtaSection";
+import { ServiceDetail } from "@/components/sections/ServiceDetail";
+import { PartnerCta } from "@/components/sections/PartnerCta";
 
-const templateData: CleaningTemplateData = rawData;
-const sectionData = templateData.categories.Cleaning.sections;
-const commonData = templateData.common;
-
-export const metadata: Metadata = { ...commonData.serviceDetailBreadcrumb?.seo };
+export const metadata: Metadata = { ...(rawData as CleaningTemplateData).common.serviceDetailBreadcrumb?.seo };
 
 export default function ServiceDetailPage() {
+  const templateData: CleaningTemplateData = rawData;
+  const sectionData = templateData?.categories?.Cleaning?.sections;
+  const commonData = templateData?.common;
+
+  if (!sectionData || !commonData) return null;
+
   return (
     <main className="flex-1">
       <Breadcrumb data={commonData.serviceDetailBreadcrumb} ui={commonData.globalUI} />
-      <ServiceOverview data={sectionData.ServiceDetail?.variants?.CleaningServiceDetail1} ui={commonData.globalUI} />
-      <CleaningChecklist data={sectionData.ServiceDetail?.variants?.CleaningServiceDetail1} ui={commonData.globalUI} />
-      <WhyChooseService data={sectionData.ServiceDetail?.variants?.CleaningServiceDetail1} ui={commonData.globalUI} />
-      <PartnerCtaSection data={sectionData.ServiceDetail?.variants?.CleaningServiceDetail1?.cta} showLeaf={false} wide />
+      <ServiceDetail data={sectionData.ServiceDetail?.variants?.CleaningServiceDetail1} />
+      <PartnerCta data={sectionData.ServiceDetail?.variants?.CleaningServiceDetail1?.cta} showLeaf={false} wide />
     </main>
   );
 }

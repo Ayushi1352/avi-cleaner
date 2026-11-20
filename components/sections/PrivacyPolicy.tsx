@@ -1,9 +1,9 @@
-import type { CompanyData, PrivacyPolicyData } from "@/types/templates.types";
+import type { PrivacyPolicyProps } from "@/types/templates.types";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { mailHref, telHref } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
-export const PrivacyContent = ({ data, company }: { data?: PrivacyPolicyData; company: CompanyData }) => {
+export const PrivacyPolicy = ({ data }: PrivacyPolicyProps) => {
   if (!data) return null;
   const { sections } = data;
   return (
@@ -47,15 +47,15 @@ export const PrivacyContent = ({ data, company }: { data?: PrivacyPolicyData; co
                   </p>
                   {s.contact && (
                     <p className="mt-3 flex flex-col gap-2 text-[15px] font-bold text-[var(--color-forest)] sm:text-base lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-6 xl:text-[19px] 2xl:mt-5 2xl:gap-x-11 2xl:text-[24px] 3xl:text-[31px]">
-                      <a href={mailHref(company.email)} className="break-all hover:text-[var(--color-primary)]">
-                        {company.email}
+                      <a href={mailHref(data.email)} className="break-all hover:text-[var(--color-primary)]">
+                        {data.email}
                       </a>
                       <span aria-hidden="true" className="hidden h-[1.1em] w-px bg-[var(--color-text)] lg:block" />
-                      <a href={telHref(company.phone)} className="hover:text-[var(--color-primary)]">
-                        {company.phone}
+                      <a href={telHref(data.phone)} className="hover:text-[var(--color-primary)]">
+                        {data.phone}
                       </a>
                       <span aria-hidden="true" className="hidden h-[1.1em] w-px bg-[var(--color-text)] lg:block" />
-                      <span className="font-medium text-[var(--color-title)]">{company.address.join(" ")}</span>
+                      <span className="font-medium text-[var(--color-title)]">{data.address.join(" ")}</span>
                     </p>
                   )}
                 </div>

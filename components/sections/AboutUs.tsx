@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { AboutUsData, GlobalUIData } from "@/types/templates.types";
+import type { AboutUsData, AboutUsProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -61,7 +61,7 @@ const TrustedBadge = ({ data, className = "" }: { data: AboutUsData["trusted"]; 
   );
 };
 
-export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: AboutUsData; ui?: GlobalUIData; showButton?: boolean }) => {
+export const AboutUs = ({ data, showButton = true }: AboutUsProps) => {
   if (!data) return null;
   const [img1, img2, img3] = data.images;
 
@@ -109,7 +109,6 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
                 <ImagePlaceholder
                   src={img1.src}
                   alt={img1.alt}
-                  ui={labels}
                   className="aspect-[4/3] w-full rounded-[22px]"
                 />
                 <CleanBadge data={data.badge} className="absolute -bottom-6 right-4 z-10 w-[104px]" />
@@ -117,14 +116,12 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
               <ImagePlaceholder
                 src={img2.src}
                 alt={img2.alt}
-                ui={labels}
                 className="aspect-square w-full rounded-[20px]"
               />
               <div className="relative">
                 <ImagePlaceholder
                   src={img3.src}
                   alt={img3.alt}
-                  ui={labels}
                   className="aspect-square w-full rounded-[20px]"
                 />
                 <TrustedBadge data={data.trusted} className="absolute bottom-2 right-2 z-10 origin-bottom-right max-[399px]:scale-[0.88]" />
@@ -136,13 +133,11 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
               <ImagePlaceholder
                 src={img1.src}
                 alt={img1.alt}
-                ui={labels}
                 className="absolute left-0 top-0 h-[67.5%] w-[64.2%] rounded-[clamp(18px,3.4cqw,32px)]"
               />
               <ImagePlaceholder
                 src={img2.src}
                 alt={img2.alt}
-                ui={labels}
                 className="absolute right-0 top-0 h-[52.2%] w-[33.5%] rounded-[clamp(18px,3.4cqw,32px)]"
               />
               {/* White frame cuts the notch out of the two photos above it */}
@@ -150,7 +145,6 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
                 <ImagePlaceholder
                   src={img3.src}
                   alt={img3.alt}
-                  ui={labels}
                   className="h-full w-full rounded-[clamp(18px,3.4cqw,32px)]"
                 />
               </div>
@@ -211,11 +205,11 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
 
             {showButton && (
               <Link
-                href={data.button.href}
+                href={data.buttonUrl}
                 className={`${ui.btnSolid} group mt-[clamp(30px,2.1vw,40px)] inline-flex h-[clamp(50px,3.9vw,74px)] items-center gap-[clamp(10px,0.75vw,14px)] rounded-full px-[clamp(28px,2.5vw,48px)] text-[clamp(15px,1.1vw,21px)] font-medium`}
               >
-                {data.button.label}
-                <Icon name={data.button.icon} className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
+                {data.buttonText}
+                <Icon name={data.buttonIcon} className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
               </Link>
             )}
           </ScrollReveal>

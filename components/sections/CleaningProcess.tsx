@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CleaningProcessData, GlobalUIData } from "@/types/templates.types";
+import type { CleaningProcessProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
@@ -7,7 +7,7 @@ import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ui } from "@/components/ui/styles";
 
-export const CleaningProcess = ({ data, ui: labels }: { data?: CleaningProcessData; ui: GlobalUIData }) => {
+export const CleaningProcess = ({ data }: CleaningProcessProps) => {
   if (!data) return null;
 
   return (
@@ -17,7 +17,7 @@ export const CleaningProcess = ({ data, ui: labels }: { data?: CleaningProcessDa
           <path fill="currentColor" d="M10 0c90 20 150 90 160 180 5 40-5 80-25 110C60 260 15 190 8 110 5 70 5 30 10 0Z" />
           <path fill="currentColor" d="M150 320c10-70 60-120 130-130-10 70-60 120-130 130Z" />
         </svg>
-        <HandwrittenNote lines={labels.noteLines} className="absolute right-[3%] top-10 hidden text-[34px] xl:block 2xl:top-[56px] 2xl:text-[44px] 3xl:text-[52px]" />
+        <HandwrittenNote lines={data.noteLines} className="absolute right-[3%] top-10 hidden text-[34px] xl:block 2xl:top-[56px] 2xl:text-[44px] 3xl:text-[52px]" />
 
         <div className={`${ui.container} relative`}>
           <ScrollReveal variant="fade-up" duration={700}>
@@ -43,7 +43,6 @@ export const CleaningProcess = ({ data, ui: labels }: { data?: CleaningProcessDa
                       <PhotoSlot
                         src={s.image}
                         alt={s.title}
-                        ui={labels}
                         className="relative aspect-square w-full rounded-full border-[6px] border-[var(--color-white)] shadow-[0_10px_30px_-16px_var(--color-shadow-card-45)] 2xl:border-[8px]"
                       />
                       <span className="absolute -right-[14%] top-[2%] flex aspect-square w-[40%] items-center justify-center rounded-full border-[4px] border-[var(--color-white)] bg-[var(--color-primary-dark)] text-[var(--color-white)] 2xl:border-[6px]">
@@ -84,11 +83,11 @@ export const CleaningProcess = ({ data, ui: labels }: { data?: CleaningProcessDa
                 {data.footer.text}
               </p>
               <Link
-                href={data.button.href}
+                href={data.buttonUrl}
                 className={`${ui.btnSolid} ${ui.btnYellow} group order-first inline-flex items-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[15px] font-bold sm:order-2 2xl:px-11 2xl:py-[19px] 2xl:text-[19px] 3xl:px-[48px] 3xl:py-[19px] 3xl:text-[22px]`}
               >
-                {data.button.label}
-                <Icon name={data.button.icon} className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                {data.buttonText}
+                <Icon name={data.buttonIcon} className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
               <div className="hidden items-center gap-3 sm:order-3 sm:flex 2xl:pr-[20px]" aria-hidden="true">
                 <svg viewBox="0 0 40 30" className="h-7 w-9 text-[var(--color-primary-dark)]" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round">

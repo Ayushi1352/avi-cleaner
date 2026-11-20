@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { PartnerCtaData } from "@/types/templates.types";
+import type { PartnerCtaProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -9,17 +9,9 @@ import { ui } from "@/components/ui/styles";
  * Dark green call-to-action banner.
  * Mission & Vision shows the "Partner With Us" banner; Service Detail passes its own data (wide, no leaf).
  */
-export const PartnerCtaSection = ({
-  data,
-  showLeaf = true,
-  wide = false,
-}: {
-  data?: PartnerCtaData;
-  showLeaf?: boolean;
-  wide?: boolean;
-}) => {
+export const PartnerCta = ({ data, showLeaf = true, wide = false }: PartnerCtaProps) => {
   if (!data) return null;
-  const { eyebrow, title, text, image, button } = data;
+  const { eyebrow, title, text, image, buttonText, buttonUrl, buttonIcon } = data;
 
   return (
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
@@ -67,11 +59,11 @@ export const PartnerCtaSection = ({
 
             <ScrollReveal variant="fade-up" delay={150} duration={600} className="shrink-0">
               <Link
-                href={button.href}
+                href={buttonUrl}
                 className={`${ui.btnSolid} ${ui.btnYellow} group inline-flex w-fit shrink-0 items-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[16px] font-bold 2xl:px-11 2xl:py-6 2xl:text-[21px] 3xl:h-[90px] 3xl:justify-center ${wide ? "3xl:min-w-[368px] 3xl:gap-5 3xl:text-[25px]" : "3xl:min-w-[305px] 3xl:text-[24px]"}`}
               >
-                {button.label}
-                <Icon name={button.icon} className="h-5 w-5 transition-transform group-hover:translate-x-1 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
+                {buttonText}
+                <Icon name={buttonIcon} className="h-5 w-5 transition-transform group-hover:translate-x-1 2xl:h-6 2xl:w-6" strokeWidth={2.4} />
               </Link>
             </ScrollReveal>
           </div>

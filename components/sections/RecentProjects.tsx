@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { GlobalUIData, ProjectItem, RecentProjectsData } from "@/types/templates.types";
+import type { ProjectItem, RecentProjectsData, RecentProjectsProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionTag } from "@/components/ui/SectionLabel";
@@ -11,12 +11,11 @@ import { useCarousel, slideClass, trackClass } from "@/components/ui/useCarousel
 import { fill } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
-function ProjectCard({ project, link, labels }: { project: ProjectItem; link: RecentProjectsData["cardLink"]; labels?: GlobalUIData }) {
+function ProjectCard({ project, link }: { project: ProjectItem; link: RecentProjectsData["cardLink"] }) {
   return (
     <ImagePlaceholder
       src={project.image}
       alt={project.title}
-      ui={labels}
       data-card-border className={`${ui.cardBorder} aspect-square w-full rounded-[20px] shadow-[0_16px_40px_-24px_var(--color-shadow-heading-45)] 2xl:rounded-[24px]`}
     >
       <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[var(--color-white-90)] px-4 py-2 text-[13px] font-semibold text-[var(--color-heading)] backdrop-blur sm:left-5 sm:top-5 2xl:left-8 2xl:top-7 2xl:gap-3 2xl:px-6 2xl:py-3.5 2xl:text-[17px]">
@@ -34,7 +33,7 @@ function ProjectCard({ project, link, labels }: { project: ProjectItem; link: Re
           </p>
         </div>
         <Link
-          href={link.href}
+          href={link.url}
           aria-label={fill(link.label, { title: project.title })}
           className={`${ui.btnSolid} flex h-11 w-11 shrink-0 items-center justify-center rounded-full [--btn:var(--color-projects-button)] sm:h-12 sm:w-12 2xl:h-[70px] 2xl:w-[70px]`}
         >
@@ -45,7 +44,7 @@ function ProjectCard({ project, link, labels }: { project: ProjectItem; link: Re
   );
 }
 
-export const RecentProjectsSection = ({ data, ui: labels }: { data?: RecentProjectsData; ui?: GlobalUIData }) => {
+export const RecentProjects = ({ data }: RecentProjectsProps) => {
   const projects = data?.projects ?? [];
   const { setViewport, setTrack, ...c } = useCarousel(projects.length);
   if (!data) return null;
@@ -79,7 +78,7 @@ export const RecentProjectsSection = ({ data, ui: labels }: { data?: RecentProje
                   duration={700}
                   className="h-full"
                 >
-                  <ProjectCard project={p} link={data.cardLink} labels={labels} />
+                  <ProjectCard project={p} link={data.cardLink} />
                 </ScrollReveal>
               </div>
             ))}
@@ -91,16 +90,16 @@ export const RecentProjectsSection = ({ data, ui: labels }: { data?: RecentProje
             pages={c.pages}
             index={c.index}
             goTo={c.goTo}
-            label={labels?.goToSlide ?? ""}
+            label={data.goToSlide}
             className="mt-6 justify-center 2xl:mt-8"
           />
           <div className="mt-6 flex justify-center">
             <Link
-              href={data.button.href}
+              href={data.buttonUrl}
               className={`${ui.btnOutline} group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:var(--color-heading)] [--btn:var(--color-projects-button)] 2xl:px-7 2xl:py-3 2xl:text-[15px]`}
             >
-              {data.button.label}
-              <Icon name={data.button.icon} className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {data.buttonText}
+              <Icon name={data.buttonIcon} className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </ScrollReveal>

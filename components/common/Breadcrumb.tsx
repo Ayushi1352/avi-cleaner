@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { BreadcrumbData, GlobalUIData } from "@/types/templates.types";
+import type { BreadcrumbProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ui } from "@/components/ui/styles";
@@ -8,7 +8,7 @@ import { ui } from "@/components/ui/styles";
  * Inner-page banner: cleaner photo, dark gradient on the left, the page title in white
  * and a dark translucent breadcrumb pill. The first path is the home link; the last one is the current page.
  */
-export const Breadcrumb = ({ data, ui: labels }: { data?: BreadcrumbData; ui: GlobalUIData }) => {
+export const Breadcrumb = ({ data, ui: labels }: BreadcrumbProps) => {
   if (!data) return null;
   const [home, ...items] = data.paths;
 

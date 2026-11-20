@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
-import type { CompanyData, FooterData, NavLink } from "@/types/templates.types";
+import type { FooterProps, NavLink } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { Logo } from "@/components/ui/Logo";
 import { mailHref, telHref } from "@/components/ui/text";
@@ -20,7 +20,7 @@ const LinkList = ({ items, icon }: { items: NavLink[]; icon: string }) => (
     {items.map((item) => (
       <li key={item.id}>
         <Link
-          href={item.href}
+          href={item.url}
           className="group inline-flex items-center gap-2 whitespace-nowrap text-[13.5px] text-[var(--color-white-90)] transition hover:text-[var(--color-footer-accent)] 2xl:gap-2.5 2xl:text-[14.5px]"
         >
           <Icon name={icon} className="h-3.5 w-3.5 shrink-0 text-[var(--color-footer-accent)] transition-transform group-hover:translate-x-0.5 2xl:h-4 2xl:w-4" strokeWidth={3} />
@@ -31,7 +31,7 @@ const LinkList = ({ items, icon }: { items: NavLink[]; icon: string }) => (
   </ul>
 );
 
-export const Footer = ({ data, company }: { data?: FooterData; company: CompanyData }) => {
+export const Footer = ({ data }: FooterProps) => {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
 
@@ -71,13 +71,13 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 pb-10 pt-10 sm:grid-cols-[1.4fr_1fr_1fr] sm:gap-6 lg:grid-cols-3 xl:grid-cols-[minmax(258px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] xl:gap-6 2xl:grid-cols-[minmax(342px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] 3xl:grid-cols-[minmax(442px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] 2xl:gap-8 2xl:pb-12 2xl:pt-12">
           <div className="col-span-2 min-w-0 sm:col-span-1">
             <Link
-              href={company.logoUrl}
-              aria-label={company.homeLabel}
+              href={data.logoUrl}
+              aria-label={data.homeLabel}
               className="inline-flex items-center rounded-[12px] bg-[var(--color-white)] px-3 py-1.5 shadow transition-transform duration-200 hover:scale-[1.02] sm:rounded-[14px] sm:px-3.5 sm:py-2 2xl:rounded-[16px] 2xl:px-4 2xl:py-2.5"
             >
               <Logo
-                src={company.logo}
-                alt={company.logoAlt}
+                src={data.logo}
+                alt={data.logoAlt}
                 className="h-[46px] w-[150px] sm:h-[54px] sm:w-[180px] lg:h-[52px] lg:w-[170px] xl:h-[64px] xl:w-[230px] 2xl:h-[80px] 2xl:w-[310px] 3xl:h-[100px] 3xl:w-[410px]"
               />
             </Link>
@@ -87,27 +87,27 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
                 <span className={iconBox}>
                   <Icon name={icons.phone} motion="pulse" className="h-3.5 w-3.5" fill="currentColor" strokeWidth={0} />
                 </span>
-                <a href={telHref(company.phone)} className="transition-colors hover:text-[var(--color-footer-accent)]">
-                  {company.phone}
+                <a href={telHref(data.phone)} className="transition-colors hover:text-[var(--color-footer-accent)]">
+                  {data.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3 2xl:gap-4">
                 <span className={iconBox}>
                   <Icon name={icons.email} motion="float" className="h-3.5 w-3.5" />
                 </span>
-                <a href={mailHref(company.email)} className="break-all transition-colors hover:text-[var(--color-footer-accent)]">
-                  {company.email}
+                <a href={mailHref(data.email)} className="break-all transition-colors hover:text-[var(--color-footer-accent)]">
+                  {data.email}
                 </a>
               </li>
               <li className="flex items-center gap-3 2xl:gap-4">
                 <span className={iconBox}>
                   <Icon name={icons.address} motion="pulse" className="h-3.5 w-3.5" />
                 </span>
-                <span>{company.address.join(" ")}</span>
+                <span>{data.address.join(" ")}</span>
               </li>
             </ul>
             <div className="mt-4 flex flex-wrap gap-2.5 2xl:flex-nowrap">
-              {company.socialLinks.map((social) => (
+              {data.socialLinks.map((social) => (
                 <a
                   key={social.id}
                   href={social.url}
@@ -190,7 +190,7 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
               {data.legalLinks.map((link, i) => (
                 <span key={link.id} className="contents">
                   {i > 0 && <span className="text-[var(--color-white-40)]">{"|"}</span>}
-                  <Link href={link.href} className="hover:text-[var(--color-footer-accent)]">
+                  <Link href={link.url} className="hover:text-[var(--color-footer-accent)]">
                     {link.label}
                   </Link>
                 </span>

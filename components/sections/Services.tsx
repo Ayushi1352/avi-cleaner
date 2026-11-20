@@ -1,21 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import type { GlobalUIData, HomeServiceCard, ServicesData } from "@/types/templates.types";
+import type { HomeServiceCard, ServicesData, ServicesProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionTag } from "@/components/ui/SectionLabel";
 import { useCarousel, slideClass, trackClass } from "@/components/ui/useCarousel";
 import { ui } from "@/components/ui/styles";
 
-function ServiceCard({ service, data, labels }: { service: HomeServiceCard; data: ServicesData; labels?: GlobalUIData }) {
+function ServiceCard({ service, data }: { service: HomeServiceCard; data: ServicesData }) {
   return (
     <article className="flex h-full flex-col rounded-[18px] bg-[var(--color-white)] p-3.5 shadow-[0_12px_32px_-18px_var(--color-shadow-heading-25)] 2xl:p-4 3xl:p-[18px]">
       <div className="relative overflow-hidden rounded-[10px]">
         <ImagePlaceholder
           src={service.image}
           alt={service.title}
-          ui={labels}
           className="aspect-[305/190] w-full rounded-[10px] lg:aspect-auto lg:h-[clamp(100px,15vh,190px)]"
         />
         <span className="absolute -left-1 -top-1 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full border-[4px] border-[var(--color-white)] bg-[var(--color-card-dark)] text-[var(--color-white)] shadow-md transition-transform duration-300 hover:scale-[1.15] hover:shadow-[0_10px_25px_-5px_var(--color-card-dark-50)] 2xl:h-[92px] 2xl:w-[92px] 2xl:border-[5px]">
@@ -31,7 +30,7 @@ function ServiceCard({ service, data, labels }: { service: HomeServiceCard; data
       </p>
       <div className="mt-auto pt-6 lg:pt-4">
         <Link
-          href={service.href}
+          href={service.url}
           className={`${ui.btnSolid} ${ui.btnYellow} group/btn inline-flex items-center gap-3 rounded-full px-7 py-3 text-[14px] font-semibold 2xl:px-8 2xl:py-3 2xl:text-[15px] 3xl:px-9 3xl:py-[14px]`}
         >
           {data.cardButton.label}
@@ -55,17 +54,17 @@ function ProvideCard({ data, className = "" }: { data: ServicesData["provide"]; 
         {data.text}
       </p>
       <Link
-        href={data.button.href}
+        href={data.buttonUrl}
         className={`${ui.btnSolid} ${ui.btnForest} group mt-7 inline-flex items-center gap-3 whitespace-nowrap rounded-full px-7 py-3.5 text-[14px] font-medium lg:mt-5 2xl:mt-5 2xl:px-8 2xl:py-3.5 2xl:text-[15px] 3xl:mt-6 3xl:px-9 3xl:py-4 3xl:text-[16px]`}
       >
-        {data.button.label}
-        <Icon name={data.button.icon} className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        {data.buttonText}
+        <Icon name={data.buttonIcon} className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </Link>
     </div>
   );
 }
 
-export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; ui?: GlobalUIData }) => {
+export const Services = ({ data }: ServicesProps) => {
   const services = data?.services ?? [];
   const { setViewport: setMobileViewport, setTrack: setMobileTrack, ...mobile } = useCarousel(services.length, { loop: false });
   const { setViewport: setDesktopViewport, setTrack: setDesktopTrack, ...desktop } = useCarousel(services.length, { loop: false });
@@ -86,7 +85,7 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
 
       <div className="shrink-0 self-start sm:self-center">
         <Link
-          href={data.viewAll.href}
+          href={data.viewAll.url}
           className={`${ui.btnOutline} group inline-flex items-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold [--btn-ink:var(--color-heading)] [--btn:var(--color-primary)] sm:px-6 sm:py-2.5 sm:text-[14px] 2xl:px-7 2xl:py-3 2xl:text-[15px]`}
         >
           <span className="whitespace-nowrap">{data.viewAll.label}</span>
@@ -115,7 +114,6 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
               <ImagePlaceholder
                 src={data.image.src}
                 alt={data.image.alt}
-                ui={labels}
                 className="aspect-[4/3] w-full rounded-[16px] md:aspect-auto md:min-h-[340px]"
                 imgClassName="object-cover object-top"
               />
@@ -130,7 +128,7 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
                 <div className={trackClass} ref={setMobileTrack}>
                   {services.map((s) => (
                     <div key={s.title} className={slideClass}>
-                      <ServiceCard service={s} data={data} labels={labels} />
+                      <ServiceCard service={s} data={data} />
                     </div>
                   ))}
                 </div>
@@ -164,7 +162,6 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
             <ImagePlaceholder
               src={data.image.src}
               alt={data.image.alt}
-              ui={labels}
               className="absolute inset-y-0 left-0 w-[29.9%]"
               imgClassName="object-cover object-top"
             />
@@ -181,7 +178,7 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
                   <div className={trackClass} ref={setDesktopTrack}>
                     {services.map((s) => (
                       <div key={s.title} className={slideClass}>
-                        <ServiceCard service={s} data={data} labels={labels} />
+                        <ServiceCard service={s} data={data} />
                       </div>
                     ))}
                   </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import type { GlobalUIData, TestimonialItem, TestimonialsData } from "@/types/templates.types";
+import type { TestimonialItem, TestimonialsProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionTag } from "@/components/ui/SectionLabel";
@@ -83,7 +83,7 @@ function slideClass(offset: number, hasEntered: boolean = true) {
   return dist === 1 ? SLIDE.near[side] : SLIDE.far[side];
 }
 
-export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?: TestimonialsData; ui?: GlobalUIData }) => {
+export const Testimonials = ({ data }: TestimonialsProps) => {
   // `pos` runs on without wrapping so slides always travel the short way round.
   const [pos, setPos] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -255,7 +255,7 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
             >
               <Icon name={data.previous.icon} className="h-4 w-4" strokeWidth={2.6} />
             </button>
-            <CarouselDots pages={total} index={index} goTo={goTo} label={labels?.goToSlide ?? ""} />
+            <CarouselDots pages={total} index={index} goTo={goTo} label={data.goToSlide} />
             <button
               type="button"
               onClick={() => setPos((p) => p + 1)}
@@ -268,11 +268,11 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
 
           <div className="relative mt-6 flex justify-center">
             <Link
-              href={data.button.href}
+              href={data.buttonUrl}
               className={`${ui.btnOutline} group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:var(--color-heading)] [--btn:var(--color-testimonial-text-4)] 2xl:px-7 2xl:py-3 2xl:text-[15px]`}
             >
-              {data.button.label}
-              <Icon name={data.button.icon} className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {data.buttonText}
+              <Icon name={data.buttonIcon} className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

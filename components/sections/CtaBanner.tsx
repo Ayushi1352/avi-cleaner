@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CtaBannerData, GlobalUIData } from "@/types/templates.types";
+import type { CtaBannerData, CtaBannerProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -36,7 +36,7 @@ function BrighterBadge({ data, className = "" }: { data: CtaBannerData["badge"];
   );
 }
 
-export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; ui?: GlobalUIData }) => {
+export const CtaBanner = ({ data }: CtaBannerProps) => {
   if (!data) return null;
 
   return (
@@ -89,11 +89,11 @@ export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; u
                 {data.description[1]}
               </p>
               <Link
-                href={data.button.href}
+                href={data.buttonUrl}
                 className={`${ui.btnSolid} ${ui.btnYellow} group mt-7 inline-flex h-12 items-center gap-3 rounded-full px-7 text-[15px] font-bold lg:mt-[clamp(16px,1.1vw,21px)] lg:h-[clamp(48px,3.31vw,63px)] lg:gap-[clamp(10px,0.8vw,15px)] lg:px-[clamp(24px,2.2vw,42px)] lg:text-[clamp(15px,1vw,19px)]`}
               >
-                {data.button.label}
-                <Icon name={data.button.icon} className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
+                {data.buttonText}
+                <Icon name={data.buttonIcon} className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" />
               </Link>
             </ScrollReveal>
           </div>
@@ -128,7 +128,6 @@ export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; u
             <ImagePlaceholder
               src={data.image.src}
               alt={data.image.alt}
-              ui={labels}
               className="aspect-[4/3] w-full sm:aspect-[16/9]"
               imgClassName="object-cover object-[48%_20%]"
             />

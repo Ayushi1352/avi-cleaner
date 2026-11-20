@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { GlobalUIData, WhyChooseUsData } from "@/types/templates.types";
+import type { WhyChooseUsProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionTag } from "@/components/ui/SectionLabel";
@@ -9,7 +9,7 @@ import { ui } from "@/components/ui/styles";
 // The section's own green (eyebrow, "One Clean" and the quote button).
 const ACCENT = { text: "text-[var(--color-why-us-button)]", line: "bg-[var(--color-why-us-button)]" };
 
-export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsData; ui?: GlobalUIData }) => {
+export const WhyChooseUs = ({ data }: WhyChooseUsProps) => {
   if (!data) return null;
 
   return (
@@ -71,18 +71,18 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
 
               <div className="mt-8 flex flex-wrap gap-3 2xl:mt-7">
                 <Link
-                  href={data.primaryButton.href}
+                  href={data.primaryButtonUrl}
                   className={`${ui.btnSolid} group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold [--btn:var(--color-why-us-button)] 2xl:px-[42px] 2xl:py-5 2xl:text-[18px]`}
                                   >
-                  {data.primaryButton.label}
-                  <Icon name={data.primaryButton.icon} className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  {data.primaryButtonText}
+                  <Icon name={data.primaryButtonIcon} className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Link>
                 <Link
-                  href={data.secondaryButton.href}
+                  href={data.secondaryButtonUrl}
                   className={`${ui.btnOutline} group inline-flex items-center gap-3 rounded-full px-8 py-3.5 text-[15px] font-semibold [--btn-ink:var(--color-heading)] [--btn:var(--color-why-us-button)] 2xl:px-[42px] 2xl:py-5 2xl:text-[18px]`}
                 >
-                  {data.secondaryButton.label}
-                  <Icon name={data.secondaryButton.icon} className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  {data.secondaryButtonText}
+                  <Icon name={data.secondaryButtonIcon} className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Link>
               </div>
             </div>
@@ -103,12 +103,11 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
                 <ImagePlaceholder
                   src={data.image.src}
                   alt={data.image.alt}
-                  ui={labels}
                   className="aspect-[715/620] w-full rounded-[28px] rounded-tl-[90px] sm:rounded-[36px] sm:rounded-tl-[140px]"
                 />
 
                 <Link
-                  href={data.video.href}
+                  href={data.video.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={data.video.label}

@@ -1,12 +1,12 @@
 import Link from "next/link";
-import type { CallUsBannerData, CompanyData, GlobalUIData } from "@/types/templates.types";
+import type { CallUsBannerProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
 import { telHref } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
-export const CallUsBanner = ({ data, company, ui: labels }: { data?: CallUsBannerData; company: CompanyData; ui: GlobalUIData }) => {
+export const CallUsBanner = ({ data }: CallUsBannerProps) => {
   if (!data) return null;
 
   return (
@@ -63,23 +63,23 @@ export const CallUsBanner = ({ data, company, ui: labels }: { data?: CallUsBanne
             </ul>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-6 2xl:mt-10 2xl:gap-x-14">
-              <a href={telHref(company.phone)} className="group flex items-center gap-4 2xl:gap-6">
+              <a href={telHref(data.phone)} className="group flex items-center gap-4 2xl:gap-6">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-soft)] text-[var(--color-eyebrow-text)] 2xl:h-[66px] 2xl:w-[66px] 3xl:h-[82px] 3xl:w-[82px]">
                   <Icon name={data.call.icon} className="h-5 w-5 2xl:h-7 2xl:w-7 3xl:h-8 3xl:w-8" fill="currentColor" strokeWidth={0} />
                 </span>
                 <span className="min-w-0">
                   <span className="block text-[13px] text-[var(--color-white-90)] 2xl:text-[17px] 3xl:text-[20px]">{data.call.label}</span>
                   <span className="block whitespace-nowrap text-[20px] font-bold leading-tight group-hover:text-[var(--color-accent-soft)] 2xl:text-[28px] 3xl:text-[34px]">
-                    {company.phone}
+                    {data.phone}
                   </span>
                 </span>
               </a>
               <Link
-                href={data.button.href}
+                href={data.buttonUrl}
                 className={`${ui.btnSolid} ${ui.btnYellow} group inline-flex items-center gap-3 whitespace-nowrap rounded-full px-7 py-3.5 text-[15px] font-bold 2xl:px-10 2xl:py-[18px] 2xl:text-[18px] 3xl:min-w-[290px] 3xl:justify-center 3xl:py-[21px] 3xl:text-[21px]`}
               >
-                {data.button.label}
-                <Icon name={data.button.icon} className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                {data.buttonText}
+                <Icon name={data.buttonIcon} className="h-5 w-5 transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
             </div>
           </div>
@@ -93,7 +93,7 @@ export const CallUsBanner = ({ data, company, ui: labels }: { data?: CallUsBanne
               className="block aspect-[4/3] w-full rounded-t-[20px] object-cover object-top lg:hidden"
             />
             <div className="absolute right-0 top-4 flex aspect-square w-[34%] max-w-[270px] items-center justify-center rounded-[48%_52%_45%_55%/55%_45%_55%_45%] bg-[var(--color-call-us-bg)] shadow-[0_18px_40px_-20px_var(--color-black-60)] lg:top-[11%] 2xl:-right-[16px] 2xl:top-[80px] 2xl:w-[270px]">
-              <HandwrittenNote lines={labels.noteLines} color="text-[var(--color-white)]" className="text-[clamp(18px,2.2vw,42px)]" />
+              <HandwrittenNote lines={data.noteLines} color="text-[var(--color-white)]" className="text-[clamp(18px,2.2vw,42px)]" />
             </div>
           </div>
         </div>

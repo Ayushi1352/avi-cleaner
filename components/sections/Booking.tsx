@@ -1,10 +1,10 @@
 "use client";
 
 import type { ReactNode } from "react";
-import type { BookingData, GlobalUIData } from "@/types/templates.types";
+import type { BookingProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { FormSuccess, Spinner } from "@/components/ui/FormSuccess";
-import { useDummySubmit } from "@/components/ui/useDummySubmit";
+import { useFormSubmit } from "@/components/ui/useFormSubmit";
 import { ui } from "@/components/ui/styles";
 
 const LABEL = "block text-[15px] font-medium text-[var(--color-title)] xl:text-[16px] 2xl:text-[19px] 3xl:text-[23px]";
@@ -33,8 +33,8 @@ function Field({ label, required = true, icon, children, className = "" }: {
   );
 }
 
-export const BookingForm = ({ data, ui: labels }: { data?: BookingData; ui: GlobalUIData }) => {
-  const submit = useDummySubmit();
+export const Booking = ({ data }: BookingProps) => {
+  const submit = useFormSubmit();
   if (!data) return null;
   const { fields } = data;
 
@@ -116,7 +116,7 @@ export const BookingForm = ({ data, ui: labels }: { data?: BookingData; ui: Glob
                 >
                   {submit.sending ? (
                     <>
-                      <Spinner name={labels.formSuccess.sendingIcon} className="h-[1.05em] w-[1.05em]" />
+                      <Spinner name={data.formSuccess.sendingIcon} className="h-[1.05em] w-[1.05em]" />
                       {data.sendingText}
                     </>
                   ) : (
@@ -137,7 +137,7 @@ export const BookingForm = ({ data, ui: labels }: { data?: BookingData; ui: Glob
                     message={data.successMessage}
                     leaving={submit.status === "leaving"}
                     onClose={submit.dismiss}
-                    ui={labels.formSuccess}
+                    ui={data.formSuccess}
                     className="mt-4 2xl:mt-5"
                   />
                 )}

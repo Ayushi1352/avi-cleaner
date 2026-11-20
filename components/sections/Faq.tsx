@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { FaqData, FaqItemData, GlobalUIData } from "@/types/templates.types";
+import type { FaqItemData, FaqProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
@@ -57,7 +57,7 @@ function FaqItem({ faq, toggleIcon, index, open, onToggle }: {
   );
 }
 
-export const FaqAccordion = ({ data, ui: labels }: { data?: FaqData; ui: GlobalUIData }) => {
+export const Faq = ({ data }: FaqProps) => {
   const [openIndex, setOpenIndex] = useState(0);
   if (!data) return null;
 
@@ -76,7 +76,7 @@ export const FaqAccordion = ({ data, ui: labels }: { data?: FaqData; ui: GlobalU
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={data.image.src} alt={data.image.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[62%_70%] lg:object-[68%_bottom]" />
               <div className="absolute inset-0 bg-[linear-gradient(100deg,var(--color-faq-overlay-72)_0%,var(--color-faq-overlay-40)_32%,var(--color-faq-overlay-0)_62%)]" />
-              <HandwrittenNote lines={labels.noteLines} color="text-[var(--color-white)]" className="absolute left-[7%] top-[16%] text-[clamp(26px,5vw,44px)] lg:top-[28%] lg:text-[clamp(24px,2.4vw,46px)]" />
+              <HandwrittenNote lines={data.noteLines} color="text-[var(--color-white)]" className="absolute left-[7%] top-[16%] text-[clamp(26px,5vw,44px)] lg:top-[28%] lg:text-[clamp(24px,2.4vw,46px)]" />
             </div>
 
             <div className="order-2 min-w-0 px-4 pb-8 pt-9 sm:px-6 sm:pt-10 lg:row-span-2 lg:pb-12 lg:pl-0 lg:pr-6 xl:pr-8 2xl:pt-[44px] 3xl:pb-[75px] 3xl:pr-[44px]">
@@ -119,11 +119,11 @@ export const FaqAccordion = ({ data, ui: labels }: { data?: FaqData; ui: GlobalU
                   {data.help.text}
                 </p>
                 <Link
-                  href={data.help.button.href}
+                  href={data.help.buttonUrl}
                   className={`${ui.btnSolid} ${ui.btnYellow} group mt-5 inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-7 py-3 text-[15px] font-bold 2xl:mt-6 2xl:px-9 2xl:py-3.5 2xl:text-[18px] 3xl:mt-[26px] 3xl:h-[62px] 3xl:w-[225px] 3xl:px-0 3xl:py-0 3xl:text-[20px]`}
                 >
-                  {data.help.button.label}
-                  <Icon name={data.help.button.icon} className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
+                  {data.help.buttonText}
+                  <Icon name={data.help.buttonIcon} className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
                 </Link>
               </div>
             </div>

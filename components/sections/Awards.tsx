@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import type { AwardsData, CertificateItem, TrophyLabels } from "@/types/templates.types";
+import type { AwardsProps, CertificateItem, TrophyLabels } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
@@ -145,7 +145,7 @@ function Certificate({ cert, leafIcon }: { cert: CertificateItem; leafIcon: stri
   );
 }
 
-export const AwardsGrid = ({ data }: { data?: AwardsData }) => {
+export const Awards = ({ data }: AwardsProps) => {
   if (!data) return null;
 
   return (

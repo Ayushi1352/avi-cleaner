@@ -18,15 +18,10 @@ export interface SiteMetadataData {
   lang: string;
 }
 
+/** Labels the breadcrumb banner shares on every page. */
 export interface GlobalUIData {
   breadcrumb: string;
   breadcrumbIcon: string;
-  goToSlide: string;
-  image: string;
-  imageIcon: string;
-  currency: string;
-  noteLines: string[];
-  formSuccess: FormSuccessUI;
 }
 
 export interface FormSuccessUI {
@@ -43,23 +38,30 @@ export interface SocialLink {
   url: string;
 }
 
-export interface CompanyData {
-  name: string;
+export interface LogoData {
   logo: string;
   logoAlt: string;
-  homeLabel: string;
   logoUrl: string;
+  homeLabel: string;
+}
+
+/** The business phone, email and address, kept with each section that shows them. */
+export interface ContactDetails {
   phone: string;
   email: string;
   address: string[];
-  /** Google Maps embed; {query} is the company address */
-  mapEmbedUrl: string;
-  socialLinks: SocialLink[];
 }
 
 export interface LinkData {
   label: string;
-  href: string;
+  url: string;
+}
+
+/** A button is `buttonText` + `buttonUrl` + `buttonIcon` (primary / secondary buttons use that prefix instead). */
+export interface ButtonData {
+  buttonText: string;
+  buttonUrl: string;
+  buttonIcon: string;
 }
 
 export interface NavLink extends LinkData {
@@ -95,8 +97,9 @@ export interface FooterBadge {
   lines: string[];
 }
 
-export interface FooterData {
+export interface FooterData extends LogoData, ContactDetails {
   description: string;
+  socialLinks: SocialLink[];
   icons: {
     phone: string;
     email: string;
@@ -125,7 +128,6 @@ export interface CommonData {
   theme: ThemeData;
   metadata: SiteMetadataData;
   globalUI: GlobalUIData;
-  company: CompanyData;
   aboutBreadcrumb?: BreadcrumbData;
   whyChooseUsBreadcrumb?: BreadcrumbData;
   missionVisionBreadcrumb?: BreadcrumbData;
@@ -150,14 +152,26 @@ export interface CommonData {
   Footer?: FooterData;
 }
 
-export interface HeaderData {
+export interface FooterProps {
+  data?: FooterData;
+}
+
+export interface BreadcrumbProps {
+  data?: BreadcrumbData;
+  ui: GlobalUIData;
+}
+
+export interface HeaderData extends LogoData, ButtonData {
   nav: NavLink[];
-  button: IconLinkData;
   toggleMenu: string;
   icons: {
     menu: string;
     close: string;
   };
+}
+
+export interface HeaderProps {
+  data?: HeaderData;
 }
 
 export interface LightboxLabels {
@@ -192,9 +206,17 @@ export interface HeroData {
   title: { top: string; highlight: string; bottom: string };
   description: string[];
   image: ImageData;
-  primaryButton: IconLinkData;
-  secondaryButton: IconLinkData;
+  primaryButtonText: string;
+  primaryButtonUrl: string;
+  primaryButtonIcon: string;
+  secondaryButtonText: string;
+  secondaryButtonUrl: string;
+  secondaryButtonIcon: string;
   features: IconLines[];
+}
+
+export interface HeroSectionProps {
+  data?: HeroData;
 }
 
 export interface TitledFeature {
@@ -204,16 +226,20 @@ export interface TitledFeature {
   subtitle: string;
 }
 
-export interface AboutUsData {
+export interface AboutUsData extends ButtonData {
   label: string;
   title: { top: string; highlight: string };
   description: string[];
   features: TitledFeature[];
-  button: IconLinkData;
   images: ImageData[];
   badge: { icon: string; lines: string[] };
   stat: { icon: string; value: string; label: string };
   trusted: { icon: string; lines: string[] };
+}
+
+export interface AboutUsProps {
+  data?: AboutUsData;
+  showButton?: boolean;
 }
 
 export interface LabelIcon {
@@ -225,7 +251,7 @@ export interface HomeServiceCard {
   id: string;
   icon: string;
   title: string;
-  href: string;
+  url: string;
   text: string;
   image: string;
 }
@@ -236,12 +262,16 @@ export interface ServicesData {
   description: string;
   viewAll: IconLinkData;
   image: ImageData;
-  provide: { eyebrow: string; title: string[]; text: string; button: IconLinkData };
+  provide: { eyebrow: string; title: string[]; text: string } & ButtonData;
   cardButton: LabelIcon;
   sparkleIcon: string;
   previous: LabelIcon;
   next: LabelIcon;
   services: HomeServiceCard[];
+}
+
+export interface ServicesProps {
+  data?: ServicesData;
 }
 
 export interface StatItem {
@@ -257,14 +287,22 @@ export interface WhyChooseUsData {
   title: { top: string; highlight: string; after: string };
   description: string;
   stats: StatItem[];
-  primaryButton: IconLinkData;
-  secondaryButton: IconLinkData;
+  primaryButtonText: string;
+  primaryButtonUrl: string;
+  primaryButtonIcon: string;
+  secondaryButtonText: string;
+  secondaryButtonUrl: string;
+  secondaryButtonIcon: string;
   partnerLines: string[];
   image: ImageData;
   plantImage: string;
   video: IconLinkData;
   badge: { icon: string; lines: string[] };
   tagline: { icon: string; lines: string[] };
+}
+
+export interface WhyChooseUsProps {
+  data?: WhyChooseUsData;
 }
 
 export interface ProjectItem {
@@ -276,25 +314,33 @@ export interface ProjectItem {
   image: string;
 }
 
-export interface RecentProjectsData {
+export interface RecentProjectsData extends ButtonData {
   label: string;
   title: { lead: string; highlight: string; after: string };
   description: string;
   cardLink: IconLinkData;
-  button: IconLinkData;
+  /** "Go to slide {n}" label of the slider dots */
+  goToSlide: string;
   projects: ProjectItem[];
 }
 
-export interface CtaBannerData {
+export interface RecentProjectsProps {
+  data?: RecentProjectsData;
+}
+
+export interface CtaBannerData extends ButtonData {
   eyebrow: string;
   title: { top: string; highlight: string; after: string };
   description: string[];
-  button: IconLinkData;
   image: ImageData;
   roomImage: string;
   badge: { icon: string; lines: string[] };
   noteLines: string[];
   badges: IconLines[];
+}
+
+export interface CtaBannerProps {
+  data?: CtaBannerData;
 }
 
 export interface TestimonialItem {
@@ -305,7 +351,7 @@ export interface TestimonialItem {
   avatar: string;
 }
 
-export interface TestimonialsData {
+export interface TestimonialsData extends ButtonData {
   label: string;
   title: { lead: string; highlight: string };
   description: string[];
@@ -315,8 +361,12 @@ export interface TestimonialsData {
   icons: { star: string; quote: string };
   previous: LabelIcon;
   next: LabelIcon;
-  button: IconLinkData;
+  goToSlide: string;
   testimonials: TestimonialItem[];
+}
+
+export interface TestimonialsProps {
+  data?: TestimonialsData;
 }
 
 export interface PersonData {
@@ -327,7 +377,7 @@ export interface PersonData {
 
 export interface NewsPost {
   id: string;
-  href: string;
+  url: string;
   day: string;
   month: string;
   category: string;
@@ -338,20 +388,23 @@ export interface NewsPost {
   author: PersonData;
 }
 
-export interface BlogsData {
+export interface BlogsData extends ButtonData {
   label: string;
   title: { lead: string; highlight: string };
   description: string;
   readMore: LabelIcon;
-  button: IconLinkData;
+  goToSlide: string;
   posts: NewsPost[];
 }
 
-export interface MissionVisionData {
+export interface BlogsProps {
+  data?: BlogsData;
+}
+
+export interface MissionVisionPartData extends ButtonData {
   label: string;
   title: string[];
   description: string[];
-  button: IconLinkData;
   image: ImageData;
   card: { icon: string; title: string; text: string[] };
 }
@@ -370,12 +423,30 @@ export interface CoreValuesData {
   values: CoreValueItem[];
 }
 
-export interface PartnerCtaData {
+/** Mission & Vision page: mission, vision and the core values under them. */
+export interface MissionVisionData {
+  mission: MissionVisionPartData;
+  vision: MissionVisionPartData;
+  coreValues: CoreValuesData;
+}
+
+export interface MissionVisionProps {
+  data?: MissionVisionData;
+}
+
+export interface PartnerCtaData extends ButtonData {
   eyebrow: string;
   title: string;
   text: string;
-  button: IconLinkData;
   image: string;
+}
+
+export interface PartnerCtaProps {
+  data?: PartnerCtaData;
+  /** the leaf drawing on the right (Mission & Vision) */
+  showLeaf?: boolean;
+  /** full container width (Service Detail) */
+  wide?: boolean;
 }
 
 export interface PaginationData {
@@ -390,7 +461,7 @@ export interface TeamMemberCard {
   name: string;
   role: string;
   photo: string;
-  href: string;
+  url: string;
 }
 
 export interface TeamGridData {
@@ -404,6 +475,10 @@ export interface TeamGridData {
   pagination: PaginationData;
   socials: SocialLink[];
   members: TeamMemberCard[];
+}
+
+export interface TeamGridProps {
+  data?: TeamGridData;
 }
 
 export interface MemberStat {
@@ -460,6 +535,10 @@ export interface TeamDetailData {
   journey: { label: string; title: string; description: string[]; quoteIcon: string };
 }
 
+export interface TeamDetailProps {
+  data?: TeamDetailData;
+}
+
 export interface ProcessStep {
   id: string;
   no: string;
@@ -476,16 +555,25 @@ export interface ProcessStepsData {
   why: { label: string; title: string; description: string; image: ImageData; benefits: TitledFeature[] };
 }
 
+export interface ProcessStepsProps {
+  data?: ProcessStepsData;
+}
+
 export interface TestimonialsGridData {
   label: string;
   title: string;
   description: string[];
+  noteLines: string[];
   perPage: number;
   stars: number;
   starsLabel: string;
   icons: { quote: string; star: string };
   pagination: PaginationData;
   reviews: TestimonialItem[];
+}
+
+export interface TestimonialsGridProps {
+  data?: TestimonialsGridData;
 }
 
 export interface AwardItem {
@@ -500,7 +588,7 @@ export interface CertificateItem {
   id: string;
   /** "ISO", "OSHA" or "leaf" (shows the leaf icon) */
   mark: string;
-  /** border colour: "blue", "green" or "grey" (set in components/sections/AwardsGrid.tsx) */
+  /** border colour: "blue", "green" or "grey" (set in components/sections/Awards.tsx) */
   tone: string;
   title: string;
   text: string;
@@ -512,9 +600,13 @@ export interface AwardsData {
   certificates: { label: string; title: string; description: string; leafIcon: string; items: CertificateItem[] };
 }
 
+export interface AwardsProps {
+  data?: AwardsData;
+}
+
 export interface ServiceGridItem {
   id: string;
-  href: string;
+  url: string;
   title: string;
   text: string;
   icon: string;
@@ -525,34 +617,48 @@ export interface ServicesGridData {
   label: string;
   title: string[];
   description: string[];
+  noteLines: string[];
   perPage: number;
   readMore: LabelIcon;
   pagination: PaginationData;
   services: ServiceGridItem[];
 }
 
-export interface CallUsBannerData {
+export interface ServicesGridProps {
+  data?: ServicesGridData;
+}
+
+export interface CallUsBannerData extends ButtonData {
   label: string;
   title: { top: string; highlight: string; after: string };
   description: string;
   image: ImageData;
   features: IconLines[];
   call: LabelIcon;
-  button: IconLinkData;
+  phone: string;
+  noteLines: string[];
+}
+
+export interface CallUsBannerProps {
+  data?: CallUsBannerData;
 }
 
 export interface CleaningProcessStep extends ProcessStep {
   icon: string;
 }
 
-export interface CleaningProcessData {
+export interface CleaningProcessData extends ButtonData {
   label: string;
   title: string[];
   description: string[];
+  noteLines: string[];
   steps: CleaningProcessStep[];
   stepArrowIcon: string;
   footer: { text: string; noteLines: string[] };
-  button: IconLinkData;
+}
+
+export interface CleaningProcessProps {
+  data?: CleaningProcessData;
 }
 
 export interface IconLabel {
@@ -571,10 +677,14 @@ export interface ServiceDetailData {
     checklist: string[];
     checklistImage: string;
   };
-  overview: { label: string; trusted: { icon: string; lines: string[] }; features: IconLines[]; button: IconLinkData };
+  overview: { label: string; trusted: { icon: string; lines: string[] }; features: IconLines[] } & ButtonData;
   checklist: { label: string; title: string; checkIcon: string; badge: { icon: string; lines: string[] } };
   why: { label: string; title: { lead: string; after: string }; description: string; image: ImageData; items: IconLabel[] };
   cta: PartnerCtaData;
+}
+
+export interface ServiceDetailProps {
+  data?: ServiceDetailData;
 }
 
 export interface PricingPlan {
@@ -593,14 +703,14 @@ export interface CompareRow {
   cells: boolean[];
 }
 
-export interface PricingData {
+export interface PricingData extends ButtonData {
   label: string;
   title: string[];
   description: string[];
   popularLabel: string;
+  currency: string;
   period: string;
   checkIcon: string;
-  button: IconLinkData;
   plans: PricingPlan[];
   perks: TitledFeature[];
   compare: {
@@ -614,6 +724,10 @@ export interface PricingData {
     image: ImageData;
     badge: { icon: string; lines: string[] };
   };
+}
+
+export interface PricingProps {
+  data?: PricingData;
 }
 
 export interface GalleryPhoto {
@@ -639,21 +753,31 @@ export interface GalleryVideoItem {
   src: string;
 }
 
-export interface GalleryVideoData {
+export interface GalleryVideoData extends ButtonData {
   label: string;
   title: { lead: string; highlight: string; after: string };
   description: string[];
+  noteLines: string[];
   perPage: number;
   playVideo: string;
   pagination: PaginationData;
-  button: IconLinkData;
   videos: GalleryVideoItem[];
+}
+
+/** Gallery page: the photo grid, then the videos. */
+export interface GalleryData {
+  photos: GalleryPhotosData;
+  video: GalleryVideoData;
+}
+
+export interface GalleryProps {
+  data?: GalleryData;
 }
 
 export interface BlogGridPost {
   id: string;
   title: string;
-  href: string;
+  url: string;
   category: string;
   date: string;
   image: string;
@@ -668,6 +792,10 @@ export interface BlogGridData {
   readMore: LabelIcon;
   pagination: PaginationData;
   posts: BlogGridPost[];
+}
+
+export interface BlogGridProps {
+  data?: BlogGridData;
 }
 
 export interface BlogDetailData {
@@ -695,10 +823,14 @@ export interface BlogDetailData {
   categoriesTitle: string;
   categories: { id: string; name: string; count: string }[];
   recentTitle: string;
-  recentPosts: { id: string; title: string; href: string; image: string; date: string }[];
+  recentPosts: { id: string; title: string; url: string; image: string; date: string }[];
   tagsTitle: string;
   tags: string[];
   followTitle: string;
+}
+
+export interface BlogDetailProps {
+  data?: BlogDetailData;
 }
 
 export interface FaqItemData {
@@ -712,13 +844,18 @@ export interface FaqData {
   label: string;
   title: { highlight: string; after: string };
   description: string;
+  noteLines: string[];
   image: ImageData;
   toggleIcon: string;
   faqs: FaqItemData[];
-  help: { icon: string; eyebrow: string; title: string; text: string; button: IconLinkData };
+  help: { icon: string; eyebrow: string; title: string; text: string } & ButtonData;
 }
 
-/** A contact item either carries its own `lines` or points at a company field ("address", "phone" or "email") with `source`. */
+export interface FaqProps {
+  data?: FaqData;
+}
+
+/** A contact item either carries its own `lines` or points at a contact field ("address", "phone" or "email") with `source`. */
 export interface ContactLinesSource {
   source?: string;
   lines?: string[];
@@ -728,7 +865,7 @@ export interface ContactCardItem extends ContactLinesSource {
   id: string;
   icon: string;
   title: string;
-  /** href "" = the link of the source (tel: / mailto:) */
+  /** url "" = the link of the source (tel: / mailto:) */
   action: IconLinkData;
 }
 
@@ -756,6 +893,7 @@ export interface ContactFormData {
   sendingText: string;
   successTitle: string;
   successMessage: string;
+  formSuccess: FormSuccessUI;
   noteLines: string[];
   image: ImageData;
   details: ContactDetailItem[];
@@ -765,6 +903,20 @@ export interface ContactFormData {
 export interface ContactMapData {
   label: string;
   title: string;
+}
+
+/** Contact page: contact cards, the message form and the map. Items with a `source` show the phone, email or address kept here. */
+export interface ContactData extends ContactDetails {
+  /** Google Maps embed; {query} is the address */
+  mapEmbedUrl: string;
+  noteLines: string[];
+  info: ContactInfoData;
+  form: ContactFormData;
+  map: ContactMapData;
+}
+
+export interface ContactProps {
+  data?: ContactData;
 }
 
 export interface FormFieldData {
@@ -786,10 +938,15 @@ export interface BookingData {
   sendingText: string;
   successTitle: string;
   successMessage: string;
+  formSuccess: FormSuccessUI;
   image: ImageData;
   noteLines: string[];
   reasonsTitle: string;
   reasons: TitledFeature[];
+}
+
+export interface BookingProps {
+  data?: BookingData;
 }
 
 export interface PolicySection {
@@ -800,41 +957,53 @@ export interface PolicySection {
   contact?: boolean;
 }
 
-export interface PrivacyPolicyData {
+export interface PrivacyPolicyData extends ContactDetails {
   label: string;
   title: { lead: string; highlight: string };
   description: string[];
   sections: PolicySection[];
 }
 
-export interface PolicyData {
+export interface PrivacyPolicyProps {
+  data?: PrivacyPolicyData;
+}
+
+export interface PolicyData extends ContactDetails {
   label: string;
   title: { lead: string; highlight: string };
   intro: string;
   sections: PolicySection[];
 }
 
+/** Refund & Cancellation and Terms & Conditions pages. */
+export interface PolicyProps {
+  data?: PolicyData;
+}
+
 export interface QuickLink {
   id: string;
-  href: string;
+  url: string;
   title: string;
   text: string;
   icon: string;
 }
 
-export interface NotFoundData {
+export interface NotFoundData extends ButtonData {
   seo: SeoData;
   /** "404": the middle digit is drawn as the ring illustration */
   code: string;
   eyebrow: string;
   title: string;
   description: string;
-  button: IconLinkData;
   noteLines: string[];
   tagline: string[];
   image: string;
   plantImage: string;
   quickLinks: QuickLink[];
+}
+
+export interface NotFoundProps {
+  data?: NotFoundData;
 }
 
 /** One section of templates.json: { variants: { Cleaning<Name>1: data } }. */
@@ -850,9 +1019,7 @@ export interface CleaningSections {
   CtaBanner?: Section<"CleaningCtaBanner1", CtaBannerData>;
   Testimonials?: Section<"CleaningTestimonials1", TestimonialsData>;
   Blogs?: Section<"CleaningBlogs1", BlogsData>;
-  OurMission?: Section<"CleaningOurMission1", MissionVisionData>;
-  OurVision?: Section<"CleaningOurVision1", MissionVisionData>;
-  CoreValues?: Section<"CleaningCoreValues1", CoreValuesData>;
+  MissionVision?: Section<"CleaningMissionVision1", MissionVisionData>;
   PartnerCta?: Section<"CleaningPartnerCta1", PartnerCtaData>;
   TeamGrid?: Section<"CleaningTeamGrid1", TeamGridData>;
   TeamDetail?: Section<"CleaningTeamDetail1", TeamDetailData>;
@@ -864,14 +1031,11 @@ export interface CleaningSections {
   CleaningProcess?: Section<"CleaningCleaningProcess1", CleaningProcessData>;
   ServiceDetail?: Section<"CleaningServiceDetail1", ServiceDetailData>;
   Pricing?: Section<"CleaningPricing1", PricingData>;
-  GalleryPhotos?: Section<"CleaningGalleryPhotos1", GalleryPhotosData>;
-  GalleryVideo?: Section<"CleaningGalleryVideo1", GalleryVideoData>;
+  Gallery?: Section<"CleaningGallery1", GalleryData>;
   BlogGrid?: Section<"CleaningBlogGrid1", BlogGridData>;
   BlogDetail?: Section<"CleaningBlogDetail1", BlogDetailData>;
   Faq?: Section<"CleaningFaq1", FaqData>;
-  ContactInfo?: Section<"CleaningContactInfo1", ContactInfoData>;
-  ContactForm?: Section<"CleaningContactForm1", ContactFormData>;
-  ContactMap?: Section<"CleaningContactMap1", ContactMapData>;
+  Contact?: Section<"CleaningContact1", ContactData>;
   Booking?: Section<"CleaningBooking1", BookingData>;
   PrivacyPolicy?: Section<"CleaningPrivacyPolicy1", PrivacyPolicyData>;
   RefundPolicy?: Section<"CleaningRefundPolicy1", PolicyData>;

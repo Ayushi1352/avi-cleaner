@@ -1,4 +1,4 @@
-import type { ProcessStepsData } from "@/types/templates.types";
+import type { ProcessStepsProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
@@ -15,7 +15,7 @@ function DashedArrow({ className = "" }: { className?: string }) {
   );
 }
 
-export const ProcessSteps = ({ data }: { data?: ProcessStepsData }) => {
+export const ProcessSteps = ({ data }: ProcessStepsProps) => {
   if (!data) return null;
 
   return (

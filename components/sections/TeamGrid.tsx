@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import type { GlobalUIData, TeamGridData, TeamMemberCard } from "@/types/templates.types";
+import type { TeamGridData, TeamGridProps, TeamMemberCard } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { Pagination } from "@/components/ui/Pagination";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
@@ -10,20 +10,19 @@ import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { fill } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
-function MemberCard({ member, data, labels }: { member: TeamMemberCard; data: TeamGridData; labels?: GlobalUIData }) {
+function MemberCard({ member, data }: { member: TeamMemberCard; data: TeamGridData }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-[16px] bg-[var(--color-white)] shadow-[0_14px_36px_-24px_var(--color-shadow-card-35)] 2xl:rounded-[18px]">
-      <Link href={member.href} aria-label={fill(data.viewMember, { name: member.name })} className="group block overflow-hidden">
+      <Link href={member.url} aria-label={fill(data.viewMember, { name: member.name })} className="group block overflow-hidden">
         <PhotoSlot
           src={member.photo}
           alt={member.name}
-          ui={labels}
           className="relative aspect-[418/395] w-full transition-transform duration-500 group-hover:scale-[1.03]"
           imgClassName="object-cover object-top"
         />
       </Link>
       <div className="flex flex-1 flex-col items-center px-4 pb-6 pt-5 text-center 2xl:pb-7 2xl:pt-[18px]">
-        <Link href={member.href} className="group/name block">
+        <Link href={member.url} className="group/name block">
           <h3 className="text-[19px] font-bold leading-tight text-[var(--color-team-text)] transition-colors group-hover/name:text-[var(--color-primary)] xl:text-[21px] 2xl:text-[24px] 3xl:text-[27.5px]">
             {member.name}
           </h3>
@@ -51,7 +50,7 @@ function MemberCard({ member, data, labels }: { member: TeamMemberCard; data: Te
   );
 }
 
-export const TeamGrid = ({ data, ui: labels }: { data?: TeamGridData; ui?: GlobalUIData }) => {
+export const TeamGrid = ({ data }: TeamGridProps) => {
   const [page, setPage] = useState(1);
   const sectionRef = useRef<HTMLElement | null>(null);
   const members = data?.members ?? [];
@@ -112,7 +111,7 @@ export const TeamGrid = ({ data, ui: labels }: { data?: TeamGridData; ui?: Globa
           <ul className="mx-auto mt-10 grid max-w-[1760px] grid-cols-1 gap-5 min-[480px]:grid-cols-2 lg:grid-cols-4 xl:gap-6 2xl:mt-[40px] 2xl:gap-[28px] 3xl:px-[10px]">
             {visible.map((m) => (
               <li key={m.name} className="min-w-0">
-                <MemberCard member={m} data={data} labels={labels} />
+                <MemberCard member={m} data={data} />
               </li>
             ))}
           </ul>

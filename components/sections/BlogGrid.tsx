@@ -2,13 +2,13 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import type { BlogGridData, BlogGridPost } from "@/types/templates.types";
+import type { BlogGridData, BlogGridProps, BlogGridPost } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { Pagination } from "@/components/ui/Pagination";
 import { ui } from "@/components/ui/styles";
 
 function BlogCard({ post, data }: { post: BlogGridPost; data: BlogGridData }) {
-  const href = post.href;
+  const href = post.url;
   return (
     <article className="flex h-full min-w-0 flex-col overflow-hidden rounded-[12px] bg-[var(--color-white)] shadow-[0_10px_30px_-18px_var(--color-shadow-card-40)] 2xl:rounded-[14px]">
       <Link href={href} aria-label={post.title} className="group relative block aspect-[563/204] w-full overflow-hidden">
@@ -60,7 +60,7 @@ function BlogCard({ post, data }: { post: BlogGridPost; data: BlogGridData }) {
   );
 }
 
-export const BlogGrid = ({ data }: { data?: BlogGridData }) => {
+export const BlogGrid = ({ data }: BlogGridProps) => {
   const [page, setPage] = useState(1);
   const sectionRef = useRef<HTMLElement | null>(null);
   const posts = data?.posts ?? [];

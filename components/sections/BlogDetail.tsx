@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import type { BlogDetailData, SocialLink } from "@/types/templates.types";
+import type { BlogDetailProps, SocialLink } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ui } from "@/components/ui/styles";
 
@@ -55,7 +55,7 @@ function SideCard({ title, children }: { title: string; children: ReactNode }) {
   );
 }
 
-export const BlogArticle = ({ data }: { data?: BlogDetailData }) => {
+export const BlogDetail = ({ data }: BlogDetailProps) => {
   if (!data) return null;
   const { post } = data;
   return (
@@ -156,7 +156,7 @@ export const BlogArticle = ({ data }: { data?: BlogDetailData }) => {
               <ul>
                 {data.recentPosts.map((p) => (
                   <li key={p.id} className="border-b border-[var(--color-blog-article-border)] py-4 last:border-b-0 last:pb-0 2xl:py-5 3xl:py-[26px]">
-                    <Link href={p.href} className="group flex items-center gap-3.5 2xl:gap-5 3xl:gap-[32px]">
+                    <Link href={p.url} className="group flex items-center gap-3.5 2xl:gap-5 3xl:gap-[32px]">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={p.image}

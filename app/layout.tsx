@@ -55,9 +55,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Header and footer live here once, so every page gets them automatically.
         */}
         <div className="mx-auto flex min-h-screen w-full max-w-[1920px] flex-col overflow-x-clip bg-[var(--color-white)]">
-          <Header data={sectionData.Header?.variants?.CleaningHeader1} company={commonData.company} />
+          <Header data={sectionData.Header?.variants?.CleaningHeader1} />
           <ScrollToTop>{children}</ScrollToTop>
-          <Footer data={commonData.Footer} company={commonData.company} />
+          <Footer data={commonData.Footer} />
         </div>
       </body>
     </html>

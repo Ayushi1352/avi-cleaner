@@ -18,7 +18,7 @@ export const ui = {
 
   /*
     Card that lifts on hover and shows a moving green/yellow gradient border. Give the element
-    data-card-border too: components/Motion.tsx runs the border sweep while it is hovered.
+    data-card-border too: components/ui/Motion.tsx runs the border sweep while it is hovered.
   */
   cardBorder:
     "relative [transition:transform_0.35s_cubic-bezier(0.22,1,0.36,1),box-shadow_0.35s_ease,border-color_0.35s_ease] hover:[transform:translateY(-4px)] hover:shadow-[0_16px_36px_-10px_var(--color-primary-22)] motion-reduce:hover:[transform:none] after:pointer-events-none after:absolute after:-inset-[2px] after:z-[1] after:rounded-[inherit] after:bg-[linear-gradient(135deg,var(--color-primary)_0%,var(--color-cta-bg)_35%,var(--color-primary-light)_70%,var(--color-primary)_100%)] after:bg-[length:250%_250%] after:p-[2px] after:opacity-0 after:transition-opacity after:duration-[350ms] after:ease-[ease] after:content-[''] after:[mask:linear-gradient(var(--color-white)_0_0)_content-box_exclude,linear-gradient(var(--color-white)_0_0)] hover:after:opacity-100",

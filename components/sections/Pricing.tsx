@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { GlobalUIData, PricingData, PricingPlan } from "@/types/templates.types";
+import type { PricingData, PricingPlan, PricingProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
@@ -52,18 +52,18 @@ function PlanCard({ plan, data, currency }: { plan: PricingPlan; data: PricingDa
 
       <div className="mt-auto pt-7 2xl:pt-9 3xl:pt-[44px]">
         <Link
-          href={data.button.href}
+          href={data.buttonUrl}
           className={`${ui.btnSolid} ${ui.btnYellow} group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-9 py-3 text-[15px] font-bold xl:px-11 xl:text-[16px] 2xl:px-14 2xl:py-4 2xl:text-[20px] 3xl:h-[77px] 3xl:w-[331px] 3xl:gap-5 3xl:px-0 3xl:py-0 3xl:text-[25px]`}
         >
-          {data.button.label}
-          <Icon name={data.button.icon} className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
+          {data.buttonText}
+          <Icon name={data.buttonIcon} className="h-[1em] w-[1em] transition-transform group-hover:translate-x-1" strokeWidth={2.6} />
         </Link>
       </div>
     </article>
   );
 }
 
-export const PricingPlans = ({ data, ui: labels }: { data?: PricingData; ui: GlobalUIData }) => {
+export const Pricing = ({ data }: PricingProps) => {
   if (!data) return null;
 
   return (
@@ -103,7 +103,7 @@ export const PricingPlans = ({ data, ui: labels }: { data?: PricingData; ui: Glo
           <ul className="mx-auto mt-12 grid max-w-[480px] grid-cols-1 gap-9 md:max-lg:max-w-none md:max-lg:grid-cols-2 md:max-lg:gap-x-5 md:max-lg:gap-y-9 lg:max-w-none lg:grid-cols-3 lg:gap-5 xl:gap-6 2xl:mt-[56px] 2xl:gap-[30px] 3xl:mt-[66px] 3xl:pl-[28px] 3xl:pr-[17px]">
             {data.plans.map((p) => (
               <li key={p.id} className="min-w-0">
-                <PlanCard plan={p} data={data} currency={labels.currency} />
+                <PlanCard plan={p} data={data} currency={data.currency} />
               </li>
             ))}
           </ul>

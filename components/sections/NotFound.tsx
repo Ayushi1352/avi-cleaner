@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { NotFoundData } from "@/types/templates.types";
+import type { NotFoundProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ui } from "@/components/ui/styles";
 
@@ -27,7 +27,7 @@ function ZeroMark({ className = "" }: { className?: string }) {
   );
 }
 
-export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
+export const NotFound = ({ data }: NotFoundProps) => {
   if (!data) return null;
   return (
       <section className="relative isolate w-full overflow-hidden bg-[var(--color-bg-light)]">
@@ -72,11 +72,11 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
                 {data.description}
               </p>
               <Link
-                href={data.button.href}
+                href={data.buttonUrl}
                 className={`${ui.btnSolid} ${ui.btnYellow} group mt-7 inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-8 py-3.5 text-[16px] font-bold 2xl:mt-9 2xl:px-10 2xl:py-[18px] 2xl:text-[21px] 3xl:h-[72px] 3xl:w-[288px] 3xl:px-0 3xl:py-0 3xl:text-[25px]`}
               >
-                {data.button.label}
-                <Icon name={data.button.icon} className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
+                {data.buttonText}
+                <Icon name={data.buttonIcon} className="h-[1.05em] w-[1.05em] transition-transform group-hover:translate-x-1" strokeWidth={2.4} />
               </Link>
             </div>
 
@@ -101,9 +101,9 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
           </div>
 
           <ul className="mx-auto grid max-w-[420px] grid-cols-1 gap-5 pb-12 sm:max-w-none sm:grid-cols-3 sm:gap-0 lg:mx-0 lg:max-w-[63%] 2xl:pb-[70px] 3xl:ml-[58px] 3xl:max-w-[1150px]">
-            {data.quickLinks.map(({ id, href, title, text, icon }, i) => (
+            {data.quickLinks.map(({ id, url, title, text, icon }, i) => (
               <li key={id} className={`min-w-0 ${i > 0 ? "sm:border-l sm:border-[var(--color-not-found-border)]" : ""}`}>
-                <Link href={href} className="flex items-center gap-3 sm:justify-center sm:px-2 lg:gap-3 xl:gap-4 2xl:gap-6 3xl:gap-[30px]">
+                <Link href={url} className="flex items-center gap-3 sm:justify-center sm:px-2 lg:gap-3 xl:gap-4 2xl:gap-6 3xl:gap-[30px]">
                   <span className="flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[var(--color-not-found-bg-2)] text-[var(--color-not-found-fill)] shadow transition-transform duration-300 hover:scale-[1.15] sm:h-12 sm:w-12 lg:h-11 lg:w-11 xl:h-14 xl:w-14 2xl:h-[76px] 2xl:w-[76px]">
                     <Icon name={icon} className="h-[50%] w-[50%]" strokeWidth={icon === "LuHeadphones" ? 2.4 : undefined} />
                   </span>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { HeroData, ImageData } from "@/types/templates.types";
+import type { HeroSectionProps, ImageData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ui } from "@/components/ui/styles";
@@ -24,9 +24,9 @@ const HeroImage = ({ image, className }: { image: ImageData; className: string }
   <img src={image.src} alt={image.alt} className={className} />
 );
 
-export const HomeHeroSection = ({ data }: { data?: HeroData }) => {
+export const HeroSection = ({ data }: HeroSectionProps) => {
   if (!data) return null;
-  const { title, image, primaryButton, secondaryButton } = data;
+  const { title, image, primaryButtonText, primaryButtonUrl, primaryButtonIcon, secondaryButtonText, secondaryButtonUrl, secondaryButtonIcon } = data;
 
   return (
     <section className="relative overflow-hidden bg-[var(--color-hero-bg)]">
@@ -72,18 +72,18 @@ export const HomeHeroSection = ({ data }: { data?: HeroData }) => {
 
             <div className="mt-7 flex flex-wrap gap-3 sm:gap-5 2xl:mt-8 3xl:gap-[22px]">
               <Link
-                href={primaryButton.href}
+                href={primaryButtonUrl}
                 className={`${ui.btnSolid} group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[16px] font-bold [--btn:var(--color-hero-button)] xl:px-9 xl:py-4 xl:text-[18px] 2xl:text-[20px] 3xl:h-[72px] 3xl:w-[272px] 3xl:gap-5 3xl:text-[24px]`}
               >
-                {primaryButton.label}
-                <Icon name={primaryButton.icon} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
+                {primaryButtonText}
+                <Icon name={primaryButtonIcon} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
               </Link>
               <Link
-                href={secondaryButton.href}
+                href={secondaryButtonUrl}
                 className={`${ui.btnOutline} group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[15px] font-bold [--btn-bg:var(--color-white-50)] [--btn:var(--color-hero-text-2)] xl:px-9 xl:py-4 xl:text-[17px] 2xl:text-[19px] 3xl:h-[72px] 3xl:w-[255px] 3xl:gap-4 3xl:text-[22px]`}
               >
-                {secondaryButton.label}
-                <Icon name={secondaryButton.icon} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
+                {secondaryButtonText}
+                <Icon name={secondaryButtonIcon} className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 2xl:h-5 2xl:w-5" />
               </Link>
             </div>
           </ScrollReveal>

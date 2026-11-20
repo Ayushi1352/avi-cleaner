@@ -44,7 +44,7 @@ const config: Config = {
       },
       animation: {
         "fade-in": "fadeIn 450ms ease",
-        // 5000ms = visibleFor in components/ui/useDummySubmit.ts
+        // 5000ms = visibleFor in components/ui/useFormSubmit.ts
         "shrink-width": "shrinkWidth 5000ms linear forwards",
       },
       fontFamily: {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import type { GlobalUIData, TestimonialItem, TestimonialsGridData } from "@/types/templates.types";
+import type { TestimonialItem, TestimonialsGridData, TestimonialsGridProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { Pagination } from "@/components/ui/Pagination";
 import { SectionEyebrow } from "@/components/ui/SectionLabel";
@@ -46,7 +46,7 @@ function ReviewCard({ review, data }: { review: TestimonialItem; data: Testimoni
   );
 }
 
-export const TestimonialsGrid = ({ data, ui: labels }: { data?: TestimonialsGridData; ui: GlobalUIData }) => {
+export const TestimonialsGrid = ({ data }: TestimonialsGridProps) => {
   const [page, setPage] = useState(1);
   const sectionRef = useRef<HTMLElement | null>(null);
   const reviews = data?.reviews ?? [];
@@ -75,7 +75,7 @@ export const TestimonialsGrid = ({ data, ui: labels }: { data?: TestimonialsGrid
         <svg aria-hidden="true" viewBox="0 0 400 500" preserveAspectRatio="none" className="pointer-events-none absolute bottom-0 right-0 hidden h-[60%] w-[22%] text-[var(--color-reviews-text-6)] lg:block">
           <path fill="currentColor" d="M400 0C330 120 300 230 240 330 190 410 110 470 0 500h400V0Z" />
         </svg>
-        <HandwrittenNote lines={labels.noteLines} className="absolute right-[5%] top-10 hidden text-[34px] xl:block 2xl:right-[6%] 2xl:top-[26px] 2xl:text-[40px] 3xl:text-[46px]" />
+        <HandwrittenNote lines={data.noteLines} className="absolute right-[5%] top-10 hidden text-[34px] xl:block 2xl:right-[6%] 2xl:top-[26px] 2xl:text-[40px] 3xl:text-[46px]" />
 
         <div className={`${ui.container} relative`}>
           <div className="mx-auto max-w-[1000px] text-center">

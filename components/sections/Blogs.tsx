@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { BlogsData, GlobalUIData, NewsPost } from "@/types/templates.types";
+import type { BlogsData, BlogsProps, NewsPost } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionTag } from "@/components/ui/SectionLabel";
@@ -10,8 +10,8 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { useCarousel, slideClass, trackClass } from "@/components/ui/useCarousel";
 import { ui } from "@/components/ui/styles";
 
-function BlogCard({ post, readMore, labels }: { post: NewsPost; readMore: BlogsData["readMore"]; labels?: GlobalUIData }) {
-  const href = post.href;
+function BlogCard({ post, readMore }: { post: NewsPost; readMore: BlogsData["readMore"] }) {
+  const href = post.url;
 
   return (
     <article data-card-border className={`${ui.cardBorder} flex h-full flex-col overflow-hidden rounded-[18px] bg-[var(--color-white)] shadow-[0_16px_40px_-26px_var(--color-shadow-heading-35)]`}>
@@ -20,7 +20,6 @@ function BlogCard({ post, readMore, labels }: { post: NewsPost; readMore: BlogsD
           <ImagePlaceholder
             src={post.image}
             alt={post.title}
-            ui={labels}
             className="aspect-[572/360] w-full transition-transform duration-500 group-hover/img:scale-105"
           />
         </Link>
@@ -71,7 +70,7 @@ function BlogCard({ post, readMore, labels }: { post: NewsPost; readMore: BlogsD
   );
 }
 
-export const NewsAndArticlesSection = ({ data, ui: labels }: { data?: BlogsData; ui?: GlobalUIData }) => {
+export const Blogs = ({ data }: BlogsProps) => {
   const posts = data?.posts ?? [];
   const { setViewport, setTrack, ...c } = useCarousel(posts.length);
   if (!data) return null;
@@ -113,7 +112,7 @@ export const NewsAndArticlesSection = ({ data, ui: labels }: { data?: BlogsData;
                   duration={700}
                   className="h-full"
                 >
-                  <BlogCard post={p} readMore={data.readMore} labels={labels} />
+                  <BlogCard post={p} readMore={data.readMore} />
                 </ScrollReveal>
               </div>
             ))}
@@ -125,16 +124,16 @@ export const NewsAndArticlesSection = ({ data, ui: labels }: { data?: BlogsData;
             pages={c.pages}
             index={c.index}
             goTo={c.goTo}
-            label={labels?.goToSlide ?? ""}
+            label={data.goToSlide}
             className="mt-6 justify-center 2xl:mt-8"
           />
           <div className="mt-6 flex justify-center">
             <Link
-              href={data.button.href}
+              href={data.buttonUrl}
               className={`${ui.btnOutline} group inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-[14px] font-semibold [--btn-ink:var(--color-heading)] [--btn:var(--color-primary)] 2xl:px-7 2xl:py-3 2xl:text-[15px]`}
             >
-              {data.button.label}
-              <Icon name={data.button.icon} className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              {data.buttonText}
+              <Icon name={data.buttonIcon} className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </ScrollReveal>

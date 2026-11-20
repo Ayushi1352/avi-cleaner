@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import type { GlobalUIData, ServiceGridItem, ServicesGridData } from "@/types/templates.types";
+import type { ServiceGridItem, ServicesGridData, ServicesGridProps } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { Pagination } from "@/components/ui/Pagination";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
@@ -10,8 +10,8 @@ import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
 import { ui } from "@/components/ui/styles";
 
-function ServiceCard({ service, readMore, labels }: { service: ServiceGridItem; readMore: ServicesGridData["readMore"]; labels: GlobalUIData }) {
-  const href = service.href;
+function ServiceCard({ service, readMore }: { service: ServiceGridItem; readMore: ServicesGridData["readMore"] }) {
+  const href = service.url;
   return (
     <article className="grid h-full grid-cols-1 rounded-[20px] bg-[var(--color-white)] p-1.5 shadow-[0_14px_36px_-26px_var(--color-shadow-card-35)] sm:grid-cols-[48%_1fr] md:grid-cols-1 xl:grid-cols-[47%_1fr]">
       <div className="relative">
@@ -19,7 +19,6 @@ function ServiceCard({ service, readMore, labels }: { service: ServiceGridItem; 
           <PhotoSlot
             src={service.image}
             alt={service.title}
-            ui={labels}
             className="relative aspect-[16/10] h-full w-full rounded-[16px] sm:aspect-auto sm:min-h-[220px] md:aspect-[16/10] md:min-h-0 xl:aspect-auto xl:min-h-[230px] 2xl:min-h-[260px] 2xl:rounded-[18px] 3xl:min-h-[333px]"
           />
         </Link>
@@ -51,7 +50,7 @@ function ServiceCard({ service, readMore, labels }: { service: ServiceGridItem; 
   );
 }
 
-export const ServicesGrid = ({ data, ui: labels }: { data?: ServicesGridData; ui: GlobalUIData }) => {
+export const ServicesGrid = ({ data }: ServicesGridProps) => {
   const [page, setPage] = useState(1);
   const sectionRef = useRef<HTMLElement | null>(null);
   const services = data?.services ?? [];
@@ -76,7 +75,7 @@ export const ServicesGrid = ({ data, ui: labels }: { data?: ServicesGridData; ui
           <path fill="currentColor" d="M150 320c10-70 60-120 130-130-10 70-60 120-130 130Z" />
           <path fill="none" stroke="var(--color-icon-bg-light)" strokeWidth="6" strokeLinecap="round" d="M30 40c50 80 90 170 110 280" />
         </svg>
-        <HandwrittenNote lines={labels.noteLines} className="absolute right-[4%] top-12 hidden text-[34px] xl:block 2xl:right-[5%] 2xl:top-[70px] 2xl:text-[44px] 3xl:text-[54px]" />
+        <HandwrittenNote lines={data.noteLines} className="absolute right-[4%] top-12 hidden text-[34px] xl:block 2xl:right-[5%] 2xl:top-[70px] 2xl:text-[44px] 3xl:text-[54px]" />
 
         <div className={`${ui.container} relative`}>
           <div className="mx-auto max-w-[1000px] text-center">
@@ -94,7 +93,7 @@ export const ServicesGrid = ({ data, ui: labels }: { data?: ServicesGridData; ui
           <ul className="mx-auto mt-10 grid max-w-[1800px] grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-3 2xl:mt-[34px] 2xl:gap-[28px] 3xl:px-[6px]">
             {visible.map((s) => (
               <li key={s.id} className="min-w-0">
-                <ServiceCard service={s} readMore={data.readMore} labels={labels} />
+                <ServiceCard service={s} readMore={data.readMore} />
               </li>
             ))}
           </ul>

@@ -16,69 +16,7 @@
     },
     "globalUI": {
       "breadcrumb": "Breadcrumb",
-      "breadcrumbIcon": "LuArrowRight",
-      "goToSlide": "Go to slide {n}",
-      "image": "Image",
-      "imageIcon": "LuImage",
-      "currency": "$",
-      "noteLines": [
-        "Cleaner",
-        "Spaces",
-        "Happier",
-        "Lives"
-      ],
-      "formSuccess": {
-        "successIcon": "LuCheck",
-        "closeIcon": "LuX",
-        "closeLabel": "Close message",
-        "sendingIcon": "LuLoaderCircle"
-      }
-    },
-    "company": {
-      "name": "Avicleaner",
-      "logo": "/images/logo.png",
-      "logoAlt": "Avicleaner",
-      "homeLabel": "Avicleaner home",
-      "logoUrl": "/",
-      "phone": "+1 (202) 555-0147",
-      "email": "xyz@avicleaner.com",
-      "address": [
-        "123 Main Street, Seattle,",
-        "WA 98101, USA"
-      ],
-      "mapEmbedUrl": "https://www.google.com/maps?q={query}&z=15&output=embed",
-      "socialLinks": [
-        {
-          "id": "facebook",
-          "name": "Facebook",
-          "icon": "FaFacebookF",
-          "url": "https://www.facebook.com/"
-        },
-        {
-          "id": "x",
-          "name": "X",
-          "icon": "FaXTwitter",
-          "url": "https://x.com/"
-        },
-        {
-          "id": "instagram",
-          "name": "Instagram",
-          "icon": "FaInstagram",
-          "url": "https://www.instagram.com/"
-        },
-        {
-          "id": "linkedin",
-          "name": "LinkedIn",
-          "icon": "FaLinkedinIn",
-          "url": "https://www.linkedin.com/"
-        },
-        {
-          "id": "youtube",
-          "name": "YouTube",
-          "icon": "FaYoutube",
-          "url": "https://www.youtube.com/"
-        }
-      ]
+      "breadcrumbIcon": "LuArrowRight"
     },
     "aboutBreadcrumb": {
       "title": "About Us",
@@ -524,11 +462,9 @@
       "eyebrow": "Oops!",
       "title": "Page Not Found",
       "description": "The page you’re looking for doesn’t seem to exist or may have been moved. Let’s get you back on track to a cleaner, brighter space!",
-      "button": {
-        "label": "Back to Home",
-        "href": "/",
-        "icon": "LuArrowRight"
-      },
+      "buttonText": "Back to Home",
+      "buttonUrl": "/",
+      "buttonIcon": "LuArrowRight",
       "noteLines": [
         "Cleaner",
         "Spaces",
@@ -544,21 +480,21 @@
       "quickLinks": [
         {
           "id": "go-to-home",
-          "href": "/",
+          "url": "/",
           "title": "Go to Home",
           "text": "Back to our homepage",
           "icon": "IoHome"
         },
         {
           "id": "explore-services",
-          "href": "/services",
+          "url": "/services",
           "title": "Explore Services",
           "text": "Discover our cleaning services",
           "icon": "PiSparkleFill"
         },
         {
           "id": "contact-support",
-          "href": "/contact-us",
+          "url": "/contact-us",
           "title": "Contact Support",
           "text": "We’re here to help",
           "icon": "LuHeadphones"
@@ -566,7 +502,49 @@
       ]
     },
     "Footer": {
+      "logo": "/images/logo.png",
+      "logoAlt": "Avicleaner",
+      "logoUrl": "/",
+      "homeLabel": "Avicleaner home",
       "description": "We provide professional cleaning services for homes and businesses, ensuring a cleaner, healthier and more comfortable environment for you.",
+      "phone": "+1 (202) 555-0147",
+      "email": "xyz@avicleaner.com",
+      "address": [
+        "123 Main Street, Seattle,",
+        "WA 98101, USA"
+      ],
+      "socialLinks": [
+        {
+          "id": "facebook",
+          "name": "Facebook",
+          "icon": "FaFacebookF",
+          "url": "https://www.facebook.com/"
+        },
+        {
+          "id": "x",
+          "name": "X",
+          "icon": "FaXTwitter",
+          "url": "https://x.com/"
+        },
+        {
+          "id": "instagram",
+          "name": "Instagram",
+          "icon": "FaInstagram",
+          "url": "https://www.instagram.com/"
+        },
+        {
+          "id": "linkedin",
+          "name": "LinkedIn",
+          "icon": "FaLinkedinIn",
+          "url": "https://www.linkedin.com/"
+        },
+        {
+          "id": "youtube",
+          "name": "YouTube",
+          "icon": "FaYoutube",
+          "url": "https://www.youtube.com/"
+        }
+      ],
       "icons": {
         "phone": "LuPhone",
         "email": "LuMail",
@@ -580,69 +558,69 @@
           {
             "id": "home",
             "label": "Home",
-            "href": "/"
+            "url": "/"
           },
           {
             "id": "about-us",
             "label": "About Us",
-            "href": "/about-us"
+            "url": "/about-us"
           },
           {
             "id": "why-choose-us",
             "label": "Why Choose Us",
-            "href": "/why-choose-us"
+            "url": "/why-choose-us"
           },
           {
             "id": "mission-and-vision",
             "label": "Mission & Vision",
-            "href": "/mission-vision"
+            "url": "/mission-vision"
           },
           {
             "id": "our-team",
             "label": "Our Team",
-            "href": "/our-team"
+            "url": "/our-team"
           },
           {
             "id": "how-it-works",
             "label": "How It Works",
-            "href": "/how-it-works"
+            "url": "/how-it-works"
           },
           {
             "id": "testimonials",
             "label": "Testimonials",
-            "href": "/testimonials"
+            "url": "/testimonials"
           }
         ],
         [
           {
             "id": "award-and-certificate",
             "label": "Award & Certificate",
-            "href": "/award-and-certificate"
+            "url": "/award-and-certificate"
           },
           {
             "id": "services",
             "label": "Services",
-            "href": "/services"
+            "url": "/services"
           },
           {
             "id": "blog",
             "label": "Blog",
-            "href": "/blog"
+            "url": "/blog"
           },
           {
             "id": "gallery",
             "label": "Gallery",
-            "href": "/gallery"
+            "url": "/gallery"
           },
           {
             "id": "faq",
             "label": "FAQ",
-            "href": "/faq"
+            "url": "/faq"
           },
           {
             "id": "contact-us",
             "label": "Contact Us",
-            "href": "/contact-us"
+            "url": "/contact-us"
           }
         ]
       ],
@@ -651,32 +629,32 @@
         {
           "id": "home-deep-cleaning",
           "label": "Home Deep Cleaning",
-          "href": "/services/service-details"
+          "url": "/services/service-details"
         },
         {
           "id": "office-professional-cleaning",
           "label": "Office Professional Cleaning",
-          "href": "/services/service-details"
+          "url": "/services/service-details"
         },
         {
           "id": "kitchen-hygiene-cleaning",
           "label": "Kitchen Hygiene Cleaning",
-          "href": "/services/service-details"
+          "url": "/services/service-details"
         },
         {
           "id": "windows-deep-cleaning",
           "label": "Windows Deep Cleaning",
-          "href": "/services/service-details"
+          "url": "/services/service-details"
         },
         {
           "id": "commercial-building-cleaning",
           "label": "Commercial Building Cleaning",
-          "href": "/services/service-details"
+          "url": "/services/service-details"
         },
         {
           "id": "deep-carpet-cleaning",
           "label": "Deep Carpet Cleaning",
-          "href": "/services/service-details"
+          "url": "/services/service-details"
         }
       ],
       "newsletter": {
@@ -718,22 +696,22 @@
         {
           "id": "privacy-policy",
           "label": "Privacy Policy",
-          "href": "/privacy-policy"
+          "url": "/privacy-policy"
         },
         {
           "id": "terms-and-conditions",
           "label": "Terms & Conditions",
-          "href": "/terms-and-conditions"
+          "url": "/terms-and-conditions"
         },
         {
           "id": "refund-cancellation-policy",
           "label": "Refund & Cancellation Policy",
-          "href": "/refund-cancellation-policy"
+          "url": "/refund-cancellation-policy"
         },
         {
           "id": "sitemap",
           "label": "Sitemap",
-          "href": "/services"
+          "url": "/services"
         }
       ]
     }
@@ -744,48 +722,50 @@
         "Header": {
           "variants": {
             "CleaningHeader1": {
+              "logo": "/images/logo.png",
+              "logoAlt": "Avicleaner",
+              "logoUrl": "/",
+              "homeLabel": "Avicleaner home",
               "nav": [
                 {
                   "id": "home",
                   "label": "Home",
-                  "href": "/"
+                  "url": "/"
                 },
                 {
                   "id": "about-us",
                   "label": "About Us",
-                  "href": "/about-us"
+                  "url": "/about-us"
                 },
                 {
                   "id": "services",
                   "label": "Services",
-                  "href": "/services"
+                  "url": "/services"
                 },
                 {
                   "id": "pricing",
                   "label": "Pricing",
-                  "href": "/pricing"
+                  "url": "/pricing"
                 },
                 {
                   "id": "gallery",
                   "label": "Gallery",
-                  "href": "/gallery"
+                  "url": "/gallery"
                 },
                 {
                   "id": "blog",
                   "label": "Blog",
-                  "href": "/blog"
+                  "url": "/blog"
                 },
                 {
                   "id": "contact-us",
                   "label": "Contact Us",
-                  "href": "/contact-us"
+                  "url": "/contact-us"
                 }
               ],
-              "button": {
-                "label": "Book Now",
-                "href": "/book-now",
-                "icon": "LuArrowRight"
-              },
+              "buttonText": "Book Now",
+              "buttonUrl": "/book-now",
+              "buttonIcon": "LuArrowRight",
               "toggleMenu": "Toggle menu",
               "icons": {
                 "menu": "LuMenu",
@@ -812,16 +792,12 @@
                 "src": "/images/hero-banner-arc.webp",
                 "alt": "Avicleaner professional cleaner wiping a kitchen counter"
               },
-              "primaryButton": {
-                "label": "Book Now",
-                "href": "/book-now",
-                "icon": "LuArrowRight"
-              },
-              "secondaryButton": {
-                "label": "Contact Us",
-                "href": "/contact-us",
-                "icon": "LuArrowRight"
-              },
+              "primaryButtonText": "Book Now",
+              "primaryButtonUrl": "/book-now",
+              "primaryButtonIcon": "LuArrowRight",
+              "secondaryButtonText": "Contact Us",
+              "secondaryButtonUrl": "/contact-us",
+              "secondaryButtonIcon": "LuArrowRight",
               "features": [
                 {
                   "id": "eco-friendly-products",
@@ -899,11 +875,9 @@
                   "subtitle": "Our Top Priority"
                 }
               ],
-              "button": {
-                "label": "Read More",
-                "href": "/about-us",
-                "icon": "LuArrowRight"
-              },
+              "buttonText": "Read More",
+              "buttonUrl": "/about-us",
+              "buttonIcon": "LuArrowRight",
               "images": [
                 {
                   "src": "/images/about-1.webp",
@@ -952,7 +926,7 @@
               "description": "We provide reliable and professional cleaning services to make your home, office, and commercial space cleaner, healthier and happier.",
               "viewAll": {
                 "label": "View All Services",
-                "href": "/services",
+                "url": "/services",
                 "icon": "LuArrowRight"
               },
               "image": {
@@ -966,11 +940,9 @@
                   "For You"
                 ],
                 "text": "From deep cleaning to regular maintenance, we deliver high-quality cleaning solutions tailored to your needs.",
-                "button": {
-                  "label": "Request a Quote",
-                  "href": "/book-now",
-                  "icon": "LuArrowRight"
-                }
+                "buttonText": "Request a Quote",
+                "buttonUrl": "/book-now",
+                "buttonIcon": "LuArrowRight"
               },
               "cardButton": {
                 "label": "Read More",
@@ -990,7 +962,7 @@
                   "id": "kitchen-hygiene-cleaning",
                   "icon": "LuUtensils",
                   "title": "Kitchen Hygiene Cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "text": "Thorough cleaning to keep your kitchen fresh, safe and germ-free.",
                   "image": "/images/service-kitchen-hygiene.webp"
                 },
@@ -998,7 +970,7 @@
                   "id": "home-deep-cleaning",
                   "icon": "LuHouse",
                   "title": "Home Deep Cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "text": "Detailed cleaning for a healthier and more comfortable home.",
                   "image": "/images/service-home-deep.webp"
                 },
@@ -1006,7 +978,7 @@
                   "id": "office-professional-cleaning",
                   "icon": "LuSprayCan",
                   "title": "Office Professional Cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "text": "Clean and organized workspaces for a more productive environment.",
                   "image": "/images/service-office-professional.webp"
                 },
@@ -1014,7 +986,7 @@
                   "id": "bathroom-sanitization-cleaning",
                   "icon": "LuBath",
                   "title": "Bathroom Sanitization Cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "text": "Spotless, disinfected bathrooms that stay fresh for longer.",
                   "image": "/images/service-bathroom.webp"
                 },
@@ -1022,7 +994,7 @@
                   "id": "window-and-glass-cleaning",
                   "icon": "LuAppWindow",
                   "title": "Window & Glass Cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "text": "Streak-free windows and glass that let the light shine in.",
                   "image": "/images/service-window.webp"
                 }
@@ -1070,16 +1042,12 @@
                   "text": "Skilled, trained and verified team."
                 }
               ],
-              "primaryButton": {
-                "label": "Get a Free Quote",
-                "href": "/book-now",
-                "icon": "LuArrowRight"
-              },
-              "secondaryButton": {
-                "label": "View All Benefits",
-                "href": "/why-choose-us",
-                "icon": "LuArrowRight"
-              },
+              "primaryButtonText": "Get a Free Quote",
+              "primaryButtonUrl": "/book-now",
+              "primaryButtonIcon": "LuArrowRight",
+              "secondaryButtonText": "View All Benefits",
+              "secondaryButtonUrl": "/why-choose-us",
+              "secondaryButtonIcon": "LuArrowRight",
               "partnerLines": [
                 "Trusted",
                 "Cleaning",
@@ -1091,7 +1059,7 @@
               },
               "plantImage": "/images/plant-blur.webp",
               "video": {
-                "href": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm",
+                "url": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm",
                 "label": "Watch our cleaning video on YouTube",
                 "icon": "FaPlay"
               },
@@ -1124,15 +1092,14 @@
               },
               "description": "Take a look at some of our latest cleaning projects. From homes to offices, we deliver exceptional results with care and attention to detail.",
               "cardLink": {
-                "href": "/gallery",
+                "url": "/gallery",
                 "label": "View {title}",
                 "icon": "LuArrowRight"
               },
-              "button": {
-                "label": "View All Projects",
-                "href": "/gallery",
-                "icon": "LuArrowRight"
-              },
+              "buttonText": "View All Projects",
+              "buttonUrl": "/gallery",
+              "buttonIcon": "LuArrowRight",
+              "goToSlide": "Go to slide {n}",
               "projects": [
                 {
                   "id": "kitchen-deep-clean",
@@ -1191,11 +1158,9 @@
                 "A cleaner space leads to a healthier, happier you. Book our professional",
                 "cleaning service now and enjoy a fresh, spotless environment."
               ],
-              "button": {
-                "label": "Request a Quote",
-                "href": "/book-now",
-                "icon": "LuArrowRight"
-              },
+              "buttonText": "Request a Quote",
+              "buttonUrl": "/book-now",
+              "buttonIcon": "LuArrowRight",
               "image": {
                 "src": "/images/cta-cleaner-wide.webp",
                 "alt": "Avicleaner cleaner wiping a counter"
@@ -1275,11 +1240,10 @@
                 "label": "Next testimonial",
                 "icon": "LuChevronRight"
               },
-              "button": {
-                "label": "View All Testimonials",
-                "href": "/testimonials",
-                "icon": "LuArrowRight"
-              },
+              "buttonText": "View All Testimonials",
+              "buttonUrl": "/testimonials",
+              "buttonIcon": "LuArrowRight",
+              "goToSlide": "Go to slide {n}",
               "testimonials": [
                 {
                   "id": "priya-sharma",
@@ -1340,15 +1304,14 @@
                 "label": "Read More",
                 "icon": "LuArrowRight"
               },
-              "button": {
-                "label": "View All Articles",
-                "href": "/blog",
-                "icon": "LuArrowRight"
-              },
+              "buttonText": "View All Articles",
+              "buttonUrl": "/blog",
+              "buttonIcon": "LuArrowRight",
+              "goToSlide": "Go to slide {n}",
               "posts": [
                 {
                   "id": "top-5-tips-for-a-spotless-home",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "day": "18",
                   "month": "Mar 2024",
                   "category": "Home Cleaning",
@@ -1364,7 +1327,7 @@
                 },
                 {
                   "id": "why-professional-cleaning-saves-you-time",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "day": "26",
                   "month": "Apr 2024",
                   "category": "Cleaning Tips",
@@ -1380,7 +1343,7 @@
                 },
                 {
                   "id": "eco-friendly-cleaning-effective-solutions",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "day": "07",
                   "month": "Jun 2024",
                   "category": "Eco-Friendly",
@@ -1396,7 +1359,7 @@
                 },
                 {
                   "id": "how-a-clean-office-boosts-productivity",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "day": "15",
                   "month": "Jul 2024",
                   "category": "Office Cleaning",
@@ -1414,125 +1377,115 @@
             }
           }
         },
-        "OurMission": {
+        "MissionVision": {
           "variants": {
-            "CleaningOurMission1": {
-              "label": "Our Mission",
-              "title": [
-                "A Cleaner",
-                "Tomorrow"
-              ],
-              "description": [
-                "Our mission is to provide reliable, high-quality cleaning",
-                "services that create healthier, safer, and more comfortable",
-                "environments for homes and businesses. We are",
-                "committed to using eco-friendly products, modern",
-                "techniques, and a customer-first approach to make every",
-                "space shine with care and consistency."
-              ],
-              "button": {
-                "label": "Our Services",
-                "href": "/services",
-                "icon": "LuArrowRight"
-              },
-              "image": {
-                "src": "/images/mission-cleaning.webp",
-                "alt": "Yellow-gloved hand wiping a counter with a green cloth"
-              },
-              "card": {
-                "icon": "TbTargetArrow",
-                "title": "Our Goal",
-                "text": [
-                  "To make every space",
-                  "cleaner, healthier and",
-                  "happier for generations to come."
-                ]
-              }
-            }
-          }
-        },
-        "OurVision": {
-          "variants": {
-            "CleaningOurVision1": {
-              "label": "Our Vision",
-              "title": [
-                "Cleaner Spaces",
-                "Happier Lives"
-              ],
-              "description": [
-                "Our vision is to be a trusted and recognized leader in the",
-                "cleaning industry, known",
-                "for innovation, sustainability,",
-                "and exceptional service. We aim to build a cleaner and",
-                "greener future by setting higher standards in cleanliness,",
-                "customer",
-                "satisfaction, and environmental responsibility."
-              ],
-              "button": {
-                "label": "About Us",
-                "href": "/about-us",
-                "icon": "LuArrowRight"
-              },
-              "image": {
-                "src": "/images/vision-window.webp",
-                "alt": "Yellow-gloved hand cleaning a window with a squeegee"
-              },
-              "card": {
-                "icon": "FaEye",
-                "title": "Our Focus",
-                "text": [
-                  "A cleaner, greener",
-                  "and brighter future",
-                  "for everyone."
-                ]
-              }
-            }
-          }
-        },
-        "CoreValues": {
-          "variants": {
-            "CleaningCoreValues1": {
-              "label": "Our Core Values",
-              "title": "What Drives Us",
-              "description": "These values shape our work, our team, and our commitment to you.",
-              "values": [
-                {
-                  "id": "customer-first",
-                  "icon": "HiUserGroup",
-                  "title": "Customer First",
-                  "lines": [
-                    "Your satisfaction is",
-                    "our priority."
-                  ]
+            "CleaningMissionVision1": {
+              "mission": {
+                "label": "Our Mission",
+                "title": [
+                  "A Cleaner",
+                  "Tomorrow"
+                ],
+                "description": [
+                  "Our mission is to provide reliable, high-quality cleaning",
+                  "services that create healthier, safer, and more comfortable",
+                  "environments for homes and businesses. We are",
+                  "committed to using eco-friendly products, modern",
+                  "techniques, and a customer-first approach to make every",
+                  "space shine with care and consistency."
+                ],
+                "buttonText": "Our Services",
+                "buttonUrl": "/services",
+                "buttonIcon": "LuArrowRight",
+                "image": {
+                  "src": "/images/mission-cleaning.webp",
+                  "alt": "Yellow-gloved hand wiping a counter with a green cloth"
                 },
-                {
-                  "id": "sustainability",
-                  "icon": "FaLeaf",
-                  "title": "Sustainability",
-                  "lines": [
-                    "We care for your space",
-                    "and our planet."
-                  ]
-                },
-                {
-                  "id": "integrity",
-                  "icon": "BsShieldFillCheck",
-                  "title": "Integrity",
-                  "lines": [
-                    "We do what’s right,",
-                    "always."
-                  ]
-                },
-                {
-                  "id": "excellence",
-                  "icon": "FaStar",
-                  "title": "Excellence",
-                  "lines": [
-                    "We strive for the",
-                    "highest standards."
+                "card": {
+                  "icon": "TbTargetArrow",
+                  "title": "Our Goal",
+                  "text": [
+                    "To make every space",
+                    "cleaner, healthier and",
+                    "happier for generations to come."
                   ]
                 }
-              ]
+              },
+              "vision": {
+                "label": "Our Vision",
+                "title": [
+                  "Cleaner Spaces",
+                  "Happier Lives"
+                ],
+                "description": [
+                  "Our vision is to be a trusted and recognized leader in the",
+                  "cleaning industry, known",
+                  "for innovation, sustainability,",
+                  "and exceptional service. We aim to build a cleaner and",
+                  "greener future by setting higher standards in cleanliness,",
+                  "customer",
+                  "satisfaction, and environmental responsibility."
+                ],
+                "buttonText": "About Us",
+                "buttonUrl": "/about-us",
+                "buttonIcon": "LuArrowRight",
+                "image": {
+                  "src": "/images/vision-window.webp",
+                  "alt": "Yellow-gloved hand cleaning a window with a squeegee"
+                },
+                "card": {
+                  "icon": "FaEye",
+                  "title": "Our Focus",
+                  "text": [
+                    "A cleaner, greener",
+                    "and brighter future",
+                    "for everyone."
+                  ]
+                }
+              },
+              "coreValues": {
+                "label": "Our Core Values",
+                "title": "What Drives Us",
+                "description": "These values shape our work, our team, and our commitment to you.",
+                "values": [
+                  {
+                    "id": "customer-first",
+                    "icon": "HiUserGroup",
+                    "title": "Customer First",
+                    "lines": [
+                      "Your satisfaction is",
+                      "our priority."
+                    ]
+                  },
+                  {
+                    "id": "sustainability",
+                    "icon": "FaLeaf",
+                    "title": "Sustainability",
+                    "lines": [
+                      "We care for your space",
+                      "and our planet."
+                    ]
+                  },
+                  {
+                    "id": "integrity",
+                    "icon": "BsShieldFillCheck",
+                    "title": "Integrity",
+                    "lines": [
+                      "We do what’s right,",
+                      "always."
+                    ]
+                  },
+                  {
+                    "id": "excellence",
+                    "icon": "FaStar",
+                    "title": "Excellence",
+                    "lines": [
+                      "We strive for the",
+                      "highest standards."
+                    ]
+                  }
+                ]
+              }
             }
           }
         },
@@ -1542,11 +1495,9 @@
               "eyebrow": "Let's Create a Cleaner Tomorrow",
               "title": "Partner With Us for a Cleaner, Brighter Future",
               "text": "Together, we can make every space healthier, safer, and happier.",
-              "button": {
-                "label": "Contact Us",
-                "href": "/contact-us",
-                "icon": "LuArrowRight"
-              },
+              "buttonText": "Contact Us",
+              "buttonUrl": "/contact-us",
+              "buttonIcon": "LuArrowRight",
               "image": "/images/partner-cta.webp"
             }
           }
@@ -1617,112 +1568,112 @@
                   "name": "Priya Sharma",
                   "role": "Operations Manager",
                   "photo": "/images/team-1.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "rahul-verma",
                   "name": "Rahul Verma",
                   "role": "Cleaning Specialist",
                   "photo": "/images/team-2.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "neha-singh",
                   "name": "Neha Singh",
                   "role": "Cleaning Specialist",
                   "photo": "/images/team-3.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "amit-kumar",
                   "name": "Amit Kumar",
                   "role": "Customer Relations Manager",
                   "photo": "/images/team-4.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "vikram-patel",
                   "name": "Vikram Patel",
                   "role": "Team Leader",
                   "photo": "/images/team-5.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "sneha-gupta",
                   "name": "Sneha Gupta",
                   "role": "Housekeeping Expert",
                   "photo": "/images/team-6.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "arjun-mehta",
                   "name": "Arjun Mehta",
                   "role": "Deep Cleaning Specialist",
                   "photo": "/images/team-7.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "kavya-joshi",
                   "name": "Kavya Joshi",
                   "role": "Quality Supervisor",
                   "photo": "/images/team-8.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "rohan-das",
                   "name": "Rohan Das",
                   "role": "Window Cleaning Expert",
                   "photo": "/images/team-5.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "ananya-rao",
                   "name": "Ananya Rao",
                   "role": "Office Cleaning Specialist",
                   "photo": "/images/team-1.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "karan-malhotra",
                   "name": "Karan Malhotra",
                   "role": "Carpet Care Specialist",
                   "photo": "/images/team-4.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "pooja-nair",
                   "name": "Pooja Nair",
                   "role": "Kitchen Hygiene Expert",
                   "photo": "/images/team-3.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "siddharth-jain",
                   "name": "Siddharth Jain",
                   "role": "Move In/Out Specialist",
                   "photo": "/images/team-2.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "meera-iyer",
                   "name": "Meera Iyer",
                   "role": "Eco Cleaning Advisor",
                   "photo": "/images/team-6.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "aditya-kapoor",
                   "name": "Aditya Kapoor",
                   "role": "Field Supervisor",
                   "photo": "/images/team-7.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 },
                 {
                   "id": "riya-chawla",
                   "name": "Riya Chawla",
                   "role": "Bathroom Sanitization Expert",
                   "photo": "/images/team-8.webp",
-                  "href": "/our-team/team-details"
+                  "url": "/our-team/team-details"
                 }
               ]
             }
@@ -1986,6 +1937,12 @@
                 "Real stories from our happy clients who trust us for cleaner, healthier and",
                 "happier spaces."
               ],
+              "noteLines": [
+                "Cleaner",
+                "Spaces",
+                "Happier",
+                "Lives"
+              ],
               "perPage": 6,
               "stars": 5,
               "starsLabel": "5 out of 5 stars",
@@ -2231,6 +2188,12 @@
                 "From homes to offices, we deliver professional cleaning solutions tailored to your needs.",
                 "A cleaner, healthier and happier environment is just a call away."
               ],
+              "noteLines": [
+                "Cleaner",
+                "Spaces",
+                "Happier",
+                "Lives"
+              ],
               "perPage": 6,
               "readMore": {
                 "label": "Read More",
@@ -2251,7 +2214,7 @@
               "services": [
                 {
                   "id": "home-deep-cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Home Deep Cleaning",
                   "text": "A healthier and fresher home for you and your family. We clean every corner with care and attention.",
                   "icon": "IoHome",
@@ -2259,7 +2222,7 @@
                 },
                 {
                   "id": "office-professional-cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Office Professional Cleaning",
                   "text": "Keep your workplace clean, productive and welcoming with our professional office cleaning services.",
                   "icon": "BsBuildingsFill",
@@ -2267,7 +2230,7 @@
                 },
                 {
                   "id": "kitchen-hygiene-cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Kitchen Hygiene Cleaning",
                   "text": "We ensure a spotless and germ-free kitchen so you can enjoy a safe and healthy cooking space.",
                   "icon": "LuUtensils",
@@ -2275,7 +2238,7 @@
                 },
                 {
                   "id": "windows-deep-cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Windows Deep Cleaning",
                   "text": "Crystal clear windows for a brighter and more inviting space. We remove dirt, dust and stains effectively.",
                   "icon": "MdOutlineWindow",
@@ -2283,7 +2246,7 @@
                 },
                 {
                   "id": "commercial-building-cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Commercial Building Cleaning",
                   "text": "Complete cleaning solutions for commercial spaces, ensuring a clean, safe and professional environment.",
                   "icon": "BsBuildingsFill",
@@ -2291,7 +2254,7 @@
                 },
                 {
                   "id": "deep-carpet-cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Deep Carpet Cleaning",
                   "text": "Remove deep-seated dirt, allergens and stains with our advanced carpet cleaning methods.",
                   "icon": "TbVacuumCleaner",
@@ -2299,7 +2262,7 @@
                 },
                 {
                   "id": "sofa-and-upholstery-cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Sofa & Upholstery Cleaning",
                   "text": "Restore the freshness, comfort and deep hygiene of your upholstered sofas, cushions and armchairs.",
                   "icon": "TbVacuumCleaner",
@@ -2307,7 +2270,7 @@
                 },
                 {
                   "id": "sanitization-and-disinfection",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Sanitization & Disinfection",
                   "text": "Hospital-grade sanitization eliminating 99.9% of bacteria and viruses for safe environments.",
                   "icon": "BsBuildingsFill",
@@ -2315,7 +2278,7 @@
                 },
                 {
                   "id": "move-in-and-move-out-cleaning",
-                  "href": "/services/service-details",
+                  "url": "/services/service-details",
                   "title": "Move-In & Move-Out Cleaning",
                   "text": "Comprehensive top-to-bottom cleaning ensuring seamless transitions into spotless properties.",
                   "icon": "IoHome",
@@ -2369,11 +2332,16 @@
                 "label": "Call Us Now",
                 "icon": "LuPhone"
               },
-              "button": {
-                "label": "Book a Service",
-                "href": "/book-now",
-                "icon": "LuArrowRight"
-              }
+              "phone": "+1 (202) 555-0147",
+              "noteLines": [
+                "Cleaner",
+                "Spaces",
+                "Happier",
+                "Lives"
+              ],
+              "buttonText": "Book a Service",
+              "buttonUrl": "/book-now",
+              "buttonIcon": "LuArrowRight"
             }
           }
         },
@@ -2388,6 +2356,12 @@
               "description": [
                 "We make it simple and hassle-free to get a cleaner, healthier space. Just follow these easy steps",
                 "and let our professional team take care of the rest."
+              ],
+              "noteLines": [
+                "Cleaner",
+                "Spaces",
+                "Happier",
+                "Lives"
               ],
               "steps": [
                 {
@@ -2431,11 +2405,9 @@
                   "Brighten Lives"
                 ]
               },
-              "button": {
-                "label": "Book Your Cleaning Today",
-                "href": "/book-now",
-                "icon": "LuArrowRight"
-              }
+              "buttonText": "Book Your Cleaning Today",
+              "buttonUrl": "/book-now",
+              "buttonIcon": "LuArrowRight"
             }
           }
         },
@@ -2505,11 +2477,9 @@
                     ]
                   }
                 ],
-                "button": {
-                  "label": "Get a Free Quote",
-                  "href": "/book-now",
-                  "icon": "LuArrowRight"
-                }
+                "buttonText": "Get a Free Quote",
+                "buttonUrl": "/book-now",
+                "buttonIcon": "LuArrowRight"
               },
               "checklist": {
                 "label": "What's Included",
@@ -2571,11 +2541,9 @@
                 "eyebrow": "Let's Make Your Home Spotless",
                 "title": "Book Your Home Deep Cleaning Today!",
                 "text": "Enjoy a cleaner, fresher and healthier home with our professional cleaning services.",
-                "button": {
-                  "label": "Get a Free Quote",
-                  "href": "/book-now",
-                  "icon": "LuArrowRight"
-                },
+                "buttonText": "Get a Free Quote",
+                "buttonUrl": "/book-now",
+                "buttonIcon": "LuArrowRight",
                 "image": "/images/project-living.webp"
               }
             }
@@ -2594,13 +2562,12 @@
                 "helps you get professional cleaning services at the best value."
               ],
               "popularLabel": "Most Popular",
+              "currency": "$",
               "period": "/month",
               "checkIcon": "BsCheckCircleFill",
-              "button": {
-                "label": "Get Started",
-                "href": "/book-now",
-                "icon": "LuArrowRight"
-              },
+              "buttonText": "Get Started",
+              "buttonUrl": "/book-now",
+              "buttonIcon": "LuArrowRight",
               "plans": [
                 {
                   "id": "basic",
@@ -2773,216 +2740,218 @@
             }
           }
         },
-        "GalleryPhotos": {
+        "Gallery": {
           "variants": {
-            "CleaningGalleryPhotos1": {
-              "perPage": 6,
-              "viewImage": "View image: {alt}",
-              "pagination": {
-                "label": "Photo gallery pages",
-                "page": "Page {n}",
-                "previous": {
-                  "label": "Previous page",
-                  "icon": "LuChevronLeft"
+            "CleaningGallery1": {
+              "photos": {
+                "perPage": 6,
+                "viewImage": "View image: {alt}",
+                "pagination": {
+                  "label": "Photo gallery pages",
+                  "page": "Page {n}",
+                  "previous": {
+                    "label": "Previous page",
+                    "icon": "LuChevronLeft"
+                  },
+                  "next": {
+                    "label": "Next page",
+                    "icon": "LuChevronRight"
+                  }
                 },
-                "next": {
-                  "label": "Next page",
-                  "icon": "LuChevronRight"
-                }
+                "lightbox": {
+                  "dialog": "Image lightbox",
+                  "close": "Close lightbox",
+                  "previous": "Previous image",
+                  "next": "Next image",
+                  "closeIcon": "LuX",
+                  "previousIcon": "LuChevronLeft",
+                  "nextIcon": "LuChevronRight"
+                },
+                "photos": [
+                  {
+                    "id": "photo-1",
+                    "src": "/images/service-kitchen.webp",
+                    "alt": "Cleaner wiping a kitchen counter"
+                  },
+                  {
+                    "id": "photo-2",
+                    "src": "/images/about-sofa-vacuum.webp",
+                    "alt": "Sofa being vacuumed"
+                  },
+                  {
+                    "id": "photo-3",
+                    "src": "/images/why-choose-us.webp",
+                    "alt": "Cleaner mopping a living room floor",
+                    "focus": "top"
+                  },
+                  {
+                    "id": "photo-4",
+                    "src": "/images/project-living.webp",
+                    "alt": "Clean, bright living room"
+                  },
+                  {
+                    "id": "photo-5",
+                    "src": "/images/vision-window.webp",
+                    "alt": "Window being cleaned with a squeegee"
+                  },
+                  {
+                    "id": "photo-6",
+                    "src": "/images/project-office.webp",
+                    "alt": "Clean office space"
+                  },
+                  {
+                    "id": "photo-7",
+                    "src": "/images/mission-cleaning.webp",
+                    "alt": "Gloved hand wiping a counter"
+                  },
+                  {
+                    "id": "photo-8",
+                    "src": "/images/about-supplies.webp",
+                    "alt": "Cleaning supplies"
+                  },
+                  {
+                    "id": "photo-9",
+                    "src": "/images/service-office.webp",
+                    "alt": "Office being cleaned"
+                  },
+                  {
+                    "id": "photo-10",
+                    "src": "/images/about-cleaner-woman.webp",
+                    "alt": "Smiling cleaner ready to clean"
+                  },
+                  {
+                    "id": "photo-11",
+                    "src": "/images/partner-cta.webp",
+                    "alt": "Avicleaner cleaning team"
+                  },
+                  {
+                    "id": "photo-12",
+                    "src": "/images/service-team.webp",
+                    "alt": "Avicleaner team members"
+                  }
+                ]
               },
-              "lightbox": {
-                "dialog": "Image lightbox",
-                "close": "Close lightbox",
-                "previous": "Previous image",
-                "next": "Next image",
-                "closeIcon": "LuX",
-                "previousIcon": "LuChevronLeft",
-                "nextIcon": "LuChevronRight"
-              },
-              "photos": [
-                {
-                  "id": "photo-1",
-                  "src": "/images/service-kitchen.webp",
-                  "alt": "Cleaner wiping a kitchen counter"
+              "video": {
+                "label": "Video Gallery",
+                "title": {
+                  "lead": "See Our",
+                  "highlight": "Cleaning in",
+                  "after": "Action"
                 },
-                {
-                  "id": "photo-2",
-                  "src": "/images/about-sofa-vacuum.webp",
-                  "alt": "Sofa being vacuumed"
+                "description": [
+                  "Watch our videos to see how we create cleaner, healthier and happier spaces",
+                  "for homes and businesses."
+                ],
+                "noteLines": [
+                  "Cleaner",
+                  "Spaces",
+                  "Happier",
+                  "Lives"
+                ],
+                "perPage": 6,
+                "playVideo": "Play video: {title}",
+                "pagination": {
+                  "label": "Video gallery pages",
+                  "page": "Page {n}",
+                  "previous": {
+                    "label": "Previous page",
+                    "icon": "LuChevronLeft"
+                  },
+                  "next": {
+                    "label": "Next page",
+                    "icon": "LuChevronRight"
+                  }
                 },
-                {
-                  "id": "photo-3",
-                  "src": "/images/why-choose-us.webp",
-                  "alt": "Cleaner mopping a living room floor",
-                  "focus": "top"
-                },
-                {
-                  "id": "photo-4",
-                  "src": "/images/project-living.webp",
-                  "alt": "Clean, bright living room"
-                },
-                {
-                  "id": "photo-5",
-                  "src": "/images/vision-window.webp",
-                  "alt": "Window being cleaned with a squeegee"
-                },
-                {
-                  "id": "photo-6",
-                  "src": "/images/project-office.webp",
-                  "alt": "Clean office space"
-                },
-                {
-                  "id": "photo-7",
-                  "src": "/images/mission-cleaning.webp",
-                  "alt": "Gloved hand wiping a counter"
-                },
-                {
-                  "id": "photo-8",
-                  "src": "/images/about-supplies.webp",
-                  "alt": "Cleaning supplies"
-                },
-                {
-                  "id": "photo-9",
-                  "src": "/images/service-office.webp",
-                  "alt": "Office being cleaned"
-                },
-                {
-                  "id": "photo-10",
-                  "src": "/images/about-cleaner-woman.webp",
-                  "alt": "Smiling cleaner ready to clean"
-                },
-                {
-                  "id": "photo-11",
-                  "src": "/images/partner-cta.webp",
-                  "alt": "Avicleaner cleaning team"
-                },
-                {
-                  "id": "photo-12",
-                  "src": "/images/service-team.webp",
-                  "alt": "Avicleaner team members"
-                }
-              ]
-            }
-          }
-        },
-        "GalleryVideo": {
-          "variants": {
-            "CleaningGalleryVideo1": {
-              "label": "Video Gallery",
-              "title": {
-                "lead": "See Our",
-                "highlight": "Cleaning in",
-                "after": "Action"
-              },
-              "description": [
-                "Watch our videos to see how we create cleaner, healthier and happier spaces",
-                "for homes and businesses."
-              ],
-              "perPage": 6,
-              "playVideo": "Play video: {title}",
-              "pagination": {
-                "label": "Video gallery pages",
-                "page": "Page {n}",
-                "previous": {
-                  "label": "Previous page",
-                  "icon": "LuChevronLeft"
-                },
-                "next": {
-                  "label": "Next page",
-                  "icon": "LuChevronRight"
-                }
-              },
-              "button": {
-                "label": "Book a Cleaning Service",
-                "href": "/book-now",
-                "icon": "LuArrowRight"
-              },
-              "videos": [
-                {
-                  "id": "video-1",
-                  "title": "Home Cleaning Service",
-                  "text": "See how we clean and refresh your home.",
-                  "thumb": "/images/avatar-2.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-2",
-                  "title": "Office Cleaning Process",
-                  "text": "A cleaner workspace for a more productive day.",
-                  "thumb": "/images/service-office.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-3",
-                  "title": "Sofa Deep Cleaning",
-                  "text": "Watch the deep cleaning process for a fresh look.",
-                  "thumb": "/images/about-sofa-vacuum.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-4",
-                  "title": "Window Cleaning Tips",
-                  "text": "Quick tips for sparkling clean windows.",
-                  "thumb": "/images/vision-window.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-5",
-                  "title": "Bathroom Cleaning",
-                  "text": "Hygienic cleaning for a healthier home.",
-                  "thumb": "/images/mission-cleaning.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-6",
-                  "title": "Our Team at Work",
-                  "text": "Meet our team and see us in action.",
-                  "thumb": "/images/partner-cta.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-7",
-                  "title": "Carpet Deep Extraction",
-                  "text": "Watch how stubborn dirt and stains are lifted with steam.",
-                  "thumb": "/images/about-sofa-vacuum.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-8",
-                  "title": "Kitchen Degreasing Tour",
-                  "text": "Sparkling countertops, chimney filters and appliance care.",
-                  "thumb": "/images/service-kitchen.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-9",
-                  "title": "Living Room Detailing",
-                  "text": "Step-by-step complete residential deep cleaning walkthrough.",
-                  "thumb": "/images/project-living.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-10",
-                  "title": "Commercial Floor Scrubbing",
-                  "text": "High-grade industrial floor cleaning machines in motion.",
-                  "thumb": "/images/project-office.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-11",
-                  "title": "Eco-Friendly Cleaning Demo",
-                  "text": "Non-toxic, safe, and plant-derived cleaning products in action.",
-                  "thumb": "/images/why-choose-us.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                },
-                {
-                  "id": "video-12",
-                  "title": "Final Inspection & Handoff",
-                  "text": "Our supervisor verifying pristine quality before handover.",
-                  "thumb": "/images/about-cleaner-woman.webp",
-                  "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
-                }
-              ]
+                "buttonText": "Book a Cleaning Service",
+                "buttonUrl": "/book-now",
+                "buttonIcon": "LuArrowRight",
+                "videos": [
+                  {
+                    "id": "video-1",
+                    "title": "Home Cleaning Service",
+                    "text": "See how we clean and refresh your home.",
+                    "thumb": "/images/avatar-2.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-2",
+                    "title": "Office Cleaning Process",
+                    "text": "A cleaner workspace for a more productive day.",
+                    "thumb": "/images/service-office.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-3",
+                    "title": "Sofa Deep Cleaning",
+                    "text": "Watch the deep cleaning process for a fresh look.",
+                    "thumb": "/images/about-sofa-vacuum.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-4",
+                    "title": "Window Cleaning Tips",
+                    "text": "Quick tips for sparkling clean windows.",
+                    "thumb": "/images/vision-window.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-5",
+                    "title": "Bathroom Cleaning",
+                    "text": "Hygienic cleaning for a healthier home.",
+                    "thumb": "/images/mission-cleaning.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-6",
+                    "title": "Our Team at Work",
+                    "text": "Meet our team and see us in action.",
+                    "thumb": "/images/partner-cta.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-7",
+                    "title": "Carpet Deep Extraction",
+                    "text": "Watch how stubborn dirt and stains are lifted with steam.",
+                    "thumb": "/images/about-sofa-vacuum.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-8",
+                    "title": "Kitchen Degreasing Tour",
+                    "text": "Sparkling countertops, chimney filters and appliance care.",
+                    "thumb": "/images/service-kitchen.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-9",
+                    "title": "Living Room Detailing",
+                    "text": "Step-by-step complete residential deep cleaning walkthrough.",
+                    "thumb": "/images/project-living.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-10",
+                    "title": "Commercial Floor Scrubbing",
+                    "text": "High-grade industrial floor cleaning machines in motion.",
+                    "thumb": "/images/project-office.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-11",
+                    "title": "Eco-Friendly Cleaning Demo",
+                    "text": "Non-toxic, safe, and plant-derived cleaning products in action.",
+                    "thumb": "/images/why-choose-us.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  },
+                  {
+                    "id": "video-12",
+                    "title": "Final Inspection & Handoff",
+                    "text": "Our supervisor verifying pristine quality before handover.",
+                    "thumb": "/images/about-cleaner-woman.webp",
+                    "src": "https://youtu.be/aeeA31ViGjI?si=0U_bovYji75p6AVm"
+                  }
+                ]
+              }
             }
           }
         },
@@ -3015,7 +2984,7 @@
                 {
                   "id": "top-5-tips-for-a-spotless-home",
                   "title": "Top 5 Tips for a Spotless Home",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Home Cleaning",
                   "date": "Mar 18, 2024",
                   "image": "/images/blog-spotless-home.webp",
@@ -3025,7 +2994,7 @@
                 {
                   "id": "why-professional-cleaning-saves-you-time",
                   "title": "Why Professional Cleaning Saves You Time",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Cleaning Tips",
                   "date": "Apr 26, 2024",
                   "image": "/images/blog-professional-cleaning.webp",
@@ -3035,7 +3004,7 @@
                 {
                   "id": "eco-friendly-cleaning-effective-solutions",
                   "title": "Eco-Friendly Cleaning Effective Solutions",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Eco Friendly",
                   "date": "Jun 07, 2024",
                   "image": "/images/blog-eco-friendly.webp",
@@ -3045,7 +3014,7 @@
                 {
                   "id": "how-a-clean-office-boosts-productivity",
                   "title": "How a Clean Office Boosts Productivity",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Office Cleaning",
                   "date": "Jul 15, 2024",
                   "image": "/images/blog-4.webp",
@@ -3055,7 +3024,7 @@
                 {
                   "id": "10-simple-cleaning-tips-for-a-healthier-home",
                   "title": "10 Simple Cleaning Tips for a Healthier Home",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Cleaning Tips",
                   "date": "Dec 20, 2022",
                   "image": "/images/service-kitchen.webp",
@@ -3065,7 +3034,7 @@
                 {
                   "id": "must-have-cleaning-supplies-for-every-home",
                   "title": "Must-Have Cleaning Supplies for Every Home",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Home Cleaning",
                   "date": "Dec 20, 2022",
                   "image": "/images/about-supplies.webp",
@@ -3075,7 +3044,7 @@
                 {
                   "id": "how-a-clean-workspace-boosts-productivity",
                   "title": "How a Clean Workspace Boosts Productivity",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Office Cleaning",
                   "date": "Dec 20, 2022",
                   "image": "/images/service-office.webp",
@@ -3085,7 +3054,7 @@
                 {
                   "id": "eco-friendly-cleaning-a-better-tomorrow",
                   "title": "Eco-Friendly Cleaning: A Better Tomorrow",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Eco Friendly",
                   "date": "Dec 20, 2022",
                   "image": "/images/mission-cleaning.webp",
@@ -3095,7 +3064,7 @@
                 {
                   "id": "how-often-should-you-clean-different-areas-of-your-home",
                   "title": "How Often Should You Clean Different Areas of Your Home?",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Cleaning Tips",
                   "date": "Dec 20, 2022",
                   "image": "/images/about-sofa-vacuum.webp",
@@ -3105,7 +3074,7 @@
                 {
                   "id": "our-commitment-to-cleaner-healthier-communities",
                   "title": "Our Commitment to Cleaner, Healthier Communities",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Company News",
                   "date": "Dec 20, 2022",
                   "image": "/images/partner-cta.webp",
@@ -3115,7 +3084,7 @@
                 {
                   "id": "why-your-business-needs-professional-cleaning-services",
                   "title": "Why Your Business Needs Professional Cleaning Services",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Office Cleaning",
                   "date": "Dec 20, 2022",
                   "image": "/images/service-team.webp",
@@ -3125,7 +3094,7 @@
                 {
                   "id": "how-to-keep-your-home-clean-and-healthy",
                   "title": "How to Keep Your Home Clean and Healthy",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Home Cleaning",
                   "date": "Dec 18, 2022",
                   "image": "/images/project-living.webp",
@@ -3135,7 +3104,7 @@
                 {
                   "id": "best-office-cleaning-tips-for-productivity",
                   "title": "Best Office Cleaning Tips for Productivity",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Office Cleaning",
                   "date": "Dec 15, 2022",
                   "image": "/images/project-office.webp",
@@ -3145,7 +3114,7 @@
                 {
                   "id": "eco-friendly-cleaning-for-a-better-tomorrow",
                   "title": "Eco-Friendly Cleaning for a Better Tomorrow",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Eco Friendly",
                   "date": "Dec 12, 2022",
                   "image": "/images/why-choose-us.webp",
@@ -3155,7 +3124,7 @@
                 {
                   "id": "window-cleaning-made-simple",
                   "title": "Window Cleaning Made Simple",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Cleaning Tips",
                   "date": "Dec 10, 2022",
                   "image": "/images/vision-window.webp",
@@ -3165,7 +3134,7 @@
                 {
                   "id": "a-spotless-kitchen-in-five-easy-steps",
                   "title": "A Spotless Kitchen in Five Easy Steps",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "category": "Deep Cleaning",
                   "date": "Dec 08, 2022",
                   "image": "/images/project-kitchen.webp",
@@ -3274,21 +3243,21 @@
                 {
                   "id": "top-5-tips-for-a-spotless-home",
                   "title": "Top 5 Tips for a Spotless Home",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "image": "/images/blog-spotless-home.webp",
                   "date": "Mar 18, 2024"
                 },
                 {
                   "id": "why-professional-cleaning-saves-you-time",
                   "title": "Why Professional Cleaning Saves You Time",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "image": "/images/blog-professional-cleaning.webp",
                   "date": "Apr 26, 2024"
                 },
                 {
                   "id": "eco-friendly-cleaning-effective-solutions",
                   "title": "Eco-Friendly Cleaning Effective Solutions",
-                  "href": "/blog/blog-details",
+                  "url": "/blog/blog-details",
                   "image": "/images/blog-eco-friendly.webp",
                   "date": "Jun 07, 2024"
                 }
@@ -3317,6 +3286,12 @@
                 "after": "Asked Questions"
               },
               "description": "Find quick answers to common questions about our cleaning services, booking process, pricing, and more. If you need further assistance, feel free to contact our team.",
+              "noteLines": [
+                "Cleaner",
+                "Spaces",
+                "Happier",
+                "Lives"
+              ],
               "image": {
                 "src": "/images/about-supplies.webp",
                 "alt": "Avicleaner cleaning supplies ready for use"
@@ -3377,158 +3352,169 @@
                 "eyebrow": "Still have questions?",
                 "title": "We’re Here to Help!",
                 "text": "Can’t find the answer you’re looking for? Our friendly team is always ready to assist you.",
-                "button": {
-                  "label": "Contact Us",
-                  "href": "/contact-us",
-                  "icon": "LuArrowRight"
-                }
+                "buttonText": "Contact Us",
+                "buttonUrl": "/contact-us",
+                "buttonIcon": "LuArrowRight"
               }
             }
           }
         },
-        "ContactInfo": {
+        "Contact": {
           "variants": {
-            "CleaningContactInfo1": {
-              "label": "Contact Info",
-              "title": "Our Contact Information",
-              "description": [
-                "We’re here to help! Get in touch with us for any questions, bookings or",
-                "custom cleaning solutions. Our friendly team is always ready to assist you."
+            "CleaningContact1": {
+              "phone": "+1 (202) 555-0147",
+              "email": "xyz@avicleaner.com",
+              "address": [
+                "123 Main Street, Seattle,",
+                "WA 98101, USA"
               ],
+              "mapEmbedUrl": "https://www.google.com/maps?q={query}&z=15&output=embed",
               "noteLines": [
-                "Let's",
-                "Connect!"
+                "Cleaner",
+                "Spaces",
+                "Happier",
+                "Lives"
               ],
-              "arrowIcon": "LuArrowRight",
-              "cards": [
-                {
-                  "id": "our-location",
-                  "icon": "LuMapPin",
-                  "title": "Our Location",
-                  "source": "address",
-                  "action": {
-                    "label": "View on Map",
-                    "icon": "LuMapSolid",
-                    "href": "#map"
+              "info": {
+                "label": "Contact Info",
+                "title": "Our Contact Information",
+                "description": [
+                  "We’re here to help! Get in touch with us for any questions, bookings or",
+                  "custom cleaning solutions. Our friendly team is always ready to assist you."
+                ],
+                "noteLines": [
+                  "Let's",
+                  "Connect!"
+                ],
+                "arrowIcon": "LuArrowRight",
+                "cards": [
+                  {
+                    "id": "our-location",
+                    "icon": "LuMapPin",
+                    "title": "Our Location",
+                    "source": "address",
+                    "action": {
+                      "label": "View on Map",
+                      "icon": "LuMapSolid",
+                      "url": "#map"
+                    }
+                  },
+                  {
+                    "id": "phone-number",
+                    "icon": "LuPhoneCall",
+                    "title": "Phone Number",
+                    "source": "phone",
+                    "action": {
+                      "label": "Call Us Now",
+                      "icon": "LuPhoneSolid",
+                      "url": ""
+                    }
+                  },
+                  {
+                    "id": "email-address",
+                    "icon": "LuMail",
+                    "title": "Email Address",
+                    "source": "email",
+                    "action": {
+                      "label": "Send an Email",
+                      "icon": "LuMailBold",
+                      "url": ""
+                    }
+                  }
+                ]
+              },
+              "form": {
+                "label": "Get in Touch",
+                "title": "Send us a Message",
+                "description": "Have questions or need a cleaning service? Fill out the form and our team will get back to you as soon as possible.",
+                "fields": {
+                  "name": {
+                    "label": "Your Name",
+                    "icon": "LuUser"
+                  },
+                  "phone": {
+                    "label": "Phone Number",
+                    "icon": "LuPhone"
+                  },
+                  "email": {
+                    "label": "Email Address",
+                    "icon": "LuMail"
+                  },
+                  "subject": {
+                    "label": "Subject",
+                    "icon": "LuFileText"
+                  },
+                  "message": {
+                    "label": "Your Message",
+                    "icon": "LuMessageCircleMore"
                   }
                 },
-                {
-                  "id": "phone-number",
-                  "icon": "LuPhoneCall",
-                  "title": "Phone Number",
-                  "source": "phone",
-                  "action": {
-                    "label": "Call Us Now",
+                "submit": {
+                  "label": "Submit Now",
+                  "icon": "LuArrowRight"
+                },
+                "sendingText": "Sending…",
+                "successTitle": "Thank you, {name}!",
+                "successMessage": "Your message has been sent. Our team will get back to you shortly.",
+                "formSuccess": {
+                  "successIcon": "LuCheck",
+                  "closeIcon": "LuX",
+                  "closeLabel": "Close message",
+                  "sendingIcon": "LuLoaderCircle"
+                },
+                "noteLines": [
+                  "We’re Here",
+                  "to Help!"
+                ],
+                "image": {
+                  "src": "/images/team-3.webp",
+                  "alt": "Smiling Avicleaner cleaner in a green uniform"
+                },
+                "details": [
+                  {
+                    "id": "our-location",
+                    "icon": "LuMapPinSolid",
+                    "title": "Our Location",
+                    "source": "address"
+                  },
+                  {
+                    "id": "call-us",
                     "icon": "LuPhoneSolid",
-                    "href": ""
+                    "title": "Call Us",
+                    "source": "phone"
+                  },
+                  {
+                    "id": "email-us",
+                    "icon": "IoMail",
+                    "title": "Email Us",
+                    "source": "email"
                   }
-                },
-                {
-                  "id": "email-address",
-                  "icon": "LuMail",
-                  "title": "Email Address",
-                  "source": "email",
-                  "action": {
-                    "label": "Send an Email",
-                    "icon": "LuMailBold",
-                    "href": ""
+                ],
+                "promises": [
+                  {
+                    "id": "quick-response",
+                    "icon": "LuShieldCheck",
+                    "title": "Quick Response",
+                    "subtitle": "We reply within 24 hours"
+                  },
+                  {
+                    "id": "friendly-support",
+                    "icon": "HiUserGroup",
+                    "title": "Friendly Support",
+                    "subtitle": "Our team is always here"
+                  },
+                  {
+                    "id": "reliable-service",
+                    "icon": "FaThumbsUp",
+                    "title": "Reliable Service",
+                    "subtitle": "Your satisfaction is our priority"
                   }
-                }
-              ]
-            }
-          }
-        },
-        "ContactForm": {
-          "variants": {
-            "CleaningContactForm1": {
-              "label": "Get in Touch",
-              "title": "Send us a Message",
-              "description": "Have questions or need a cleaning service? Fill out the form and our team will get back to you as soon as possible.",
-              "fields": {
-                "name": {
-                  "label": "Your Name",
-                  "icon": "LuUser"
-                },
-                "phone": {
-                  "label": "Phone Number",
-                  "icon": "LuPhone"
-                },
-                "email": {
-                  "label": "Email Address",
-                  "icon": "LuMail"
-                },
-                "subject": {
-                  "label": "Subject",
-                  "icon": "LuFileText"
-                },
-                "message": {
-                  "label": "Your Message",
-                  "icon": "LuMessageCircleMore"
-                }
+                ]
               },
-              "submit": {
-                "label": "Submit Now",
-                "icon": "LuArrowRight"
-              },
-              "sendingText": "Sending…",
-              "successTitle": "Thank you, {name}!",
-              "successMessage": "Your message has been sent. Our team will get back to you shortly.",
-              "noteLines": [
-                "We’re Here",
-                "to Help!"
-              ],
-              "image": {
-                "src": "/images/team-3.webp",
-                "alt": "Smiling Avicleaner cleaner in a green uniform"
-              },
-              "details": [
-                {
-                  "id": "our-location",
-                  "icon": "LuMapPinSolid",
-                  "title": "Our Location",
-                  "source": "address"
-                },
-                {
-                  "id": "call-us",
-                  "icon": "LuPhoneSolid",
-                  "title": "Call Us",
-                  "source": "phone"
-                },
-                {
-                  "id": "email-us",
-                  "icon": "IoMail",
-                  "title": "Email Us",
-                  "source": "email"
-                }
-              ],
-              "promises": [
-                {
-                  "id": "quick-response",
-                  "icon": "LuShieldCheck",
-                  "title": "Quick Response",
-                  "subtitle": "We reply within 24 hours"
-                },
-                {
-                  "id": "friendly-support",
-                  "icon": "HiUserGroup",
-                  "title": "Friendly Support",
-                  "subtitle": "Our team is always here"
-                },
-                {
-                  "id": "reliable-service",
-                  "icon": "FaThumbsUp",
-                  "title": "Reliable Service",
-                  "subtitle": "Your satisfaction is our priority"
-                }
-              ]
-            }
-          }
-        },
-        "ContactMap": {
-          "variants": {
-            "CleaningContactMap1": {
-              "label": "Our location on the map",
-              "title": "Avicleaner location on Google Maps"
+              "map": {
+                "label": "Our location on the map",
+                "title": "Avicleaner location on Google Maps"
+              }
             }
           }
         },
@@ -3612,6 +3598,12 @@
               "sendingText": "Booking…",
               "successTitle": "Thank you, {name}!",
               "successMessage": "Your booking request has been received. Our team will contact you shortly.",
+              "formSuccess": {
+                "successIcon": "LuCheck",
+                "closeIcon": "LuX",
+                "closeLabel": "Close message",
+                "sendingIcon": "LuLoaderCircle"
+              },
               "image": {
                 "src": "/images/service-kitchen.webp",
                 "alt": "Avicleaner cleaner wiping a kitchen counter"
@@ -3660,6 +3652,12 @@
                 "lead": "We Value",
                 "highlight": "Your Privacy"
               },
+              "phone": "+1 (202) 555-0147",
+              "email": "xyz@avicleaner.com",
+              "address": [
+                "123 Main Street, Seattle,",
+                "WA 98101, USA"
+              ],
               "description": [
                 "At Avicleaner, we respect your privacy and are committed to protecting your personal information.",
                 "This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit",
@@ -3719,6 +3717,12 @@
                 "lead": "Fair & Simple",
                 "highlight": "Refund Policy"
               },
+              "phone": "+1 (202) 555-0147",
+              "email": "xyz@avicleaner.com",
+              "address": [
+                "123 Main Street, Seattle,",
+                "WA 98101, USA"
+              ],
               "intro": "We understand that plans can change. This Refund & Cancellation Policy explains how you can cancel or reschedule a booking, when fees may apply, and how refunds are handled for our cleaning services.",
               "sections": [
                 {
@@ -3796,6 +3800,12 @@
                 "lead": "Terms of",
                 "highlight": "Our Service"
               },
+              "phone": "+1 (202) 555-0147",
+              "email": "xyz@avicleaner.com",
+              "address": [
+                "123 Main Street, Seattle,",
+                "WA 98101, USA"
+              ],
               "intro": "Please read these Terms & Conditions carefully before using our website or booking a cleaning service. They explain the rules that apply to our services, along with your rights and responsibilities as an Avicleaner customer.",
               "sections": [
                 {
@@ -3987,16 +3997,8 @@
                 "component": "common.missionVisionBreadcrumb"
               },
               {
-                "key": "OurMission",
-                "component": "CleaningOurMission1"
-              },
-              {
-                "key": "OurVision",
-                "component": "CleaningOurVision1"
-              },
-              {
-                "key": "CoreValues",
-                "component": "CleaningCoreValues1"
+                "key": "MissionVision",
+                "component": "CleaningMissionVision1"
               },
               {
                 "key": "PartnerCta",
@@ -4187,12 +4189,8 @@
                 "component": "common.galleryBreadcrumb"
               },
               {
-                "key": "GalleryPhotos",
-                "component": "CleaningGalleryPhotos1"
-              },
-              {
-                "key": "GalleryVideo",
-                "component": "CleaningGalleryVideo1"
+                "key": "Gallery",
+                "component": "CleaningGallery1"
               },
               {
                 "key": "Footer",
@@ -4271,16 +4269,8 @@
                 "component": "common.contactBreadcrumb"
               },
               {
-                "key": "ContactInfo",
-                "component": "CleaningContactInfo1"
-              },
-              {
-                "key": "ContactForm",
-                "component": "CleaningContactForm1"
-              },
-              {
-                "key": "ContactMap",
-                "component": "CleaningContactMap1"
+                "key": "Contact",
+                "component": "CleaningContact1"
               },
               {
                 "key": "Footer",
@@ -4375,7 +4365,7 @@
                 "component": "CleaningHeader1"
               },
               {
-                "key": "NotFoundSection",
+                "key": "NotFound",
                 "component": "common.notFound"
               },
               {

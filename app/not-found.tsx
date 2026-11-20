@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import rawData from "@/data/templates.json";
 import type { CleaningTemplateData } from "@/types/templates.types";
-import { NotFoundSection } from "@/components/sections/NotFoundSection";
+import { NotFound } from "@/components/sections/NotFound";
 
-const templateData: CleaningTemplateData = rawData;
-const commonData = templateData.common;
+export const metadata: Metadata = { ...(rawData as CleaningTemplateData).common.notFound?.seo };
 
-export const metadata: Metadata = { ...commonData.notFound?.seo };
+export default function NotFoundPage() {
+  const templateData: CleaningTemplateData = rawData;
+  const commonData = templateData?.common;
 
-export default function NotFound() {
+  if (!commonData) return null;
+
   return (
     <main className="flex-1">
-      <NotFoundSection data={commonData.notFound} />
+      <NotFound data={commonData.notFound} />
     </main>
   );
 }

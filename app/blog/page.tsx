@@ -4,13 +4,15 @@ import type { CleaningTemplateData } from "@/types/templates.types";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { BlogGrid } from "@/components/sections/BlogGrid";
 
-const templateData: CleaningTemplateData = rawData;
-const sectionData = templateData.categories.Cleaning.sections;
-const commonData = templateData.common;
-
-export const metadata: Metadata = { ...commonData.blogBreadcrumb?.seo };
+export const metadata: Metadata = { ...(rawData as CleaningTemplateData).common.blogBreadcrumb?.seo };
 
 export default function BlogPage() {
+  const templateData: CleaningTemplateData = rawData;
+  const sectionData = templateData?.categories?.Cleaning?.sections;
+  const commonData = templateData?.common;
+
+  if (!sectionData || !commonData) return null;
+
   return (
     <main className="flex-1">
       <Breadcrumb data={commonData.blogBreadcrumb} ui={commonData.globalUI} />
