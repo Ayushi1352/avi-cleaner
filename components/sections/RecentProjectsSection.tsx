@@ -4,11 +4,11 @@ import Link from "next/link";
 import type { GlobalUIData, ProjectItem, RecentProjectsData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { SectionTag } from "@/components/ui/SectionTag";
+import { SectionTag } from "@/components/ui/SectionLabel";
 import { CarouselDots } from "@/components/ui/CarouselDots";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { useCarousel, slideClass, trackClass } from "@/components/ui/useCarousel";
-import { fillLabel } from "@/components/ui/helpers";
+import { fill } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
 function ProjectCard({ project, link, labels }: { project: ProjectItem; link: RecentProjectsData["cardLink"]; labels?: GlobalUIData }) {
@@ -19,13 +19,11 @@ function ProjectCard({ project, link, labels }: { project: ProjectItem; link: Re
       ui={labels}
       data-card-border className={`${ui.cardBorder} aspect-square w-full rounded-[20px] shadow-[0_16px_40px_-24px_var(--color-shadow-heading-45)] 2xl:rounded-[24px]`}
     >
-      {/* Tag */}
       <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[var(--color-white-90)] px-4 py-2 text-[13px] font-semibold text-[var(--color-heading)] backdrop-blur sm:left-5 sm:top-5 2xl:left-8 2xl:top-7 2xl:gap-3 2xl:px-6 2xl:py-3.5 2xl:text-[17px]">
         <Icon name={project.icon} className="h-4 w-4 text-[var(--color-primary)] 2xl:h-6 2xl:w-6" />
         {project.tag}
       </span>
 
-      {/* Info panel */}
       <div className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-[16px] bg-[var(--color-white)] px-4 py-4 sm:px-5 sm:py-5 2xl:inset-x-3 2xl:bottom-3 2xl:rounded-[18px] 2xl:px-9 2xl:py-8">
         <div className="min-w-0">
           <h3 className="text-[18px] font-bold leading-tight text-[var(--color-heading)] sm:text-[19px] xl:text-[21px] 2xl:text-[27px]">
@@ -37,7 +35,7 @@ function ProjectCard({ project, link, labels }: { project: ProjectItem; link: Re
         </div>
         <Link
           href={link.href}
-          aria-label={fillLabel(link.label, { title: project.title })}
+          aria-label={fill(link.label, { title: project.title })}
           className={`${ui.btnSolid} flex h-11 w-11 shrink-0 items-center justify-center rounded-full [--btn:var(--color-projects-button)] sm:h-12 sm:w-12 2xl:h-[70px] 2xl:w-[70px]`}
         >
           <Icon name={link.icon} className="h-5 w-5 2xl:h-7 2xl:w-7" />
@@ -49,7 +47,7 @@ function ProjectCard({ project, link, labels }: { project: ProjectItem; link: Re
 
 export const RecentProjectsSection = ({ data, ui: labels }: { data?: RecentProjectsData; ui?: GlobalUIData }) => {
   const projects = data?.projects ?? [];
-  const { setViewport, ...c } = useCarousel(projects.length);
+  const { setViewport, setTrack, ...c } = useCarousel(projects.length);
   if (!data) return null;
 
   return (
@@ -72,7 +70,7 @@ export const RecentProjectsSection = ({ data, ui: labels }: { data?: RecentProje
           ref={setViewport}
           className="mt-10 overflow-hidden px-0.5 pb-4 pt-2 [--gap:16px] [--per:1] sm:[--per:2] lg:[--per:3] lg:[--gap:20px] 2xl:mt-[58px] 2xl:[--gap:28px] 3xl:px-[10px]"
         >
-          <div className={trackClass} style={c.trackStyle}>
+          <div className={trackClass} ref={setTrack}>
             {projects.map((p, i) => (
               <div key={p.title} className={slideClass}>
                 <ScrollReveal

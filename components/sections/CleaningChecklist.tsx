@@ -1,10 +1,9 @@
 import type { GlobalUIData, ServiceDetailData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
-/** "What's Included — Our Cleaning Checklist" with photo. */
 export const CleaningChecklist = ({ data, ui: labels }: { data?: ServiceDetailData; ui?: GlobalUIData }) => {
   if (!data) return null;
   const { service, checklist } = data;
@@ -16,7 +15,6 @@ export const CleaningChecklist = ({ data, ui: labels }: { data?: ServiceDetailDa
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className={ui.container}>
         <div className="grid grid-cols-1 items-center gap-8 rounded-[22px] bg-[var(--color-checklist-bg)] p-5 sm:p-8 lg:grid-cols-[1fr_minmax(0,44%)] xl:gap-10 xl:p-10 2xl:gap-[40px] 2xl:rounded-[26px] 2xl:py-[45px] 2xl:pl-[60px] 2xl:pr-[42px] 3xl:grid-cols-[1fr_670px] 3xl:gap-[28px] 3xl:pl-[64px]">
-          {/* Text */}
           <div className="min-w-0">
             <SectionEyebrow compact className="3xl:[&>span:first-child]:w-[46px] 3xl:[&>span:last-child]:w-[46px] 3xl:[&>span:nth-child(2)]:text-[23px]">{checklist.label}</SectionEyebrow>
             <h2 className="mt-3 text-[clamp(28px,3.3vw,63px)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[var(--color-title)] 2xl:mt-4">
@@ -40,7 +38,6 @@ export const CleaningChecklist = ({ data, ui: labels }: { data?: ServiceDetailDa
             </div>
           </div>
 
-          {/* Photo */}
           <div className="relative mx-auto w-full min-w-0 max-w-[700px]">
             <PhotoSlot
               src={service.checklistImage}

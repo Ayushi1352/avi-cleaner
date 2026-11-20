@@ -4,17 +4,16 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import type { GlobalUIData, ServiceGridItem, ServicesGridData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
+import { Pagination } from "@/components/ui/Pagination";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
-import { fillLabel } from "@/components/ui/helpers";
 import { ui } from "@/components/ui/styles";
 
 function ServiceCard({ service, readMore, labels }: { service: ServiceGridItem; readMore: ServicesGridData["readMore"]; labels: GlobalUIData }) {
   const href = service.href;
   return (
     <article className="grid h-full grid-cols-1 rounded-[20px] bg-[var(--color-white)] p-1.5 shadow-[0_14px_36px_-26px_var(--color-shadow-card-35)] sm:grid-cols-[48%_1fr] md:grid-cols-1 xl:grid-cols-[47%_1fr]">
-      {/* Photo + icon badge */}
       <div className="relative">
         <Link href={href} aria-label={service.title} className="block h-full">
           <PhotoSlot
@@ -29,7 +28,6 @@ function ServiceCard({ service, readMore, labels }: { service: ServiceGridItem; 
         </span>
       </div>
 
-      {/* Text */}
       <div className="flex min-w-0 flex-col px-4 pb-5 pt-10 sm:pl-12 sm:pr-4 sm:pt-[72px] md:pl-4 md:pt-10 xl:pl-12 xl:pt-[76px] 2xl:pl-[50px] 2xl:pr-4 2xl:pt-[62px] 3xl:pb-[16px] 3xl:pr-2.5 3xl:pt-[88px]">
         <h3 className="text-[18px] font-bold leading-[1.2] text-[var(--color-title)] xl:text-[19px] 2xl:text-[22px] 3xl:text-[24px]">
           <Link href={href} className="transition-colors hover:text-[var(--color-primary)]">
@@ -53,7 +51,6 @@ function ServiceCard({ service, readMore, labels }: { service: ServiceGridItem; 
   );
 }
 
-/** "What We Provide — Comprehensive Cleaning Services You Can Trust" grid with pagination. */
 export const ServicesGrid = ({ data, ui: labels }: { data?: ServicesGridData; ui: GlobalUIData }) => {
   const [page, setPage] = useState(1);
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -71,15 +68,9 @@ export const ServicesGrid = ({ data, ui: labels }: { data?: ServicesGridData; ui
     sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const btn =
-    "flex h-10 w-10 items-center justify-center rounded-full text-[14px] font-bold shadow-[0_4px_14px_-4px_var(--color-shadow-card-30)] transition-colors 2xl:h-12 2xl:w-12 2xl:text-[16px] 3xl:h-[50px] 3xl:w-[50px]";
-  const idle =
-    "bg-[var(--color-white)] text-[var(--color-title)] hover:bg-[var(--color-card-badge)] hover:text-[var(--color-white)] disabled:pointer-events-none disabled:opacity-60";
-
   return (
     <section ref={sectionRef} className="w-full scroll-mt-24 bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="relative overflow-hidden bg-[var(--color-icon-bg-light)] py-12 sm:py-14 2xl:pb-[48px] 2xl:pt-[40px]">
-        {/* Leaf, top left */}
         <svg aria-hidden="true" viewBox="0 0 300 330" className="pointer-events-none absolute left-0 top-10 hidden w-[200px] text-[var(--color-step-number-light)] md:block 2xl:w-[300px]">
           <path fill="currentColor" d="M10 0c90 20 150 90 160 180 5 40-5 80-25 110C60 260 15 190 8 110 5 70 5 30 10 0Z" />
           <path fill="currentColor" d="M150 320c10-70 60-120 130-130-10 70-60 120-130 130Z" />
@@ -109,45 +100,7 @@ export const ServicesGrid = ({ data, ui: labels }: { data?: ServicesGridData; ui
           </ul>
 
           {totalPages > 1 && (
-            <nav aria-label={data.pagination.label} className="mt-10 flex justify-center 2xl:mt-[38px]">
-              <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => goTo(page - 1)}
-                    disabled={page === 1}
-                    aria-label={data.pagination.previous.label}
-                    className={`${btn} ${idle}`}
-                  >
-                    <Icon name={data.pagination.previous.icon} className="h-4 w-4" strokeWidth={3} />
-                  </button>
-                </li>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-                  <li key={n}>
-                    <button
-                      type="button"
-                      onClick={() => goTo(n)}
-                      aria-label={fillLabel(data.pagination.page, { n })}
-                      aria-current={n === page ? "page" : undefined}
-                      className={`${btn} ${n === page ? "bg-[var(--color-card-badge)] text-[var(--color-white)]" : idle}`}
-                    >
-                      {n}
-                    </button>
-                  </li>
-                ))}
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => goTo(page + 1)}
-                    disabled={page === totalPages}
-                    aria-label={data.pagination.next.label}
-                    className={`${btn} ${idle}`}
-                  >
-                    <Icon name={data.pagination.next.icon} className="h-4 w-4" strokeWidth={3} />
-                  </button>
-                </li>
-              </ul>
-            </nav>
+            <Pagination page={page} totalPages={totalPages} onChange={goTo} labels={data.pagination} className="mt-10 2xl:mt-[38px]" />
           )}
         </div>
       </div>

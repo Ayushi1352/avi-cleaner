@@ -32,7 +32,6 @@ const config: Config = {
       borderColor: {
         DEFAULT: "currentColor",
       },
-      // Form thank-you card: fades in, and a thin bar shows the time left before it closes itself.
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0", transform: "translateY(8px)" },
@@ -45,7 +44,8 @@ const config: Config = {
       },
       animation: {
         "fade-in": "fadeIn 450ms ease",
-        "shrink-width": "shrinkWidth linear forwards",
+        // 5000ms = visibleFor in components/ui/useDummySubmit.ts
+        "shrink-width": "shrinkWidth 5000ms linear forwards",
       },
       fontFamily: {
         sans: ["var(--font-primary)"],
@@ -55,7 +55,6 @@ const config: Config = {
     },
   },
   plugins: [
-    // Variants built into Tailwind v4 that v3 does not have.
     plugin(({ addVariant }) => {
       addVariant("starting", "@starting-style");
     }),

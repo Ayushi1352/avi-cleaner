@@ -8,7 +8,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.refundBreadcrumb?.metaTitle, description: commonData.refundBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.refundBreadcrumb?.seo };
 
 export default function RefundCancellationPolicyPage() {
   return (

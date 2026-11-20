@@ -1,6 +1,6 @@
 import type { ProcessStepsData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
 const EYEBROW =
@@ -15,13 +15,11 @@ function DashedArrow({ className = "" }: { className?: string }) {
   );
 }
 
-/** "How it Work" page body: four steps and the "Why It Works" band. */
 export const ProcessSteps = ({ data }: { data?: ProcessStepsData }) => {
   if (!data) return null;
 
   return (
     <>
-      {/* ---------- Steps ---------- */}
       <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
         <div className="bg-[var(--color-steps-bg)] pb-10 pt-12 sm:pt-14 2xl:pb-[58px] 2xl:pt-[52px]">
           <div className={ui.container}>
@@ -55,12 +53,10 @@ export const ProcessSteps = ({ data }: { data?: ProcessStepsData }) => {
                     </p>
                   </article>
 
-                  {/* Step number */}
                   <span className="absolute -top-3 left-3 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-steps-bg-2)] text-[18px] font-bold text-[var(--color-white)] ring-4 ring-[var(--color-white)] lg:h-11 lg:w-11 lg:text-[16px] xl:h-14 xl:w-14 xl:text-[21px] 2xl:-top-4 2xl:left-4 2xl:h-[72px] 2xl:w-[72px] 2xl:text-[28px] 2xl:ring-[5px] 3xl:left-[20px] 3xl:h-[92px] 3xl:w-[92px] 3xl:text-[36px] 3xl:ring-[6px]">
                     {s.no}
                   </span>
 
-                  {/* Dashed arrow to the next step (4-column layout only) */}
                   {i < data.steps.length - 1 && (
                     <DashedArrow className="absolute left-full top-[32%] hidden w-7 translate-x-[6px] lg:block xl:w-10 xl:translate-x-2 2xl:w-12 2xl:translate-x-3 3xl:top-[35%] 3xl:w-[74px] 3xl:translate-x-[7px]" />
                   )}
@@ -71,7 +67,6 @@ export const ProcessSteps = ({ data }: { data?: ProcessStepsData }) => {
         </div>
       </section>
 
-      {/* ---------- Why it works ---------- */}
       <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
         <div className="mx-4 rounded-[22px] bg-[var(--color-steps-bg-3)] p-5 sm:mx-6 sm:p-8 lg:mx-10 lg:p-8 2xl:ml-0 2xl:mr-[47px] 2xl:rounded-l-none 2xl:rounded-r-[28px] 2xl:py-[34px] 2xl:pl-[72px] 2xl:pr-8 3xl:pl-[89px] 3xl:pr-[30px]">
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,38%)_minmax(0,1fr)] lg:gap-8 xl:gap-12 3xl:grid-cols-[661px_minmax(0,1fr)] 3xl:gap-[66px]">

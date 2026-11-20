@@ -75,7 +75,6 @@ const loops: Record<string, Loop> = {
   },
 };
 
-/** Gradient border of ui.cardBorder, moving while the card is hovered. */
 const SWEEP: Keyframe[] = [{ backgroundPosition: "0% 50%" }, { backgroundPosition: "100% 50%" }, { backgroundPosition: "0% 50%" }];
 
 /**
@@ -148,5 +147,4 @@ export function Motion() {
 
   return null;
 }
-
 

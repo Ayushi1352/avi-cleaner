@@ -43,7 +43,6 @@ export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; u
     <section className="bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className={ui.container}>
         <div className="relative overflow-hidden rounded-[20px] bg-[var(--color-cta-bg-2)] lg:grid lg:min-h-[clamp(430px,31.77vw,604px)] lg:grid-rows-[437fr_167fr] lg:rounded-[6px]">
-          {/* Shape of the green panel (S-curve on the right, soft dip bottom-left) */}
           <svg width="0" height="0" aria-hidden="true" className="absolute">
             <defs>
               <clipPath id="cta-panel" clipPathUnits="objectBoundingBox">
@@ -52,7 +51,6 @@ export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; u
             </defs>
           </svg>
 
-          {/* ---------- Desktop background layers ---------- */}
           <div className="pointer-events-none absolute inset-0 hidden lg:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -61,20 +59,16 @@ export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; u
               loading="lazy"
               className="absolute bottom-0 right-0 h-[104%] w-auto !max-w-none translate-x-[14%] xl:translate-x-[8%] [mask-image:linear-gradient(to_right,transparent,var(--color-black)_14%)]"
             />
-            {/* Light ribbon that follows the panel edge */}
             <div className="absolute inset-0 translate-x-[2.6%] bg-[var(--color-cta-bg-2)] [clip-path:url(#cta-panel)]" />
-            {/* Green panel with the room photo showing through */}
             <div className="absolute inset-0 overflow-hidden bg-[var(--color-cta-bg-3)] [clip-path:url(#cta-panel)]">
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 scale-105 bg-cover bg-center blur-[2px]"
-                style={{ backgroundImage: `url(${data.roomImage})` }}
-              />
+              <div aria-hidden="true" className="absolute inset-0 scale-105 blur-[2px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={data.roomImage} alt="" loading="lazy" className="h-full w-full object-cover object-center" />
+              </div>
               <div className="absolute inset-0 bg-[var(--color-cta-overlay-86)]" />
             </div>
           </div>
 
-          {/* ---------- Content: Slides in from left (Image vahi hai, text side se aara hai) ---------- */}
           <div className="relative z-10 bg-[var(--color-cta-bg-3)] px-6 pb-10 pt-10 sm:px-10 lg:bg-transparent lg:pb-[clamp(16px,1.2vw,22px)] lg:pl-[6.1%] lg:pr-[46%] lg:pt-[clamp(34px,3.6vw,68px)]">
             <ScrollReveal variant="fade-right" duration={750}>
               {data.eyebrow && (
@@ -104,7 +98,6 @@ export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; u
             </ScrollReveal>
           </div>
 
-          {/* ---------- Light strip with badges ---------- */}
           <div className="relative z-10 px-6 py-7 sm:px-10 lg:flex lg:items-center lg:py-0 lg:pb-[clamp(10px,3.4vw,65px)] lg:pl-[6.1%]">
             <ScrollReveal variant="fade-up" delay={200} duration={700}>
               <ul className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:gap-x-0 sm:gap-y-4">
@@ -131,7 +124,6 @@ export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; u
             </ScrollReveal>
           </div>
 
-          {/* ---------- Mobile / tablet photo ---------- */}
           <div className="relative lg:hidden">
             <ImagePlaceholder
               src={data.image.src}
@@ -143,7 +135,6 @@ export const CtaBannerSection = ({ data, ui: labels }: { data?: CtaBannerData; u
             <BrighterBadge data={data.badge} className="absolute left-3 top-3 w-[92px] sm:left-5 sm:top-5 sm:w-[120px]" />
           </div>
 
-          {/* ---------- Desktop floating decorations ---------- */}
           <p className="pointer-events-none absolute left-[53.1%] top-[9.5%] z-10 hidden -rotate-[12deg] text-center font-script text-[clamp(17px,1.58vw,30px)] font-medium leading-[0.98] text-[var(--color-white)] lg:block">
             {data.noteLines[0]}
             <br />

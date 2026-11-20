@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 /**
  * Tiny slider helper.
@@ -8,9 +8,11 @@ import { useCallback, useEffect, useState, type CSSProperties } from "react";
  * `--per` (cards per view) and `--gap` (gap between cards), e.g.
  *   className="[--per:1] sm:[--per:2] xl:[--per:3] [--gap:16px]"
  * Cards per view are read from CSS, so breakpoints live in Tailwind.
+ * Pass `setTrack` as the `ref` of the track (with trackClass): it gets the current slide as `--i`.
  */
 export function useCarousel(total: number, { loop = false } = {}) {
   const [node, setViewport] = useState<HTMLElement | null>(null);
+  const [track, setTrack] = useState<HTMLElement | null>(null);
   const [per, setPer] = useState(1);
   const [rawIndex, setIndex] = useState(0);
 
@@ -50,12 +52,13 @@ export function useCarousel(total: number, { loop = false } = {}) {
     });
   }, [maxIndex, loop]);
 
-  const trackStyle: CSSProperties = {
-    transform: `translateX(calc(${-index} * (100% + var(--gap)) / var(--per)))`,
-  };
+  useEffect(() => {
+    track?.style.setProperty("--i", String(index));
+  }, [track, index]);
 
   return {
     setViewport,
+    setTrack,
     per,
     index,
     maxIndex,
@@ -65,14 +68,11 @@ export function useCarousel(total: number, { loop = false } = {}) {
     next,
     prev,
     goTo: setIndex,
-    trackStyle,
   };
 }
 
-/** Class for each slide so exactly `--per` cards fit the viewport. */
 export const slideClass =
   "shrink-0 grow-0 basis-[calc((100%_-_(var(--per)_-_1)_*_var(--gap))_/_var(--per))]";
 
-/** Class for the track. */
 export const trackClass =
-  "flex w-full gap-[var(--gap)] transition-transform duration-500 ease-out";
+  "flex w-full gap-[var(--gap)] [--i:0] [transform:translateX(calc(var(--i)_*_-1_*_(100%_+_var(--gap))_/_var(--per)))] transition-transform duration-500 ease-out";

@@ -1,15 +1,15 @@
 import type { CompanyData, ContactCardItem, ContactInfoData, GlobalUIData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
-import { contactField } from "@/components/ui/helpers";
+import { contactHref, contactLines } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
 function ContactCard({ card, company, arrowIcon }: { card: ContactCardItem; company: CompanyData; arrowIcon: string }) {
-  const { lines, href } = contactField(company, card.field);
+  const lines = contactLines(card, company);
+  const href = contactHref(card, company);
   return (
     <article className="flex h-full min-w-0 flex-col items-center rounded-[16px] bg-[linear-gradient(180deg,var(--color-white)_62%,var(--color-contact-card-gradient)_100%)] px-4 pb-7 pt-7 text-center shadow-[0_16px_40px_-26px_var(--color-shadow-card-40)] md:px-3 md:pb-[clamp(20px,2.35vw,45px)] md:pt-[clamp(20px,1.85vw,35px)] xl:px-5 2xl:rounded-[20px]">
-      {/* Icon with the pale blob peeking out behind it */}
       <span className="relative flex h-[76px] w-[76px] shrink-0 items-center justify-center md:h-[clamp(58px,5.75vw,110px)] md:w-[clamp(58px,5.75vw,110px)]">
         <span aria-hidden="true" className="absolute -left-[24%] top-[12%] h-[88%] w-[88%] rounded-full bg-[var(--color-contact-bg)]" />
         <span className="relative flex h-full w-full items-center justify-center rounded-full bg-[var(--color-form-accent)] text-[var(--color-white)]">
@@ -48,13 +48,11 @@ function ContactCard({ card, company, arrowIcon }: { card: ContactCardItem; comp
   );
 }
 
-/** Contact page: "Our Contact Information" header and the three contact cards. */
 export const ContactInfo = ({ data, company, ui: labels }: { data?: ContactInfoData; company: CompanyData; ui: GlobalUIData }) => {
   if (!data) return null;
   return (
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="relative isolate overflow-hidden bg-[linear-gradient(180deg,var(--color-contact-stroke-2)_0%,var(--color-contact-fill)_100%)] pb-12 pt-11 sm:pb-14 sm:pt-12 2xl:pb-[72px] 2xl:pt-[48px] 3xl:pb-[90px] 3xl:pt-[52px]">
-        {/* Leaf sprig, top left */}
         <svg aria-hidden="true" viewBox="0 0 230 400" className="pointer-events-none absolute left-0 top-4 -z-10 hidden w-[120px] text-[var(--color-contact-text)] opacity-80 md:block xl:w-[160px] 2xl:top-[30px] 2xl:w-[200px] 3xl:w-[230px]">
           <path fill="currentColor" d="M214 6C128 4 62 44 50 122c-4 26 4 52 20 70 62-18 112-70 132-146 4-14 8-28 12-40Z" />
           <path fill="currentColor" d="M0 96c40 8 70 44 74 92 1 16-2 30-8 42-30-14-54-44-62-84-2-16-4-34-4-50Z" opacity=".75" />
@@ -62,13 +60,11 @@ export const ContactInfo = ({ data, company, ui: labels }: { data?: ContactInfoD
           <path fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" d="M70 190C56 250 30 320-4 396" />
           <path fill="none" stroke="var(--color-contact-stroke-2)" strokeWidth="4" strokeLinecap="round" d="M186 36C142 78 104 128 74 186" />
         </svg>
-        {/* Soft waves along the bottom */}
         <svg aria-hidden="true" viewBox="0 0 1920 180" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[90px] w-full 2xl:h-[150px]">
           <path fill="var(--color-white)" fillOpacity=".55" d="M0 110c220-70 470-80 720-30s520 60 760 10c180-36 320-40 440-20v110H0Z" />
           <path fill="var(--color-icon-bg-mint)" fillOpacity=".7" d="M0 150c260-50 520-50 800-14s600 30 1120-40v84H0Z" />
         </svg>
 
-        {/* Handwritten notes and paper plane (wide screens only) */}
         <HandwrittenNote lines={labels.noteLines} className="absolute right-[3%] top-[6%] hidden text-[clamp(26px,2.3vw,44px)] xl:block" color="text-[var(--color-form-accent)]" />
         <HandwrittenNote
           lines={data.noteLines}

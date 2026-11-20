@@ -1,8 +1,10 @@
-/** Handwritten note (e.g. "Cleaner Spaces Happier Lives") with a yellow underline. */
+// Each line starts a little further in, like handwriting (repeats every four lines).
+const indents = ["pl-0", "pl-[0.4em]", "pl-[0.1em]", "pl-[0.9em]"];
+
 export const HandwrittenNote = ({ lines, className = "", color = "text-[var(--color-note-text)]" }: { lines: string[]; className?: string; color?: string }) => (
   <p className={`pointer-events-none -rotate-[14deg] font-script font-medium leading-[0.95] ${color} ${className}`} aria-hidden="true">
     {lines.map((l, i) => (
-      <span key={l} className="block" style={{ paddingLeft: `${[0, 0.4, 0.1, 0.9][i % 4]}em` }}>
+      <span key={l} className={`block ${indents[i % 4]}`}>
         {l}
       </span>
     ))}

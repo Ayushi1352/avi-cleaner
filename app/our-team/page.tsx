@@ -8,7 +8,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.teamBreadcrumb?.metaTitle, description: commonData.teamBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.teamBreadcrumb?.seo };
 
 export default function TeamPage() {
   return (

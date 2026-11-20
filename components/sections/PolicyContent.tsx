@@ -1,12 +1,11 @@
 import type { CompanyData, PolicyData } from "@/types/templates.types";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
-import { mailHref, telHref } from "@/components/ui/helpers";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
+import { mailHref, telHref } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
 const bodyText =
   "text-[15px] leading-[1.5] text-[var(--color-text)] sm:text-[1rem] xl:text-[19px] 2xl:text-[24px] 3xl:text-[30.5px] 3xl:leading-[42px]";
 
-/** Legal page body: intro and the numbered sections. Mirrors the Privacy Policy layout. */
 export const PolicyContent = ({ data, company }: { data?: PolicyData; company: CompanyData }) => {
   if (!data) return null;
   const { sections } = data;
@@ -62,7 +61,7 @@ export const PolicyContent = ({ data, company }: { data?: PolicyData; company: C
                         {company.phone}
                       </a>
                       <span aria-hidden="true" className="hidden h-[1.1em] w-px bg-[var(--color-text)] lg:block" />
-                      <span className="font-medium text-[var(--color-title)]">{company.addressLines.join(" ")}</span>
+                      <span className="font-medium text-[var(--color-title)]">{company.address.join(" ")}</span>
                     </p>
                   )}
                 </div>

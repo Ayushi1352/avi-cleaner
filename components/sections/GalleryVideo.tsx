@@ -4,11 +4,11 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import type { GalleryVideoData, GlobalUIData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { Pagination } from "@/components/ui/Pagination";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { GalleryVideoCard } from "@/components/sections/GalleryVideoCard";
-import { fillLabel } from "@/components/ui/helpers";
 import { ui } from "@/components/ui/styles";
 
 export const GalleryVideo = ({ data, ui: labels }: { data?: GalleryVideoData; ui: GlobalUIData }) => {
@@ -28,20 +28,13 @@ export const GalleryVideo = ({ data, ui: labels }: { data?: GalleryVideoData; ui
     sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const btn =
-    "flex h-10 w-10 items-center justify-center rounded-full text-[14px] font-bold shadow-[0_4px_14px_-4px_var(--color-shadow-card-30)] transition-colors 2xl:h-12 2xl:w-12 2xl:text-[16px] 3xl:h-[50px] 3xl:w-[50px]";
-  const idle =
-    "bg-[var(--color-white)] text-[var(--color-title)] hover:bg-[var(--color-card-badge)] hover:text-[var(--color-white)] disabled:pointer-events-none disabled:opacity-60";
-
   return (
     <section ref={sectionRef} className="relative w-full scroll-mt-24 overflow-hidden bg-[var(--color-gallery-bg)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
-      {/* Leaf sprig, left */}
       <svg aria-hidden="true" viewBox="0 0 260 420" className="pointer-events-none absolute left-0 top-8 hidden w-[140px] text-[var(--color-gallery-text)] md:block 2xl:w-[230px]">
         <path fill="currentColor" d="M200 20C120 30 70 80 62 150c-2 22 4 42 16 58 58-22 100-80 116-150 2-12 6-26 6-38Z" />
         <path fill="currentColor" d="M-10 150c50 10 82 54 80 110 0 16-6 32-14 44-40-22-64-62-66-110V150Z" />
         <path fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" d="M80 206C60 270 30 340 -10 410" />
       </svg>
-      {/* Leaves, bottom right */}
       <svg aria-hidden="true" viewBox="0 0 220 220" className="pointer-events-none absolute bottom-0 right-0 hidden w-[150px] text-[var(--color-gallery-text)] md:block 2xl:w-[250px]">
         <path fill="currentColor" d="M176 8c-34 30-48 78-34 128 4 14 10 26 20 36 30-22 50-58 50-102 0-22-12-44-36-62Z" />
         <path fill="currentColor" d="M10 150c36-22 86-22 128 6 10 8 18 16 22 26-44 14-90 10-124-12-10-6-20-12-26-20Z" />
@@ -77,45 +70,7 @@ export const GalleryVideo = ({ data, ui: labels }: { data?: GalleryVideoData; ui
         </ul>
 
         {totalPages > 1 && (
-          <nav aria-label={data.pagination.label} className="mt-10 flex justify-center 2xl:mt-[38px]">
-            <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => goTo(page - 1)}
-                  disabled={page === 1}
-                  aria-label={data.pagination.previous.label}
-                  className={`${btn} ${idle}`}
-                >
-                  <Icon name={data.pagination.previous.icon} className="h-4 w-4" strokeWidth={3} />
-                </button>
-              </li>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-                <li key={n}>
-                  <button
-                    type="button"
-                    onClick={() => goTo(n)}
-                    aria-label={fillLabel(data.pagination.page, { n })}
-                    aria-current={n === page ? "page" : undefined}
-                    className={`${btn} ${n === page ? "bg-[var(--color-card-badge)] text-[var(--color-white)]" : idle}`}
-                  >
-                    {n}
-                  </button>
-                </li>
-              ))}
-              <li>
-                <button
-                  type="button"
-                  onClick={() => goTo(page + 1)}
-                  disabled={page === totalPages}
-                  aria-label={data.pagination.next.label}
-                  className={`${btn} ${idle}`}
-                >
-                  <Icon name={data.pagination.next.icon} className="h-4 w-4" strokeWidth={3} />
-                </button>
-              </li>
-            </ul>
-          </nav>
+          <Pagination page={page} totalPages={totalPages} onChange={goTo} labels={data.pagination} className="mt-10 2xl:mt-[38px]" />
         )}
 
         <div className="mt-10 text-center 2xl:mt-[52px]">

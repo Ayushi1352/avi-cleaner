@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { GlobalUIData, PricingData, PricingPlan } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
 function PlanCard({ plan, data, currency }: { plan: PricingPlan; data: PricingData; currency: string }) {
@@ -63,20 +63,17 @@ function PlanCard({ plan, data, currency }: { plan: PricingPlan; data: PricingDa
   );
 }
 
-/** Pricing page body: plan cards, perks strip and the Compare Plans table. */
 export const PricingPlans = ({ data, ui: labels }: { data?: PricingData; ui: GlobalUIData }) => {
   if (!data) return null;
 
   return (
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="relative overflow-hidden bg-[var(--color-pricing-bg-4)] pb-10 pt-12 sm:pt-14 2xl:pb-[14px] 2xl:pt-[48px]">
-        {/* Leaf sprig, left */}
         <svg aria-hidden="true" viewBox="0 0 180 340" className="pointer-events-none absolute left-0 top-[150px] hidden w-[110px] text-[var(--color-pricing-text-2)] md:block 2xl:top-[170px] 2xl:w-[180px]">
           <path fill="currentColor" d="M176 6C96 2 36 40 28 110c-3 26 6 50 22 66 60-14 108-66 122-140 2-10 4-20 4-30Z" />
           <path fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" d="M52 172C40 220 20 270-6 330" />
           <path fill="none" stroke="var(--color-pricing-bg-4)" strokeWidth="4" strokeLinecap="round" d="M150 30C110 70 76 116 54 168" />
         </svg>
-        {/* Leaves, right */}
         <svg aria-hidden="true" viewBox="0 0 220 220" className="pointer-events-none absolute right-0 top-4 hidden w-[130px] text-[var(--color-pricing-text-2)] md:block 2xl:top-[30px] 2xl:w-[215px]">
           <path fill="currentColor" d="M176 8c-34 30-48 78-34 128 4 14 10 26 20 36 30-22 50-58 50-102 0-22-12-44-36-62Z" />
           <path fill="currentColor" d="M10 150c36-22 86-22 128 6 10 8 18 16 22 26-44 14-90 10-124-12-10-6-20-12-26-20Z" />
@@ -85,7 +82,6 @@ export const PricingPlans = ({ data, ui: labels }: { data?: PricingData; ui: Glo
         </svg>
 
         <div className={`${ui.container} relative`}>
-          {/* ---------- Header ---------- */}
           <div className="mx-auto max-w-[1100px] text-center">
             <SectionEyebrow
               center
@@ -104,7 +100,6 @@ export const PricingPlans = ({ data, ui: labels }: { data?: PricingData; ui: Glo
             </p>
           </div>
 
-          {/* ---------- Plans ---------- */}
           <ul className="mx-auto mt-12 grid max-w-[480px] grid-cols-1 gap-9 md:max-lg:max-w-none md:max-lg:grid-cols-2 md:max-lg:gap-x-5 md:max-lg:gap-y-9 lg:max-w-none lg:grid-cols-3 lg:gap-5 xl:gap-6 2xl:mt-[56px] 2xl:gap-[30px] 3xl:mt-[66px] 3xl:pl-[28px] 3xl:pr-[17px]">
             {data.plans.map((p) => (
               <li key={p.id} className="min-w-0">
@@ -113,7 +108,6 @@ export const PricingPlans = ({ data, ui: labels }: { data?: PricingData; ui: Glo
             ))}
           </ul>
 
-          {/* ---------- Perks strip ---------- */}
           <ul className="mt-8 grid grid-cols-1 gap-y-5 rounded-[18px] bg-[var(--color-pricing-bg-5)] px-5 py-6 sm:grid-cols-2 sm:gap-x-4 lg:grid-cols-4 lg:gap-x-0 lg:px-2 2xl:mt-[36px] 2xl:rounded-[22px] 2xl:py-8 3xl:ml-[41px] 3xl:mr-[31px] 3xl:py-[34px]">
             {data.perks.map(({ id, icon, title, subtitle: sub }, i) => (
               <li
@@ -136,7 +130,6 @@ export const PricingPlans = ({ data, ui: labels }: { data?: PricingData; ui: Glo
             ))}
           </ul>
 
-          {/* ---------- Compare plans ---------- */}
           <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,31%)] lg:gap-6 xl:gap-8 2xl:mt-[48px] 3xl:grid-cols-[1137px_553px] 3xl:gap-[45px] 3xl:pl-[42px]">
             <div className="min-w-0">
               <h2 className="text-[clamp(28px,2.9vw,55px)] font-extrabold leading-[1.15] tracking-[-0.015em] text-[var(--color-title)]">
@@ -194,7 +187,6 @@ export const PricingPlans = ({ data, ui: labels }: { data?: PricingData; ui: Glo
               </div>
             </div>
 
-            {/* Photo + badge */}
             <div className="relative mx-auto aspect-[553/594] w-full max-w-[520px] overflow-hidden rounded-[18px] lg:mx-0 lg:aspect-auto lg:h-full lg:min-h-[380px] lg:max-w-none 2xl:rounded-[22px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

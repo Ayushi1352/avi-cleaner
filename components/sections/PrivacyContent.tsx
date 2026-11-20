@@ -1,9 +1,8 @@
 import type { CompanyData, PrivacyPolicyData } from "@/types/templates.types";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
-import { mailHref, telHref } from "@/components/ui/helpers";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
+import { mailHref, telHref } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
-/** Privacy page body: intro and the numbered policy sections. */
 export const PrivacyContent = ({ data, company }: { data?: PrivacyPolicyData; company: CompanyData }) => {
   if (!data) return null;
   const { sections } = data;
@@ -56,7 +55,7 @@ export const PrivacyContent = ({ data, company }: { data?: PrivacyPolicyData; co
                         {company.phone}
                       </a>
                       <span aria-hidden="true" className="hidden h-[1.1em] w-px bg-[var(--color-text)] lg:block" />
-                      <span className="font-medium text-[var(--color-title)]">{company.addressLines.join(" ")}</span>
+                      <span className="font-medium text-[var(--color-title)]">{company.address.join(" ")}</span>
                     </p>
                   )}
                 </div>

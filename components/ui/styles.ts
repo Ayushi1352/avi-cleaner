@@ -2,7 +2,6 @@
 // Written out in full (not joined from parts) so Tailwind finds the class names.
 
 export const ui = {
-  /** Page container: 1920px wide at most, 16px side gutters on phones up to 56px on large screens. */
   container: "mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-10 2xl:px-14",
 
   /*

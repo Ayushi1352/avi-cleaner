@@ -8,7 +8,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.faqBreadcrumb?.metaTitle, description: commonData.faqBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.faqBreadcrumb?.seo };
 
 export default function FaqPage() {
   return (

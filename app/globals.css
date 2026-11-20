@@ -7,8 +7,6 @@
   --font-secondary: ui-sans-serif, system-ui, sans-serif;
   --font-script: cursive;
 
-  /* Avicleaner theme */
-  /* Brand */
   --color-primary: #2a7c35;
   --color-primary-dark: #1f5a41;
   --color-accent: #fdd659;
@@ -23,7 +21,6 @@
   --color-secondary: #fcd964;
   --color-accent-line: #fdd75a;
 
-  /* Text */
   --color-heading: #0b1b45;
   --color-white: #ffffff;
   --color-title: #0b1a12;
@@ -39,7 +36,6 @@
   --color-note-text: #2f6d4a;
   --color-black: #000000;
 
-  /* Backgrounds and borders */
   --color-scrollbar-track: #f1f5f3;
   --color-bg-page: #f5f5f5;
   --color-bg-light: #f6fbf9;
@@ -64,7 +60,6 @@
   --color-check-icon: #14503a;
   --color-panel-dark: #1d4a37;
 
-  /* Header, page banner and footer */
   --color-banner-bg: #0d1622;
   --color-banner-text: #fab515;
   --color-footer-accent: #fadb64;
@@ -76,7 +71,6 @@
   --color-header-bg: #fcfcfe;
   --color-header-border-2: #f0f3f6;
 
-  /* Home sections */
   --color-about-bg: #f3f8f3;
   --color-about-text: #48536f;
   --color-about-fill: #ecf4ec;
@@ -119,7 +113,6 @@
   --color-dots-bg: #d9dee5;
   --color-dots-bg-2: #b8c2cc;
 
-  /* About pages */
   --color-awards-bg: #2a8c4a;
   --color-awards-bg-2: #fbfdfc;
   --color-awards-bg-3: #dff5ea;
@@ -185,7 +178,6 @@
   --color-cert-green: #1c7a45;
   --color-cert-grey: #8f979c;
 
-  /* Services and pricing */
   --color-call-us-bg: #17523c;
   --color-checklist-bg: #ecfaf3;
   --color-checklist-bg-2: #0b3f2e;
@@ -207,7 +199,6 @@
   --color-service-bg: #e2f7eb;
   --color-why-service-fill: #e4f9ee;
 
-  /* Gallery and blog */
   --color-blog-article-border: #e6ebe9;
   --color-blog-article-text: #f6c84a;
   --color-blog-article-bg: #edf5f2;
@@ -217,7 +208,6 @@
   --color-gallery-bg: #f3fbf7;
   --color-gallery-text: #e1f3ea;
 
-  /* FAQ, contact and booking */
   --color-booking-border: #e1e7e4;
   --color-booking-text: #e5484d;
   --color-booking-bg: #e6f6ee;
@@ -248,7 +238,6 @@
   --color-contact-card-gradient: #f0faf4;
   --color-faq-gradient: #eef9f3;
 
-  /* Not found page */
   --color-not-found-fill: #0f3f2d;
   --color-not-found-fill-2: #f7fbf9;
   --color-not-found-fill-3: #5aa832;
@@ -256,7 +245,6 @@
   --color-not-found-border: #d5dfdb;
   --color-not-found-bg-2: #d7ecdf;
 
-  /* Overlays and shadows */
   --color-black-0: rgba(0, 0, 0, 0);
   --color-black-15: rgba(0, 0, 0, 0.15);
   --color-black-20: rgba(0, 0, 0, 0.2);
@@ -329,6 +317,12 @@
   --color-white-85: rgba(255, 255, 255, 0.85);
   --color-white-90: rgba(255, 255, 255, 0.9);
   --color-white-95: rgba(255, 255, 255, 0.95);
+}
+
+html,
+body {
+  max-width: 100%;
+  scroll-behavior: smooth;
 }
 
 body {

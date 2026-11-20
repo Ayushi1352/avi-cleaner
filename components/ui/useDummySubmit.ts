@@ -5,9 +5,8 @@ import { useCallback, useEffect, useRef, useState, type FormEvent } from "react"
 export type SubmitStatus = "idle" | "sending" | "success" | "leaving";
 
 type Options = {
-  /** simulated network delay before the form counts as sent */
   sendDelay?: number;
-  /** how long the thank-you message stays visible before it hides itself */
+  /** how long the thank-you message stays visible before it hides itself (keep in sync with animate-shrink-width in tailwind.config.ts) */
   visibleFor?: number;
   /** length of the fade-out animation (keep in sync with the fade-out in FormSuccess) */
   fadeFor?: number;
@@ -57,12 +56,10 @@ export function useDummySubmit({ sendDelay = 1200, visibleFor = 5000, fadeFor = 
     }, sendDelay);
   };
 
-  /** hide the message as soon as the visitor starts filling the form again */
   const onInput = () => {
     if (status === "success") hide();
   };
 
-  /** close button */
   const dismiss = () => {
     if (status === "success") hide();
   };
@@ -73,7 +70,6 @@ export function useDummySubmit({ sendDelay = 1200, visibleFor = 5000, fadeFor = 
     round,
     sending: status === "sending",
     showMessage: status === "success" || status === "leaving",
-    visibleFor,
     onSubmit,
     onInput,
     dismiss,

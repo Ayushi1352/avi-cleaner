@@ -55,7 +55,6 @@ function SideCard({ title, children }: { title: string; children: ReactNode }) {
   );
 }
 
-/** Blog Detail page body: article on the left, sidebar on the right. */
 export const BlogArticle = ({ data }: { data?: BlogDetailData }) => {
   if (!data) return null;
   const { post } = data;
@@ -63,7 +62,6 @@ export const BlogArticle = ({ data }: { data?: BlogDetailData }) => {
     <section className="w-full bg-[var(--color-bg-card)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
       <div className={ui.container}>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,32%)] lg:gap-7 xl:gap-10 3xl:grid-cols-[1180px_minmax(0,1fr)] 3xl:gap-[52px] 3xl:pl-[19px]">
-          {/* ---------- Article ---------- */}
           <article className="min-w-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -137,7 +135,6 @@ export const BlogArticle = ({ data }: { data?: BlogDetailData }) => {
             </div>
           </article>
 
-          {/* ---------- Sidebar ---------- */}
           <aside className="grid min-w-0 grid-cols-1 content-start gap-6 md:grid-cols-2 lg:grid-cols-1 2xl:gap-8 3xl:gap-[44px]">
             <SideCard title={data.categoriesTitle}>
               <ul>

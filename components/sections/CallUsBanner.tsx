@@ -1,25 +1,21 @@
 import Link from "next/link";
 import type { CallUsBannerData, CompanyData, GlobalUIData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
-import { telHref } from "@/components/ui/helpers";
+import { telHref } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
-/** "Need Help? — Need a Deep Clean? Call Us for Immediate Service!" banner. */
 export const CallUsBanner = ({ data, company, ui: labels }: { data?: CallUsBannerData; company: CompanyData; ui: GlobalUIData }) => {
   if (!data) return null;
 
   return (
     <section className="relative isolate w-full overflow-hidden bg-[var(--color-forest)] text-[var(--color-white)]">
-      {/* Blurred copy of the photo fills the banner, tinted green on the left */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-30 scale-110 bg-cover bg-[center_30%] blur-[14px]"
-        style={{ backgroundImage: `url(${data.image.src})` }}
-      />
+      <div aria-hidden="true" className="absolute inset-0 -z-30 scale-110 blur-[14px]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={data.image.src} alt="" className="h-full w-full object-cover object-[center_30%]" />
+      </div>
       <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,var(--color-forest)_0%,var(--color-forest-95)_40%,var(--color-forest-80)_56%,var(--color-forest-15)_78%,var(--color-forest-0)_100%)]" />
-      {/* Sharp photo of the cleaner on the right (desktop) */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={data.image.src}
@@ -28,7 +24,6 @@ export const CallUsBanner = ({ data, company, ui: labels }: { data?: CallUsBanne
         className="pointer-events-none absolute bottom-0 right-[8%] top-0 -z-10 hidden h-full w-auto !max-w-none [mask-image:linear-gradient(90deg,transparent,var(--color-black)_26%,var(--color-black)_82%,transparent)] lg:block"
       />
 
-      {/* Faint leaves, bottom left */}
       <svg aria-hidden="true" viewBox="0 0 200 260" className="pointer-events-none absolute bottom-0 left-0 -z-10 w-[140px] text-[var(--color-white-6)] 2xl:w-[210px]">
         <path fill="currentColor" d="M0 40c80 20 130 90 120 180-2 15-6 28-12 40H0V40Z" />
         <path fill="currentColor" d="M60 260c20-60 70-95 140-100-20 60-70 95-140 100Z" />
@@ -36,7 +31,6 @@ export const CallUsBanner = ({ data, company, ui: labels }: { data?: CallUsBanne
 
       <div className={ui.container}>
         <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-6 2xl:min-h-[730px]">
-          {/* ---------- Text ---------- */}
           <div className="min-w-0 py-12 sm:py-16 lg:py-20 lg:pl-4 2xl:self-center 2xl:py-[90px] 3xl:pb-[110px] 3xl:pl-[85px]">
             <SectionEyebrow light compact className="3xl:[&>span:first-child]:w-[52px] 3xl:[&>span:last-child]:w-[52px]">{data.label}</SectionEyebrow>
             <h2 className="mt-4 text-[clamp(30px,3.4vw,65px)] font-extrabold leading-[1.04] tracking-[-0.015em] 2xl:mt-6">
@@ -90,9 +84,7 @@ export const CallUsBanner = ({ data, company, ui: labels }: { data?: CallUsBanne
             </div>
           </div>
 
-          {/* ---------- Photo + badge ---------- */}
           <div className="relative mx-auto w-full max-w-[560px] self-end lg:max-w-none lg:self-stretch">
-            {/* Phones and tablets: the photo sits below the text */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={data.image.src}

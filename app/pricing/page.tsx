@@ -8,7 +8,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.pricingBreadcrumb?.metaTitle, description: commonData.pricingBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.pricingBreadcrumb?.seo };
 
 export default function PricingPage() {
   return (

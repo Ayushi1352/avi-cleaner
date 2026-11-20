@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { GlobalUIData, TestimonialItem, TestimonialsData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { SectionTag } from "@/components/ui/SectionTag";
+import { SectionTag } from "@/components/ui/SectionLabel";
 import { CarouselDots } from "@/components/ui/CarouselDots";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ui } from "@/components/ui/styles";
@@ -17,7 +17,6 @@ function Stars({ count, icon, className = "" }: { count: number; icon: string; c
         <span
           key={i}
           className="inline-block transition-transform duration-300 hover:scale-[1.35] hover:rotate-6 cursor-pointer"
-          style={{ animationDelay: `${i * 180}ms` }}
         >
           <Icon name={icon} motion="shimmer" className="h-full w-auto" />
         </span>
@@ -52,55 +51,36 @@ function Author({ t, big = false }: { t: TestimonialItem; big?: boolean }) {
 
 const mod = (n: number, m: number) => ((n % m) + m) % m;
 
-// Allow CSS custom properties in style objects.
-type CSSVars = CSSProperties & Record<string, string | number>;
-
-// Where a slide sits for a given distance from the centre.
+// Where a slide sits for a given distance from the centre (left / right of it).
 // --tx-m is the phone offset; --tx / --ry / --sc drive the desktop coverflow.
-function slideStyle(offset: number, hasEntered: boolean = true): CSSVars {
-  const dir = Math.sign(offset);
+const SLIDE = {
+  centre: "[--tx-m:0px] [--tx:0px] [--ry:0deg] [--sc:1] [--op:1]",
+  near: {
+    left: "[--tx-m:calc(-100%_-_40px)] [--tx:calc(-83%_-_16px)] [--ry:22deg] [--sc:0.66] [--op:0.85]",
+    right: "[--tx-m:calc(100%_+_40px)] [--tx:calc(83%_+_16px)] [--ry:-22deg] [--sc:0.66] [--op:0.85]",
+  },
+  far: {
+    left: "[--tx-m:calc(-200%_-_80px)] [--tx:-150%] [--ry:22deg] [--sc:0.5] [--op:0]",
+    right: "[--tx-m:calc(200%_+_80px)] [--tx:150%] [--ry:-22deg] [--sc:0.5] [--op:0]",
+  },
+};
+
+// Before the section scrolls into view: the centre card waits lower down, the side cards further out.
+const SLIDE_BEFORE_ENTRY = {
+  centre: "[--tx-m:0px] [--tx:0px] [--ry:0deg] [--sc:0.88] [--op:0] ![transform:translateY(40px)]",
+  near: {
+    left: "[--tx-m:calc(-140%_-_40px)] [--tx:calc(-120%_-_16px)] [--ry:30deg] [--sc:0.5] [--op:0] ![transform:translateX(-50px)]",
+    right: "[--tx-m:calc(140%_+_40px)] [--tx:calc(120%_+_16px)] [--ry:-30deg] [--sc:0.5] [--op:0] ![transform:translateX(50px)]",
+  },
+};
+
+function slideClass(offset: number, hasEntered: boolean = true) {
   const dist = Math.abs(offset);
-
-  if (!hasEntered) {
-    if (dist === 0) {
-      return {
-        "--tx-m": "0px",
-        "--tx": "0px",
-        "--ry": "0deg",
-        "--sc": 0.88,
-        "--op": 0,
-        transform: "translateY(40px)",
-      };
-    }
-    if (dist === 1) {
-      return {
-        "--tx-m": `calc(${dir * 140}% + ${dir * 40}px)`,
-        "--tx": `calc(${dir * 120}% + ${dir * 16}px)`,
-        "--ry": `${dir * -30}deg`,
-        "--sc": 0.5,
-        "--op": 0,
-        transform: `translateX(${dir * 50}px)`,
-      };
-    }
-  }
-
-  if (dist === 0) return { "--tx-m": "0px", "--tx": "0px", "--ry": "0deg", "--sc": 1, "--op": 1 };
-  if (dist === 1) {
-    return {
-      "--tx-m": `calc(${dir * 100}% + ${dir * 40}px)`,
-      "--tx": `calc(${dir * 83}% + ${dir * 16}px)`,
-      "--ry": `${dir * -22}deg`,
-      "--sc": 0.66,
-      "--op": 0.85,
-    };
-  }
-  return {
-    "--tx-m": `calc(${dir * 200}% + ${dir * 80}px)`,
-    "--tx": `${dir * 150}%`,
-    "--ry": `${dir * -22}deg`,
-    "--sc": 0.5,
-    "--op": 0,
-  };
+  const side = offset < 0 ? "left" : "right";
+  if (!hasEntered && dist === 0) return SLIDE_BEFORE_ENTRY.centre;
+  if (!hasEntered && dist === 1) return SLIDE_BEFORE_ENTRY.near[side];
+  if (dist === 0) return SLIDE.centre;
+  return dist === 1 ? SLIDE.near[side] : SLIDE.far[side];
 }
 
 export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?: TestimonialsData; ui?: GlobalUIData }) => {
@@ -134,7 +114,6 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
     return () => obs.disconnect();
   }, []);
 
-  // Automatic sliding: advance to next slide every 4 seconds unless hovered/focused
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
@@ -168,7 +147,6 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
-          {/* Leaf + handwritten note */}
           <svg
             aria-hidden="true"
             viewBox="0 0 400 360"
@@ -188,7 +166,6 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
             </svg>
           </p>
 
-          {/* Out-of-focus plant leaves in the bottom-left corner */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={data.plantImage}
@@ -198,7 +175,6 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
             className="pointer-events-none absolute bottom-0 left-0 hidden h-[58%] w-auto !max-w-none -translate-x-[46%] translate-y-[36%] -scale-x-100 select-none lg:block"
           />
 
-          {/* Pale arcs in the bottom-right corner */}
           <svg
             aria-hidden="true"
             viewBox="0 0 300 260"
@@ -208,7 +184,6 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
             <path fill="none" stroke="var(--color-testimonial-stroke)" strokeWidth="26" d="M150 290c80-22 140-70 172-140" />
           </svg>
 
-          {/* Header */}
           <ScrollReveal variant="fade-up" duration={700}>
             <div className="relative mx-auto max-w-[900px] text-center">
               <SectionTag center>{data.label}</SectionTag>
@@ -234,11 +209,11 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
               const side = Math.abs(offset) === 1;
 
               const getDelay = () => {
-                if (entranceDone || !hasEntered) return "0ms";
-                if (offset === 0) return "100ms"; // Center card rises from bottom
-                if (offset === -1) return "320ms"; // Left card slides in from left
-                if (offset === 1) return "540ms"; // Right card slides in from right
-                return "0ms";
+                if (entranceDone || !hasEntered) return "";
+                if (offset === 0) return "delay-100";
+                if (offset === -1) return "delay-[320ms]";
+                if (offset === 1) return "delay-[540ms]";
+                return "";
               };
 
               return (
@@ -246,11 +221,7 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
                   key={k}
                   aria-hidden={!active}
                   onClick={side ? () => setPos(k) : undefined}
-                  style={{
-                    ...slideStyle(offset, hasEntered),
-                    transitionDelay: getDelay(),
-                  }}
-                  className={`relative flex w-full flex-col justify-center justify-self-center rounded-[24px] px-5 pb-8 pt-12 text-center opacity-[var(--op)] transition-[transform,opacity,background-color,box-shadow] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] [grid-area:1/1] [transform:translateX(var(--tx-m))] motion-reduce:transition-none sm:px-10 lg:w-[46%] lg:[transform:perspective(1200px)_translateX(var(--tx))_rotateY(var(--ry))_scale(var(--sc))] 2xl:px-[70px] 2xl:pb-7 2xl:pt-[62px] ${
+                  className={`relative flex w-full flex-col justify-center justify-self-center rounded-[24px] px-5 pb-8 pt-12 text-center opacity-[var(--op)] transition-[transform,opacity,background-color,box-shadow] duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)] [grid-area:1/1] [transform:translateX(var(--tx-m))] motion-reduce:transition-none sm:px-10 lg:w-[46%] lg:[transform:perspective(1200px)_translateX(var(--tx))_rotateY(var(--ry))_scale(var(--sc))] 2xl:px-[70px] 2xl:pb-7 2xl:pt-[62px] ${slideClass(offset, hasEntered)} ${getDelay()} ${
                     active
                       ? "z-20 bg-[var(--color-white)] shadow-[0_20px_50px_-24px_var(--color-shadow-heading-30)]"
                       : side
@@ -275,7 +246,6 @@ export const ClientTestimonialsCarouselSection = ({ data, ui: labels }: { data?:
             })}
           </div>
 
-          {/* Dots & Navigation Arrows */}
           <div className="relative mt-8 flex items-center justify-center gap-3.5 2xl:mt-6">
             <button
               type="button"

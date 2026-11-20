@@ -8,7 +8,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.blogBreadcrumb?.metaTitle, description: commonData.blogBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.blogBreadcrumb?.seo };
 
 export default function BlogPage() {
   return (

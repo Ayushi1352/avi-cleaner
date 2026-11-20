@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { GlobalUIData, WhyChooseUsData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { SectionTag } from "@/components/ui/SectionTag";
+import { SectionTag } from "@/components/ui/SectionLabel";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ui } from "@/components/ui/styles";
 
@@ -16,7 +16,6 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
     <section id="why-us" className="bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className={ui.container}>
         <div className="relative overflow-hidden rounded-[20px] bg-[var(--color-bg-section)] px-5 py-8 sm:px-8 sm:py-9 lg:px-10 xl:px-[72px] xl:py-10 2xl:rounded-[4px] 2xl:py-[36px] 2xl:pl-[96px] 2xl:pr-[40px]">
-          {/* Pale leaf decoration */}
           <svg
             aria-hidden="true"
             viewBox="0 0 800 400"
@@ -25,7 +24,6 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
             <path fill="currentColor" d="M0 0h400C330 140 180 250 0 270V0Z" />
           </svg>
 
-          {/* Out-of-focus plant in the bottom-right corner (behind the content) */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={data.plantImage}
@@ -36,7 +34,6 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
           />
 
           <div className="relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.08fr_1fr] lg:gap-5 xl:gap-10 2xl:gap-[64px]">
-            {/* ---------- Content: Stationary (Text vahi hai) ---------- */}
             <div className="min-w-0">
               <SectionTag accent={ACCENT}>{data.label}</SectionTag>
               <h2 className="mt-4 text-[clamp(30px,3.2vw,62px)] font-extrabold leading-[1.15] tracking-[-0.02em] text-[var(--color-heading)] 2xl:mt-5">
@@ -90,9 +87,7 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
               </div>
             </div>
 
-            {/* ---------- Visual ---------- */}
             <ScrollReveal variant="fade-left" duration={800} className="relative mx-auto w-full min-w-0 max-w-[760px] pt-6 sm:pt-12 lg:max-w-[560px] lg:pt-10 xl:max-w-[760px] xl:pt-16 2xl:pt-[84px]">
-              {/* Handwritten note */}
               <p className="absolute right-2 top-0 -rotate-[10deg] text-right font-script text-[24px] font-semibold leading-[0.95] text-[var(--color-heading)] sm:right-0 sm:text-[30px] lg:-right-2 lg:top-1 lg:text-[2.1rem] xl:right-0 xl:top-0 xl:text-[30px] 2xl:text-[40px]">
                 {data.partnerLines[0]}
                 <br />
@@ -112,7 +107,6 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
                   className="aspect-[715/620] w-full rounded-[28px] rounded-tl-[90px] sm:rounded-[36px] sm:rounded-tl-[140px]"
                 />
 
-                {/* Play button with radar ring pulse */}
                 <Link
                   href={data.video.href}
                   target="_blank"
@@ -125,7 +119,6 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
                   <Icon name={data.video.icon} className="ml-1 h-6 w-6 sm:h-8 sm:w-8" />
                 </Link>
 
-                {/* Clean Greener Brighter */}
                 <div className="absolute -left-2 top-[10%] flex flex-col justify-center rounded-[18px] bg-[var(--color-card-dark)] px-4 py-4 text-[var(--color-white)] shadow-lg sm:-left-6 sm:px-5 sm:py-5 lg:-left-2 lg:top-[12%] xl:-left-6 xl:top-[10%] 2xl:-left-[25px] 2xl:h-[155px] 2xl:w-[147px] 2xl:rounded-[20px] 2xl:px-6">
                   <span className="inline-block cursor-pointer transition-transform duration-300 hover:scale-125 self-start">
                     <Icon name={data.badge.icon} className="h-6 w-6 sm:h-8 sm:w-8" />
@@ -139,7 +132,6 @@ export const WhyChooseUsSection = ({ data, ui: labels }: { data?: WhyChooseUsDat
                   </span>
                 </div>
 
-                {/* A cleaner today */}
                 <div className="absolute -bottom-6 right-2 flex max-w-[calc(100%-16px)] items-center gap-3 rounded-[14px] bg-[var(--color-white)] px-4 py-3 shadow-[0_12px_30px_-12px_var(--color-shadow-heading-35)] sm:bottom-[8%] sm:right-[-13%] lg:bottom-3 lg:right-2 xl:bottom-[8%] xl:right-[-13%] sm:px-5 sm:py-4 2xl:gap-4 2xl:px-6">
                   <span className="inline-block cursor-pointer transition-transform duration-300 hover:scale-125">
                     <Icon name={data.tagline.icon} className="h-7 w-7 shrink-0 text-[var(--color-primary)] 2xl:h-9 2xl:w-9" />

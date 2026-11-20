@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { CompanyData, FooterData, NavLink } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { Logo } from "@/components/ui/Logo";
-import { mailHref, telHref } from "@/components/ui/helpers";
+import { mailHref, telHref } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
 const ColumnTitle = ({ children }: { children: ReactNode }) => (
@@ -52,7 +52,6 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
 
   return (
     <footer id="contact" className="relative overflow-hidden bg-gradient-to-b from-[var(--color-footer-gradient)] to-[var(--color-footer-gradient-2)] text-[var(--color-white)]">
-      {/* Watermark logo mark */}
       <svg
         aria-hidden="true"
         viewBox="0 0 300 300"
@@ -70,10 +69,9 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
 
       <div className={`${ui.container} relative`}>
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 pb-10 pt-10 sm:grid-cols-[1.4fr_1fr_1fr] sm:gap-6 lg:grid-cols-3 xl:grid-cols-[minmax(258px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] xl:gap-6 2xl:grid-cols-[minmax(342px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] 3xl:grid-cols-[minmax(442px,1.2fr)_0.75fr_0.75fr_1.15fr_1.25fr] 2xl:gap-8 2xl:pb-12 2xl:pt-12">
-          {/* Brand + contact */}
           <div className="col-span-2 min-w-0 sm:col-span-1">
             <Link
-              href={company.homeUrl}
+              href={company.logoUrl}
               aria-label={company.homeLabel}
               className="inline-flex items-center rounded-[12px] bg-[var(--color-white)] px-3 py-1.5 shadow transition-transform duration-200 hover:scale-[1.02] sm:rounded-[14px] sm:px-3.5 sm:py-2 2xl:rounded-[16px] 2xl:px-4 2xl:py-2.5"
             >
@@ -105,7 +103,7 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
                 <span className={iconBox}>
                   <Icon name={icons.address} motion="pulse" className="h-3.5 w-3.5" />
                 </span>
-                <span>{company.addressLines.join(" ")}</span>
+                <span>{company.address.join(" ")}</span>
               </li>
             </ul>
             <div className="mt-4 flex flex-wrap gap-2.5 2xl:flex-nowrap">
@@ -124,7 +122,6 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
             </div>
           </div>
 
-          {/* Useful links: two columns */}
           {data.usefulLinks.map((column, i) => (
             <div key={i} className="min-w-0 xl:pt-2">
               <ColumnTitle>{data.usefulLinksTitle}</ColumnTitle>
@@ -132,13 +129,11 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
             </div>
           ))}
 
-          {/* Services */}
           <div className="col-span-2 min-w-0 sm:col-span-1 xl:pt-2">
             <ColumnTitle>{data.servicesTitle}</ColumnTitle>
             <LinkList items={data.serviceLinks} icon={icons.link} />
           </div>
 
-          {/* Newsletter */}
           <div className="col-span-2 min-w-0 xl:col-span-1 xl:pt-2">
             <ColumnTitle>{newsletter.title}</ColumnTitle>
             <p className="mt-4 max-w-[340px] text-[13.5px] leading-[1.5] text-[var(--color-white-85)] 2xl:mt-5 2xl:text-[14.5px]">{newsletter.text}</p>
@@ -187,7 +182,6 @@ export const Footer = ({ data, company }: { data?: FooterData; company: CompanyD
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="relative border-t border-[var(--color-white-20)]">
         <div className={ui.container}>
           <div className="flex flex-col items-center gap-2.5 py-4 text-center text-[13px] text-[var(--color-white-90)] md:flex-row md:justify-between md:text-left 2xl:py-5 2xl:text-[14px]">

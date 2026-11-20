@@ -5,9 +5,9 @@ import type { CompanyData, ContactFormData, GlobalUIData } from "@/types/templat
 import { Icon } from "@/components/ui/Icon";
 import { FormSuccess, Spinner } from "@/components/ui/FormSuccess";
 import { useDummySubmit } from "@/components/ui/useDummySubmit";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
-import { contactField } from "@/components/ui/helpers";
+import { contactLines } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
 const BOX =
@@ -31,10 +31,7 @@ function Field({ label, icon, children, className = "" }: {
   );
 }
 
-/** Contact page: "Send us a Message" form, cleaner photo and the contact details panel. */
 export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormData; company: CompanyData; ui: GlobalUIData }) => {
-  // Dummy submit: nothing is sent anywhere yet. "Sending…" for a moment, then the form clears
-  // and the thank-you card shows for 5 seconds.
   const submit = useDummySubmit();
   if (!data) return null;
   const { fields } = data;
@@ -42,9 +39,7 @@ export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormD
   return (
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="mx-auto grid w-full max-w-[1920px] grid-cols-1 md:grid-cols-2 lg:grid-cols-[46%_27%_27%] xl:grid-cols-[48%_30%_22%]">
-        {/* ---------- Form ---------- */}
         <div className="relative isolate min-w-0 overflow-hidden bg-[linear-gradient(180deg,var(--color-bg-faq)_0%,var(--color-contact-form-gradient)_100%)] px-4 pb-10 pt-10 sm:px-6 sm:pt-12 md:col-span-2 lg:col-span-1 lg:pl-[clamp(32px,6.77vw,130px)] lg:pr-[clamp(24px,2.2vw,42px)] 2xl:pb-[50px] 2xl:pt-[64px] 3xl:pt-[70px]">
-          {/* Leaves, top right */}
           <svg aria-hidden="true" viewBox="0 0 140 190" className="pointer-events-none absolute right-[5%] top-0 -z-10 w-[80px] text-[var(--color-contact-form-text-2)] 2xl:w-[120px]">
             <path fill="currentColor" d="M96 0c30 30 40 74 22 116-6 12-14 22-24 28-22-24-30-60-20-98 4-16 12-32 22-46Z" />
             <path fill="currentColor" d="M4 60c34-6 66 12 80 46 4 10 6 22 4 32-30 0-58-18-72-46-6-10-10-20-12-32Z" opacity=".8" />
@@ -109,7 +104,6 @@ export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormD
                   title={data.successTitle}
                   message={data.successMessage}
                   leaving={submit.status === "leaving"}
-                  visibleFor={submit.visibleFor}
                   onClose={submit.dismiss}
                   ui={labels.formSuccess}
                   className="mt-4 2xl:mt-5"
@@ -118,7 +112,6 @@ export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormD
             </div>
           </form>
 
-          {/* Paper plane + handwritten note */}
           <div className="mt-5 flex items-end gap-2 pl-[4%] 2xl:mt-6" aria-hidden="true">
             <svg viewBox="0 0 150 90" className="w-[90px] shrink-0 text-[var(--color-form-accent)] 2xl:w-[120px] 3xl:w-[145px]">
               <path fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeDasharray="6 7" d="M4 78c20 8 42 6 52-8 6-10-2-20-12-18-10 2-12 14-2 18 16 6 40-10 58-32" />
@@ -133,7 +126,6 @@ export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormD
           </div>
         </div>
 
-        {/* ---------- Photo ---------- */}
         <div className="relative min-h-[380px] min-w-0 overflow-hidden sm:min-h-[460px] lg:min-h-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={data.image.src} alt={data.image.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[40%_top]" />
@@ -141,17 +133,16 @@ export const ContactForm = ({ data, company, ui: labels }: { data?: ContactFormD
           <HandwrittenNote lines={labels.noteLines} color="text-[var(--color-form-accent)]" className="absolute left-[7%] top-[14%] text-[clamp(26px,2.3vw,44px)] md:text-[clamp(24px,3.4vw,34px)] lg:text-[clamp(18px,2.1vw,40px)]" />
         </div>
 
-        {/* ---------- Contact details panel ---------- */}
         <div className="relative isolate flex min-w-0 flex-col justify-center overflow-hidden bg-[var(--color-contact-form-bg)] px-5 py-10 text-[var(--color-white)] sm:px-7 lg:px-5 xl:px-6 2xl:px-8 3xl:pl-[47px] 3xl:pr-[38px]">
-          {/* Faint leaves, bottom right */}
           <svg aria-hidden="true" viewBox="0 0 220 160" className="pointer-events-none absolute bottom-0 right-0 -z-10 w-[150px] text-[var(--color-white-7)] 2xl:w-[210px]">
             <path fill="currentColor" d="M220 30c-56 4-96 40-106 92-2 12-2 26 2 38h104V30Z" />
             <path fill="currentColor" d="M0 160c20-44 62-66 116-60-8 26-26 46-50 60H0Z" />
           </svg>
 
           <ul className="space-y-6 xl:space-y-7 2xl:space-y-9 3xl:space-y-[50px]">
-            {data.details.map(({ id, icon, title, field }) => {
-              const { lines } = contactField(company, field);
+            {data.details.map((detail) => {
+              const { id, icon, title } = detail;
+              const lines = contactLines(detail, company);
               return (
               <li key={id} className="flex min-w-0 items-center gap-4 xl:gap-5 3xl:gap-[26px]">
                 <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-[var(--color-contact-form-stroke)] text-[var(--color-accent)] 2xl:h-[62px] 2xl:w-[62px] 3xl:h-[72px] 3xl:w-[72px]">

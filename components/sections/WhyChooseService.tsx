@@ -1,7 +1,7 @@
 import type { GlobalUIData, ServiceDetailData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
 export const WhyChooseService = ({ data, ui: labels }: { data?: ServiceDetailData; ui?: GlobalUIData }) => {

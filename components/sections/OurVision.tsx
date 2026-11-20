@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { GlobalUIData, MissionVisionData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
 function FocusCard({ card, className = "" }: { card: MissionVisionData["card"]; className?: string }) {
@@ -25,13 +25,11 @@ function FocusCard({ card, className = "" }: { card: MissionVisionData["card"]; 
   );
 }
 
-/** "Our Vision — Cleaner Spaces Happier Lives" with photo and Our Focus card. */
 export const OurVision = ({ data, ui: labels }: { data?: MissionVisionData; ui?: GlobalUIData }) => {
   if (!data) return null;
 
   return (
     <section className="relative w-full bg-[var(--color-white)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
-      {/* Pale leaves on the right edge */}
       <svg
         aria-hidden="true"
         viewBox="0 0 320 420"
@@ -46,9 +44,7 @@ export const OurVision = ({ data, ui: labels }: { data?: MissionVisionData; ui?:
       <div className={`${ui.container} relative`}>
         <div className="lg:px-2 xl:px-10 2xl:pl-[50px] 2xl:pr-[90px] 3xl:pl-[50px] 3xl:pr-[146px]">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[802fr_720fr] lg:gap-8 xl:gap-14 2xl:gap-[93px]">
-            {/* ---------- Visual ---------- */}
             <div className="[container-type:inline-size] order-2 mx-auto w-full min-w-0 max-w-[802px] lg:order-1">
-              {/* Phones */}
               <div className="sm:hidden">
                 <PhotoSlot
                   src={data.image.src}
@@ -59,7 +55,6 @@ export const OurVision = ({ data, ui: labels }: { data?: MissionVisionData; ui?:
                 <FocusCard card={data.card} className="relative -mt-16 w-[88%]" />
               </div>
 
-              {/* Tablet + desktop */}
               <div className="relative hidden aspect-[802/641] w-full sm:block">
                 <PhotoSlot
                   src={data.image.src}
@@ -71,7 +66,6 @@ export const OurVision = ({ data, ui: labels }: { data?: MissionVisionData; ui?:
               </div>
             </div>
 
-            {/* ---------- Text ---------- */}
             <div className="order-1 min-w-0 max-w-[760px] lg:order-2">
               <SectionEyebrow>{data.label}</SectionEyebrow>
               <h2 className="mt-4 text-[clamp(32px,3.95vw,76px)] font-bold leading-[1.08] tracking-[-0.02em] text-[var(--color-heading-dark)] 2xl:mt-4">

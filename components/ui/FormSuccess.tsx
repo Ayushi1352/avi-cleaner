@@ -6,14 +6,12 @@ type FormSuccessProps = {
   title: string;
   message: string;
   leaving: boolean;
-  visibleFor: number;
   onClose: () => void;
   ui: FormSuccessUI;
   className?: string;
 };
 
-/** Thank-you card shown after a (dummy) form submission; fades out on its own */
-export const FormSuccess = ({ name, title, message, leaving, visibleFor, onClose, ui, className = "" }: FormSuccessProps) => {
+export const FormSuccess = ({ name, title, message, leaving, onClose, ui, className = "" }: FormSuccessProps) => {
   const heading = name ? title.replace("{name}", name) : title.replace(", {name}", "").replace("{name}", "");
 
   return (
@@ -42,17 +40,14 @@ export const FormSuccess = ({ name, title, message, leaving, visibleFor, onClose
       >
         <Icon name={ui.closeIcon} className="h-4 w-4 2xl:h-5 2xl:w-5" strokeWidth={2.4} />
       </button>
-      {/* time left before the message closes itself */}
       <span
         className="absolute bottom-0 left-0 h-[3px] w-0 bg-[var(--color-form-accent)] opacity-60 animate-shrink-width"
-        style={{ animationDuration: `${visibleFor}ms` }}
         aria-hidden="true"
       />
     </div>
   );
 };
 
-/** small spinner for the submit button while the dummy request runs */
 export const Spinner = ({ name, className = "" }: { name: string; className?: string }) => (
   <Icon name={name} motion="" className={`animate-spin ${className}`} strokeWidth={2.4} />
 );

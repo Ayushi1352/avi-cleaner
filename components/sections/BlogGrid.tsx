@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import type { BlogGridData, BlogGridPost } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { fillLabel } from "@/components/ui/helpers";
+import { Pagination } from "@/components/ui/Pagination";
 import { ui } from "@/components/ui/styles";
 
 function BlogCard({ post, data }: { post: BlogGridPost; data: BlogGridData }) {
@@ -60,7 +60,6 @@ function BlogCard({ post, data }: { post: BlogGridPost; data: BlogGridData }) {
   );
 }
 
-/** Blog page body: post grid with pagination (6 per page). */
 export const BlogGrid = ({ data }: { data?: BlogGridData }) => {
   const [page, setPage] = useState(1);
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -78,10 +77,6 @@ export const BlogGrid = ({ data }: { data?: BlogGridData }) => {
     sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const btn =
-    "flex h-10 w-10 items-center justify-center rounded-full text-[14px] font-bold shadow-[0_4px_14px_-4px_var(--color-shadow-card-30)] transition-colors 2xl:h-12 2xl:w-12 2xl:text-[16px] 3xl:h-[50px] 3xl:w-[50px]";
-  const idle = "bg-[var(--color-white)] text-[var(--color-title)] hover:bg-[var(--color-card-badge)] hover:text-[var(--color-white)] disabled:pointer-events-none disabled:opacity-60";
-
   return (
     <section ref={sectionRef} className="w-full scroll-mt-24 bg-[var(--color-bg-card)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
       <div className={ui.container}>
@@ -94,33 +89,7 @@ export const BlogGrid = ({ data }: { data?: BlogGridData }) => {
         </ul>
 
         {totalPages > 1 && (
-          <nav aria-label={data.pagination.label} className="mt-9 flex justify-center 2xl:mt-[28px]">
-            <ul className="flex flex-wrap items-center justify-center gap-2.5 2xl:gap-3">
-              <li>
-                <button type="button" onClick={() => goTo(page - 1)} disabled={page === 1} aria-label={data.pagination.previous.label} className={`${btn} ${idle}`}>
-                  <Icon name={data.pagination.previous.icon} className="h-4 w-4" strokeWidth={3} />
-                </button>
-              </li>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-                <li key={n}>
-                  <button
-                    type="button"
-                    onClick={() => goTo(n)}
-                    aria-label={fillLabel(data.pagination.page, { n })}
-                    aria-current={n === page ? "page" : undefined}
-                    className={`${btn} ${n === page ? "bg-[var(--color-card-badge)] text-[var(--color-white)]" : idle}`}
-                  >
-                    {n}
-                  </button>
-                </li>
-              ))}
-              <li>
-                <button type="button" onClick={() => goTo(page + 1)} disabled={page === totalPages} aria-label={data.pagination.next.label} className={`${btn} ${idle}`}>
-                  <Icon name={data.pagination.next.icon} className="h-4 w-4" strokeWidth={3} />
-                </button>
-              </li>
-            </ul>
-          </nav>
+          <Pagination page={page} totalPages={totalPages} onChange={goTo} labels={data.pagination} className="mt-9 2xl:mt-[28px]" />
         )}
       </div>
     </section>

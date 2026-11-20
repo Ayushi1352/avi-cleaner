@@ -101,7 +101,6 @@ const icons: Record<string, { icon: IconType; motion?: string; className?: strin
   LuUsers: { icon: LuUsers },
   LuUtensils: { icon: LuUtensils, motion: "pulse" },
   LuX: { icon: LuX },
-  // Solid icons, each with its own endless motion.
   FaLeaf: { icon: FaLeaf, motion: "sway", className: "origin-bottom" },
   RiSeedlingFill: { icon: RiSeedlingFill, motion: "sway", className: "origin-bottom" },
   BsShieldFillCheck: { icon: BsShieldFillCheck, motion: "heartbeat" },
@@ -134,7 +133,6 @@ const icons: Record<string, { icon: IconType; motion?: string; className?: strin
   IoWallet: { icon: IoWallet },
   FaCalendarAlt: { icon: FaCalendarAlt },
   BsCheckCircleFill: { icon: BsCheckCircleFill },
-  // Social networks.
   FaFacebookF: { icon: FaFacebookF, motion: "pulse" },
   FaXTwitter: { icon: FaXTwitter, motion: "pulse" },
   FaLinkedinIn: { icon: FaLinkedinIn, motion: "pulse" },

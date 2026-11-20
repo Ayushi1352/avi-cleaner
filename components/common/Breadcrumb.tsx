@@ -14,7 +14,6 @@ export const Breadcrumb = ({ data, ui: labels }: { data?: BreadcrumbData; ui: Gl
 
   return (
     <section className="relative isolate w-full overflow-hidden bg-[var(--color-banner-bg)]">
-      {/* Background cleaner image */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={data.bgImage}

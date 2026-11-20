@@ -10,7 +10,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.servicesBreadcrumb?.metaTitle, description: commonData.servicesBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.servicesBreadcrumb?.seo };
 
 export default function ServicesPage() {
   return (

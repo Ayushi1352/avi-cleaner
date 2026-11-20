@@ -1,7 +1,5 @@
 // Shapes of data/templates.json. Components receive these through props; none of them imports the JSON.
 
-/* ---------- Shared ---------- */
-
 export interface ThemeFonts {
   primary: string;
   secondary: string;
@@ -31,7 +29,6 @@ export interface GlobalUIData {
   formSuccess: FormSuccessUI;
 }
 
-/** Shared bits of the thank-you card and spinner every form uses */
 export interface FormSuccessUI {
   successIcon: string;
   closeIcon: string;
@@ -51,10 +48,12 @@ export interface CompanyData {
   logo: string;
   logoAlt: string;
   homeLabel: string;
-  homeUrl: string;
+  logoUrl: string;
   phone: string;
   email: string;
-  addressLines: string[];
+  address: string[];
+  /** Google Maps embed; {query} is the company address */
+  mapEmbedUrl: string;
   socialLinks: SocialLink[];
 }
 
@@ -77,10 +76,14 @@ export interface BreadcrumbPath {
   url: string;
 }
 
+export interface SeoData {
+  title: string;
+  description: string;
+}
+
 export interface BreadcrumbData {
   title: string;
-  metaTitle: string;
-  description: string;
+  seo?: SeoData;
   bgImage: string;
   bgImageAlt: string;
   paths: BreadcrumbPath[];
@@ -143,11 +146,9 @@ export interface CommonData {
   privacyBreadcrumb?: BreadcrumbData;
   refundBreadcrumb?: BreadcrumbData;
   termsBreadcrumb?: BreadcrumbData;
-  notFoundMeta?: { title: string; description: string };
+  notFound?: NotFoundData;
   Footer?: FooterData;
 }
-
-/* ---------- Header ---------- */
 
 export interface HeaderData {
   nav: NavLink[];
@@ -158,8 +159,6 @@ export interface HeaderData {
     close: string;
   };
 }
-
-/* ---------- Shared pieces of sections ---------- */
 
 export interface LightboxLabels {
   dialog: string;
@@ -181,8 +180,6 @@ export interface ImageData {
   src: string;
   alt: string;
 }
-
-/* ---------- Home ---------- */
 
 export interface IconLines {
   id: string;
@@ -283,7 +280,6 @@ export interface RecentProjectsData {
   label: string;
   title: { lead: string; highlight: string; after: string };
   description: string;
-  /** label is "View {title}" (screen readers). */
   cardLink: IconLinkData;
   button: IconLinkData;
   projects: ProjectItem[];
@@ -351,8 +347,6 @@ export interface BlogsData {
   posts: NewsPost[];
 }
 
-/* ---------- Mission & Vision ---------- */
-
 export interface MissionVisionData {
   label: string;
   title: string[];
@@ -384,11 +378,8 @@ export interface PartnerCtaData {
   image: string;
 }
 
-/* ---------- Team ---------- */
-
 export interface PaginationData {
   label: string;
-  /** "Page {item}" */
   page: string;
   previous: LabelIcon;
   next: LabelIcon;
@@ -408,9 +399,7 @@ export interface TeamGridData {
   description: { lead: string; highlight: string; after: string };
   noteLines: string[];
   perPage: number;
-  /** "View {name}" */
   viewMember: string;
-  /** "{name} on {name2}" */
   memberOn: string;
   pagination: PaginationData;
   socials: SocialLink[];
@@ -455,7 +444,6 @@ export interface MemberDetail {
 export interface MemberTab {
   id: string;
   label: string;
-  /** may hold {first} */
   heading: string;
 }
 
@@ -465,15 +453,12 @@ export interface TeamDetailData {
     strengthIcons: string[];
     contactIcons: { email: string; phone: string; address: string };
     quoteIcon: string;
-    /** "{name} on {name2}" */
     memberOn: string;
     socials: SocialLink[];
   };
   tabs: { label: string; items: MemberTab[]; checkIcon: string; quoteIcon: string };
   journey: { label: string; title: string; description: string[]; quoteIcon: string };
 }
-
-/* ---------- How it works ---------- */
 
 export interface ProcessStep {
   id: string;
@@ -499,12 +484,9 @@ export interface TestimonialsGridData {
   stars: number;
   starsLabel: string;
   icons: { quote: string; star: string };
-  /** page is "Page {n}" */
   pagination: PaginationData;
   reviews: TestimonialItem[];
 }
-
-/* ---------- Awards ---------- */
 
 export interface AwardItem {
   id: string;
@@ -530,8 +512,6 @@ export interface AwardsData {
   certificates: { label: string; title: string; description: string; leafIcon: string; items: CertificateItem[] };
 }
 
-/* ---------- Services ---------- */
-
 export interface ServiceGridItem {
   id: string;
   href: string;
@@ -547,7 +527,6 @@ export interface ServicesGridData {
   description: string[];
   perPage: number;
   readMore: LabelIcon;
-  /** page is "Page {n}" */
   pagination: PaginationData;
   services: ServiceGridItem[];
 }
@@ -598,8 +577,6 @@ export interface ServiceDetailData {
   cta: PartnerCtaData;
 }
 
-/* ---------- Pricing ---------- */
-
 export interface PricingPlan {
   id: string;
   name: string;
@@ -613,7 +590,6 @@ export interface PricingPlan {
 export interface CompareRow {
   id: string;
   feature: string;
-  /** included in Basic, Standard, Premium */
   cells: boolean[];
 }
 
@@ -640,19 +616,15 @@ export interface PricingData {
   };
 }
 
-/* ---------- Gallery ---------- */
-
 export interface GalleryPhoto {
   id: string;
   src: string;
   alt: string;
-  /** "top" keeps the top of the photo in view */
   focus?: string;
 }
 
 export interface GalleryPhotosData {
   perPage: number;
-  /** "View image: {alt}" */
   viewImage: string;
   pagination: PaginationData;
   lightbox: LightboxLabels;
@@ -664,7 +636,6 @@ export interface GalleryVideoItem {
   title: string;
   text: string;
   thumb: string;
-  /** YouTube link or video file */
   src: string;
 }
 
@@ -673,14 +644,11 @@ export interface GalleryVideoData {
   title: { lead: string; highlight: string; after: string };
   description: string[];
   perPage: number;
-  /** "Play video: {title}" */
   playVideo: string;
   pagination: PaginationData;
   button: IconLinkData;
   videos: GalleryVideoItem[];
 }
-
-/* ---------- Blog ---------- */
 
 export interface BlogGridPost {
   id: string;
@@ -733,8 +701,6 @@ export interface BlogDetailData {
   followTitle: string;
 }
 
-/* ---------- FAQ ---------- */
-
 export interface FaqItemData {
   id: string;
   icon: string;
@@ -752,15 +718,17 @@ export interface FaqData {
   help: { icon: string; eyebrow: string; title: string; text: string; button: IconLinkData };
 }
 
-/* ---------- Contact ---------- */
+/** A contact item either carries its own `lines` or points at a company field ("address", "phone" or "email") with `source`. */
+export interface ContactLinesSource {
+  source?: string;
+  lines?: string[];
+}
 
-export interface ContactCardItem {
+export interface ContactCardItem extends ContactLinesSource {
   id: string;
   icon: string;
   title: string;
-  /** company field shown on the card: "address", "phone" or "email" */
-  field: string;
-  /** href "" = the link of the field (tel: / mailto:) */
+  /** href "" = the link of the source (tel: / mailto:) */
   action: IconLinkData;
 }
 
@@ -773,11 +741,10 @@ export interface ContactInfoData {
   cards: ContactCardItem[];
 }
 
-export interface ContactDetailItem {
+export interface ContactDetailItem extends ContactLinesSource {
   id: string;
   icon: string;
   title: string;
-  field: string;
 }
 
 export interface ContactFormData {
@@ -787,7 +754,6 @@ export interface ContactFormData {
   fields: Record<"name" | "phone" | "email" | "subject" | "message", LabelIcon>;
   submit: LabelIcon;
   sendingText: string;
-  /** {name} is the first name typed in the form */
   successTitle: string;
   successMessage: string;
   noteLines: string[];
@@ -799,11 +765,7 @@ export interface ContactFormData {
 export interface ContactMapData {
   label: string;
   title: string;
-  /** {addressQuery} is the company address */
-  embedUrl: string;
 }
-
-/* ---------- Booking ---------- */
 
 export interface FormFieldData {
   label: string;
@@ -822,7 +784,6 @@ export interface BookingData {
   submit: { label: string; icon: string; arrowIcon: string };
   terms: string;
   sendingText: string;
-  /** {name} is the first name typed in the form */
   successTitle: string;
   successMessage: string;
   image: ImageData;
@@ -831,15 +792,11 @@ export interface BookingData {
   reasons: TitledFeature[];
 }
 
-/* ---------- Policies ---------- */
-
 export interface PolicySection {
   id: string;
   title: string;
   text: string;
-  /** bullet points shown under the paragraph */
   points?: string[];
-  /** shows the company email, phone and address under the paragraph */
   contact?: boolean;
 }
 
@@ -857,8 +814,6 @@ export interface PolicyData {
   sections: PolicySection[];
 }
 
-/* ---------- 404 ---------- */
-
 export interface QuickLink {
   id: string;
   href: string;
@@ -868,6 +823,7 @@ export interface QuickLink {
 }
 
 export interface NotFoundData {
+  seo: SeoData;
   /** "404": the middle digit is drawn as the ring illustration */
   code: string;
   eyebrow: string;
@@ -880,8 +836,6 @@ export interface NotFoundData {
   plantImage: string;
   quickLinks: QuickLink[];
 }
-
-/* ---------- Template ---------- */
 
 /** One section of templates.json: { variants: { Cleaning<Name>1: data } }. */
 export type Section<V extends string, T> = { variants?: { [K in V]?: T } };
@@ -922,7 +876,6 @@ export interface CleaningSections {
   PrivacyPolicy?: Section<"CleaningPrivacyPolicy1", PrivacyPolicyData>;
   RefundPolicy?: Section<"CleaningRefundPolicy1", PolicyData>;
   TermsPolicy?: Section<"CleaningTermsPolicy1", PolicyData>;
-  NotFound?: Section<"CleaningNotFound1", NotFoundData>;
 }
 
 export interface TemplateComponentEntry {

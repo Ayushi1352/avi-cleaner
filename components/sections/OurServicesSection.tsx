@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { GlobalUIData, HomeServiceCard, ServicesData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { SectionTag } from "@/components/ui/SectionTag";
+import { SectionTag } from "@/components/ui/SectionLabel";
 import { useCarousel, slideClass, trackClass } from "@/components/ui/useCarousel";
 import { ui } from "@/components/ui/styles";
 
@@ -67,8 +67,8 @@ function ProvideCard({ data, className = "" }: { data: ServicesData["provide"]; 
 
 export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; ui?: GlobalUIData }) => {
   const services = data?.services ?? [];
-  const { setViewport: setMobileViewport, ...mobile } = useCarousel(services.length, { loop: false });
-  const { setViewport: setDesktopViewport, ...desktop } = useCarousel(services.length, { loop: false });
+  const { setViewport: setMobileViewport, setTrack: setMobileTrack, ...mobile } = useCarousel(services.length, { loop: false });
+  const { setViewport: setDesktopViewport, setTrack: setDesktopTrack, ...desktop } = useCarousel(services.length, { loop: false });
 
   if (!data) return null;
 
@@ -100,7 +100,6 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
     <section id="services" className="scroll-mt-24 bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className={ui.container}>
         <div className="relative overflow-hidden rounded-[20px] bg-[var(--color-bg-section)] lg:rounded-[4px]">
-          {/* Decorative pale leaves */}
           <svg
             aria-hidden="true"
             viewBox="0 0 600 800"
@@ -110,7 +109,6 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
             <path fill="currentColor" d="M600 520c-160-10-300 90-360 280h360V520Z" />
           </svg>
 
-          {/* ---------- Below 1280px: stacked ---------- */}
           <div className="relative space-y-8 p-5 sm:p-8 lg:hidden">
             {header}
             <div className="grid gap-5 md:grid-cols-2">
@@ -129,7 +127,7 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
                 ref={setMobileViewport}
                 className="overflow-hidden py-3 [--gap:16px] [--per:1] sm:[--per:2]"
               >
-                <div className={trackClass} style={mobile.trackStyle}>
+                <div className={trackClass} ref={setMobileTrack}>
                   {services.map((s) => (
                     <div key={s.title} className={slideClass}>
                       <ServiceCard service={s} data={data} labels={labels} />
@@ -162,7 +160,6 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
             </div>
           </div>
 
-          {/* ---------- 1280px and up: design layout ---------- */}
           <div className="relative hidden lg:block">
             <ImagePlaceholder
               src={data.image.src}
@@ -181,7 +178,7 @@ export const OurServicesSection = ({ data, ui: labels }: { data?: ServicesData; 
                   ref={setDesktopViewport}
                   className="overflow-hidden py-3 [--gap:16px] lg:[--per:1] xl:[--per:2] xl:[--gap:20px] 2xl:[--per:3] 2xl:[--gap:24px]"
                 >
-                  <div className={trackClass} style={desktop.trackStyle}>
+                  <div className={trackClass} ref={setDesktopTrack}>
                     {services.map((s) => (
                       <div key={s.title} className={slideClass}>
                         <ServiceCard service={s} data={data} labels={labels} />

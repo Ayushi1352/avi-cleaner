@@ -2,19 +2,17 @@ import Link from "next/link";
 import type { CleaningProcessData, GlobalUIData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ui } from "@/components/ui/styles";
 
-/** "How It Works — How Our Cleaning Process Works For You". */
 export const CleaningProcess = ({ data, ui: labels }: { data?: CleaningProcessData; ui: GlobalUIData }) => {
   if (!data) return null;
 
   return (
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className="relative overflow-hidden bg-[var(--color-icon-bg-light)] py-12 sm:py-14 2xl:pb-[40px] 2xl:pt-[48px]">
-        {/* Leaf, top left */}
         <svg aria-hidden="true" viewBox="0 0 300 330" className="pointer-events-none absolute left-0 top-6 hidden w-[180px] text-[var(--color-step-number-light)] md:block 2xl:w-[240px]">
           <path fill="currentColor" d="M10 0c90 20 150 90 160 180 5 40-5 80-25 110C60 260 15 190 8 110 5 70 5 30 10 0Z" />
           <path fill="currentColor" d="M150 320c10-70 60-120 130-130-10 70-60 120-130 130Z" />
@@ -64,7 +62,6 @@ export const CleaningProcess = ({ data, ui: labels }: { data?: CleaningProcessDa
                   </article>
                 </ScrollReveal>
 
-                {/* Dotted connector with arrow (desktop only) */}
                 {i < data.steps.length - 1 && (
                   <span aria-hidden="true" className="absolute left-full top-[30%] z-10 hidden w-10 -translate-y-1/2 items-center justify-center lg:flex 2xl:w-[56px] 3xl:left-[calc(100%-62px)] 3xl:top-[40.5%] 3xl:w-[180px]">
                     <span className="absolute inset-x-0 top-1/2 border-t-[3px] border-dotted border-[var(--color-primary-dark-70)]" />
@@ -77,7 +74,6 @@ export const CleaningProcess = ({ data, ui: labels }: { data?: CleaningProcessDa
             ))}
           </ol>
 
-          {/* Bottom row */}
           <ScrollReveal variant="fade-up" delay={200} duration={700}>
             <div className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:justify-between 2xl:mt-[40px] 3xl:mt-[26px]">
               <p className="flex items-center gap-2 font-script text-[26px] font-semibold text-[var(--color-primary-dark)] sm:order-1 2xl:pl-[40px] 2xl:text-[34px] 3xl:text-[38px]" aria-hidden="true">

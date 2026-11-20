@@ -1,4 +1,3 @@
-/** The logo image, sized by the className of its box. */
 export const Logo = ({ src, alt, className = "" }: { src: string; alt: string; className?: string }) => (
   <div className={`flex items-center select-none ${className}`}>
     {/* eslint-disable-next-line @next/next/no-img-element */}

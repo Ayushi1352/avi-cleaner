@@ -1,6 +1,6 @@
 
 import type { GalleryVideoItem } from "@/types/templates.types";
-import { fillLabel } from "@/components/ui/helpers";
+import { fill } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
 /**
@@ -27,15 +27,13 @@ export const GalleryVideoCard = ({ video, playLabel }: { video: GalleryVideoItem
     <article data-card-border className={`${ui.cardBorder} min-w-0`}>
       <div className="relative aspect-[570/290] w-full overflow-hidden rounded-[10px] bg-[var(--color-eyebrow-text)] 2xl:rounded-[12px]">
         {isYT ? (
-          /* YouTube thumbnail + play-button overlay; click → open YT in new tab */
           <a
             href={video.src}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={fillLabel(playLabel, { title: video.title })}
+            aria-label={fill(playLabel, { title: video.title })}
             className="group absolute inset-0"
           >
-            {/* Thumbnail */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={video.thumb}
@@ -43,9 +41,7 @@ export const GalleryVideoCard = ({ video, playLabel }: { video: GalleryVideoItem
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            {/* Dark overlay */}
             <span className="absolute inset-0 bg-[var(--color-black-30)] transition-colors duration-300 group-hover:bg-[var(--color-black-45)]" />
-            {/* Play icon */}
             <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--color-white-90)] text-[var(--color-gallery-accent)] shadow-lg transition-transform duration-300 group-hover:scale-110 sm:h-16 sm:w-16">
               <svg
                 viewBox="0 0 24 24"
@@ -58,7 +54,6 @@ export const GalleryVideoCard = ({ video, playLabel }: { video: GalleryVideoItem
             </span>
           </a>
         ) : video.src ? (
-          /* Native video */
           <video
             src={video.src}
             poster={video.thumb}
@@ -68,7 +63,6 @@ export const GalleryVideoCard = ({ video, playLabel }: { video: GalleryVideoItem
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
-          /* Thumbnail only */
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={video.thumb}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { PartnerCtaData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ui } from "@/components/ui/styles";
 
@@ -12,7 +12,6 @@ import { ui } from "@/components/ui/styles";
 export const PartnerCtaSection = ({
   data,
   showLeaf = true,
-  // "wide" = full-width banner with larger type (Service Detail page).
   wide = false,
 }: {
   data?: PartnerCtaData;
@@ -26,15 +25,15 @@ export const PartnerCtaSection = ({
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className={ui.container}>
         <div className={`relative isolate overflow-hidden rounded-[20px] bg-[var(--color-partner-cta-bg)] 2xl:rounded-[26px] ${wide ? "" : "2xl:mx-[20px] 3xl:ml-[32px] 3xl:mr-[76px]"}`}>
-          {/* Photo on the right, tinted green (drop the file in to show it) */}
           <div
             aria-hidden="true"
-            className="absolute inset-y-0 right-0 -z-20 w-full bg-cover bg-center opacity-[0.28] mix-blend-luminosity grayscale lg:w-[52%] lg:[mask-image:linear-gradient(to_right,transparent,var(--color-black)_40%)]"
-            style={{ backgroundImage: `url(${image})` }}
-          />
+            className="absolute inset-y-0 right-0 -z-20 w-full opacity-[0.28] mix-blend-luminosity grayscale lg:w-[52%] lg:[mask-image:linear-gradient(to_right,transparent,var(--color-black)_40%)]"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={image} alt="" loading="lazy" className="h-full w-full object-cover object-center" />
+          </div>
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[var(--color-partner-cta-bg)] via-[var(--color-partner-cta-bg-85)] via-60% to-[var(--color-partner-cta-bg-25)]" />
 
-          {/* Big faint leaf on the left */}
           {showLeaf && (
             <svg
               aria-hidden="true"

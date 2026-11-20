@@ -1,6 +1,6 @@
 import type { CoreValuesData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
 export const CoreValues = ({ data }: { data?: CoreValuesData }) => {

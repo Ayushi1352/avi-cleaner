@@ -23,7 +23,6 @@ export const Header = ({ data, company }: { data?: HeaderData; company: CompanyD
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -31,7 +30,6 @@ export const Header = ({ data, company }: { data?: HeaderData; company: CompanyD
     };
   }, [open]);
 
-  // Close menu on route change
   const [menuPath, setMenuPath] = useState(pathname);
   if (menuPath !== pathname) {
     setMenuPath(pathname);
@@ -45,8 +43,7 @@ export const Header = ({ data, company }: { data?: HeaderData; company: CompanyD
     <header className="sticky top-0 z-50 w-full border-b border-[var(--color-header-border)] bg-[var(--color-header-bg-95)] backdrop-blur">
       <div className={ui.container}>
         <div className="flex h-[72px] items-center justify-between gap-4 sm:h-[80px] lg:h-[84px] xl:h-[96px] 2xl:h-[112px] 3xl:h-[138px]">
-          {/* Logo */}
-          <Link href={company.homeUrl} aria-label={company.homeLabel} className="shrink-0">
+          <Link href={company.logoUrl} aria-label={company.homeLabel} className="shrink-0">
             <Logo
               src={company.logo}
               alt={company.logoAlt}
@@ -54,7 +51,6 @@ export const Header = ({ data, company }: { data?: HeaderData; company: CompanyD
             />
           </Link>
 
-          {/* Desktop links */}
           <nav className="hidden items-center gap-5 lg:flex xl:gap-8 2xl:gap-11 3xl:gap-[62px]">
             {nav.map((link) => (
               <Link
@@ -72,7 +68,6 @@ export const Header = ({ data, company }: { data?: HeaderData; company: CompanyD
             ))}
           </nav>
 
-          {/* Desktop CTA */}
           <Link
             href={button.href}
             className={`${ui.btnSolid} group hidden shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full bg-gradient-to-r from-[var(--color-primary-light)] to-[var(--color-header-button)] px-5 py-2.5 text-[15px] font-semibold [--btn:var(--color-header-button)] lg:inline-flex xl:px-7 xl:py-3 xl:text-[17px] 2xl:px-9 2xl:py-4 2xl:text-[19px] 3xl:px-10 3xl:py-[22px] 3xl:text-[21px]`}
@@ -81,7 +76,6 @@ export const Header = ({ data, company }: { data?: HeaderData; company: CompanyD
             <Icon name={button.icon} className="h-4 w-4 transition-transform group-hover:translate-x-1 2xl:h-5 2xl:w-5" strokeWidth={2.4} />
           </Link>
 
-          {/* Mobile controls */}
           <div className="flex items-center gap-2 lg:hidden">
             {!open && (
               <Link
@@ -105,7 +99,6 @@ export const Header = ({ data, company }: { data?: HeaderData; company: CompanyD
         </div>
       </div>
 
-      {/* Mobile & Tablet Fullscreen Drawer */}
       {open && (
         <div className="fixed inset-x-0 top-[72px] bottom-0 z-50 flex h-[calc(100dvh-72px)] flex-col justify-between border-t border-[var(--color-header-border)] bg-[var(--color-white)] sm:top-[80px] sm:h-[calc(100dvh-80px)] lg:hidden">
           <div className={`${ui.container} flex h-full flex-col justify-between overflow-y-auto py-4 sm:py-6`}>

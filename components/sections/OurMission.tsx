@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { GlobalUIData, MissionVisionData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
 function GoalCard({ card, className = "" }: { card: MissionVisionData["card"]; className?: string }) {
@@ -23,7 +23,6 @@ function GoalCard({ card, className = "" }: { card: MissionVisionData["card"]; c
   );
 }
 
-/** "Our Mission — A Cleaner Tomorrow" with photo and Our Goal card. */
 export const OurMission = ({ data, ui: labels }: { data?: MissionVisionData; ui?: GlobalUIData }) => {
   if (!data) return null;
 
@@ -32,7 +31,6 @@ export const OurMission = ({ data, ui: labels }: { data?: MissionVisionData; ui?
       <div className={ui.container}>
         <div className="lg:px-2 xl:px-10 2xl:pl-[90px] 2xl:pr-[70px] 3xl:pl-[122px] 3xl:pr-[116px]">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[685fr_830fr] lg:gap-8 xl:gap-10 2xl:gap-[50px]">
-            {/* ---------- Text ---------- */}
             <div className="min-w-0 max-w-[760px]">
               <SectionEyebrow>{data.label}</SectionEyebrow>
               <h2 className="mt-4 text-[clamp(32px,3.95vw,76px)] font-bold leading-[1.08] tracking-[-0.02em] text-[var(--color-heading-dark)] 2xl:mt-4">
@@ -62,9 +60,7 @@ export const OurMission = ({ data, ui: labels }: { data?: MissionVisionData; ui?
               </Link>
             </div>
 
-            {/* ---------- Visual ---------- */}
             <div className="[container-type:inline-size] mx-auto w-full min-w-0 max-w-[830px]">
-              {/* Phones: photo with card overlapping below */}
               <div className="sm:hidden">
                 <PhotoSlot
                   src={data.image.src}
@@ -75,7 +71,6 @@ export const OurMission = ({ data, ui: labels }: { data?: MissionVisionData; ui?
                 <GoalCard card={data.card} className="relative -mt-16 ml-auto w-[88%]" />
               </div>
 
-              {/* Tablet + desktop: overlapping layout from the design */}
               <div className="relative hidden aspect-[830/600] w-full sm:block">
                 <PhotoSlot
                   src={data.image.src}

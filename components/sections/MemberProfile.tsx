@@ -2,10 +2,9 @@ import type { SVGAttributes } from "react";
 import type { GlobalUIData, TeamDetailData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { fillLabel, mailHref, telHref } from "@/components/ui/helpers";
+import { fill, mailHref, telHref } from "@/components/ui/text";
 import { ui } from "@/components/ui/styles";
 
-/** Top of the Team Detail page: photo, name, contact info and strengths. */
 export const MemberProfile = ({ data, ui: labels }: { data?: TeamDetailData; ui?: GlobalUIData }) => {
   if (!data) return null;
   const { member, profile } = data;
@@ -21,7 +20,6 @@ export const MemberProfile = ({ data, ui: labels }: { data?: TeamDetailData; ui?
     <section className="w-full bg-[var(--color-white)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
       <div className={ui.container}>
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_1fr] lg:gap-10 xl:grid-cols-[668fr_607fr_411fr] xl:gap-8 2xl:gap-[47px] 3xl:gap-x-[55px] 3xl:pl-[16px] 3xl:pr-[8px]">
-          {/* ---------- Photo with quote bar ---------- */}
           <div className="relative mx-auto aspect-[668/860] w-full min-w-0 max-w-[560px] overflow-hidden rounded-[20px] shadow-[0_18px_40px_-26px_var(--color-shadow-card-45)] md:max-w-none 2xl:rounded-[24px]">
             <PhotoSlot
               src={member.photo}
@@ -40,7 +38,6 @@ export const MemberProfile = ({ data, ui: labels }: { data?: TeamDetailData; ui?
             </div>
           </div>
 
-          {/* ---------- Name, intro, contact ---------- */}
           <div className="min-w-0 self-center 3xl:pb-[40px]">
             <h1 className="break-words text-[clamp(34px,4.1vw,79px)] font-extrabold leading-[1.1] tracking-[-0.02em] text-[var(--color-title)]">
               {member.name}
@@ -78,7 +75,7 @@ export const MemberProfile = ({ data, ui: labels }: { data?: TeamDetailData; ui?
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={fillLabel(profile.memberOn, { name: member.name, name2: name })}
+                    aria-label={fill(profile.memberOn, { name: member.name, name2: name })}
                     className={`${ui.btnSolid} flex h-11 w-11 items-center justify-center rounded-full [--btn:var(--color-forest)] 2xl:h-[58px] 2xl:w-[58px] 3xl:h-[70px] 3xl:w-[70px]`}
                   >
                     <Icon name={icon} className="h-5 w-5 2xl:h-6 2xl:w-6 3xl:h-[34px] 3xl:w-[34px]" />
@@ -88,7 +85,6 @@ export const MemberProfile = ({ data, ui: labels }: { data?: TeamDetailData; ui?
             </ul>
           </div>
 
-          {/* ---------- Strengths card ---------- */}
           <ul className="grid min-w-0 grid-cols-1 gap-5 self-center rounded-[20px] bg-[var(--color-member-bg-6)] p-6 min-[420px]:grid-cols-2 md:col-span-2 lg:grid-cols-4 xl:col-span-1 xl:grid-cols-1 xl:gap-8 xl:px-6 xl:py-8 2xl:gap-[46px] 2xl:rounded-[28px] 2xl:px-[30px] 2xl:py-[36px] 3xl:mt-[43px] 3xl:gap-[57px] 3xl:self-start 3xl:py-[40px]">
             {member.strengths.map((label, i) => {
               const icon = profile.strengthIcons[i % profile.strengthIcons.length];

@@ -17,7 +17,7 @@ const HERO_FADE =
 
 /* Bottom-left corner of the same photo (blurred plant), independent of where the main photo sits. */
 const HERO_PLANT =
-  "absolute bottom-0 left-0 h-[22%] w-[7.5%] bg-no-repeat bg-[position:left_bottom] bg-[length:auto_454.5%] [mask-image:radial-gradient(ellipse_100%_100%_at_0%_100%,var(--color-black)_35%,transparent_100%)]";
+  "absolute bottom-0 left-0 h-[22%] w-[7.5%] overflow-hidden [mask-image:radial-gradient(ellipse_100%_100%_at_0%_100%,var(--color-black)_35%,transparent_100%)]";
 
 const HeroImage = ({ image, className }: { image: ImageData; className: string }) => (
   // eslint-disable-next-line @next/next/no-img-element
@@ -30,18 +30,18 @@ export const HomeHeroSection = ({ data }: { data?: HeroData }) => {
 
   return (
     <section className="relative overflow-hidden bg-[var(--color-hero-bg)]">
-      {/* Desktop: photo anchored to the right, fading to the page tint on the left */}
       <div className="pointer-events-none absolute inset-0 hidden [container-type:size] lg:block">
         <HeroImage image={image} className={HERO_PHOTO} />
         <div className={`${HERO_FADE} absolute inset-0`} />
-        {/* Blurred plant peeking in at the bottom-left corner */}
-        <div className={HERO_PLANT} style={{ backgroundImage: `url(${image.src})` }} aria-hidden="true" />
+        <div className={HERO_PLANT} aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={image.src} alt="" className="absolute bottom-0 left-0 h-[454.5%] w-auto max-w-none" />
+        </div>
       </div>
 
       <div className={`${ui.container} relative z-10`}>
         <div className="flex flex-col py-10 sm:py-14 lg:min-h-[500px] lg:justify-center lg:py-12 xl:min-h-[580px] 2xl:min-h-[700px] 3xl:min-h-[862px] 3xl:py-[90px]">
           <ScrollReveal variant="fade-up" duration={750} className="w-full max-w-[620px] lg:max-w-[56%] 3xl:max-w-[940px] 3xl:pl-[26px]">
-            {/* Eyebrow */}
             <div className="flex items-center gap-3 sm:gap-4 3xl:gap-[18px]">
               <span className="h-[3px] w-10 shrink-0 rounded-full bg-[var(--color-primary)] 2xl:w-[56px]" />
               <span className="text-[11px] font-medium uppercase tracking-[0.26em] text-[var(--color-hero-text)] sm:text-[13px] 2xl:text-[15px] 3xl:text-[17px] 3xl:tracking-[0.32em]">
@@ -49,7 +49,6 @@ export const HomeHeroSection = ({ data }: { data?: HeroData }) => {
               </span>
             </div>
 
-            {/* Heading: first two lines large, third line a step smaller */}
             <h1 className="mt-5 text-[clamp(34px,4.52vw,86px)] font-extrabold tracking-[-0.005em] text-[var(--color-hero-text-2)] 2xl:mt-6 3xl:mt-[30px]">
               <span className="block leading-[1.07]">{title.top}</span>
               <span className="block leading-[1.07] tracking-[0.015em] text-[var(--color-primary)]">{title.highlight}</span>
@@ -71,7 +70,6 @@ export const HomeHeroSection = ({ data }: { data?: HeroData }) => {
               ))}
             </p>
 
-            {/* Buttons */}
             <div className="mt-7 flex flex-wrap gap-3 sm:gap-5 2xl:mt-8 3xl:gap-[22px]">
               <Link
                 href={primaryButton.href}
@@ -90,7 +88,6 @@ export const HomeHeroSection = ({ data }: { data?: HeroData }) => {
             </div>
           </ScrollReveal>
 
-          {/* Feature badges */}
           <ScrollReveal variant="fade-up" delay={200} duration={750} className="w-full">
             <ul className="mt-9 grid w-full grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-4 lg:max-w-[52%] lg:grid-cols-2 xl:flex xl:w-auto xl:max-w-none xl:flex-nowrap xl:gap-0 2xl:mt-12 3xl:pl-[26px]">
               {data.features.map((feature, i) => (
@@ -115,7 +112,6 @@ export const HomeHeroSection = ({ data }: { data?: HeroData }) => {
             </ul>
           </ScrollReveal>
 
-          {/* Mobile / tablet photo */}
           <div className="relative mt-10 aspect-[4/3] w-full overflow-hidden rounded-[24px] sm:aspect-[16/9] lg:hidden">
             <HeroImage image={image} className="absolute inset-0 h-full w-full object-cover object-[72%_15%]" />
           </div>

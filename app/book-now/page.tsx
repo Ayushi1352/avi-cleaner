@@ -8,7 +8,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.bookingBreadcrumb?.metaTitle, description: commonData.bookingBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.bookingBreadcrumb?.seo };
 
 export default function BookNowPage() {
   return (

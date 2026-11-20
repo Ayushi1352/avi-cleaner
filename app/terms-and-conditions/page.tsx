@@ -8,7 +8,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.termsBreadcrumb?.metaTitle, description: commonData.termsBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.termsBreadcrumb?.seo };
 
 export default function TermsAndConditionsPage() {
   return (

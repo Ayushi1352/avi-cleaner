@@ -7,25 +7,19 @@ import { ui } from "@/components/ui/styles";
 function ZeroMark({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 200 240" className={className} aria-hidden="true">
-      {/* sparkles */}
       <path fill="var(--color-not-found-fill)" d="M22 20c2 12 8 18 20 20-12 2-18 8-20 20-2-12-8-18-20-20 12-2 18-8 20-20Z" />
       <path fill="var(--color-not-found-fill)" d="M52 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12Z" />
       <path fill="var(--color-not-found-fill)" d="M6 78c1 8 6 13 14 14-8 1-13 6-14 14-1-8-6-13-14-14 8-1 13-6 14-14Z" transform="translate(8 0)" />
-      {/* ring */}
       <ellipse cx="112" cy="124" rx="84" ry="104" fill="var(--color-not-found-fill)" />
-      {/* house cut-out */}
       <path fill="var(--color-not-found-fill-2)" d="M112 62 52 116v84h120v-84l-60-54Z" />
-      {/* window */}
       <g fill="var(--color-not-found-fill)">
         <rect x="96" y="120" width="14" height="14" />
         <rect x="114" y="120" width="14" height="14" />
         <rect x="96" y="138" width="14" height="14" />
         <rect x="114" y="138" width="14" height="14" />
       </g>
-      {/* leaf */}
       <path fill="var(--color-not-found-fill-3)" d="M30 150c44 0 78 26 92 78-48 8-84-18-92-78Z" />
       <path fill="none" stroke="var(--color-not-found-fill-2)" strokeWidth="4" strokeLinecap="round" d="M44 164c26 14 46 34 62 60" />
-      {/* broom */}
       <path fill="none" stroke="var(--color-not-found-fill)" strokeWidth="11" strokeLinecap="round" d="M186 74 152 168" />
       <path fill="var(--color-not-found-fill)" d="M132 160l42 16 10 18-6 40-76-28 14-34 16-12Z" />
       <path fill="none" stroke="var(--color-not-found-fill-2)" strokeWidth="3" strokeLinecap="round" d="M122 204l10-22M140 212l10-24M158 220l8-24" />
@@ -37,7 +31,6 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
   if (!data) return null;
   return (
       <section className="relative isolate w-full overflow-hidden bg-[var(--color-bg-light)]">
-        {/* Photo on the right, fading into the page */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={data.image}
@@ -45,7 +38,6 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden h-full w-[36%] object-cover object-[center_top] [mask-image:linear-gradient(90deg,transparent,var(--color-black)_45%)] lg:block"
         />
-        {/* Blurred plant, bottom left */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={data.plantImage}
@@ -53,7 +45,6 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
           aria-hidden="true"
           className="pointer-events-none absolute bottom-0 left-0 -z-10 hidden h-[42%] w-auto !max-w-none -translate-x-[45%] translate-y-[20%] -scale-x-100 lg:block"
         />
-        {/* Sticky note */}
         <p
           aria-hidden="true"
           className="absolute right-[1.5%] top-[4%] hidden rotate-[6deg] bg-[var(--color-not-found-bg)] px-5 py-6 text-center font-script text-[26px] font-medium leading-[1.05] text-[var(--color-primary-dark)] shadow-[0_10px_24px_-12px_var(--color-black-40)] xl:block 2xl:px-7 2xl:py-8 2xl:text-[36px]"
@@ -69,7 +60,6 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
 
         <div className={ui.container}>
           <div className="grid grid-cols-1 items-center gap-10 pb-10 pt-12 sm:pt-16 lg:grid-cols-[minmax(0,30%)_minmax(0,36%)] lg:gap-8 lg:pb-14 lg:pt-20 xl:gap-12 2xl:pb-[80px] 2xl:pt-[150px] 3xl:grid-cols-[530px_680px] 3xl:gap-[24px] 3xl:pl-[58px] 3xl:pt-[196px]">
-            {/* ---------- Text ---------- */}
             <div className="min-w-0 text-center lg:text-left">
               <p className="text-[13px] font-bold uppercase tracking-[0.3em] text-[var(--color-title)] 2xl:text-[15px]">
                 {data.eyebrow}
@@ -90,7 +80,6 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
               </Link>
             </div>
 
-            {/* ---------- 404 mark ---------- */}
             <div className="min-w-0 text-center">
               <p
                 aria-label={data.code}
@@ -111,7 +100,6 @@ export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
             </div>
           </div>
 
-          {/* ---------- Quick links ---------- */}
           <ul className="mx-auto grid max-w-[420px] grid-cols-1 gap-5 pb-12 sm:max-w-none sm:grid-cols-3 sm:gap-0 lg:mx-0 lg:max-w-[63%] 2xl:pb-[70px] 3xl:ml-[58px] 3xl:max-w-[1150px]">
             {data.quickLinks.map(({ id, href, title, text, icon }, i) => (
               <li key={id} className={`min-w-0 ${i > 0 ? "sm:border-l sm:border-[var(--color-not-found-border)]" : ""}`}>

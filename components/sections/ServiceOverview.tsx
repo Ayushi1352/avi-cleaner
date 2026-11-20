@@ -2,10 +2,9 @@ import Link from "next/link";
 import type { GlobalUIData, ServiceDetailData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
-/** Service Detail top: photo with trust badge, title, intro, features and CTA. */
 export const ServiceOverview = ({ data, ui: labels }: { data?: ServiceDetailData; ui?: GlobalUIData }) => {
   if (!data) return null;
   const { service, overview } = data;
@@ -13,7 +12,6 @@ export const ServiceOverview = ({ data, ui: labels }: { data?: ServiceDetailData
     <section className="w-full bg-[var(--color-white)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
       <div className={ui.container}>
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 xl:grid-cols-[878fr_828fr] xl:gap-12 2xl:gap-[72px] 3xl:pl-[16px]">
-          {/* Photo */}
           <div className="relative mx-auto w-full min-w-0 max-w-[878px]">
             <PhotoSlot
               src={service.image}
@@ -34,7 +32,6 @@ export const ServiceOverview = ({ data, ui: labels }: { data?: ServiceDetailData
             </div>
           </div>
 
-          {/* Text */}
           <div className="min-w-0">
             <SectionEyebrow compact className="3xl:[&>span:first-child]:w-[46px] 3xl:[&>span:last-child]:w-[46px] 3xl:[&>span:nth-child(2)]:text-[23px]">{overview.label}</SectionEyebrow>
             <h1 className="mt-3 break-words text-[clamp(30px,3.45vw,66px)] font-extrabold leading-[1.12] tracking-[-0.02em] text-[var(--color-title)] 2xl:mt-5">

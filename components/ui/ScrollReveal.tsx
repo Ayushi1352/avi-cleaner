@@ -5,16 +5,11 @@ import React, { useEffect, useRef, useState } from "react";
 interface ScrollRevealProps {
   children: React.ReactNode;
   variant?: "fade-up" | "fade-down" | "fade-left" | "fade-right" | "zoom-in" | "fade";
-  delay?: number; // milliseconds
-  duration?: number; // milliseconds
+  delay?: number;
+  duration?: number;
   className?: string;
 }
 
-/**
- * Scroll-triggered reveal animation component.
- * Applies a smooth, hardware-accelerated transform & opacity transition
- * when the element enters the viewport. Preserves the exact layout and design.
- */
 export function ScrollReveal({
   children,
   variant = "fade-up",
@@ -46,6 +41,12 @@ export function ScrollReveal({
     return () => observer.disconnect();
   }, []);
 
+  // Timing comes from props, so it is set on the element (Tailwind classes must be fixed strings).
+  useEffect(() => {
+    ref.current?.style.setProperty("transition-duration", `${duration}ms`);
+    ref.current?.style.setProperty("transition-delay", `${delay}ms`);
+  }, [duration, delay]);
+
   const variantStyles: Record<string, string> = {
     "fade-up": "translate-y-10",
     "fade-down": "-translate-y-10",
@@ -65,14 +66,9 @@ export function ScrollReveal({
           ? "opacity-100 translate-x-0 translate-y-0 scale-100"
           : `opacity-0 ${transformClass}`
       } ${className}`}
-      style={{
-        transitionDuration: `${duration}ms`,
-        transitionDelay: `${delay}ms`,
-      }}
     >
       {children}
     </div>
   );
 }
-
 

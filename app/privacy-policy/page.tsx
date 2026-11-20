@@ -8,7 +8,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.privacyBreadcrumb?.metaTitle, description: commonData.privacyBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.privacyBreadcrumb?.seo };
 
 export default function PrivacyPolicyPage() {
   return (

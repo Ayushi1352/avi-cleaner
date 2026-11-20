@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { BlogsData, GlobalUIData, NewsPost } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { SectionTag } from "@/components/ui/SectionTag";
+import { SectionTag } from "@/components/ui/SectionLabel";
 import { CarouselDots } from "@/components/ui/CarouselDots";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { useCarousel, slideClass, trackClass } from "@/components/ui/useCarousel";
@@ -24,12 +24,10 @@ function BlogCard({ post, readMore, labels }: { post: NewsPost; readMore: BlogsD
             className="aspect-[572/360] w-full transition-transform duration-500 group-hover/img:scale-105"
           />
         </Link>
-        {/* Date */}
         <div className="pointer-events-none absolute left-4 top-4 rounded-[12px] bg-[var(--color-news-bg)] px-3.5 py-2.5 text-center text-[var(--color-white)] 2xl:left-[26px] 2xl:top-[28px] 2xl:w-[100px] 2xl:py-3.5">
           <span className="block text-[22px] font-bold leading-none 2xl:text-[30px]">{post.day}</span>
           <span className="mt-1 block text-[11px] font-medium 2xl:text-[15px]">{post.month}</span>
         </div>
-        {/* Category */}
         <span className="absolute bottom-3 left-4 inline-flex items-center gap-2 rounded-full bg-[var(--color-white)] px-4 py-2 text-[13px] font-semibold text-[var(--color-heading)] shadow 2xl:left-[24px] 2xl:gap-3 2xl:px-5 2xl:py-3 2xl:text-[16px]">
           <Icon name={post.icon} className="h-4 w-4 text-[var(--color-primary-dark)] 2xl:h-5 2xl:w-5" />
           {post.category}
@@ -75,12 +73,11 @@ function BlogCard({ post, readMore, labels }: { post: NewsPost; readMore: BlogsD
 
 export const NewsAndArticlesSection = ({ data, ui: labels }: { data?: BlogsData; ui?: GlobalUIData }) => {
   const posts = data?.posts ?? [];
-  const { setViewport, ...c } = useCarousel(posts.length);
+  const { setViewport, setTrack, ...c } = useCarousel(posts.length);
   if (!data) return null;
 
   return (
     <section id="blog" className="relative overflow-hidden bg-[var(--color-bg-cool)] pt-11 sm:pt-[3.25rem] xl:pt-14 2xl:pt-[48px] pb-9 sm:pb-10 xl:pb-11 2xl:pb-[36px]">
-      {/* Pale leaf */}
       <svg
         aria-hidden="true"
         viewBox="0 0 400 360"
@@ -107,7 +104,7 @@ export const NewsAndArticlesSection = ({ data, ui: labels }: { data?: BlogsData;
           ref={setViewport}
           className="mt-10 overflow-hidden px-0.5 pb-4 pt-2 [--gap:16px] [--per:1] md:[--per:2] lg:[--per:3] lg:[--gap:20px] 2xl:mt-[42px] 2xl:[--gap:28px] 3xl:px-[10px]"
         >
-          <div className={trackClass} style={c.trackStyle}>
+          <div className={trackClass} ref={setTrack}>
             {posts.map((p, i) => (
               <div key={p.title} className={slideClass}>
                 <ScrollReveal

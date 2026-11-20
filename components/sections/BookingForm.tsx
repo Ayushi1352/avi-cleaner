@@ -33,10 +33,7 @@ function Field({ label, required = true, icon, children, className = "" }: {
   );
 }
 
-/** Book Now page body: booking form with a photo and "Why Book With Us?". */
 export const BookingForm = ({ data, ui: labels }: { data?: BookingData; ui: GlobalUIData }) => {
-  // Dummy submit: nothing is sent anywhere yet. "Booking…" for a moment, then the form clears
-  // and the thank-you card shows for 5 seconds.
   const submit = useDummySubmit();
   if (!data) return null;
   const { fields } = data;
@@ -45,7 +42,6 @@ export const BookingForm = ({ data, ui: labels }: { data?: BookingData; ui: Glob
     <section className="w-full bg-[var(--color-bg-card)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
       <div className={ui.container}>
         <div className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,34%)] lg:gap-6 xl:gap-7 3xl:grid-cols-[1150px_minmax(0,1fr)] 3xl:gap-[30px] 3xl:pl-[9px]">
-          {/* ---------- Form ---------- */}
           <div className="min-w-0 rounded-[16px] bg-[var(--color-white)] p-5 shadow-[0_10px_34px_-20px_var(--color-shadow-card-35)] sm:p-7 2xl:rounded-[20px] 2xl:p-9 3xl:px-[32px] 3xl:pb-[44px] 3xl:pt-[36px]">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <h2 className="min-w-0 text-[clamp(24px,2.5vw,48px)] font-extrabold leading-[1.2] tracking-[-0.015em] text-[var(--color-title)] 3xl:pt-[10px]">
@@ -140,7 +136,6 @@ export const BookingForm = ({ data, ui: labels }: { data?: BookingData; ui: Glob
                     title={data.successTitle}
                     message={data.successMessage}
                     leaving={submit.status === "leaving"}
-                    visibleFor={submit.visibleFor}
                     onClose={submit.dismiss}
                     ui={labels.formSuccess}
                     className="mt-4 2xl:mt-5"
@@ -150,7 +145,6 @@ export const BookingForm = ({ data, ui: labels }: { data?: BookingData; ui: Glob
             </form>
           </div>
 
-          {/* ---------- Photo + reasons ---------- */}
           <div className="grid min-w-0 grid-cols-1 content-start gap-6 md:grid-cols-2 lg:grid-cols-1 3xl:gap-[26px]">
             <div className="relative aspect-[620/592] w-full overflow-hidden rounded-[16px] 2xl:rounded-[20px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}

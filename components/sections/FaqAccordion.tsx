@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { FaqData, FaqItemData, GlobalUIData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
 import { ui } from "@/components/ui/styles";
 
@@ -57,7 +57,6 @@ function FaqItem({ faq, toggleIcon, index, open, onToggle }: {
   );
 }
 
-/** FAQ page body: photo and help card on the left, accordion on the right. */
 export const FaqAccordion = ({ data, ui: labels }: { data?: FaqData; ui: GlobalUIData }) => {
   const [openIndex, setOpenIndex] = useState(0);
   if (!data) return null;
@@ -66,7 +65,6 @@ export const FaqAccordion = ({ data, ui: labels }: { data?: FaqData; ui: GlobalU
     <section className="w-full bg-[var(--color-white)] py-8 sm:py-9 xl:py-10 2xl:py-[36px]">
       <div className={ui.container}>
         <div className="relative isolate overflow-hidden rounded-[16px] bg-[linear-gradient(180deg,var(--color-bg-faq)_0%,var(--color-faq-gradient)_100%)] 2xl:rounded-[20px]">
-          {/* Leaves, top right */}
           <svg aria-hidden="true" viewBox="0 0 130 230" className="pointer-events-none absolute right-0 top-3 -z-10 w-[70px] text-[var(--color-faq-text)] sm:w-[90px] 2xl:top-[20px] 2xl:w-[125px]">
             <path fill="currentColor" d="M22 4c52 8 92 48 104 104 2 12 4 26 4 38-34-6-66-28-86-62C32 62 24 34 22 4Z" />
             <path fill="currentColor" d="M130 96v128c-28-12-50-40-56-76-2-14-2-28 2-40 22-2 40-6 54-12Z" opacity=".75" />
@@ -74,7 +72,6 @@ export const FaqAccordion = ({ data, ui: labels }: { data?: FaqData; ui: GlobalU
           </svg>
 
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,31%)_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:gap-x-8 xl:gap-x-10 3xl:gap-x-[54px]">
-            {/* ---------- Photo ---------- */}
             <div className="relative order-1 aspect-[16/10] w-full overflow-hidden sm:aspect-[16/8] lg:aspect-[563/698] lg:rounded-br-[16px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={data.image.src} alt={data.image.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[62%_70%] lg:object-[68%_bottom]" />
@@ -82,7 +79,6 @@ export const FaqAccordion = ({ data, ui: labels }: { data?: FaqData; ui: GlobalU
               <HandwrittenNote lines={labels.noteLines} color="text-[var(--color-white)]" className="absolute left-[7%] top-[16%] text-[clamp(26px,5vw,44px)] lg:top-[28%] lg:text-[clamp(24px,2.4vw,46px)]" />
             </div>
 
-            {/* ---------- Accordion ---------- */}
             <div className="order-2 min-w-0 px-4 pb-8 pt-9 sm:px-6 sm:pt-10 lg:row-span-2 lg:pb-12 lg:pl-0 lg:pr-6 xl:pr-8 2xl:pt-[44px] 3xl:pb-[75px] 3xl:pr-[44px]">
               <div className="text-center">
                 <SectionEyebrow center className="3xl:[&>span:first-child]:w-[50px] 3xl:[&>span:last-child]:w-[50px] 3xl:[&>span:nth-child(2)]:text-[17px]">
@@ -103,7 +99,6 @@ export const FaqAccordion = ({ data, ui: labels }: { data?: FaqData; ui: GlobalU
               </ul>
             </div>
 
-            {/* ---------- Help card ---------- */}
             <div className="order-3 min-w-0 px-4 pb-8 sm:px-6 lg:self-start lg:pb-12 lg:pl-[7%] lg:pr-0 lg:pt-5 2xl:pt-[25px] 3xl:pb-[75px]">
               <div className="relative isolate overflow-hidden rounded-[12px] bg-[var(--color-faq-bg-4)] px-6 pb-8 pt-7 text-[var(--color-white)] lg:px-5 xl:px-7 2xl:rounded-[14px] 2xl:pb-10 2xl:pt-9 3xl:pb-[48px] 3xl:pl-[43px] 3xl:pr-[30px] 3xl:pt-[42px]">
                 <svg aria-hidden="true" viewBox="0 0 200 220" className="pointer-events-none absolute bottom-0 right-0 -z-10 w-[120px] text-[var(--color-white-8)] 2xl:w-[180px]">

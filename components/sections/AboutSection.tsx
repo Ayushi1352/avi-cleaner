@@ -70,7 +70,6 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
       id="about"
       className="relative overflow-hidden bg-[var(--color-white)] pt-12 sm:pt-14 xl:pt-16 2xl:pt-[54px] pb-10 sm:pb-12 xl:pb-14 2xl:pb-[42px]"
     >
-      {/* Decorative pale leaf + arcs on the right */}
       <svg
         aria-hidden="true"
         viewBox="0 0 480 770"
@@ -104,9 +103,7 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
 
       <div className={`${ui.container} relative`}>
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[955fr_762fr] lg:gap-10 xl:gap-14 2xl:gap-[clamp(56px,3.8vw,72px)]">
-          {/* ---------- Collage: Stationary (Image vahi hai) ---------- */}
           <div className="[container-type:inline-size] mx-auto w-full min-w-0 max-w-[720px] lg:max-w-none">
-            {/* Phones: stacked collage */}
             <div className="grid grid-cols-2 gap-3 sm:hidden">
               <div className="relative col-span-2">
                 <ImagePlaceholder
@@ -130,13 +127,11 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
                   ui={labels}
                   className="aspect-square w-full rounded-[20px]"
                 />
-                {/* Sits on the third photo, like the tablet/desktop collage */}
                 <TrustedBadge data={data.trusted} className="absolute bottom-2 right-2 z-10 origin-bottom-right max-[399px]:scale-[0.88]" />
               </div>
               <StatCard data={data.stat} className="col-span-2 py-6" />
             </div>
 
-            {/* Tablet + desktop: overlapping collage (955 x 747 in the design) */}
             <div className="relative hidden aspect-[955/747] w-full sm:block">
               <ImagePlaceholder
                 src={img1.src}
@@ -165,7 +160,6 @@ export const AboutSection = ({ data, ui: labels, showButton = true }: { data?: A
             </div>
           </div>
 
-          {/* ---------- Content: Slides in from the right (Text aara h side se) ---------- */}
           <ScrollReveal variant="fade-left" duration={800} className="min-w-0 font-poppins lg:pt-[1vw]">
             <div className="flex items-center gap-4">
               <span className="h-[2.5px] w-[clamp(40px,2.6vw,49px)] shrink-0 rounded-full bg-[var(--color-primary)]" />

@@ -1,10 +1,9 @@
 import type { CompanyData, ContactMapData } from "@/types/templates.types";
-import { fillLabel } from "@/components/ui/helpers";
+import { mapUrl } from "@/components/ui/text";
 
-/** Contact page: full-width Google map ("View on Map" scrolls here). */
 export const ContactMap = ({ data, company }: { data?: ContactMapData; company: CompanyData }) => {
   if (!data) return null;
-  const src = fillLabel(data.embedUrl, { addressQuery: company.addressLines.join(" ").replace(/ /g, "+") });
+  const src = mapUrl(company.mapEmbedUrl, company.address);
   return (
     <section id="map" aria-label={data.label} className="w-full scroll-mt-[90px] bg-[var(--color-map-bg)] 2xl:scroll-mt-[120px]">
       <iframe

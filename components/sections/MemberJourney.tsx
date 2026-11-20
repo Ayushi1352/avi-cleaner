@@ -1,10 +1,9 @@
 import type { GlobalUIData, TeamDetailData } from "@/types/templates.types";
 import { Icon } from "@/components/ui/Icon";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
+import { SectionEyebrow } from "@/components/ui/SectionLabel";
 import { ui } from "@/components/ui/styles";
 
-/** "Work Experience — My Professional Journey": photo card, stats and timeline. */
 export const MemberJourney = ({ data, ui: labels }: { data?: TeamDetailData; ui?: GlobalUIData }) => {
   if (!data) return null;
   const { member } = data;
@@ -12,7 +11,6 @@ export const MemberJourney = ({ data, ui: labels }: { data?: TeamDetailData; ui?
   return (
     <section className="w-full bg-[var(--color-member-bg)] py-10 sm:py-12 xl:py-[3.25rem] 2xl:py-[46px]">
       <div className={ui.container}>
-        {/* Header */}
         <div className="mx-auto max-w-[1080px] text-center">
           <SectionEyebrow center compact className="3xl:[&>span:nth-child(2)]:text-[25px] 3xl:[&>span:first-child]:w-[54px] 3xl:[&>span:last-child]:w-[54px]">
             {data.journey.label}
@@ -27,7 +25,6 @@ export const MemberJourney = ({ data, ui: labels }: { data?: TeamDetailData; ui?
         </div>
 
         <div className="mt-10 grid grid-cols-1 items-start gap-10 lg:items-stretch lg:grid-cols-[minmax(0,420px)_1fr] xl:grid-cols-[634fr_1112fr] xl:gap-12 2xl:mt-[42px] 2xl:gap-[71px]">
-          {/* ---------- Photo, quote, stats ---------- */}
           <div className="mx-auto flex w-full min-w-0 max-w-[634px] flex-col">
             <div className="overflow-hidden rounded-[20px] shadow-[0_18px_40px_-28px_var(--color-shadow-card-45)] 2xl:rounded-[24px]">
               <PhotoSlot
@@ -38,7 +35,6 @@ export const MemberJourney = ({ data, ui: labels }: { data?: TeamDetailData; ui?
                 imgClassName="object-cover object-top"
               />
               <figure className="relative flex items-start gap-4 overflow-hidden bg-[var(--color-forest)] px-5 py-6 text-[var(--color-white)] sm:px-7 2xl:gap-[50px] 2xl:px-[42px] 2xl:py-[38px]">
-                {/* Faint leaf, bottom right */}
                 <svg aria-hidden="true" viewBox="0 0 120 140" className="pointer-events-none absolute -bottom-2 right-0 w-[90px] text-[var(--color-white-7)] 2xl:w-[130px]">
                   <path fill="currentColor" d="M118 4C60 8 18 44 14 96c-1 16 4 30 12 40 40 6 74-12 86-52 6-22 8-50 6-80Z" />
                   <path fill="currentColor" d="M96 140c0-22 8-38 24-46v46H96Z" />
@@ -69,13 +65,11 @@ export const MemberJourney = ({ data, ui: labels }: { data?: TeamDetailData; ui?
             </ul>
           </div>
 
-          {/* ---------- Timeline ---------- */}
           <ol className="min-w-0 lg:flex lg:flex-col">
             {member.experience.map((e, i) => {
               const last = i === member.experience.length - 1;
               return (
                 <li key={e.title + e.years} className="relative grid grid-cols-[44px_1fr] gap-3 pb-5 last:!pb-0 lg:flex-1 sm:grid-cols-[60px_1fr] sm:gap-6 2xl:grid-cols-[84px_1fr] 2xl:gap-[41px] 2xl:pb-[32px]">
-                  {/* connector line */}
                   {!last && (
                     <span aria-hidden="true" className="absolute -bottom-4 left-[21px] top-[60px] w-[2px] bg-[var(--color-member-bg-3)] sm:left-[29px] sm:top-[76px] 2xl:-bottom-5 2xl:left-[41px] 2xl:top-[104px]" />
                   )}

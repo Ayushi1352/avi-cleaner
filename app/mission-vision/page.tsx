@@ -11,7 +11,7 @@ const templateData: CleaningTemplateData = rawData;
 const sectionData = templateData.categories.Cleaning.sections;
 const commonData = templateData.common;
 
-export const metadata: Metadata = { title: commonData.missionVisionBreadcrumb?.metaTitle, description: commonData.missionVisionBreadcrumb?.description };
+export const metadata: Metadata = { ...commonData.missionVisionBreadcrumb?.seo };
 
 export default function MissionVisionPage() {
   return (
